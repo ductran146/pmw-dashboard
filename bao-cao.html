@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PMW — Báo cáo số liệu nội bộ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Override: make bao-cao.html layout work as full page */
+    html, body {
+      overflow: hidden;
+    }
+    .bao-cao-wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    .submod-page.active {
+      flex: 1;
+      display: flex !important;
+      min-height: 0;
+    }
+    .dv-header {
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bao-cao-wrapper">
+
+    <!-- ── Header ── -->
+    <header class="dv-header">
+      <a class="dv-header-logo" href="index.html" id="dbLogoBack">
+        <svg width="84" height="46" viewBox="0 0 84 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="14.3916" y="15.7255" width="13.0946" height="14.9777" fill="white"/>
+<rect x="38.1445" y="15.7255" width="13.3991" height="14.0607" fill="white"/>
+<path d="M60.375 15.7255L77.2762 16.0311L77.4285 29.7862H63.4203L60.375 15.7255Z" fill="white"/>
+<path d="M15.6736 34.9031C15.6736 34.9031 17.1354 37.0978 17.4247 37.9047C17.7536 38.8217 18.8407 40.3501 17.5647 43.2203C16.9557 43.6177 16.8552 43.7002 16.5903 43.8653C15.9812 44.2382 15.2534 44.6355 13.6333 44.6355H10.8926C10.8926 44.6355 14.1662 43.043 15.6736 34.9031Z" fill="#1A428A"/>
+<path d="M33.5131 25.4395L24.1641 7.85748C23.6478 6.88431 22.8773 6.07057 21.9352 5.50354C20.9932 4.93651 19.9151 4.63758 18.8167 4.6388H0L16.6393 36.7737C17.5529 38.519 18.3386 40.2002 17.9214 42.1198C17.8217 42.4926 17.7028 42.8599 17.5651 43.2202L31.9996 32.3109C33.0284 31.5362 33.7473 30.4179 34.0265 29.1578C34.3057 27.8976 34.1269 26.5789 33.5222 25.4395H33.5131ZM26.3628 22.8352C25.9569 23.5249 25.3631 24.0838 24.6514 24.4461C23.8585 24.842 22.9818 25.0392 22.0964 25.0207H21.8528L20.6865 22.6457H21.9198C22.1986 22.6607 22.4775 22.6183 22.7394 22.521C23.0012 22.4238 23.2405 22.2737 23.4424 22.0802C23.6326 21.876 23.7797 21.6354 23.8749 21.3728C23.9701 21.1102 24.0115 20.831 23.9966 20.5519C24.0098 20.2722 23.9667 19.9927 23.8699 19.7302C23.7731 19.4676 23.6246 19.2273 23.4333 19.0235C23.2325 18.8278 22.9937 18.6757 22.7317 18.5768C22.4697 18.4779 22.1902 18.4344 21.9106 18.4489H19.5688V22.6457V25.0207V29.3918H16.6819V16.08H22.2395C23.0975 16.0679 23.9461 16.2606 24.7153 16.6424C25.404 16.9826 25.9818 17.5127 26.3811 18.1707C26.7847 18.8634 26.9891 19.6548 26.9719 20.4571C26.988 21.2907 26.7775 22.1128 26.3628 22.8352V22.8352Z" fill="#00A887"/>
+<path d="M40.0451 34.9031C40.0451 34.9031 41.5099 37.0978 41.7962 37.9047C42.1281 38.8217 43.2122 40.3501 41.9393 43.2203C41.3302 43.6177 41.2267 43.7002 40.9648 43.8653C40.3557 44.2382 39.6279 44.6355 38.0048 44.6355H35.2793C35.2793 44.6355 38.5377 43.043 40.0451 34.9031Z" fill="#00A887"/>
+<path d="M57.884 25.4395L46.4155 3.99998C45.9878 3.20209 45.3529 2.53529 44.5782 2.07032C43.8035 1.60535 42.9178 1.35955 42.0151 1.35901L22.5498 1.35901L41.0132 36.7737C41.9268 38.5191 42.7094 40.2002 42.2922 42.1198C42.1931 42.4924 42.0752 42.8597 41.939 43.2202L56.3705 32.311C57.3992 31.5363 58.1181 30.4179 58.3974 29.1578C58.6766 27.8977 58.4977 26.5789 57.8931 25.4395H57.884ZM48.5381 29.3918V29.2604L48.4985 22.0741L45.572 28.0988H44.0737L44.0402 28.0224L41.1503 22.2147V29.3918H38.175V16.1686H40.8457L40.8823 16.245L44.8624 24.333L48.8213 16.1686H51.492V16.3031L51.5224 29.3918H48.5381Z" fill="#1A428A"/>
+<path d="M64.8428 34.9031C64.8428 34.9031 66.3046 37.0978 66.5939 37.9047C66.9227 38.8217 68.0099 40.3501 66.737 43.2203C66.1279 43.6177 66.0244 43.7002 65.7594 43.8653C65.1504 44.2382 64.4226 44.6355 62.8025 44.6355H60.0618C60.0618 44.6355 63.3354 43.043 64.8428 34.9031Z" fill="#1A428A"/>
+<path d="M82.6815 25.4396L72.754 7.8576C72.2366 6.8853 71.4659 6.0723 70.524 5.50541C69.5822 4.93852 68.5047 4.63903 67.4065 4.63892H48.5898L65.8077 36.7738C66.7213 38.5192 67.507 40.2003 67.0898 42.1199C66.9907 42.4925 66.8728 42.8598 66.7366 43.2203L81.168 32.311C82.1968 31.5364 82.9157 30.418 83.1949 29.1579C83.4742 27.8978 83.2953 26.579 82.6907 25.4396H82.6815ZM73.4848 29.3919H70.9603L68.7891 21.4996L66.6574 29.3919H64.1207L60.3902 16.1932H63.4203L65.4819 24.0366L67.5283 16.1932H70.062L72.1084 24.0366L74.17 16.1932H77.1879L73.4848 29.3919Z" fill="#00A887"/>
+</svg>
+      </a>
+      <div class="dv-header-title">
+        <span class="dv-header-sub">Hệ thống thông tin quản lý</span>
+        <span class="dv-header-main">TỔNG HỢP BÁO CÁO</span>
+      </div>
+    </header>
+
+    <!-- ── Sub-module Page (Báo cáo số liệu nội bộ) ── -->
+    <div class="submod-page active" id="submodPage">
+
+      <!-- Sidebar 172px -->
+      <aside class="sm-sidebar">
+        <div class="sm-sidebar-label">Phân hệ</div>
+
+        <!-- Báo cáo — expandable category -->
+        <a class="sm-nav-cat expanded" href="#" id="smNavBaoCao">
+          <div class="sm-nav-cat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 17H16M8 13H12M13 2.5V3C13 5.82843 13 7.24264 13.8787 8.12132C14.7574 9 16.1716 9 19 9H19.5M20 10.6569V14C20 17.7712 20 19.6569 18.8284 20.8284C17.6569 22 15.7712 22 12 22C8.22876 22 6.34315 22 5.17157 20.8284C4 19.6569 4 17.7712 4 14V9.45584C4 6.21082 4 4.58831 4.88607 3.48933C5.06508 3.26731 5.26731 3.06508 5.48933 2.88607C6.58831 2 8.21082 2 11.4558 2C12.1614 2 12.5141 2 12.8372 2.11401C12.9044 2.13772 12.9702 2.165 13.0345 2.19575C13.3436 2.34355 13.593 2.593 14.0919 3.09188L18.8284 7.82843C19.4065 8.40649 19.6955 8.69552 19.8478 9.06306C20 9.4306 20 9.83935 20 10.6569Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="sm-nav-cat-label">Báo cáo số liệu nội bộ</span>
+          <svg class="sm-nav-cat-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 3l4 4-4 4"/></svg>
+        </a>
+
+        <div class="sm-subnav" id="smSubnav">
+          <a class="sm-subnav-item active" href="#" data-sub="so-lieu-kd"><span>Số liệu kinh doanh</span></a>
+          <a class="sm-subnav-item" href="#" data-sub="that-thoat"><span>Tỷ lệ thất thoát</span></a>
+          <a class="sm-subnav-item" href="#" data-sub="lap-dat"><span>Lắp đặt sửa chữa</span></a>
+          <a class="sm-subnav-item" href="#" data-sub="vat-tu"><span>Vật tư – Nhiên liệu – Sản xuất</span></a>
+          <a class="sm-subnav-item" href="#" data-sub="tru-nuoc"><span>Trụ nước uống tại vòi</span></a>
+        </div>
+
+        <!-- Other nav items -->
+        <a class="sm-nav-other" href="#" data-nav="van-phong"><div class="sm-nav-other-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21H16M14 21C13.1716 21 12.5 20.3284 12.5 19.5V17H12M14 21H10M12 17H11.5V19.5C11.5 20.3284 10.8284 21 10 21M12 17V21M10 21H8M7 10H9.5L11 13L13 7L14.4996 10H16.9996M16 3H8C5.17157 3 3.75736 3 2.87868 3.87868C2 4.75736 2 6.17157 2 9V11C2 13.8284 2 15.2426 2.87868 16.1213C3.75736 17 5.17157 17 8 17H16C18.8284 17 20.2426 17 21.1213 16.1213C22 15.2426 22 13.8284 22 11V9C22 6.17157 22 4.75736 21.1213 3.87868C20.2426 3 18.8284 3 16 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sm-nav-other-label">Văn phòng điện tử</span></a>
+        <a class="sm-nav-other" href="#" data-nav="nhan-su"><div class="sm-nav-other-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4C17.6569 4 19 5.34315 19 7C19 8.22309 18.2681 9.27523 17.2183 9.7423M17.7143 13C20.0812 13 22 14.9188 22 17.2857C22 18.2325 21.2325 19 20.2857 19M8 4C6.34315 4 5 5.34315 5 7C5 8.22309 5.73193 9.27523 6.78168 9.7423M3.71429 19C2.76751 19 2 18.2325 2 17.2857C2 14.9188 3.91878 13 6.28571 13M15 8C15 9.65685 13.6569 11 12 11C10.3431 11 9 9.65685 9 8C9 6.34315 10.3431 5 12 5C13.6569 5 15 6.34315 15 8ZM13.7143 14H10.2857C7.91876 14 5.99998 15.9188 5.99998 18.2857C5.99998 19.2325 6.76749 20 7.71426 20H16.2857C17.2325 20 18 19.2325 18 18.2857C18 15.9188 16.0812 14 13.7143 14Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sm-nav-other-label">Quản lý nhân sự HRIS</span></a>
+        <a class="sm-nav-other" href="#" data-nav="kho"><div class="sm-nav-other-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C11.1818 22 10.4002 21.6698 8.83693 21.0095C4.94564 19.3657 3 18.5438 3 17.1613C3 16.7742 3 10.0645 3 7M12 22C12.8182 22 13.5998 21.6698 15.1631 21.0095C19.0544 19.3657 21 18.5438 21 17.1613V7M12 22V11.3548M6 12L8 13M17 4L7 9M8.32592 9.69138L5.40472 8.27785C3.80157 7.5021 3 7.11423 3 6.5C3 5.88577 3.80157 5.4979 5.40472 4.72215L8.32592 3.30862C10.1288 2.43621 11.0303 2 12 2C12.9697 2 13.8712 2.4362 15.6741 3.30862L18.5953 4.72215C20.1984 5.4979 21 5.88577 21 6.5C21 7.11423 20.1984 7.5021 18.5953 8.27785L15.6741 9.69138C13.8712 10.5638 12.9697 11 12 11C11.0303 11 10.1288 10.5638 8.32592 9.69138Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sm-nav-other-label">Quản lý kho</span></a>
+        <a class="sm-nav-other" href="#" data-nav="thiet-bi"><div class="sm-nav-other-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.3333 9.99996C18.3333 14.6023 14.6023 18.3333 9.99996 18.3333C5.39759 18.3333 1.66663 14.6023 1.66663 9.99996M18.3333 9.99996C18.3333 5.39759 14.6023 1.66663 9.99996 1.66663M18.3333 9.99996H16.25M1.66663 9.99996C1.66663 5.39759 5.39759 1.66663 9.99996 1.66663M1.66663 9.99996H3.74996M9.99996 1.66663V3.74996M15.8986 4.16663L11.2499 8.74996M15.8986 15.8986L15.7287 15.7287C15.1522 15.1522 14.864 14.864 14.5276 14.6578C14.2293 14.4751 13.9042 14.3404 13.5641 14.2587C13.1804 14.1666 12.7728 14.1666 11.9575 14.1666L8.04242 14.1667C7.22712 14.1667 6.81947 14.1667 6.43585 14.2588C6.09573 14.3404 5.77058 14.4751 5.47235 14.6579C5.13596 14.864 4.84771 15.1523 4.2712 15.7288L4.10132 15.8986M4.10132 4.16663L5.54836 5.61367M11.6666 9.99996C11.6666 10.9204 10.9204 11.6666 9.99996 11.6666C9.07948 11.6666 8.33329 10.9204 8.33329 9.99996C8.33329 9.07948 9.07948 8.33329 9.99996 8.33329C10.9204 8.33329 11.6666 9.07948 11.6666 9.99996Z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div><span class="sm-nav-other-label">Quản lý thiết bị</span></a>
+        <a class="sm-nav-other" href="#" data-nav="ho-so"><div class="sm-nav-other-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19V7.54902C2 6.10516 2 5.38322 2.24332 4.81647C2.5467 4.10985 3.10985 3.5467 3.81647 3.24332C4.38322 3 5.09805 3 6.54902 3H7.04311C7.64819 3 8.22075 3.27394 8.60041 3.74509L10.4175 6M10.4175 6H16C17.4001 6 18.1002 6 18.635 6.27248C19.1054 6.51217 19.4878 6.89462 19.7275 7.36502C20 7.8998 20 8.59987 20 10V11M10.4175 6H7M3.15802 15.5144L3.45643 14.7717C4.19029 12.9449 4.55723 12.0316 5.3224 11.5158C6.08757 11 7.07557 11 9.05157 11H17.1119C19.8004 11 21.1446 11 21.7422 11.8787C22.3397 12.7575 21.8405 14.0002 20.842 16.4856L20.5436 17.2283C19.8097 19.0551 19.4428 19.9684 18.6776 20.4842C17.9124 21 16.9244 21 14.9484 21H6.88812C4.19961 21 2.85535 21 2.25782 20.1213C1.66029 19.2425 2.15953 17.9998 3.15802 15.5144Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="sm-nav-other-label">Quản lý hồ sơ</span></a>
+
+
+      </aside>
+
+      <!-- Main -->
+      <main class="sm-main">
+        <!-- Breadcrumb — Figma: padding 0 20px, gap 2px, Label 1/Regular 13px -->
+        <div class="sm-breadcrumb">
+          <span class="sm-bc-item">Quản lý điều hành</span>
+          <span class="sm-bc-sep" id="smBcSep1"><svg viewBox="0 0 8 8" fill="none"><path d="M2 1l3 3-3 3" stroke="rgba(17,24,39,0.21)" stroke-width="1" stroke-linecap="round"/></svg></span>
+          <span class="sm-bc-item" id="smBcSeg2">Báo cáo số liệu nội bộ</span>
+          <span class="sm-bc-sep" id="smBcSep2"><svg viewBox="0 0 8 8" fill="none"><path d="M2 1l3 3-3 3" stroke="rgba(17,24,39,0.21)" stroke-width="1" stroke-linecap="round"/></svg></span>
+          <span class="sm-bc-item current" id="smBcCurrent">Số liệu kinh doanh</span>
+        </div>
+
+        <!-- Title + Filter row (merged per Figma spec, Table view) — always visible in submod -->
+        <div class="sm-content-header" id="smContentHeader">
+          <!-- Title block -->
+          <div class="sm-title-block">
+            <div class="sm-content-title" id="smContentTitle">Số liệu kinh doanh</div>
+            <div class="sm-content-subtitle" id="smContentSubtitle">Doanh thu, sản lượng nước cung cấp, tỷ lệ thu tiền và các chỉ số kinh doanh theo tháng/quý/năm</div>
+          </div>
+          <!-- Filter row (visible only in table view) -->
+          <div class="sm-filter-row" id="smFilterRow" style="display:none;">
+            <div class="sm-filter-group">
+              <span class="sm-filter-label">Tháng</span>
+              <select class="sm-filter-select" id="selectMonth" style="width:96px;"><option>01</option><option>02</option><option>03</option><option selected>04</option><option>05</option><option>06</option><option>07</option><option>08</option><option>09</option><option>10</option><option>11</option><option>12</option></select>
+            </div>
+            <div class="sm-filter-group">
+              <span class="sm-filter-label">Năm</span>
+              <select class="sm-filter-select" id="selectYear" style="width:96px;"><option selected>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option></select>
+            </div>
+            <select class="sm-filter-select unit">
+              <option>Toàn công ty</option>
+              <option>Xi Nghiệp Vũng Tàu</option>
+              <option>Xi Nghiệp Bà Rịa</option>
+            </select>
+            <button class="sm-filter-btn">Xem</button>
+          </div>
+        </div>
+
+        <!-- Scroll area — switches between card grid and table -->
+        <div class="sm-scroll" id="smScrollArea">
+
+          <!-- Card grid (default) -->
+          <div class="sm-grid" id="smGrid" style="display:none;">
+            <!-- Cards injected by JS -->
+          </div>
+
+          <!-- Empty state — shown for sub-items with no data yet -->
+          <div id="smEmptyState" style="display:none; flex:1; flex-direction:column; align-items:center; justify-content:flex-start; gap:20px; background:#F9FAFB; padding-top:20px;">
+            <div style="width:160px;height:160px;flex-shrink:0;"><svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M80 144C115.34 144 144 115.363 144 80C144 44.6373 115.34 16 80 16C44.6599 16 16 44.6373 16 80C16 115.363 44.6599 144 80 144Z" fill="#111827" fill-opacity="0.08"/>
+<path d="M125.999 75.7634V112.253C125.999 119.834 119.818 126 112.118 126H47.8808C40.2818 126 34.1013 119.935 34 112.354C34 112.253 34 112.253 34 112.152V75.7634C34 75.6624 34 75.6624 34 75.5613C34 75.3591 34 75.157 34.1013 74.9548C34.2026 74.6516 34.304 74.4494 34.4053 74.1462L51.6297 41.2955C52.2376 39.9815 53.5548 39.2739 54.9732 39.2739H104.924C106.342 39.2739 107.558 39.9815 108.268 41.2955L125.492 74.1462C125.593 74.3483 125.695 74.6516 125.796 74.9548C125.999 75.157 125.999 75.4602 125.999 75.7634Z" fill="#D1D5DB"/>
+<g filter="url(#filter0_d_es)">
+<path d="M125.999 75.7637V115.993C125.999 121.553 121.54 126 115.867 126H44.132C38.5594 126 34 121.553 34 115.993V75.5616C34 75.3594 34 75.1572 34.1013 74.9551H57.2023C60.6472 74.9551 63.4841 77.6842 63.4841 81.222C63.4841 82.9403 64.1934 84.5576 65.3079 85.6695C66.5237 86.8824 67.9422 87.4889 69.766 87.4889H90.3339C93.7788 87.4889 96.6157 84.7597 96.6157 81.222C96.6157 79.5036 97.325 77.8864 98.4395 76.7745C99.6553 75.5616 101.074 74.9551 102.796 74.9551H125.796C125.999 75.1572 125.999 75.4605 125.999 75.7637Z" fill="url(#paint0_linear_es)"/>
+</g>
+<path d="M105.35 27.1138C106.672 41.5147 107.333 44.8126 104.34 57.8546C103.366 60.754 102.392 63.9297 100.306 66.1388C97.3852 69.5906 92.0999 71.1094 87.7882 70.0048C83.3374 68.9002 79.7211 65.0343 78.8866 60.3398C78.1911 57.4403 79.1647 53.9886 81.6683 52.1936C84.311 50.5368 88.0664 50.951 90.2918 53.0221C92.7953 55.0931 93.769 58.2688 93.6299 61.3063C93.4908 64.3439 92.3781 67.3815 90.8481 70.0048C87.3895 76.4553 85.9657 76.4316 78.8866 87.0257" stroke="#9CA3AF" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="4 4"/>
+<path d="M113.104 21.7501C112.576 23.6744 110.461 24.3742 108.346 23.1496C106.055 22.0999 104.469 21.2252 104.821 19.4758C105.35 17.7264 107.465 17.5515 109.932 17.3766C112.928 17.0267 113.457 19.8257 113.104 21.7501Z" fill="#D1D5DB"/>
+<path d="M96.0098 23.4992C96.891 25.0737 99.3582 26.1233 101.12 24.5489C103.059 22.7995 104.645 21.5749 103.764 19.8255C102.883 18.251 101.473 18.7758 98.477 19.1257C96.0098 19.6505 94.9525 21.7498 96.0098 23.4992Z" fill="#D1D5DB"/>
+<path d="M103.763 17.0268C104.997 16.8519 106.23 17.5516 106.583 18.6013C106.759 18.9511 106.935 19.476 106.935 19.8258C107.288 22.275 106.407 24.3743 104.997 24.5492C103.411 24.8991 101.825 23.1497 101.648 20.8755C101.648 20.1757 101.648 19.8258 101.648 19.301C101.825 18.0764 102.53 17.2017 103.763 17.0268Z" fill="#9CA3AF"/>
+<path d="M68.4389 102.004C69.7227 102.004 70.7635 100.966 70.7635 99.6848C70.7635 98.404 69.7227 97.3657 68.4389 97.3657C67.155 97.3657 66.1143 98.404 66.1143 99.6848C66.1143 100.966 67.155 102.004 68.4389 102.004Z" fill="#9CA3AF"/>
+<path d="M91.558 102.004C92.8419 102.004 93.8826 100.966 93.8826 99.6848C93.8826 98.404 92.8419 97.3657 91.558 97.3657C90.2742 97.3657 89.2334 98.404 89.2334 99.6848C89.2334 100.966 90.2742 102.004 91.558 102.004Z" fill="#9CA3AF"/>
+<path d="M83.7685 117.234H76.4805C75.3496 117.234 74.4072 116.294 74.4072 115.166C74.4072 114.038 75.3496 113.098 76.4805 113.098H83.7057C84.8366 113.098 85.779 114.038 85.779 115.166C85.8418 116.294 84.8994 117.234 83.7685 117.234Z" fill="#9CA3AF"/>
+<defs>
+<filter id="filter0_d_es" x="12" y="63.9551" width="135.998" height="95.0449" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="11"/><feGaussianBlur stdDeviation="11"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.397708 0 0 0 0 0.47749 0 0 0 0 0.575 0 0 0 0.27 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_40019030_36363"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_40019030_36363" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_es" x1="79.9693" y1="73.7744" x2="79.9693" y2="126.55" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FDFEFF"/><stop offset="0.9964" stop-color="#ECF0F5"/>
+</linearGradient>
+</defs>
+</svg></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+              <span style="font-family:'Pretendard',sans-serif;font-weight:700;font-size:17px;line-height:24px;color:#111827;">Đang phát triển</span>
+              <span style="font-family:'Pretendard',sans-serif;font-weight:400;font-size:15px;line-height:22px;color:#4B5563;text-align:center;">Module này đang trong quá trình phát triển. Vui lòng quay lại sau</span>
+            </div>
+          </div>
+
+          <!-- Data table (for Số liệu kinh doanh) -->
+          <div id="smTableView" style="display:none; flex:1; flex-direction:column; overflow:hidden;">
+            <div class="dt-scroll-area">
+
+              <!-- Table 1: Khu vực -->
+              <div class="dt-section">
+                <div class="dt-table-wrap">
+                  <div class="dt-table-title">Theo khu vực</div>
+                  <div style="overflow-x:auto;">
+                  <table class="dt-table">
+                    <thead><tr><th>Khu vực</th><th>Số KH</th><th>Số M³ Tiêu Thụ</th><th>Doanh Thu</th><th>Phí BV MT</th><th>Thuế 5%</th><th>Tổng</th><th>Số hóa đơn</th></tr></thead>
+                    <tbody><tr><td>Xí Nghiệp Cấp Nước Vũng Tàu</td><td>32.847</td><td>891.250</td><td>15.482.300.000</td><td>1.032.180.000</td><td>774.115.000</td><td>18.938.711.000</td><td>38.210</td></tr>
+<tr><td>Xí Nghiệp Cấp nước Bà Rịa</td><td>18.923</td><td>512.880</td><td>8.934.750.000</td><td>595.650.000</td><td>446.737.500</td><td>10.926.510.000</td><td>22.086</td></tr>
+<tr><td>Xí Nghiệp Cấp nước Long Điền</td><td>9.442</td><td>258.400</td><td>4.512.300.000</td><td>300.820.000</td><td>225.615.000</td><td>5.521.080.000</td><td>11.120</td></tr>
+<tr><td>Chi nhánh cấp nước Xuyên Mộc</td><td>6.287</td><td>172.350</td><td>2.981.400.000</td><td>198.760.000</td><td>149.070.000</td><td>3.649.321.200</td><td>7.340</td></tr>
+<tr><td>Chi nhánh cấp nước Châu Đức</td><td>7.156</td><td>196.720</td><td>3.412.800.000</td><td>227.520.000</td><td>170.640.000</td><td>4.163.913.600</td><td>8.380</td></tr>
+<tr><td>Nước bán sỉ cho Phú Mỹ</td><td>2.119</td><td>74.969</td><td>1.526.417.620</td><td>101.760.000</td><td>76.320.000</td><td>1.867.855.082</td><td>2.940</td></tr>
+<tr class="dt-total"><td>Tổng</td><td>76.774</td><td>2.106.569</td><td>36.849.967.620</td><td>2.456.690.000</td><td>1.842.497.500</td><td>45.067.390.882</td><td>90.076</td></tr>
+<tr class="dt-prev"><td>Kỳ trước</td><td>207.774</td><td>5.606.569</td><td>70.849.967.620</td><td>3.818.217.176</td><td>3.542.498.381</td><td>88.713.149.781</td><td>192.860</td></tr>
+<tr class="dt-delta"><td>Tăng giảm</td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>4.127</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>114.681</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>1.998.332.380</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>379.490.176</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>42.617.119</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>2.354.219.882</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>2.784</span></td></tr></tbody>
+                  </table>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Table 2: Đối tượng -->
+              <div class="dt-section">
+                <div class="dt-table-wrap">
+                  <div class="dt-table-title">Theo đối tượng khách hàng</div>
+                  <div style="overflow-x:auto;">
+                  <table class="dt-table">
+                    <thead><tr><th>Đối tượng</th><th>Số KH</th><th>Số M³ Tiêu Thụ</th><th>Doanh Thu</th><th>Phí BV MT</th><th>Thuế 5%</th><th>Tổng</th><th>Số hóa đơn</th></tr></thead>
+                    <tbody><tr><td>Sinh hoạt đô thị</td><td>32.847</td><td>901.200</td><td>15.612.300.000</td><td>1.040.820.000</td><td>780.615.000</td><td>19.015.789.000</td><td>38.980</td></tr>
+<tr><td>Sinh hoạt nông thôn</td><td>14.220</td><td>380.600</td><td>6.120.540.000</td><td>408.036.000</td><td>306.027.000</td><td>7.481.442.600</td><td>16.820</td></tr>
+<tr><td>Đồng bào DT</td><td>2.438</td><td>64.300</td><td>918.480.000</td><td>61.231.200</td><td>45.924.000</td><td>1.123.734.320</td><td>2.690</td></tr>
+<tr><td>Cơ quan</td><td>5.874</td><td>157.820</td><td>2.728.300.000</td><td>181.887.000</td><td>136.415.000</td><td>3.335.459.600</td><td>7.490</td></tr>
+<tr><td>Sản xuất</td><td>8.312</td><td>224.800</td><td>3.914.560.000</td><td>260.971.000</td><td>195.728.000</td><td>4.787.591.800</td><td>10.820</td></tr>
+<tr><td>Kinh Doanh</td><td>9.740</td><td>262.900</td><td>4.572.300.000</td><td>304.820.000</td><td>228.615.000</td><td>5.589.481.400</td><td>12.660</td></tr>
+<tr class="dt-total"><td>Tổng</td><td>73.431</td><td>1.991.620</td><td>33.866.480.000</td><td>2.257.765.200</td><td>1.693.324.000</td><td>42.334.498.420</td><td>89.460</td></tr>
+<tr class="dt-prev"><td>Kỳ trước</td><td>196.228</td><td>5.296.350</td><td>64.998.070.380</td><td>3.431.527.000</td><td>2.586.450.000</td><td>77.188.130.080</td><td>188.640</td></tr>
+<tr class="dt-delta"><td>Tăng giảm</td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>3.741</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>98.430</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>1.712.410.000</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>173.761.800</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>93.126.000</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>853.631.660</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>9.180</span></td></tr></tbody>
+                  </table>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- /dt-scroll-area -->
+          </div><!-- /smTableView -->
+            <div id="smViewThatThoat" style="display:none; flex:1; flex-direction:column; overflow:hidden;">
+              <div class="dt-scroll-area">
+
+                <!-- Bảng 1: Tháng — title dynamic -->
+                <div class="dt-section">
+                  <div class="dt-table-wrap">
+                    <div class="dt-table-title" id="ttTitle1">Tỷ lệ thất thoát tháng 4 năm 2026</div>
+                    <div style="overflow-x:auto;">
+                    <table class="dt-table">
+                      <thead><tr>
+  <th style="width:100px;text-align:center;">STT</th>
+  <th style="text-align:left;">Khu vực</th>
+  <th>Nước phân phối (m³)</th>
+  <th>Nước thương phẩm (m³)</th>
+  <th>Tỷ lệ thất thoát (%)</th>
+</tr></thead>
+                      <tbody><tr><td style="text-align:center;">1</td><td style="text-align:left;">Xí Nghiệp Cấp Nước Vũng Tàu</td><td>891.250</td><td>748.650</td><td>16,00%</td></tr>
+<tr><td style="text-align:center;">2</td><td style="text-align:left;">Xí Nghiệp Cấp nước Bà Rịa</td><td>512.880</td><td>435.037</td><td>15,18%</td></tr>
+<tr><td style="text-align:center;">3</td><td style="text-align:left;">Xí Nghiệp Cấp nước Long Điền</td><td>258.400</td><td>221.440</td><td>14,30%</td></tr>
+<tr><td style="text-align:center;">4</td><td style="text-align:left;">Chi nhánh cấp nước Xuyên Mộc</td><td>172.350</td><td>144.953</td><td>15,90%</td></tr>
+<tr><td style="text-align:center;">5</td><td style="text-align:left;">Chi nhánh cấp nước Châu Đức</td><td>196.720</td><td>167.409</td><td>14,90%</td></tr>
+<tr><td style="text-align:center;">6</td><td style="text-align:left;">Nước bán sỉ cho Phú Mỹ</td><td>74.969</td><td>66.723</td><td>10,99%</td></tr>
+<tr class="dt-total"><td style="text-align:center;">–</td><td style="text-align:left;">Tổng</td><td>2.106.569</td><td>1.784.212</td><td>15,30%</td></tr></tbody>
+                    </table>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bảng 2: Cộng dồn -->
+                <div class="dt-section">
+                  <div class="dt-table-wrap">
+                    <div class="dt-table-title" id="ttTitle2">Tỷ lệ thất thoát (cộng dồn) năm 2026</div>
+                    <div style="overflow-x:auto;">
+                    <table class="dt-table">
+                      <thead><tr>
+  <th style="width:100px;text-align:center;">STT</th>
+  <th style="text-align:left;">Khu vực</th>
+  <th>Nước phân phối (m³)</th>
+  <th>Nước thương phẩm (m³)</th>
+  <th>Tỷ lệ thất thoát (%)</th>
+</tr></thead>
+                      <tbody><tr><td style="text-align:center;">1</td><td style="text-align:left;">Xí Nghiệp Cấp Nước Vũng Tàu</td><td>3.421.800</td><td>2.858.703</td><td>16,45%</td></tr>
+<tr><td style="text-align:center;">2</td><td style="text-align:left;">Xí Nghiệp Cấp nước Bà Rịa</td><td>1.984.320</td><td>1.668.070</td><td>15,94%</td></tr>
+<tr><td style="text-align:center;">3</td><td style="text-align:left;">Xí Nghiệp Cấp nước Long Điền</td><td>998.400</td><td>855.426</td><td>14,32%</td></tr>
+<tr><td style="text-align:center;">4</td><td style="text-align:left;">Chi nhánh cấp nước Xuyên Mộc</td><td>668.500</td><td>562.666</td><td>15,83%</td></tr>
+<tr><td style="text-align:center;">5</td><td style="text-align:left;">Chi nhánh cấp nước Châu Đức</td><td>762.380</td><td>649.508</td><td>14,80%</td></tr>
+<tr><td style="text-align:center;">6</td><td style="text-align:left;">Nước bán sỉ cho Phú Mỹ</td><td>286.400</td><td>255.024</td><td>10,96%</td></tr>
+<tr class="dt-total"><td style="text-align:center;">–</td><td style="text-align:left;">Tổng</td><td>8.121.800</td><td>6.849.397</td><td>15,67%</td></tr></tbody>
+                    </table>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- /smViewThatThoat -->
+
+            <div id="smViewTruNuoc" style="display:none; flex:1; flex-direction:column; overflow:hidden;">
+              <div class="dt-scroll-area">
+                <div class="dt-section">
+                  <div class="dt-table-wrap">
+                    <div class="dt-table-title">Danh sách trụ nước uống tại vòi</div>
+                    <div style="overflow-x:auto;">
+                    <table class="dt-table">
+                      <thead><tr>
+  <th style="width:100px;text-align:center;">STT</th>
+  <th style="text-align:left;">Tên trụ</th>
+  <th style="text-align:left;">Địa chỉ</th>
+  <th style="text-align:center;width:140px;">Ngày sử dụng</th>
+  <th>Tình trạng hoạt động</th>
+</tr></thead>
+                      <tbody><tr><td style="text-align:center;">1</td><td style="text-align:left;">Trụ số 1 - XNCN Bà Rịa (Đã cúp gỡ 2019)</td><td style="text-align:left;">04, Điện Biên Phủ, Phước Hiệp</td><td style="text-align:center;">2019</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">2</td><td style="text-align:left;">Trụ số 2 - TTVH&TT (Đã cúp gỡ 2019)</td><td style="text-align:left;">Đường Nguyễn Thanh Đằng, Phước Hiệp</td><td style="text-align:center;">2019</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">3</td><td style="text-align:left;">Trụ số 3 - Công viên Lê Thành Duy</td><td style="text-align:left;">Đường Cách Mạng Tháng 8, Phước Hiệp</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">4</td><td style="text-align:left;">Trụ số 4 - Nhà Thi Đấu Đa Năng (Đã cúp gỡ 2022)</td><td style="text-align:left;">Đường Nguyễn Tất Thành, Phước Nguyên</td><td style="text-align:center;">2022</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#D97706;display:inline-block;flex-shrink:0;"></span><span style="color:#D97706;font-weight:500;">Cần kiểm tra</span></span></td></tr>
+<tr><td style="text-align:center;">5</td><td style="text-align:left;">Trụ số 5 - Trường THPT Châu Thành</td><td style="text-align:left;">Đường 27 Tháng 4, Phước Hiệp</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">6</td><td style="text-align:left;">Trụ số 7 - Trường TH Lê Thành Duy</td><td style="text-align:left;">Đường Ngô Gia Tự, Phước Trung</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">7</td><td style="text-align:left;">Trụ số 8 - Trường Khuyết Tật (Đã cúp 2015)</td><td style="text-align:left;">Đường Nguyễn Hữu Tiến, Long Tâm</td><td style="text-align:center;">2015</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">8</td><td style="text-align:left;">Trụ số 9 - TTBảo Trợ Cô Nhi K.Tật (Đã cúp gỡ 2023)</td><td style="text-align:left;">Đường Nguyễn Văn Hường, Long Tâm</td><td style="text-align:center;">2023</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#D97706;display:inline-block;flex-shrink:0;"></span><span style="color:#D97706;font-weight:500;">Cần kiểm tra</span></span></td></tr>
+<tr><td style="text-align:center;">9</td><td style="text-align:left;">Trụ số 12 - Làm CCCD (Đã cúp gỡ 2020)</td><td style="text-align:left;">Trụ sở Công An Tỉnh, Trường Chinh, Phước Trung</td><td style="text-align:center;">2020</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">10</td><td style="text-align:left;">Trụ số 13 - PQL Xuất Nhập Cảnh (Đã cúp gỡ 2020)</td><td style="text-align:left;">Trụ sở Công An Tỉnh, Trường Chinh, Phước Trung</td><td style="text-align:center;">2020</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">11</td><td style="text-align:left;">Trụ số 14 - Căn Tin (Đã cúp gỡ 2020)</td><td style="text-align:left;">Trụ sở Công An Tỉnh, Trường Chinh, Phước Trung</td><td style="text-align:center;">2020</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">12</td><td style="text-align:left;">Trụ số 15 - Cảnh Sát Giao Thông (Đã cúp gỡ 2022)</td><td style="text-align:left;">Trụ sở Công An Tỉnh, Bạch Đằng, Phước Trung</td><td style="text-align:center;">2022</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;display:inline-block;flex-shrink:0;"></span><span style="color:#DC2626;font-weight:500;">Tạm ngừng hoạt động</span></span></td></tr>
+<tr><td style="text-align:center;">13</td><td style="text-align:left;">Trụ số 16 - Nhà Thờ Chánh Tòa Bà Rịa</td><td style="text-align:left;">Đường Cách Mạng Tháng 8, Phước Hiệp</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">14</td><td style="text-align:left;">Trụ số 17 - Nhà Tạm Giam Công An TPBR</td><td style="text-align:left;">Đường Trương Phúc Phan, Long Hương</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">15</td><td style="text-align:left;">Trụ số 10 - Nhà Thờ Phước Tân (Đã cúp gỡ 2019)</td><td style="text-align:left;">Đường Lê Trọng Tấn, Tân Hưng</td><td style="text-align:center;">2019</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">16</td><td style="text-align:left;">Trụ số 11 - Trường THCS Lê Quang Cường</td><td style="text-align:left;">Đường Hoàng Hoa Thám, Long Tâm</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#D97706;display:inline-block;flex-shrink:0;"></span><span style="color:#D97706;font-weight:500;">Cần kiểm tra</span></span></td></tr>
+<tr><td style="text-align:center;">17</td><td style="text-align:left;">Trụ số 18 - Trường THCS Phước Hưng</td><td style="text-align:left;">Đường Ngô Tất Tố, Phước Hưng</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">18</td><td style="text-align:left;">Trụ số 19 - Quảng Trường Bà Rịa</td><td style="text-align:left;">Quảng Trường Bà Rịa, Phước Nguyên</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">19</td><td style="text-align:left;">Trụ số 20 - Công Viên Bà Rịa</td><td style="text-align:left;">Công Viên Bà Rịa, Phước Nguyên</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">20</td><td style="text-align:left;">Trụ Uống Nước Tại Vòi 02-CĐ</td><td style="text-align:left;">Trụ Sở Công An Huyện</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">21</td><td style="text-align:left;">Trụ Uống Nước Tại Vòi 02-CĐ (Đã gỡ)</td><td style="text-align:left;">Trụ Sở Công An Huyện</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">22</td><td style="text-align:left;">Trụ Uống Nước Tại Vòi Số 01 - CĐ (Đã gỡ)</td><td style="text-align:left;">CN Châu Đức</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">23</td><td style="text-align:left;">Trụ Uống Nước Tại Vòi Số 1 (Đã gỡ)</td><td style="text-align:left;">Tại XNCN Long Điền</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">24</td><td style="text-align:left;">Trụ Uống Nước Tại Vòi Số 2 (Đã gỡ)</td><td style="text-align:left;">Bãi Giữ Xe Long Hải - Dinh Cô</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">25</td><td style="text-align:left;">Trụ Uống Nước Tại Vòi Số 3 (Gỡ ngày 19/2/2023)</td><td style="text-align:left;">Công Viên Long Điền</td><td style="text-align:center;">2023</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+</tbody>
+                    </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /smViewTruNuoc -->
+
+        </div><!-- /sm-scroll -->
+
+        <!-- Footer -->
+        <footer class="dv-footer">
+          <span>© 2024 PMW — Công ty Cổ phần Cấp Nước Phú Mỹ</span>
+          <span>https://www.pmw.vn</span>
+        </footer>
+      </main>
+    </div><!-- /submod-page -->
+
+  </div><!-- /bao-cao-wrapper -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+    // ══ Sub-module data ══════════════════════════════
+    const subData = {
+      'so-lieu-kd': {
+        title: 'Số liệu kinh doanh',
+        subtitle: 'Doanh thu, sản lượng nước cung cấp, tỷ lệ thu tiền và các chỉ số kinh doanh theo tháng/quý/năm',
+        cards: [
+          { tag:'Kinh doanh', icon:'bar-chart', title:'Số liệu kinh doanh', desc:'Doanh thu, sản lượng nước cung cấp, tỷ lệ thu tiền và các chỉ số kinh doanh theo tháng/quý/năm' },
+          { tag:'Vận hành',   icon:'clock',     title:'Tỷ lệ thất thoát',   desc:'Theo dõi tỷ lệ nước không thu được doanh thu (NRW), phân tích nguyên nhân và kế hoạch giảm thất thoát' },
+          { tag:'Kỹ thuật',   icon:'tool',      title:'Lắp đặt sửa chữa',   desc:'Thống kê các công trình lắp đặt mới, sửa chữa đường ống, đồng hồ và hạ tầng cấp nước theo kỳ' },
+          { tag:'Sản xuất',   icon:'package',   title:'Vật tư – Nhiên liệu – Sản xuất', desc:'Báo cáo tiêu thụ hóa chất, điện năng, nhiên liệu và vật tư trong quá trình sản xuất nước sạch' },
+          { tag:'Chất lượng', icon:'droplet',   title:'Trụ nước uống tại vòi', desc:'Số liệu chất lượng nước, kết quả kiểm nghiệm và báo cáo tiêu chuẩn nước uống trực tiếp tại vòi' }
+        ]
+      },
+      'that-thoat': {
+        title: 'Tỷ lệ thất thoát',
+        subtitle: 'Theo dõi tỷ lệ nước không thu được doanh thu (NRW), phân tích nguyên nhân và kế hoạch giảm thất thoát',
+        cards: [
+          { tag:'Vận hành', icon:'clock', title:'Tỷ lệ NRW tháng này', desc:'Tổng hợp tỷ lệ nước thất thoát theo tháng, so sánh kế hoạch và thực tế' },
+          { tag:'Phân tích', icon:'bar-chart', title:'Phân tích nguyên nhân', desc:'Phân loại nguyên nhân thất thoát: rò rỉ vật lý, gian lận, đồng hồ sai số' },
+          { tag:'Kế hoạch', icon:'tool', title:'Kế hoạch giảm thất thoát', desc:'Lộ trình và tiến độ thực hiện các biện pháp giảm thất thoát nước' }
+        ]
+      },
+      'lap-dat': {
+        title: 'Lắp đặt sửa chữa',
+        subtitle: 'Thống kê các công trình lắp đặt mới, sửa chữa đường ống, đồng hồ và hạ tầng cấp nước theo kỳ',
+        cards: [
+          { tag:'Kỹ thuật', icon:'tool', title:'Lắp đặt mới', desc:'Số lượng công trình lắp đặt mới đồng hồ, đường ống trong kỳ báo cáo' },
+          { tag:'Kỹ thuật', icon:'tool', title:'Sửa chữa đường ống', desc:'Thống kê các điểm sửa chữa rò rỉ, thay thế đường ống xuống cấp' },
+          { tag:'Bảo trì', icon:'package', title:'Bảo trì định kỳ', desc:'Kế hoạch và kết quả bảo trì hạ tầng cấp nước theo lịch định kỳ' }
+        ]
+      },
+      'vat-tu': {
+        title: 'Vật tư – Nhiên liệu – Sản xuất',
+        subtitle: 'Báo cáo tiêu thụ hóa chất, điện năng, nhiên liệu và vật tư trong quá trình sản xuất nước sạch',
+        cards: [
+          { tag:'Sản xuất', icon:'package', title:'Tiêu thụ hóa chất', desc:'Lượng hóa chất xử lý nước sử dụng theo từng công đoạn sản xuất' },
+          { tag:'Sản xuất', icon:'bar-chart', title:'Điện năng tiêu thụ', desc:'Theo dõi điện năng tiêu thụ tại các trạm bơm và xử lý nước' },
+          { tag:'Kho', icon:'package', title:'Vật tư tiêu hao', desc:'Thống kê vật tư, phụ tùng sử dụng trong vận hành và bảo trì' }
+        ]
+      },
+      'tru-nuoc': {
+        title: 'Trụ nước uống tại vòi',
+        subtitle: 'Số liệu chất lượng nước, kết quả kiểm nghiệm và báo cáo tiêu chuẩn nước uống trực tiếp tại vòi',
+        cards: [
+          { tag:'Chất lượng', icon:'droplet', title:'Kết quả kiểm nghiệm', desc:'Tổng hợp kết quả kiểm nghiệm chất lượng nước tại các vị trí lấy mẫu' },
+          { tag:'Chất lượng', icon:'droplet', title:'Tiêu chuẩn đạt chuẩn', desc:'Báo cáo tỷ lệ mẫu nước đạt tiêu chuẩn QCVN 01-1:2018/BYT' },
+          { tag:'Vận hành', icon:'tool', title:'Bảo trì trụ nước', desc:'Lịch và kết quả bảo trì, vệ sinh hệ thống trụ nước uống tại vòi' }
+        ]
+      }
+    };
+
+    // ── Icon SVG paths ────────────────────────────────
+    const icons = {
+      'bar-chart': '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/>',
+      'clock':     '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+      'tool':      '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+      'package':   '<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>',
+      'droplet':   '<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>'
+    };
+
+    const TABLE_VIEWS = new Set(['so-lieu-kd', 'that-thoat', 'tru-nuoc']);  // sub-keys that show table instead of cards
+
+    function renderCards(subKey) {
+      const data = subData[subKey];
+      if (!data) return;
+
+      const grid        = document.getElementById('smGrid');
+      const tableView   = document.getElementById('smTableView');
+      const filterRow   = document.getElementById('smFilterRow');
+      const scrollArea  = document.getElementById('smScrollArea');
+      const isTable     = TABLE_VIEWS.has(subKey);
+      const isCustom    = subKey === 'that-thoat' || subKey === 'tru-nuoc';
+      const HAS_CONTENT = new Set(['so-lieu-kd', 'that-thoat', 'tru-nuoc']);
+      const showEmpty   = !HAS_CONTENT.has(subKey);
+
+      // Hide all custom views first
+      ['smViewThatThoat','smViewTruNuoc'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+
+      // Switch between card grid and table
+      const emptyState = document.getElementById('smEmptyState');
+      grid.style.display         = (!isTable && !isCustom && !showEmpty) ? 'grid' : 'none';
+      tableView.style.display    = (isTable && !isCustom) ? 'flex' : 'none';
+      if (emptyState) emptyState.style.display = showEmpty ? 'flex' : 'none';
+
+      // Show custom view if applicable
+      if (isCustom) {
+        const viewId = subKey === 'that-thoat' ? 'smViewThatThoat' : 'smViewTruNuoc';
+        const customEl = document.getElementById(viewId);
+        if (customEl) customEl.style.display = 'flex';
+      }
+      // Update that-thoat titles when shown
+      if (subKey === 'that-thoat') updateTTTitles();
+      if (filterRow) {
+        if (showEmpty) {
+          filterRow.style.display = 'none';
+        } else if (subKey === 'tru-nuoc') {
+          filterRow.style.display = 'flex';
+          // Hide Tháng and Năm for tru-nuoc (only Đơn vị + Xem)
+          const thangGroup = filterRow.querySelector('.sm-filter-group:nth-child(1)');
+          const namGroup   = filterRow.querySelector('.sm-filter-group:nth-child(2)');
+          if (thangGroup) thangGroup.style.display = subKey === 'tru-nuoc' ? 'none' : 'flex';
+          if (namGroup)   namGroup.style.display   = subKey === 'tru-nuoc' ? 'none' : 'flex';
+        } else {
+          filterRow.style.display = isTable ? 'flex' : 'none';
+          const thangGroup = filterRow.querySelector('.sm-filter-group:nth-child(1)');
+          const namGroup   = filterRow.querySelector('.sm-filter-group:nth-child(2)');
+          if (thangGroup) thangGroup.style.display = 'flex';
+          if (namGroup)   namGroup.style.display   = 'flex';
+        }
+      }
+      scrollArea.style.overflowY = isTable ? 'hidden': 'auto';
+      scrollArea.style.padding   = isTable ? '0'     : '0';
+
+      if (!isTable) {
+        grid.innerHTML = data.cards.map((c, i) => `
+          <div class="sm-card" style="animation-delay:${0.04*(i+1)}s">
+            <div class="sm-tag">${c.tag}</div>
+            <div class="sm-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${icons[c.icon]||icons['bar-chart']}</svg>
+            </div>
+            <div class="sm-card-title">${c.title}</div>
+            <div class="sm-card-desc">${c.desc}</div>
+            <div class="sm-card-footer">
+              Xem báo cáo
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('smContentTitle').textContent    = data.title;
+      document.getElementById('smContentSubtitle').textContent = data.subtitle;
+      document.getElementById('smBcCurrent').textContent       = data.title;
+    }
+
+        // Sub-nav items
+    document.querySelectorAll('.sm-subnav-item').forEach(item => {
+      item.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelectorAll('.sm-subnav-item').forEach(s => s.classList.remove('active'));
+        item.classList.add('active');
+        renderCards(item.dataset.sub);
+      });
+    });
+
+    // smBackBtn removed — navigation via sidebar only
+
+    // Other module nav items → show empty state
+    document.querySelectorAll('.sm-nav-other[data-nav]').forEach(item => {
+      item.addEventListener('click', e => {
+        e.preventDefault();
+        // Activate this nav item, deactivate all others
+        activateNav(item);
+        // Collapse Báo cáo subnav
+        const subnav = document.getElementById('smSubnav');
+        if (subnav) subnav.style.display = 'none';
+        document.querySelectorAll('.sm-subnav-item').forEach(s => s.classList.remove('active'));
+        showModuleEmpty(item.dataset.nav);
+      });
+    });
+
+    // Expand/collapse Báo cáo in sidebar
+    document.getElementById('smNavBaoCao').addEventListener('click', e => {
+      e.preventDefault();
+      activateNav(document.getElementById('smNavBaoCao'));
+      const nav = document.getElementById('smNavBaoCao');
+      const sub = document.getElementById('smSubnav');
+      nav.classList.toggle('expanded');
+      if (nav.classList.contains('expanded')) {
+        sub.style.display = 'flex';
+        sub.style.flexDirection = 'column';
+      } else {
+        sub.style.display = 'none';
+      }
+    });
+
+    // Init: Báo cáo is active by default
+    activateNav(document.getElementById('smNavBaoCao'));
+
+    // Init cards
+    renderCards('so-lieu-kd');
+
+    // ── Nav active state management ──
+    function activateNav(activeEl) {
+      // Deactivate all category items
+      document.getElementById('smNavBaoCao').classList.remove('active');
+      document.querySelectorAll('.sm-nav-other').forEach(n => n.classList.remove('active'));
+      // Activate the chosen one
+      if (activeEl) activeEl.classList.add('active');
+    }
+
+    // Show empty state for non-Báo cáo modules
+    const MODULE_META = {
+      'van-phong':  { title: 'Văn phòng điện tử',    subtitle: 'Quản lý văn bản điện tử, lịch làm việc và công văn nội bộ' },
+      'nhan-su':    { title: 'Quản lý nhân sự HRIS',  subtitle: 'Thông tin nhân sự, chấm công, lương và đánh giá kết quả' },
+      'kho':        { title: 'Quản lý kho',            subtitle: 'Theo dõi tồn kho, nhập xuất vật tư và quản lý tài sản' },
+      'thiet-bi':   { title: 'Quản lý thiết bị',       subtitle: 'Lịch bảo trì, trạng thái thiết bị và lịch sử sửa chữa' },
+      'ho-so':      { title: 'Quản lý hồ sơ',          subtitle: 'Lưu trữ, tra cứu và quản lý hồ sơ tài liệu nội bộ' },
+    };
+
+    function showModuleEmpty(nav) {
+      const meta = MODULE_META[nav];
+      if (!meta) return;
+
+      // Update page title / subtitle
+      const titleEl    = document.getElementById('smContentTitle');
+      const subtitleEl = document.getElementById('smContentSubtitle');
+      if (titleEl)    titleEl.textContent    = meta.title;
+      if (subtitleEl) subtitleEl.textContent = meta.subtitle;
+
+      // Update breadcrumb: "Quản lý điều hành › [Module]"
+      // Hide second breadcrumb segment (Báo cáo) and show only module name
+      const bcCurrent  = document.getElementById('smBcCurrent');
+      if (bcCurrent) bcCurrent.textContent = meta.title;
+      const bcSeg2     = document.getElementById('smBcSeg2');     // "Báo cáo số liệu nội bộ"
+      const bcSep2     = document.getElementById('smBcSep2');
+      if (bcSeg2) bcSeg2.style.display = 'none';
+      if (bcSep2) bcSep2.style.display = 'none';
+      // Show only 1 sep
+      const bcSep1     = document.getElementById('smBcSep1');
+      if (bcSep1) bcSep1.style.display = '';
+
+      // Hide subnav
+      const subnav = document.getElementById('smSubnav');
+      if (subnav) subnav.style.display = 'none';
+      document.getElementById('smNavBaoCao').classList.remove('active', 'expanded');
+      document.querySelectorAll('.sm-subnav-item').forEach(s => s.classList.remove('active'));
+
+      // Hide all content views, show only empty state
+      const grid      = document.getElementById('smGrid');
+      const tableView = document.getElementById('smTableView');
+      const filterRow = document.getElementById('smFilterRow');
+      const emptyEl   = document.getElementById('smEmptyState');
+      ['smViewThatThoat','smViewTruNuoc'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+      if (grid)      grid.style.display      = 'none';
+      if (tableView) tableView.style.display = 'none';
+      if (filterRow) filterRow.style.display = 'none';
+      if (emptyEl)   emptyEl.style.display   = 'flex';
+    }
+
+    // Update Tỷ lệ thất thoát titles from filter
+    function updateTTTitles() {
+      const mSel = document.getElementById('selectMonth');
+      const ySel = document.getElementById('selectYear');
+      if (!mSel || !ySel) return;
+      const m = mSel.options[mSel.selectedIndex].text;
+      const y = ySel.options[ySel.selectedIndex].text;
+      const t1 = document.getElementById('ttTitle1');
+      const t2 = document.getElementById('ttTitle2');
+      if (t1) t1.textContent = 'Tỷ lệ thất thoát tháng ' + m + ' năm ' + y;
+      if (t2) t2.textContent = 'Tỷ lệ thất thoát (cộng dồn) năm ' + y;
+    }
+
+    // Hook Xem button to update TT titles
+    document.querySelector('.sm-filter-btn').addEventListener('click', function() {
+      const ttView = document.getElementById('smViewThatThoat');
+      if (ttView && ttView.style.display !== 'none') updateTTTitles();
+    });
+
+
+    // ── bao-cao.html: dbLogoBack → index.html ──
+    document.getElementById('dbLogoBack').addEventListener('click', e => {
+      e.preventDefault();
+      window.location.href = 'index.html';
+    });
+
+    // Init state: check URL param first, then default to Báo cáo
+    const _urlNav = new URLSearchParams(window.location.search).get('nav');
+    if (_urlNav && MODULE_META[_urlNav]) {
+      showModuleEmpty(_urlNav);
+      const _activeNavEl = document.querySelector('.sm-nav-other[data-nav="' + _urlNav + '"]');
+      if (_activeNavEl) activateNav(_activeNavEl);
+    } else {
+      activateNav(document.getElementById('smNavBaoCao'));
+      renderCards('so-lieu-kd');
+      const _navBaoCao = document.getElementById('smNavBaoCao');
+      if (_navBaoCao) _navBaoCao.classList.add('expanded');
+      const _smSubnav = document.getElementById('smSubnav');
+      if (_smSubnav) { _smSubnav.style.display = 'flex'; _smSubnav.style.flexDirection = 'column'; }
+      const _firstSub = document.querySelector('.sm-subnav-item[data-sub="so-lieu-kd"]');
+      if (_firstSub) _firstSub.classList.add('active');
+    }
+
+  }); // end DOMContentLoaded
+
+  </script>
+
+</body>
+</html>

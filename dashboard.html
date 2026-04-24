@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PMW — Quản lý Điều hành</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Override: make dashboard visible (no opacity:0 / pointer-events:none) */
+    .dashboard-page {
+      position: static !important;
+      opacity: 1 !important;
+      pointer-events: all !important;
+      transform: none !important;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .dv-body {
+      display: flex !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-page" id="dashboardPage">
+
+    <header class="dv-header">
+      <a class="dv-header-logo" href="#" id="dbLogoBack">
+        <svg width="84" height="46" viewBox="0 0 84 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="14.3916" y="15.7255" width="13.0946" height="14.9777" fill="white"/>
+<rect x="38.1445" y="15.7255" width="13.3991" height="14.0607" fill="white"/>
+<path d="M60.375 15.7255L77.2762 16.0311L77.4285 29.7862H63.4203L60.375 15.7255Z" fill="white"/>
+<path d="M15.6736 34.9031C15.6736 34.9031 17.1354 37.0978 17.4247 37.9047C17.7536 38.8217 18.8407 40.3501 17.5647 43.2203C16.9557 43.6177 16.8552 43.7002 16.5903 43.8653C15.9812 44.2382 15.2534 44.6355 13.6333 44.6355H10.8926C10.8926 44.6355 14.1662 43.043 15.6736 34.9031Z" fill="#1A428A"/>
+<path d="M33.5131 25.4395L24.1641 7.85748C23.6478 6.88431 22.8773 6.07057 21.9352 5.50354C20.9932 4.93651 19.9151 4.63758 18.8167 4.6388H0L16.6393 36.7737C17.5529 38.519 18.3386 40.2002 17.9214 42.1198C17.8217 42.4926 17.7028 42.8599 17.5651 43.2202L31.9996 32.3109C33.0284 31.5362 33.7473 30.4179 34.0265 29.1578C34.3057 27.8976 34.1269 26.5789 33.5222 25.4395H33.5131ZM26.3628 22.8352C25.9569 23.5249 25.3631 24.0838 24.6514 24.4461C23.8585 24.842 22.9818 25.0392 22.0964 25.0207H21.8528L20.6865 22.6457H21.9198C22.1986 22.6607 22.4775 22.6183 22.7394 22.521C23.0012 22.4238 23.2405 22.2737 23.4424 22.0802C23.6326 21.876 23.7797 21.6354 23.8749 21.3728C23.9701 21.1102 24.0115 20.831 23.9966 20.5519C24.0098 20.2722 23.9667 19.9927 23.8699 19.7302C23.7731 19.4676 23.6246 19.2273 23.4333 19.0235C23.2325 18.8278 22.9937 18.6757 22.7317 18.5768C22.4697 18.4779 22.1902 18.4344 21.9106 18.4489H19.5688V22.6457V25.0207V29.3918H16.6819V16.08H22.2395C23.0975 16.0679 23.9461 16.2606 24.7153 16.6424C25.404 16.9826 25.9818 17.5127 26.3811 18.1707C26.7847 18.8634 26.9891 19.6548 26.9719 20.4571C26.988 21.2907 26.7775 22.1128 26.3628 22.8352V22.8352Z" fill="#00A887"/>
+<path d="M40.0451 34.9031C40.0451 34.9031 41.5099 37.0978 41.7962 37.9047C42.1281 38.8217 43.2122 40.3501 41.9393 43.2203C41.3302 43.6177 41.2267 43.7002 40.9648 43.8653C40.3557 44.2382 39.6279 44.6355 38.0048 44.6355H35.2793C35.2793 44.6355 38.5377 43.043 40.0451 34.9031Z" fill="#00A887"/>
+<path d="M57.884 25.4395L46.4155 3.99998C45.9878 3.20209 45.3529 2.53529 44.5782 2.07032C43.8035 1.60535 42.9178 1.35955 42.0151 1.35901L22.5498 1.35901L41.0132 36.7737C41.9268 38.5191 42.7094 40.2002 42.2922 42.1198C42.1931 42.4924 42.0752 42.8597 41.939 43.2202L56.3705 32.311C57.3992 31.5363 58.1181 30.4179 58.3974 29.1578C58.6766 27.8977 58.4977 26.5789 57.8931 25.4395H57.884ZM48.5381 29.3918V29.2604L48.4985 22.0741L45.572 28.0988H44.0737L44.0402 28.0224L41.1503 22.2147V29.3918H38.175V16.1686H40.8457L40.8823 16.245L44.8624 24.333L48.8213 16.1686H51.492V16.3031L51.5224 29.3918H48.5381Z" fill="#1A428A"/>
+<path d="M64.8428 34.9031C64.8428 34.9031 66.3046 37.0978 66.5939 37.9047C66.9227 38.8217 68.0099 40.3501 66.737 43.2203C66.1279 43.6177 66.0244 43.7002 65.7594 43.8653C65.1504 44.2382 64.4226 44.6355 62.8025 44.6355H60.0618C60.0618 44.6355 63.3354 43.043 64.8428 34.9031Z" fill="#1A428A"/>
+<path d="M82.6815 25.4396L72.754 7.8576C72.2366 6.8853 71.4659 6.0723 70.524 5.50541C69.5822 4.93852 68.5047 4.63903 67.4065 4.63892H48.5898L65.8077 36.7738C66.7213 38.5192 67.507 40.2003 67.0898 42.1199C66.9907 42.4925 66.8728 42.8598 66.7366 43.2203L81.168 32.311C82.1968 31.5364 82.9157 30.418 83.1949 29.1579C83.4742 27.8978 83.2953 26.579 82.6907 25.4396H82.6815ZM73.4848 29.3919H70.9603L68.7891 21.4996L66.6574 29.3919H64.1207L60.3902 16.1932H63.4203L65.4819 24.0366L67.5283 16.1932H70.062L72.1084 24.0366L74.17 16.1932H77.1879L73.4848 29.3919Z" fill="#00A887"/>
+</svg>
+      </a>
+      <div class="dv-header-title">
+        <span class="dv-header-sub">Hệ thống thông tin quản lý</span>
+        <span class="dv-header-main">TỔNG HỢP BÁO CÁO</span>
+      </div>
+    </header>
+
+    <!-- ════ VIEW 1: Card grid (Quản lý Điều hành) ════ -->
+    <div class="dv-body" id="dvBody">
+      <div class="dv-cover">
+        <img class="dv-cover-img" src="images/img-quanlydieuhanh.jpeg" alt="PMW"/>
+        <div class="dv-cover-grad"></div>
+      </div>
+
+      <div class="dv-content">
+        <div class="dv-center-wrap">
+          <div class="dv-page-title">Quản lý Điều hành</div>
+          <div class="dv-title-grid-gap"></div>
+          <div class="dv-grid">
+
+            <div class="dv-card" data-nav="bao-cao">
+              <span class="dv-card-num">01</span>
+              <div class="dv-card-body">
+                <div class="dv-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M8 17H16M8 13H12M13 2.5V3C13 5.82843 13 7.24264 13.8787 8.12132C14.7574 9 16.1716 9 19 9H19.5M20 10.6569V14C20 17.7712 20 19.6569 18.8284 20.8284C17.6569 22 15.7712 22 12 22C8.22876 22 6.34315 22 5.17157 20.8284C4 19.6569 4 17.7712 4 14V9.45584C4 6.21082 4 4.58831 4.88607 3.48933C5.06508 3.26731 5.26731 3.06508 5.48933 2.88607C6.58831 2 8.21082 2 11.4558 2C12.1614 2 12.5141 2 12.8372 2.11401C12.9044 2.13772 12.9702 2.165 13.0345 2.19575C13.3436 2.34355 13.593 2.593 14.0919 3.09188L18.8284 7.82843C19.4065 8.40649 19.6955 8.69552 19.8478 9.06306C20 9.4306 20 9.83935 20 10.6569Z"/></svg>
+                </div>
+                <div class="dv-card-text">
+                  <div class="dv-card-title">Báo cáo số liệu nội bộ</div>
+                  <div class="dv-card-desc">Tổng hợp, phân tích và xuất báo cáo hoạt động vận hành toàn công ty theo chu kỳ</div>
+                </div>
+              </div>
+              <button class="dv-card-link"><span>truy cập</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg></button>
+            </div>
+
+            <div class="dv-card" data-nav="van-phong">
+              <span class="dv-card-num">02</span>
+              <div class="dv-card-body">
+                <div class="dv-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M14 21H16M14 21C13.1716 21 12.5 20.3284 12.5 19.5V17H12M14 21H10M12 17H11.5V19.5C11.5 20.3284 10.8284 21 10 21M12 17V21M10 21H8M7 10H9.5L11 13L13 7L14.4996 10H16.9996M16 3H8C5.17157 3 3.75736 3 2.87868 3.87868C2 4.75736 2 6.17157 2 9V11C2 13.8284 2 15.2426 2.87868 16.1213C3.75736 17 5.17157 17 8 17H16C18.8284 17 20.2426 17 21.1213 16.1213C22 15.2426 22 13.8284 22 11V9C22 6.17157 22 4.75736 21.1213 3.87868C20.2426 3 18.8284 3 16 3Z"/></svg>
+                </div>
+                <div class="dv-card-text">
+                  <div class="dv-card-title">Văn phòng điện tử</div>
+                  <div class="dv-card-desc">Quản lý văn bản, công văn, lịch họp và luồng phê duyệt nội bộ trên nền tảng số</div>
+                </div>
+              </div>
+              <button class="dv-card-link"><span>truy cập</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg></button>
+            </div>
+
+            <div class="dv-card" data-nav="nhan-su">
+              <span class="dv-card-num">03</span>
+              <div class="dv-card-body">
+                <div class="dv-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4C17.6569 4 19 5.34315 19 7C19 8.22309 18.2681 9.27523 17.2183 9.7423M17.7143 13C20.0812 13 22 14.9188 22 17.2857C22 18.2325 21.2325 19 20.2857 19M8 4C6.34315 4 5 5.34315 5 7C5 8.22309 5.73193 9.27523 6.78168 9.7423M3.71429 19C2.76751 19 2 18.2325 2 17.2857C2 14.9188 3.91878 13 6.28571 13M15 8C15 9.65685 13.6569 11 12 11C10.3431 11 9 9.65685 9 8C9 6.34315 10.3431 5 12 5C13.6569 5 15 6.34315 15 8ZM13.7143 14H10.2857C7.91876 14 5.99998 15.9188 5.99998 18.2857C5.99998 19.2325 6.76749 20 7.71426 20H16.2857C17.2325 20 18 19.2325 18 18.2857C18 15.9188 16.0812 14 13.7143 14Z"/></svg>
+                </div>
+                <div class="dv-card-text">
+                  <div class="dv-card-title">Quản lý nhân sự HRIS</div>
+                  <div class="dv-card-desc">Hồ sơ nhân viên, chấm công, tính lương, KPI và các nghiệp vụ nhân sự toàn diện</div>
+                </div>
+              </div>
+              <button class="dv-card-link"><span>truy cập</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg></button>
+            </div>
+
+            <div class="dv-card" data-nav="kho">
+              <span class="dv-card-num">04</span>
+              <div class="dv-card-body">
+                <div class="dv-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C11.1818 22 10.4002 21.6698 8.83693 21.0095C4.94564 19.3657 3 18.5438 3 17.1613C3 16.7742 3 10.0645 3 7M12 22C12.8182 22 13.5998 21.6698 15.1631 21.0095C19.0544 19.3657 21 18.5438 21 17.1613V7M12 22V11.3548M6 12L8 13M17 4L7 9M8.32592 9.69138L5.40472 8.27785C3.80157 7.5021 3 7.11423 3 6.5C3 5.88577 3.80157 5.4979 5.40472 4.72215L8.32592 3.30862C10.1288 2.43621 11.0303 2 12 2C12.9697 2 13.8712 2.4362 15.6741 3.30862L18.5953 4.72215C20.1984 5.4979 21 5.88577 21 6.5C21 7.11423 20.1984 7.5021 18.5953 8.27785L15.6741 9.69138C13.8712 10.5638 12.9697 11 12 11C11.0303 11 10.1288 10.5638 8.32592 9.69138Z"/></svg>
+                </div>
+                <div class="dv-card-text">
+                  <div class="dv-card-title">Quản lý kho</div>
+                  <div class="dv-card-desc">Theo dõi tồn kho vật tư, hóa chất xử lý nước, nhập xuất và kiểm kê định kỳ</div>
+                </div>
+              </div>
+              <button class="dv-card-link"><span>truy cập</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg></button>
+            </div>
+
+            <div class="dv-card" data-nav="thiet-bi">
+              <span class="dv-card-num">05</span>
+              <div class="dv-card-body">
+                <div class="dv-card-icon">
+                  <svg width="32" height="32" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.3333 9.99996C18.3333 14.6023 14.6023 18.3333 9.99996 18.3333C5.39759 18.3333 1.66663 14.6023 1.66663 9.99996M18.3333 9.99996C18.3333 5.39759 14.6023 1.66663 9.99996 1.66663M18.3333 9.99996H16.25M1.66663 9.99996C1.66663 5.39759 5.39759 1.66663 9.99996 1.66663M1.66663 9.99996H3.74996M9.99996 1.66663V3.74996M15.8986 4.16663L11.2499 8.74996M15.8986 15.8986L15.7287 15.7287C15.1522 15.1522 14.864 14.864 14.5276 14.6578C14.2293 14.4751 13.9042 14.3404 13.5641 14.2587C13.1804 14.1666 12.7728 14.1666 11.9575 14.1666L8.04242 14.1667C7.22712 14.1667 6.81947 14.1667 6.43585 14.2588C6.09573 14.3404 5.77058 14.4751 5.47235 14.6579C5.13596 14.864 4.84771 15.1523 4.2712 15.7288L4.10132 15.8986M4.10132 4.16663L5.54836 5.61367M11.6666 9.99996C11.6666 10.9204 10.9204 11.6666 9.99996 11.6666C9.07948 11.6666 8.33329 10.9204 8.33329 9.99996C8.33329 9.07948 9.07948 8.33329 9.99996 8.33329C10.9204 8.33329 11.6666 9.07948 11.6666 9.99996Z"/></svg>
+                </div>
+                <div class="dv-card-text">
+                  <div class="dv-card-title">Quản lý thiết bị</div>
+                  <div class="dv-card-desc">Quản lý vòng đời, lịch bảo trì máy bơm, đường ống và thiết bị cấp nước toàn hệ thống</div>
+                </div>
+              </div>
+              <button class="dv-card-link"><span>truy cập</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg></button>
+            </div>
+
+            <div class="dv-card" data-nav="ho-so">
+              <span class="dv-card-num">06</span>
+              <div class="dv-card-body">
+                <div class="dv-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19V7.54902C2 6.10516 2 5.38322 2.24332 4.81647C2.5467 4.10985 3.10985 3.5467 3.81647 3.24332C4.38322 3 5.09805 3 6.54902 3H7.04311C7.64819 3 8.22075 3.27394 8.60041 3.74509L10.4175 6M10.4175 6H16C17.4001 6 18.1002 6 18.635 6.27248C19.1054 6.51217 19.4878 6.89462 19.7275 7.36502C20 7.8998 20 8.59987 20 10V11M10.4175 6H7M3.15802 15.5144L3.45643 14.7717C4.19029 12.9449 4.55723 12.0316 5.3224 11.5158C6.08757 11 7.07557 11 9.05157 11H17.1119C19.8004 11 21.1446 11 21.7422 11.8787C22.3397 12.7575 21.8405 14.0002 20.842 16.4856L20.5436 17.2283C19.8097 19.0551 19.4428 19.9684 18.6776 20.4842C17.9124 21 16.9244 21 14.9484 21H6.88812C4.19961 21 2.85535 21 2.25782 20.1213C1.66029 19.2425 2.15953 17.9998 3.15802 15.5144Z"/></svg>
+                </div>
+                <div class="dv-card-text">
+                  <div class="dv-card-title">Quản lý hồ sơ</div>
+                  <div class="dv-card-desc">Lưu trữ, tìm kiếm và quản lý hồ sơ pháp lý, hợp đồng và tài liệu kỹ thuật số hóa</div>
+                </div>
+              </div>
+              <button class="dv-card-link"><span>truy cập</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round"><path d="M4 10h12M12 6l4 4-4 4"/></svg></button>
+            </div>
+
+          </div><!-- /dv-grid -->
+        </div><!-- /dv-center-wrap -->
+      </div><!-- /dv-content -->
+    </div><!-- /dv-body -->
+
+    <footer class="dv-footer">
+          <span>© 2024 PMW — Công ty Cổ phần Cấp Nước Phú Mỹ</span>
+          <span>https://www.pmw.vn</span>
+        </footer>
+
+  </div><!-- /dashboardPage -->
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Logo/back → home
+    document.getElementById('dbLogoBack').addEventListener('click', e => {
+      e.preventDefault();
+      window.location.href = 'index.html';
+    });
+
+    // Card clicks
+    document.querySelectorAll('.dv-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const nav = card.dataset.nav;
+        if (nav === 'bao-cao') {
+          window.location.href = 'bao-cao.html';
+        } else {
+          window.location.href = 'bao-cao.html?nav=' + nav;
+        }
+      });
+    });
+  });
+  </script>
+
+</body>
+</html>
