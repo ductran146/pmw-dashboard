@@ -145,10 +145,29 @@
       }
 
       /* ── Hover scale từ center ── */
-      .dv-card:hover .dv-card-icon {
-        transform: scale(1.05);
-        transform-origin: center center;
+      .dv-card-icon {
+      width: 44px !important;
+      height: 44px !important;
+      border-radius: 14px;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transform: none !important;
+      box-sizing: border-box;
+       }
+
+    .dv-card-icon svg {
+      width: 20px !important;
+      height: 20px !important;
+      display: block !important;
+      transition: transform 0.25s ease;
       }
+
+    .dv-card:hover .dv-card-icon svg {
+      transform: scale(1.08);
+     }
 
       /* ── Title: 20px, clamp 1 dòng ── */
       .dv-card-title {
