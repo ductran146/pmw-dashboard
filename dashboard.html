@@ -123,28 +123,36 @@
         overflow: hidden;      /* clip nếu content vẫn dài */
       }
 
-      /* ── Icon: 44×44px ── */
+      /* ── Icon: 44×44px — căn giữa + clip content ── */
       .dv-card-icon {
-        width: 44px;
-        height: 44px;
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px;
+        min-height: 44px;
         border-radius: 14px;
+        overflow: hidden;            /* Figma: clip content → bo góc đúng */
         flex-shrink: 0;
-        align-self: flex-start;     /* không stretch theo flex parent */
-        transform-origin: 22px 22px; /* scale từ center của chính icon */
+        align-self: flex-start;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
       }
 
-      /* ── SVG icon: 20×20, căn giữa tuyệt đối ── */
+      /* ── SVG: cố định 20×20, không inline baseline ── */
       .dv-card-icon svg {
         width: 20px !important;
         height: 20px !important;
-        display: block;              /* không có baseline offset */
-        flex-shrink: 0;
+        min-width: 20px;
+        min-height: 20px;
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
 
-      /* ── Override hover scale với origin chuẩn ── */
+      /* ── Hover scale từ center ── */
       .dv-card:hover .dv-card-icon {
-        transform: scale(1.06);
-        transform-origin: 22px 22px; /* center = 44/2 */
+        transform: scale(1.05);
+        transform-origin: center center;
       }
 
       /* ── Title: 20px, clamp 1 dòng ── */
