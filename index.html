@@ -2,6 +2,9 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PMW — Hệ thống thông tin quản lý</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -46,6 +49,62 @@
     .module-card.disabled .card-body   { opacity: 0.42; }
     .module-card.disabled .card-link   { opacity: 0.25; }
     .module-card.disabled .card-number { opacity: 0.3; }
+
+    /* ══════════════════════════════════
+       RESPONSIVE — index.html
+    ══════════════════════════════════ */
+
+    /* Tablet landscape: 1024–1280px */
+    @media (max-width: 1280px) {
+      .cover { width: 30vw; }
+    }
+
+    /* Tablet portrait: ≤ 1024px — ẩn cover, full right panel */
+    @media (max-width: 1024px) {
+      .cover { display: none; }
+      .right-panel { width: 100%; }
+      .top-nav { height: 64px; padding: 0 24px; }
+      .grid-area { gap: 1px; }
+      .grid-row { flex-wrap: wrap; gap: 1px; }
+      .module-card { flex: 1 1 calc(50% - 1px); min-width: calc(50% - 1px); }
+    }
+
+    /* Mobile: ≤ 640px */
+    @media (max-width: 640px) {
+      .top-nav { height: 56px; padding: 0 16px; }
+      .nav-title-sub { font-size: 10px; }
+      .nav-title-main { font-size: 15px; }
+      .grid-row { flex-direction: column; flex-wrap: nowrap; }
+      .module-card { flex: 1 1 auto; min-width: 100%; }
+    }
+
+    /* ── 1366×768: card-body lên 20px ── */
+    @media (max-width: 1366px) and (max-height: 768px) {
+      .card-body {
+        top: calc(38% - 20px);
+        gap: 10px;
+      }
+      .card-desc {
+        font-size: 13px;
+        line-height: 18px;
+      }
+    }
+
+    /* ── Login button: giữ nguyên height 42px mọi màn hình ── */
+    @media (max-width: 1366px) {
+      .popup-btn-login {
+        height: 42px !important;
+        min-height: 42px;
+        font-size: 14px;
+      }
+      .popup-modal {
+        height: auto;
+        min-height: 340px;
+      }
+      .popup-form-panel {
+        padding: 20px 28px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -119,7 +178,7 @@
           </div>
 
           <!-- 02 Khách hàng -->
-          <div class="module-card m-blue disabled" data-module="blue">
+          <div class="module-card m-blue" data-module="blue">
             <div class="card-accent"></div>
             <div class="card-glow"></div>
             <span class="card-number">02</span>
@@ -142,7 +201,7 @@
           </div>
 
           <!-- 03 GIS -->
-          <div class="module-card m-olive disabled" data-module="olive">
+          <div class="module-card m-olive" data-module="olive">
             <div class="card-accent"></div>
             <div class="card-glow"></div>
             <span class="card-number">03</span>
@@ -337,8 +396,12 @@
         window.location.href = 'dashboard.html';
       } else if (theme === 'green') {
         window.location.href = 'quanly-sanxuat.html';
+      } else if (theme === 'blue') {
+        window.location.href = 'quanly-khachhang.html';
+      } else if (theme === 'olive') {
+        window.location.href = 'quanly-gis.html';
       } else {
-        alert('Chức năng đang phát triển. Vui lòng sử dụng "Quản lý điều hành".');
+        alert('Chức năng đang phát triển.');
       }
     });
 

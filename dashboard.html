@@ -2,6 +2,9 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PMW — Quản lý Điều hành</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,14 +27,170 @@
       display: flex !important;
     }
   </style>
+  <style>
+    /* ══ RESPONSIVE — bao-cao.html / dashboard.html ══ */
+
+    /* ≤ 1200px: sidebar thu hẹp */
+    @media (max-width: 1200px) {
+      .sm-sidebar { width: 52px; padding: 12px 6px; overflow: hidden; }
+      .sm-sidebar-label,
+      .sm-nav-cat-label, .sm-nav-cat-arrow,
+      .sm-nav-other-label, .sm-sidebar-bottom { display: none; }
+      .sm-nav-cat, .sm-nav-other {
+        justify-content: center; padding: 10px; border-radius: 10px;
+      }
+      .sm-subnav { display: none; }
+      .sm-content-header { flex-wrap: wrap; gap: 10px; }
+      .sm-filter-row { flex-wrap: wrap; }
+    }
+
+    /* ≤ 900px: content scroll, tables scroll horizontally */
+    @media (max-width: 900px) {
+      .submod-page.active { flex-direction: column; }
+      .sm-sidebar { width: 100%; height: 52px; flex-direction: row; flex-shrink: 0; overflow-x: auto; padding: 0 12px; }
+      .sm-sidebar-label, .sm-sidebar-bottom, .sm-subnav { display: none; }
+      .sm-nav-cat, .sm-nav-other { flex-direction: column; padding: 8px 12px; border-radius: 8px; }
+      .sm-nav-cat-label, .sm-nav-other-label { font-size: 9px; }
+      .sm-main { overflow-y: auto; }
+      .sm-scroll { overflow: visible; }
+      .dt-table-wrap { overflow-x: auto; }
+    }
+
+    /* ≤ 640px: mobile */
+    @media (max-width: 640px) {
+      .dv-header { padding: 0 12px; gap: 8px; }
+      .dv-header-sub { display: none; }
+      .dv-header-main { font-size: 13px; }
+      .dv-user-info { display: none; }
+      .sm-breadcrumb { padding: 8px 12px; }
+      .sm-content-header { padding: 10px 12px; }
+      .sm-content-title { font-size: 17px; }
+      .sm-filter-row { gap: 6px; flex-wrap: wrap; }
+      .sm-filter-select { height: 32px; font-size: 12px; }
+      .sm-filter-btn { height: 32px; padding: 0 12px; font-size: 12px; }
+    }
+
+    /* Dashboard module cards: tablet */
+    @media (max-width: 1024px) {
+      .dv-body { flex-direction: column; }
+      .dv-cover { display: none; }
+    }
+
+    /* ══════════════════════════════════════════════
+       1366×768 — Dashboard Quản lý Điều hành
+       Mục tiêu: hiển thị đủ page-title + 6 cards
+       Tính: 768 - header56 - footer52 = 660px avail
+             660 - title(28+16) - gap(28) - pad(32*2) = ~504px
+             504 - gap(12) = 492 → mỗi row ≈ 246px max
+    ══════════════════════════════════════════════ */
+    @media (max-width: 1366px) and (max-height: 768px) {
+
+      /* ── Header compact: 56px → 48px ── */
+      .dv-header { height: 48px; padding: 0 24px; }
+      .dv-header-logo svg { width: 60px; height: 33px; }
+      .dv-header-sub { font-size: 10px; }
+      .dv-header-main { font-size: 13px; }
+
+      /* ── Page title ── */
+      .dv-page-title {
+        font-size: 26px;
+        line-height: 34px;
+        padding: 0 24px;
+      }
+
+      /* ── Gap title→grid ── */
+      .dv-title-grid-gap { height: 16px; }
+
+      /* ── Center wrap: FIX padding-top 16px (không phải 98px) ── */
+      .dv-center-wrap {
+        padding: 98px 24px 12px;
+        justify-content: flex-start;
+      }
+
+      /* ── Grid: 2 rows × 210px, gap 12px ── */
+      .dv-grid {
+        grid-template-rows: repeat(2, 210px);
+        gap: 12px;
+      }
+
+      /* ── Card body: top 16px + bottom 40px để không đè card-link ── */
+      .dv-card-body {
+        top: 16px;
+        left: 20px;
+        bottom: 40px;          /* ← chặn không đè lên card-link */
+        width: calc(100% - 40px);
+        gap: 8px;
+        overflow: hidden;      /* clip nếu content vẫn dài */
+      }
+
+      /* ── Icon: 44×44px ── */
+      .dv-card-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 13px;
+        flex-shrink: 0;
+      }
+
+      /* ── SVG icon: 20×20 ── */
+      .dv-card-icon svg {
+        width: 20px !important;
+        height: 20px !important;
+      }
+
+      /* ── Title: 20px, clamp 1 dòng ── */
+      .dv-card-title {
+        font-size: 20px;
+        line-height: 26px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      /* ── Desc: 13px, clamp 2 dòng ── */
+      .dv-card-desc {
+        font-size: 13px;
+        line-height: 18px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      /* ── Card link: bottom 12px cố định px ── */
+      .dv-card-link {
+        bottom: 12px;
+        left: 20px;
+      }
+
+      /* ── Watermark: nhỏ lại ── */
+      .dv-card-num {
+        font-size: 72px;
+        line-height: 64px;
+        right: 12px;
+        top: 12px;
+      }
+
+      /* ── Footer compact ── */
+      .dv-footer {
+        height: 40px;
+        padding: 0 24px;
+      }
+    }
+
+    /* ── Tablet ≤1024px: ẩn cover ── */
+    @media (max-width: 1024px) {
+      .dv-cover { display: none; }
+      .dv-content { width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
   <div class="dashboard-page" id="dashboardPage">
 
     <header class="dv-header">
-      <a class="dv-header-logo" href="#" id="dbLogoBack">
-        <svg width="84" height="46" viewBox="0 0 84 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <a class="dv-header-logo" href="index.html" id="dbLogoBack">
+      <svg width="84" height="46" viewBox="0 0 84 46" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="14.3916" y="15.7255" width="13.0946" height="14.9777" fill="white"/>
 <rect x="38.1445" y="15.7255" width="13.3991" height="14.0607" fill="white"/>
 <path d="M60.375 15.7255L77.2762 16.0311L77.4285 29.7862H63.4203L60.375 15.7255Z" fill="white"/>
@@ -43,10 +202,10 @@
 <path d="M82.6815 25.4396L72.754 7.8576C72.2366 6.8853 71.4659 6.0723 70.524 5.50541C69.5822 4.93852 68.5047 4.63903 67.4065 4.63892H48.5898L65.8077 36.7738C66.7213 38.5192 67.507 40.2003 67.0898 42.1199C66.9907 42.4925 66.8728 42.8598 66.7366 43.2203L81.168 32.311C82.1968 31.5364 82.9157 30.418 83.1949 29.1579C83.4742 27.8978 83.2953 26.579 82.6907 25.4396H82.6815ZM73.4848 29.3919H70.9603L68.7891 21.4996L66.6574 29.3919H64.1207L60.3902 16.1932H63.4203L65.4819 24.0366L67.5283 16.1932H70.062L72.1084 24.0366L74.17 16.1932H77.1879L73.4848 29.3919Z" fill="#00A887"/>
 </svg>
       </a>
-      <div class="dv-header-title">
-        <span class="dv-header-sub">Hệ thống thông tin quản lý</span>
-        <span class="dv-header-main">TỔNG HỢP BÁO CÁO</span>
-      </div>
+    <div class="dv-header-title">
+      <span class="dv-header-sub">Hệ thống thông tin quản lý</span>
+      <span class="dv-header-main">TỔNG HỢP BÁO CÁO</span>
+    </div>
     </header>
 
     <!-- ════ VIEW 1: Card grid (Quản lý Điều hành) ════ -->

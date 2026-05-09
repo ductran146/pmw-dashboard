@@ -307,17 +307,140 @@
       display: flex;
       flex-direction: column;
     }
-    /* Dashboard takes full available width */
-    .sx-dashboard {
-      width: 100%;
+    /* width:100% handled by main CSS definitions above */
+
+    /* ══════════════════════════════════
+       RESPONSIVE — quanly-sanxuat.html
+    ══════════════════════════════════ */
+
+    /* ≤ 1400px: thu nhỏ sidebar + font */
+    @media (max-width: 1400px) {
+      .kpi-row { gap: 14px; }
+      .kc-value { font-size: 17px; }
     }
-    /* KPI section full width */
-    .sx-kpi-section {
-      width: 100%;
+
+    /* ≤ 1200px: sidebar collapse nhẹ */
+    @media (max-width: 1200px) {
+      .sm-sidebar { width: 52px; padding: 12px 6px; overflow: hidden; }
+      .sm-sidebar-label,
+      .sm-nav-cat-label,
+      .sm-nav-cat-arrow,
+      .sm-nav-other-label,
+      .sm-sidebar-bottom { display: none; }
+      .sm-nav-cat,
+      .sm-nav-other { justify-content: center; padding: 10px; border-radius: 10px; }
+      .sm-nav-cat-icon,
+      .sm-nav-other-icon { margin: 0; }
+      .sm-subnav { display: none; }
+      /* Main header: 2 rows trên tablet */
+      .sm-content-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .sm-filter-row { flex-wrap: wrap; width: 100%; }
+      /* KPI: 2 cột */
+      .kpi-row { grid-template-columns: repeat(2,1fr); gap: 12px; }
     }
-    /* Charts section full width */
-    .sx-chart-section {
-      width: 100%;
+
+    /* ≤ 900px: chart row stack dọc */
+    @media (max-width: 900px) {
+      .sx-chart-section {
+        grid-template-columns: 1fr;
+        height: auto;
+        flex: none;
+        padding-bottom: 20px;
+      }
+      .sx-chart-card { height: 360px; }
+    }
+
+    /* ≤ 640px: mobile */
+    @media (max-width: 640px) {
+      .sm-sidebar { display: none; }
+      .sm-breadcrumb { padding: 8px 12px; }
+      .sm-content-header { padding: 10px 12px; }
+      .sx-kpi-section { padding: 10px 12px 0; gap: 10px; }
+      .kpi-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .sx-chart-section { padding: 10px 12px 20px; }
+      .kc-value { font-size: 15px; }
+      .kc-label { font-size: 10px; }
+      .sm-filter-row { gap: 6px; }
+      .sm-filter-select { height: 32px; font-size: 12px; }
+      .sm-filter-btn { height: 32px; padding: 0 12px; font-size: 12px; }
+      /* Header collapse */
+      .dv-header { padding: 0 12px; gap: 8px; }
+      .dv-header-main { font-size: 13px; }
+      .dv-header-sub { display: none; }
+      .dv-user-info { display: none; }
+    }
+
+    /* ══════════════════════════════════════
+       1366×768 — quanly-sanxuat.html
+       KPI scroll bình thường
+       Chart section: height cố định 340px
+    ══════════════════════════════════════ */
+    @media (max-width: 1366px) and (max-height: 768px) {
+
+      /* KPI cards: compact padding, gap nhỏ lại */
+      .sx-kpi-section {
+        padding: 10px 16px 0;
+        gap: 12px;
+      }
+      .kpi-row { gap: 12px; }
+      .kpi-card { padding: 12px 12px 10px; }
+      .kc-top { margin-bottom: 8px; gap: 9px; }
+      .kc-icon { width: 36px; height: 36px; border-radius: 9px; }
+      .kc-icon svg { width: 18px; height: 18px; }
+      .kc-value { font-size: 17px; line-height: 22px; }
+      .kc-unit  { font-size: 10px; }
+      .kc-label { font-size: 10px; }
+      .kc-div   { margin-bottom: 6px; }
+      .kc-stat  { padding: 4px 6px; }
+      .kc-stat-lbl { font-size: 9px; }
+      .kc-stat-val { font-size: 11px; }
+      .kc-stat1-lbl { font-size: 10px; }
+      .kc-stat1-val { font-size: 11px; }
+
+      /* Chart section: height cố định 340px, không dùng flex:1 */
+      .sx-chart-section {
+        flex: none;
+        height: 340px;
+        padding: 12px 16px 16px;
+        gap: 16px;
+      }
+
+      /* Chart card fill đủ container */
+      .sx-chart-card {
+        height: 100%;
+        padding: 12px 14px;
+        gap: 6px;
+      }
+      .sx-chart-card:nth-child(2) { animation-delay: 0.52s; }
+
+      /* Chart title nhỏ lại */
+      .chart-title { font-size: 13px; line-height: 18px; }
+
+      /* Bar chart: fill phần còn lại */
+      .chart-wrap { flex: 1; min-height: 0; }
+      .right-inner { flex: 1; min-height: 0; }
+      .bar-area { flex: 1; min-height: 0; }
+
+      /* Legend nhỏ lại */
+      .leg-lbl { font-size: 9px; }
+      .leg-dot  { width: 7px; height: 7px; }
+      .chart-legend { gap: 6px; }
+
+      /* Data table compact */
+      .dt-grid { font-size: 9px; padding-top: 4px; }
+      .dt-pct  { font-size: 9px; }
+      .dt-legend-row { padding-top: 4px; }
+
+      /* sxMainContent không cần full scroll riêng */
+      #sxMainContent { flex: none; }
+
+      /* Breadcrumb + content header compact */
+      .sm-breadcrumb { padding: 6px 16px; }
+      .sm-content-header { padding: 8px 16px; }
+      .sm-content-title { font-size: 18px; line-height: 24px; }
+      .sm-content-subtitle { font-size: 11px; }
+      .sm-filter-select { height: 32px; font-size: 12px; }
+      .sm-filter-btn { height: 32px; padding: 0 14px; font-size: 12px; }
     }
   </style>
 </head>
@@ -698,16 +821,16 @@
           <div class="sx-chart-card">
             <div class="chart-hd">
               <div class="chart-title">Biểu đồ nước thương phẩm</div>
-              <div class="chart-legend">
-                <div class="leg-item"><div class="leg-dot" style="background:#00A887;"></div><span class="leg-lbl">Tổng sản lượng</span></div>
-                <div class="leg-item"><div class="leg-dot" style="background:#3B82F6;"></div><span class="leg-lbl">Nước SH Đô thị</span></div>
-                <div class="leg-item"><div class="leg-dot" style="background:#34D399;"></div><span class="leg-lbl">Nước SH Nông thôn</span></div>
-                <div class="leg-item"><div class="leg-dot" style="background:#F59E0B;"></div><span class="leg-lbl">Nước Sản xuất</span></div>
-                <div class="leg-item"><div class="leg-dot" style="background:#E57C3A;"></div><span class="leg-lbl">Cơ quan</span></div>
-              </div>
             </div>
             <div class="chart-wrap">
               <canvas id="chartLeft"></canvas>
+            </div>
+            <div class="chart-legend" style="flex-shrink:0;padding-top:8px;border-top:1px solid rgba(17,24,39,0.06);">
+              <div class="leg-item"><div class="leg-dot" style="background:#00A887;"></div><span class="leg-lbl">Tổng sản lượng</span></div>
+              <div class="leg-item"><div class="leg-dot" style="background:#3B82F6;"></div><span class="leg-lbl">Nước SH Đô thị</span></div>
+              <div class="leg-item"><div class="leg-dot" style="background:#34D399;"></div><span class="leg-lbl">Nước SH Nông thôn</span></div>
+              <div class="leg-item"><div class="leg-dot" style="background:#F59E0B;"></div><span class="leg-lbl">Nước Sản xuất</span></div>
+              <div class="leg-item"><div class="leg-dot" style="background:#E57C3A;"></div><span class="leg-lbl">Cơ quan</span></div>
             </div>
           </div>
 
