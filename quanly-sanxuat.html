@@ -73,15 +73,15 @@
       transition: box-shadow 0.2s, transform 0.18s, border-color 0.2s;
     }
     .kpi-card:hover {
-      box-shadow: 0 6px 20px rgba(0,168,135,0.12);
+      box-shadow: 0 6px 20px rgba(26,66,138,0.12);
       transform: translateY(-2px);
-      border-color: rgba(0,168,135,0.22);
+      border-color: rgba(26,66,138,0.22);
     }
     /* top accent line on hover */
     .kpi-card::before {
       content: ''; position: absolute;
       top: 0; left: 0; right: 0; height: 2px;
-      background: var(--kc, #00A887);
+      background: var(--kc, #1A428A);
       transform: scaleX(0); transform-origin: left;
       transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
     }
@@ -104,15 +104,15 @@
     }
     .kc-icon {
       width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
-      background: var(--kci-bg, #E8F5F0);
-      border: 1px solid var(--kci-bd, #C4E8DF);
+      background: var(--kci-bg, #E8EEF8);
+      border: 1px solid var(--kci-bd, #B8CAE8);
       display: flex; align-items: center; justify-content: center;
       transition: background 0.22s, border-color 0.22s, transform 0.22s;
     }
     .kc-icon svg { width: 20px; height: 20px; }
     .kpi-card:hover .kc-icon {
-      background: var(--kc, #00A887);
-      border-color: var(--kc, #00A887);
+      background: var(--kc, #1A428A);
+      border-color: var(--kc, #1A428A);
       transform: scale(1.08);
     }
     .kpi-card:hover .kc-icon svg path,
@@ -129,7 +129,7 @@
     .kc-value {
       font-family: var(--font); font-weight: 700;
       font-size: 19px; line-height: 26px;
-      color: var(--kc, #00A887);
+      color: var(--kc, #1A428A);
       letter-spacing: -0.02em;
       white-space: nowrap;
     }
@@ -201,7 +201,7 @@
     }
     .sx-chart-card:nth-child(2) { animation-delay: 0.52s; }
     .sx-chart-card:hover {
-      box-shadow: 0 6px 24px rgba(0,168,135,0.10);
+      box-shadow: 0 6px 24px rgba(26,66,138,0.10);
       transform: translateY(-1px);
     }
 
@@ -256,9 +256,9 @@
     }
     .sm-subnav-item:hover { background: rgba(17,24,39,0.05); font-weight: 500; }
     .sm-subnav-item.active {
-      background: rgba(0,122,99,0.08); color: #007A63; font-weight: 600;
+      background: rgba(26,66,138,0.08); color: #E8ECF3; font-weight: 600;
     }
-    .sm-subnav-item.active::before { background: #007A63; }
+    .sm-subnav-item.active::before { background: #E8ECF3; }
     /* Main content wrapper */
     #sxMainContent {
       display: flex;
@@ -268,7 +268,7 @@
     }
     /* Active cat for green */
     .sm-nav-cat.active {
-      background: rgba(0,122,99,0.08); color: #007A63; font-weight: 600;
+      background: rgba(18,47,107,0.08); color: #122F6B; font-weight: 600;
     }
     /* Dashboard item: no arrow */
     #smNavDashboard .sm-nav-cat-arrow { display: none; }
@@ -280,14 +280,14 @@
       stroke: #6B7280;
     }
     .sm-nav-cat:not(.active):hover {
-      background: rgba(17,24,39,0.05); color: #111827;
+      background: rgba(26,66,138,0.05); color: #111827;
     }
     /* sm-nav-other active */
     .sm-nav-other.active {
-      background: rgba(0,122,99,0.08); color: #007A63; font-weight: 600;
+      background: rgba(26,66,138,0.08); color: #122F6B; font-weight: 600;
     }
     .sm-nav-other.active .sm-nav-other-icon svg {
-      stroke: #007A63;
+      stroke: #122F6B;
     }
 
     /* ── Layout fullwidth override ── */
@@ -611,10 +611,10 @@
           <div class="kpi-row">
 
             <!-- 1. Nước thương phẩm -->
-            <div class="kpi-card" style="--kc:#00A887;--kci-bg:#E8F5F0;--kci-bd:#C4E8DF;">
+            <div class="kpi-card" style="--kc:#1A428A;--kci-bg:#E8EEF8;--kci-bd:#B8CAE8;">
               <div class="kc-top">
                 <div class="kc-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1A428A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M10 17.833C10 20.134 8.21 22 6 22C3.79 22 2 20.134 2 17.833C2 16.393 3.566 14.472 4.738 13.235C5.095 12.923 5.529 12.734 6 12.686C6.471 12.734 6.905 12.923 7.262 13.235C8.434 14.472 10 16.393 10 17.833ZM22 17.833C22 20.134 20.21 22 18 22C15.79 22 14 20.134 14 17.833C14 16.393 15.566 14.472 16.738 13.235C17.095 12.923 17.529 12.734 18 12.686C18.471 12.734 18.905 12.923 19.262 13.235C20.434 14.472 22 16.393 22 17.833ZM16 7.833C16 10.134 14.21 12 12 12C9.79 12 8 10.134 8 7.833C8 6.393 9.566 4.472 10.738 3.235C11.095 2.923 11.529 2.734 12 2.686C12.471 2.734 12.905 2.923 13.262 3.235C14.434 4.472 16 6.393 16 7.833Z"/>
                   </svg>
                 </div>
@@ -637,10 +637,10 @@
             </div>
 
             <!-- 2. Doanh thu tiền nước -->
-            <div class="kpi-card" style="--kc:#00A887;--kci-bg:#E8F5F0;--kci-bd:#C4E8DF;">
+            <div class="kpi-card" style="--kc:#1A428A;--kci-bg:#E8EEF8;--kci-bd:#B8CAE8;">
               <div class="kc-top">
                 <div class="kc-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1A428A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 13.193C3 18.057 6.855 22 11.612 22H12.389C17.145 22 21 18.057 21 13.193V12.928C21 8.317 18.271 4.163 14.097 2.421C13.433 2.143 12.72 2 12 2C11.28 2 10.567 2.143 9.903 2.421C5.73 4.163 3 8.317 3 12.928V13.193Z"/>
                     <path d="M7.615 10.724C8.249 8.718 9.631 7.088 11.385 6.276"/>
                     <path d="M13 16.333V17M13 16.333C14.105 16.333 15 15.587 15 14.667C15 13.747 14.105 13 13 13C11.895 13 11 12.253 11 11.333C11 10.413 11.895 9.667 13 9.667M13 16.333C11.895 16.333 11 15.587 11 14.667M13 9V9.667M13 9.667C14.105 9.667 15 10.413 15 11.333"/>
@@ -665,10 +665,10 @@
             </div>
 
             <!-- 3. Tỷ lệ thất thoát -->
-            <div class="kpi-card" style="--kc:#00A887;--kci-bg:#E8F5F0;--kci-bd:#C4E8DF;">
+            <div class="kpi-card" style="--kc:#1A428A;--kci-bg:#E8EEF8;--kci-bd:#B8CAE8;">
               <div class="kc-top">
                 <div class="kc-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1A428A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M8.5 7V14M8.5 14L11 11M8.5 14L6 11M15.5 7V14M15.5 14L18 11M15.5 14L13 11"/>
                     <path d="M18 17H6"/>
                     <path d="M2 12C2 7.286 2 4.929 3.464 3.464C4.93 2 7.286 2 12 2C16.714 2 19.071 2 20.535 3.464C22 4.93 22 7.286 22 12C22 16.714 22 19.071 20.535 20.535C19.072 22 16.714 22 12 22C7.286 22 4.929 22 3.464 20.535C2 19.072 2 16.714 2 12Z"/>
@@ -693,10 +693,10 @@
             </div>
 
             <!-- 4. Giải quyết thông tin khách hàng -->
-            <div class="kpi-card" style="--kc:#00A887;--kci-bg:#E8F5F0;--kci-bd:#C4E8DF;">
+            <div class="kpi-card" style="--kc:#1A428A;--kci-bg:#E8EEF8;--kci-bd:#B8CAE8;">
               <div class="kc-top">
                 <div class="kc-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1A428A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M10 10C12.209 10 14 8.209 14 6C14 3.791 12.209 2 10 2C7.791 2 6 3.791 6 6C6 8.209 7.791 10 10 10Z"/>
                     <path d="M18 17.5C18 19.985 18 22 10 22C2 22 2 19.985 2 17.5C2 15.015 5.582 13 10 13C14.418 13 18 15.015 18 17.5Z"/>
                     <path d="M19 2C19 2 21 3.2 21 6C21 8.8 19 10 19 10M17 4C17 4 18 4.6 18 6C18 7.4 17 8 17 8"/>
@@ -726,10 +726,10 @@
           <div class="kpi-row">
 
             <!-- 5. Giá bình quân -->
-            <div class="kpi-card" style="--kc:#00A887;--kci-bg:#E8F5F0;--kci-bd:#C4E8DF;">
+            <div class="kpi-card" style="--kc:#1A428A;--kci-bg:#E8EEF8;--kci-bd:#B8CAE8;">
               <div class="kc-top">
                 <div class="kc-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1A428A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4.728 16.137C3.183 14.591 2.41 13.819 2.123 12.816C1.835 11.813 2.081 10.748 2.573 8.619L2.856 7.391C3.269 5.599 3.476 4.703 4.089 4.089C4.702 3.475 5.599 3.269 7.391 2.856L8.619 2.572C10.749 2.081 11.813 1.835 12.816 2.122C13.819 2.41 14.591 3.183 16.136 4.728L17.966 6.558C20.657 9.248 22 10.592 22 12.262C22 13.933 20.656 15.277 17.967 17.966C15.277 20.656 13.933 22 12.262 22C10.592 22 9.247 20.656 6.558 17.967L4.728 16.137Z"/>
                     <path d="M10.021 10.293C10.802 9.512 10.802 8.246 10.021 7.465C9.24 6.684 7.974 6.684 7.193 7.465C6.412 8.246 6.412 9.512 7.193 10.293C7.974 11.074 9.24 11.074 10.021 10.293Z"/>
                   </svg>
@@ -746,10 +746,10 @@
             </div>
 
             <!-- 6. Lắp mới đồng hồ nước -->
-            <div class="kpi-card" style="--kc:#00A887;--kci-bg:#E8F5F0;--kci-bd:#C4E8DF;">
+            <div class="kpi-card" style="--kc:#1A428A;--kci-bg:#E8EEF8;--kci-bd:#B8CAE8;">
               <div class="kc-top">
                 <div class="kc-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1A428A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M2 17.5H8M8 20.5H2"/>
                     <path d="M16 17.5H22M22 20.5H16"/>
                     <path d="M13.5 12H10.5V16H13.5V12Z"/>
@@ -770,10 +770,10 @@
             </div>
 
             <!-- 7. Thay, bảo hành đồng hồ -->
-            <div class="kpi-card" style="--kc:#00A887;--kci-bg:#E8F5F0;--kci-bd:#C4E8DF;">
+            <div class="kpi-card" style="--kc:#1A428A;--kci-bg:#E8EEF8;--kci-bd:#B8CAE8;">
               <div class="kc-top">
                 <div class="kc-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1A428A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M22 12C22 17.523 17.523 22 12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12Z"/>
                     <path d="M19 19L17.5 17.5M19 5L17.5 6.5M5 19L6.5 17.5M5 5L6.5 6.5M2 12H4M20 12H22M12 4V2"/>
                     <path d="M15 12C15 13.657 13.657 15 12 15C10.343 15 9 13.657 9 12C9 11.37 9.434 10.495 9.972 9.654C10.776 8.396 11.179 7.767 12 7.767C12.821 7.767 13.224 8.396 14.028 9.654C14.566 10.495 15 11.37 15 12Z"/>
@@ -791,10 +791,10 @@
             </div>
 
             <!-- 8. Kiểm tra nội bộ -->
-            <div class="kpi-card" style="--kc:#00A887;--kci-bg:#E8F5F0;--kci-bd:#C4E8DF;">
+            <div class="kpi-card" style="--kc:#1A428A;--kci-bg:#E8EEF8;--kci-bd:#B8CAE8;">
               <div class="kc-top">
                 <div class="kc-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#00A887" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#1A428A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M16.755 2H7.245C6.086 2 5.507 2 5.039 2.163C4.598 2.32 4.199 2.576 3.873 2.912C3.546 3.247 3.302 3.654 3.158 4.099C3 4.581 3 5.177 3 6.37V20.374C3 21.232 3.985 21.688 4.608 21.118C4.783 20.957 5.012 20.867 5.25 20.867C5.488 20.867 5.717 20.957 5.892 21.118L6.375 21.56C6.681 21.843 7.083 22 7.5 22C7.917 22 8.319 21.843 8.625 21.56C8.931 21.277 9.333 21.12 9.75 21.12C10.167 21.12 10.569 21.277 10.875 21.56C11.181 21.843 11.583 22 12 22C12.417 22 12.819 21.843 13.125 21.56C13.431 21.277 13.833 21.12 14.25 21.12C14.667 21.12 15.069 21.277 15.375 21.56C15.681 21.843 16.083 22 16.5 22C16.917 22 17.319 21.843 17.625 21.56L18.108 21.118C18.283 20.957 18.512 20.867 18.75 20.867C18.988 20.867 19.217 20.957 19.392 21.118C20.015 21.688 21 21.232 21 20.374V6.37C21 5.177 21 4.58 20.842 4.1C20.698 3.654 20.454 3.248 20.128 2.912C19.801 2.576 19.402 2.32 18.961 2.163C18.493 2 17.914 2 16.755 2Z"/>
                     <path d="M9.5 10.4L10.929 12L14.5 8"/>
                     <path d="M7.5 15.5H16.5"/>
@@ -826,7 +826,7 @@
               <canvas id="chartLeft"></canvas>
             </div>
             <div class="chart-legend" style="flex-shrink:0;padding-top:8px;border-top:1px solid rgba(17,24,39,0.06);">
-              <div class="leg-item"><div class="leg-dot" style="background:#00A887;"></div><span class="leg-lbl">Tổng sản lượng</span></div>
+              <div class="leg-item"><div class="leg-dot" style="background:#1A428A;"></div><span class="leg-lbl">Tổng sản lượng</span></div>
               <div class="leg-item"><div class="leg-dot" style="background:#3B82F6;"></div><span class="leg-lbl">Nước SH Đô thị</span></div>
               <div class="leg-item"><div class="leg-dot" style="background:#34D399;"></div><span class="leg-lbl">Nước SH Nông thôn</span></div>
               <div class="leg-item"><div class="leg-dot" style="background:#F59E0B;"></div><span class="leg-lbl">Nước Sản xuất</span></div>
@@ -889,7 +889,7 @@ const FONT = "'Pretendard','Montserrat',sans-serif";
     data: {
       labels,
       datasets: [
-        {label:'Tổng sản lượng',data:tong,backgroundColor:'#00A887',borderRadius:3,borderSkipped:false},
+        {label:'Tổng sản lượng',data:tong,backgroundColor:'#1A428A',borderRadius:3,borderSkipped:false},
         {label:'Nước SH Đô thị', data:shdt,backgroundColor:'#3B82F6',borderRadius:3,borderSkipped:false},
         {label:'Nước SH Nông thôn',data:shnt,backgroundColor:'#34D399',borderRadius:3,borderSkipped:false},
         {label:'Nước Sản xuất',  data:sx,  backgroundColor:'#F59E0B',borderRadius:3,borderSkipped:false},

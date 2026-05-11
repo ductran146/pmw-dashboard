@@ -81,13 +81,8 @@
     /* ── 1366×768: card-body lên 20px ── */
     @media (max-width: 1366px) and (max-height: 768px) {
       .card-body {
-        top: calc(25% - 20px);
+        top: calc(38% - 20px);
         gap: 10px;
-      }
-
-      .card-title {
-        font-size: 20px;
-        line-height: 26px;
       }
       .card-desc {
         font-size: 13px;
@@ -110,6 +105,44 @@
         padding: 20px 28px;
       }
     }
+
+    /* ── Tất cả form login dùng chung màu xanh PMW ── */
+    .popup-btn-login {
+      background: #1055A0 !important;
+      border-color: #1055A0 !important;
+    }
+    .popup-btn-login:hover {
+      background: #1055A0 !important;
+      border-color: #1055A0 !important;
+    }
+    .popup-accent-line {
+      background: #00A887 !important;
+    }
+    .popup-input-wrap input:focus {
+      border-color: #1055A0 !important;
+      box-shadow: 0 0 0 3px rgba(16,85,160,0.12) !important;
+    }
+
+    /* ── Căn giữa dọc card-body ── */
+    .module-card {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;   /* căn giữa dọc */
+      padding: 28px 28px 52px !important;   /* padding-bottom cho card-link */
+      position: relative !important;
+    }
+    .card-body {
+      position: static !important;          /* thoát khỏi absolute */
+      top: auto !important;
+      left: auto !important;
+      right: auto !important;
+      bottom: auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+    }
+    /* card-number đã bị xoá — đảm bảo watermark số không hiển thị */
+    .card-number { display: none !important; }
   </style>
 </head>
 <body>
@@ -133,7 +166,7 @@
           <path d="M84.4376 34.1214L75.74 18.8327C75.2868 17.9872 74.6115 17.2803 73.7864 16.7873C72.9613 16.2944 72.0172 16.0339 71.0551 16.0338H54.5699L69.6544 43.9772C70.4548 45.4949 71.1432 46.9568 70.7776 48.626C70.6908 48.95 70.5875 49.2694 70.4682 49.5829L83.1116 40.0966C84.0129 39.4229 84.6427 38.4504 84.8873 37.3547C85.132 36.2589 84.9753 35.1122 84.4456 34.1214H84.4376ZM76.3803 37.5582H74.1686L72.2664 30.6953L70.3988 37.5582H68.1764L64.9082 26.081H67.5628L69.369 32.9014L71.1618 26.081H73.3816L75.1744 32.9014L76.9806 26.081H79.6246L76.3803 37.5582Z" fill="#00A887"/>
         </svg>
         <div class="cover-brand">
-          <span class="cover-brand-name">Công ty cổ phần cấp nước Phú Mỹ</span>
+          <span class="cover-brand-name">Công ty Cổ phần Cấp nước Phú Mỹ</span>
         </div>
       </div>
       <div class="cover-slogan">
@@ -165,7 +198,6 @@
           <div class="module-card m-green" data-module="green">
             <div class="card-accent"></div>
             <div class="card-glow"></div>
-            <span class="card-number">01</span>
             <div class="card-body">
               <div class="card-icon-wrap">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -174,7 +206,7 @@
                 </svg>
               </div>
               <span class="card-title">Quản lý sản xuất</span>
-              <span class="card-desc">Giám sát &amp; điều phối toàn bộ quá trình sản xuất nước sạch theo thời gian thực</span>
+              <span class="card-desc">Giám sát &amp; điều phối toàn bộ quá trình sản xuất nước sạch theo thời gian thực khách hàng sử dụng.</span>
             </div>
             <a class="card-link" href="#" onclick="return false;">
               <span class="card-link-text">truy cập</span>
@@ -186,7 +218,6 @@
           <div class="module-card m-blue" data-module="blue">
             <div class="card-accent"></div>
             <div class="card-glow"></div>
-            <span class="card-number">02</span>
             <div class="card-body">
               <div class="card-icon-wrap">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -196,7 +227,7 @@
                   <path d="M20 5.526C21.9276 6.09971 23.3333 7.8854 23.3333 9.99941C23.3333 12.1134 21.9276 13.8992 20 14.4729" stroke="#1055A0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-              <span class="card-title">Quản lý khách hàng</span>
+              <span class="card-title">QL khách hàng</span>
               <span class="card-desc">Hợp đồng dịch vụ, lịch sử sử dụng nước &amp; chăm sóc khách hàng toàn diện.</span>
             </div>
             <a class="card-link" href="#" onclick="return false;">
@@ -209,7 +240,6 @@
           <div class="module-card m-olive" data-module="olive">
             <div class="card-accent"></div>
             <div class="card-glow"></div>
-            <span class="card-number">03</span>
             <div class="card-body">
               <div class="card-icon-wrap">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -236,7 +266,6 @@
           <div class="module-card m-purple" data-module="purple">
             <div class="card-accent"></div>
             <div class="card-glow"></div>
-            <span class="card-number">04</span>
             <div class="card-body">
               <div class="card-icon-wrap">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -257,7 +286,6 @@
           <div class="module-card m-teal" onclick="window.open('https://www.pmw.vn','_blank')">
             <div class="card-accent"></div>
             <div class="card-glow"></div>
-            <span class="card-number">05</span>
             <div class="card-body">
               <div class="card-icon-wrap">
                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
