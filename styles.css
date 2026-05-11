@@ -805,7 +805,7 @@
 
 
     /* Card body */
-    .dv-card-body { position: absolute; left: 20px; top: 20px; display: flex; flex-direction: column; gap: 15px; width: calc(100% - 40px); }
+    .dv-card-body { position: absolute; left: 20px; top: 20px; display: flex; flex-direction: column; gap: 15px; padding-bottom: 40px; width: calc(100% - 40px); }
     .dv-card-icon { width: 64px; height: 64px; background: #E8EEF8; border: 1px solid #B8CAE8; border-radius: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.25s, border-color 0.25s, transform 0.2s; }
     .dv-card-icon svg { width: 32px; height: 32px; stroke: #1A428A; transition: stroke 0.25s, fill 0.25s; }
     .dv-card-icon svg path[fill="currentColor"] { fill: currentColor; stroke: 1px; }
@@ -874,8 +874,8 @@
     .sm-subnav-item span { font-family: var(--font); font-weight: 400; font-size: 15px; line-height: 22px; color: #4B5563; flex: 1; letter-spacing: 0; transition: color 0.15s, font-weight 0.15s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .sm-subnav-item:hover::before { background: #8B8E99; }
     .sm-subnav-item:hover span { font-weight: 500; }
-    .sm-subnav-item.active::before { background: #00A887; }
-    .sm-subnav-item.active span { color: #00A887; font-weight: 600; }
+    .sm-subnav-item.active::before { background: #1A428A; }
+    .sm-subnav-item.active span { color: #1A428A; font-weight: 600; }
 
     /* Other nav items */
     
@@ -1274,16 +1274,16 @@
     /* ── HOVER: Body3/Medium, same text color, tinted bg ── */
     .sm-nav-cat:hover,
     .sm-nav-other:hover {
-      background: rgba(17, 24, 39, 0.05);
+      background: rgba(18,47,107,0.08);
       font-weight: 500;
     }
 
     /* ── ACTIVE: Body3/Semibold, Jungle Green 600-M ── */
     .sm-nav-cat.active,
     .sm-nav-other.active {
-      background: rgba(0, 168, 135, 0.08);
+      background: rgba(18,47,107,0.08);
       font-weight: 600;
-      color: #00A887;
+      color: #1A428A;
     }
 
     
