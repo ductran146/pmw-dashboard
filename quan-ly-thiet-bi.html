@@ -176,7 +176,39 @@
       .empty-main, .empty-state, .empty-text-group, .empty-desc { width:100%; max-width:320px; }
       .empty-state svg { width:128px; height:128px; }
     }
-  </style>
+  
+    /* v22 — chuẩn hóa empty-state page */
+    .empty-module-content {
+      width: 100%;
+      min-height: calc(100vh - 116px);
+      align-items: center !important;
+      justify-content: flex-start !important;
+      padding: 20px 0 !important;
+      gap: 20px !important;
+      background: #F9FAFB !important;
+    }
+    .empty-page-title { width: 100% !important; }
+    .empty-main {
+      width: 346px !important;
+      min-height: 236px !important;
+      margin: 0 auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 20px !important;
+    }
+    .empty-state {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 20px !important;
+      width: 346px !important;
+      text-align: center !important;
+    }
+    .empty-state svg { width:160px !important; height:160px !important; flex:0 0 auto !important; display:block !important; }
+    .empty-title { font-size:17px !important; line-height:24px !important; font-weight:700 !important; color:#111827 !important; }
+    .empty-desc { font-size:15px !important; line-height:22px !important; font-weight:400 !important; color:#4B5563 !important; }
+</style>
 </head>
 <body>
 <div class="bao-cao-wrapper">
