@@ -675,3 +675,53 @@ html, body {
     margin-left: 0 !important;
   }
 }
+
+
+/* v28 — Report tables on mobile/desktop: remove sticky first column and make STT hug content */
+.dt-table th:first-child,
+.dt-table td:first-child {
+  position: static !important;
+  left: auto !important;
+  z-index: auto !important;
+  box-shadow: none !important;
+}
+
+.pmw-page-stt-table .dt-table thead th:first-child,
+.pmw-page-stt-table .dt-table tbody td:first-child {
+  width: 52px !important;
+  min-width: 52px !important;
+  max-width: 52px !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.pmw-page-stt-table .dt-table thead th:first-child {
+  background: linear-gradient(0deg, rgba(1,138,190,0.08), rgba(1,138,190,0.08)), #FFFFFF !important;
+}
+
+.pmw-page-stt-table .dt-table tbody td:first-child {
+  background: #FFFFFF !important;
+}
+
+@media (max-width: 768px) {
+  .pmw-page-stt-table .dt-table thead th:first-child,
+  .pmw-page-stt-table .dt-table tbody td:first-child {
+    width: 44px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
+
+  .pmw-page-stt-table .dt-table {
+    table-layout: auto !important;
+  }
+
+  .dt-table-wrap {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
