@@ -1753,3 +1753,142 @@ body {
     overflow-y: hidden !important;
   }
 }
+
+/* =========================================================
+   v24 — Fixed only header + sidebar.
+   Breadcrumb, page title/content and footer scroll together inside .sm-main.
+   ========================================================= */
+html,
+body {
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+.dashboard-page,
+.bao-cao-wrapper {
+  height: 100vh !important;
+  min-height: 100vh !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
+}
+
+.dv-header {
+  flex: 0 0 var(--pmw-header-height, 70px) !important;
+  position: relative !important;
+  z-index: 50 !important;
+}
+
+.bao-cao-wrapper > .submod-page,
+.bao-cao-wrapper > .submod-page.active {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+}
+
+.sm-sidebar {
+  flex: 0 0 var(--pmw-sidebar-width, 280px) !important;
+  width: var(--pmw-sidebar-width, 280px) !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  position: relative !important;
+  z-index: 20 !important;
+}
+
+/* Đây là vùng cuộn duy nhất của page có sidebar.
+   Vì breadcrumb, title, nội dung và footer đều nằm trong .sm-main,
+   chúng sẽ cuộn cùng nhau; header/sidebar vẫn đứng yên. */
+.sm-main {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  background: var(--bg-page, #F9FAFB) !important;
+}
+
+/* Không tạo scroll dọc lồng bên trong nội dung chính */
+.sm-scroll,
+.sm-main > .empty-module-content,
+.dt-scroll-area,
+#smTableView,
+#smViewLapDat,
+#smViewThatThoat,
+#smViewVatTu,
+#smViewTruNuoc {
+  flex: 0 0 auto !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow-y: visible !important;
+  overflow-x: hidden !important;
+}
+
+.sm-scroll {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.sm-scroll > div,
+.sm-scroll > div > div {
+  overflow-y: visible !important;
+  max-height: none !important;
+  height: auto !important;
+}
+
+.dt-table-wrap,
+.dt-table-wrap > div,
+.dt-section [style*="overflow-x:auto"],
+.dt-section [style*="overflow-x: auto"] {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+}
+
+/* Footer cuộn theo nội dung, không còn cố định ở đáy viewport */
+.dv-footer {
+  flex: 0 0 auto !important;
+  min-height: 52px !important;
+  margin-top: 0 !important;
+  width: 100% !important;
+  z-index: 1 !important;
+}
+
+/* Empty-state: nội dung nằm trong flow của .sm-main để cuộn cùng footer */
+.empty-module-content {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 0 0 auto !important;
+  overflow: visible !important;
+}
+
+/* Dashboard không có sidebar: vẫn giữ header, vùng body là khu vực cuộn nếu nội dung dài */
+.dashboard-page > .dv-body {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.dv-center-wrap {
+  overflow-y: visible !important;
+}
+
+@media (max-width: 900px) {
+  .bao-cao-wrapper > .submod-page,
+  .bao-cao-wrapper > .submod-page.active {
+    flex-direction: column !important;
+  }
+
+  .sm-sidebar {
+    width: 100% !important;
+    flex: 0 0 52px !important;
+    height: 52px !important;
+    max-height: 52px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+  }
+}
