@@ -1528,3 +1528,66 @@ body {
   flex: none !important;
 }
 .sm-bc-sep svg { display: none !important; }
+
+/* =========================================================
+   v19 — Sticky footer theo viewport, vẫn dùng scroll mặc định
+   Footer bám sát mép dưới khi nội dung ngắn; khi nội dung dài
+   vẫn cuộn bằng scrollbar mặc định của trình duyệt.
+   ========================================================= */
+html,
+body {
+  min-height: 100% !important;
+}
+
+body {
+  display: block !important;
+}
+
+.dashboard-page,
+.bao-cao-wrapper {
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: visible !important;
+}
+
+/* Dashboard: header/body/footer theo cột, footer được đẩy xuống đáy viewport */
+.dashboard-page > .dv-body {
+  flex: 1 0 auto !important;
+  display: flex !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+/* Các page có sidebar: phần submod chiếm phần còn lại dưới header */
+.bao-cao-wrapper > .submod-page,
+.bao-cao-wrapper > .submod-page.active {
+  flex: 1 0 auto !important;
+  display: flex !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+.sm-main,
+.dv-content {
+  flex: 1 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+}
+
+/* Nội dung chính chiếm khoảng trống còn lại để footer sát đáy khi trang ngắn */
+.sm-scroll,
+.dv-center-wrap {
+  flex: 1 0 auto !important;
+  overflow-y: visible !important;
+  overflow-x: hidden !important;
+}
+
+/* Footer dùng chung */
+.dv-footer {
+  margin-top: auto !important;
+  flex-shrink: 0 !important;
+  width: 100% !important;
+}
