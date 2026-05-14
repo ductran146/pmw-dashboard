@@ -56,3 +56,9 @@ Sau đó mở `http://localhost:8000`.
 
 ## v8
 - Compact KPI card typography and spacing for MacBook Pro 14 inch and 1366×768 screens.
+
+
+## v20
+- Thêm các trang placeholder cho menu chưa phát triển.
+- Cập nhật sidebar để trỏ thẳng đến các trang placeholder thay vì hash/query.
+- Placeholder dùng icon empty-state SVG theo yêu cầu.
