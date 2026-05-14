@@ -22,11 +22,25 @@
 
   function initActiveMenu() {
     var current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    var currentHash = location.hash || '';
+
     document.querySelectorAll('.sm-sidebar a[href]').forEach(function (link) {
-      var href = (link.getAttribute('href') || '').split('?')[0].split('#')[0].toLowerCase();
-      if (!href || href === '#') return;
-      if (href === current) link.classList.add('active');
-      else link.classList.remove('active');
+      var rawHref = link.getAttribute('href') || '';
+      var urlPart = rawHref.split('?')[0];
+      var hrefPage = urlPart.split('#')[0].toLowerCase();
+      var hrefHash = rawHref.indexOf('#') >= 0 ? '#' + rawHref.split('#')[1].split('?')[0] : '';
+
+      link.classList.remove('active');
+      if (!hrefPage || hrefPage === '#') return;
+      if (hrefPage !== current) return;
+
+      // Nếu nhiều menu cùng trỏ về một page nhưng khác hash, chỉ active đúng hash.
+      // Nếu đang ở page chính không có hash, chỉ item không có hash được active.
+      if (hrefHash) {
+        if (hrefHash === currentHash) link.classList.add('active');
+      } else if (!currentHash) {
+        link.classList.add('active');
+      }
     });
   }
 

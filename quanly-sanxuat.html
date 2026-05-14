@@ -285,6 +285,33 @@
 
     #smNavDashboard .sm-nav-cat-arrow { display: none; }
 
+
+    /* ── FIX SIDEBAR QLSX: default / hover / active rõ ràng ── */
+    .sm-sidebar-production .sm-nav-cat,
+    .sm-sidebar-production .sm-nav-other {
+      background: #FFFFFF !important;
+      color: #4B5563 !important;
+      font-weight: 400 !important;
+    }
+    .sm-sidebar-production .sm-nav-cat svg,
+    .sm-sidebar-production .sm-nav-other svg,
+    .sm-sidebar-production .sm-nav-cat path,
+    .sm-sidebar-production .sm-nav-other path {
+      stroke: currentColor !important;
+    }
+    .sm-sidebar-production .sm-nav-cat:hover,
+    .sm-sidebar-production .sm-nav-other:hover {
+      background: rgba(2,69,122,0.04) !important;
+      color: #02457A !important;
+      font-weight: 500 !important;
+    }
+    .sm-sidebar-production .sm-nav-cat.active,
+    .sm-sidebar-production .sm-nav-other.active {
+      background: rgba(2,69,122,0.08) !important;
+      color: #02457A !important;
+      font-weight: 600 !important;
+    }
+
     /* ══════════════════════════════════════════════
        RESPONSIVE — từ lớn xuống nhỏ
     ══════════════════════════════════════════════ */
