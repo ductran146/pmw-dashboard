@@ -52,3 +52,7 @@ Sau đó mở `http://localhost:8000`.
 - Thu nhỏ form login cho MacBook 14 inch và màn hình 1366×768.
 - Giảm padding form từ 48px xuống 24px ở các breakpoint nhỏ.
 - Giảm kích thước modal, cover, input và button để không bị quá lớn trên màn hình thấp.
+
+
+## v8
+- Compact KPI card typography and spacing for MacBook Pro 14 inch and 1366×768 screens.
