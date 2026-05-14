@@ -759,3 +759,27 @@ html, body {
     gap: 10px !important;
   }
 }
+
+/* v30 — Report filter mobile refinement: after removing unit filter, keep Month / Year / View in one row */
+@media (max-width: 768px) {
+  .sm-content-header .sm-filter-row {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(76px, .45fr) !important;
+    gap: 8px !important;
+    align-items: end !important;
+    width: 100% !important;
+  }
+  .sm-content-header .sm-filter-group {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  .sm-content-header .sm-filter-select,
+  .sm-content-header .sm-filter-btn {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  .sm-content-header .sm-filter-btn {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
