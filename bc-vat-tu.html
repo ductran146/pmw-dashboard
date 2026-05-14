@@ -140,6 +140,31 @@
     }
   </style>
   <script src="components/components-loader.js" defer></script>
+
+  <style>
+    /* v13 breadcrumb page-level override */
+    .sm-breadcrumb {
+      display:flex !important; flex-direction:row !important; align-items:center !important;
+      align-self:stretch !important; gap:10px !important; height:18px !important;
+      min-height:18px !important; padding:0 20px !important; margin:0 0 16px 0 !important;
+      flex:none !important; flex-grow:0 !important; overflow:hidden !important;
+    }
+    .sm-bc-item, .sm-breadcrumb a, .sm-breadcrumb span {
+      font-family:'Pretendard', var(--font), sans-serif !important; font-weight:400 !important;
+      font-size:13px !important; line-height:18px !important; letter-spacing:0 !important;
+      white-space:nowrap !important; text-decoration:none !important; flex:none !important;
+    }
+    .sm-breadcrumb a.sm-bc-item, .sm-bc-item:not(.active):not(.current) { color:#111827 !important; }
+    .sm-breadcrumb a.sm-bc-item:hover { color:#02457A !important; text-decoration:none !important; }
+    .sm-bc-item.active, .sm-bc-item.current { color:rgba(17,24,39,0.5) !important; }
+    .sm-bc-sep {
+      display:inline-flex !important; align-items:center !important; justify-content:center !important;
+      width:8px !important; height:18px !important; color:rgba(17,24,39,0.5) !important;
+      font-family:'Pretendard', var(--font), sans-serif !important; font-weight:400 !important;
+      font-size:13px !important; line-height:18px !important; flex:none !important;
+    }
+    .sm-bc-sep svg { width:8px !important; height:8px !important; stroke:rgba(17,24,39,0.5) !important; }
+  </style>
 </head>
 <body>
   <div class="bao-cao-wrapper">
