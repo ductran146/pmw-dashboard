@@ -478,3 +478,200 @@ html, body {
   .card-title,
   .dv-card-title { font-size: 17px !important; line-height: 23px !important; }
 }
+
+/* =========================================================
+   v27 Mobile sidebar hotfix
+   Sửa lỗi sidebar trên mobile bị co thành thanh icon / ẩn label do CSS cũ của từng page.
+   Áp dụng cho cả sidebar Quản lý sản xuất và Báo cáo số liệu nội bộ.
+   ========================================================= */
+@media (max-width: 900px) {
+  body.pmw-has-sidebar .pmw-menu-toggle {
+    display: inline-flex !important;
+  }
+
+  body.pmw-has-sidebar .pmw-sidebar-backdrop {
+    position: fixed !important;
+    inset: var(--pmw-mobile-header-height) 0 0 0 !important;
+    z-index: 998 !important;
+  }
+
+  body.pmw-has-sidebar.pmw-sidebar-open .pmw-sidebar-backdrop {
+    display: block !important;
+  }
+
+  .submod-page,
+  .submod-page.active {
+    flex-direction: row !important;
+  }
+
+  .sm-sidebar,
+  .sm-sidebar-production,
+  .sm-sidebar-report {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    position: fixed !important;
+    top: var(--pmw-mobile-header-height) !important;
+    left: 0 !important;
+    right: auto !important;
+    bottom: 0 !important;
+    width: min(86vw, 340px) !important;
+    min-width: 0 !important;
+    max-width: min(86vw, 340px) !important;
+    height: calc(100dvh - var(--pmw-mobile-header-height)) !important;
+    max-height: calc(100dvh - var(--pmw-mobile-header-height)) !important;
+    flex: 0 0 auto !important;
+    flex-basis: auto !important;
+    padding: 18px 14px 24px !important;
+    gap: 8px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    background: #FFFFFF !important;
+    transform: translateX(-105%) !important;
+    transition: transform .24s cubic-bezier(.2,.8,.2,1) !important;
+    z-index: 999 !important;
+    box-shadow: 22px 0 48px rgba(17,24,39,.18) !important;
+    border-right: 1px solid rgba(17,24,39,.08) !important;
+  }
+
+  body.pmw-sidebar-open .sm-sidebar,
+  body.pmw-sidebar-open .sm-sidebar-production,
+  body.pmw-sidebar-open .sm-sidebar-report {
+    transform: translateX(0) !important;
+  }
+
+  .sm-sidebar-label,
+  .sm-sidebar-bottom,
+  .sm-nav-cat-label,
+  .sm-nav-other-label,
+  .sm-nav-cat-arrow,
+  .sm-subnav,
+  .sm-subnav-item,
+  .sm-subnav-item span {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .sm-sidebar-label {
+    flex: 0 0 auto !important;
+    padding: 0 14px !important;
+    margin: 0 0 12px 0 !important;
+    color: #9CA3AF !important;
+    font-family: 'Pretendard', var(--font), sans-serif !important;
+    font-size: 13px !important;
+    line-height: 18px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: .04em !important;
+  }
+
+  .sm-nav-cat,
+  .sm-nav-other,
+  .sm-subnav-item {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 48px !important;
+    flex: 0 0 auto !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    padding: 11px 14px !important;
+    border-radius: 16px !important;
+    text-decoration: none !important;
+    overflow: visible !important;
+  }
+
+  .sm-nav-cat-icon,
+  .sm-nav-other-icon {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    flex: 0 0 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .sm-nav-cat-icon svg,
+  .sm-nav-other-icon svg,
+  .sm-subnav-dot {
+    flex: 0 0 auto !important;
+  }
+
+  .sm-nav-cat-label,
+  .sm-nav-other-label,
+  .sm-subnav-item span {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    color: #4B5563 !important;
+    font-family: 'Pretendard', var(--font), sans-serif !important;
+    font-size: 16px !important;
+    line-height: 22px !important;
+    font-weight: 500 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  .sm-nav-cat-arrow {
+    margin-left: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  .sm-subnav {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 2px !important;
+    padding: 2px 0 8px 0 !important;
+  }
+
+  .sm-subnav-item {
+    padding-left: 28px !important;
+    min-height: 42px !important;
+    gap: 12px !important;
+  }
+
+  .sm-nav-cat:hover,
+  .sm-nav-other:hover,
+  .sm-subnav-item:hover {
+    background: rgba(1,138,190,.08) !important;
+  }
+
+  .sm-nav-cat.active,
+  .sm-nav-other.active,
+  .sm-subnav-item.active {
+    background: rgba(2,69,122,.08) !important;
+    color: #02457A !important;
+  }
+
+  .sm-nav-cat.active .sm-nav-cat-label,
+  .sm-nav-other.active .sm-nav-other-label,
+  .sm-subnav-item.active span {
+    color: #1F4B99 !important;
+    font-weight: 700 !important;
+  }
+
+  .sm-nav-cat.active svg,
+  .sm-nav-other.active svg,
+  .sm-subnav-item.active svg {
+    color: #1F4B99 !important;
+    stroke: #1F4B99 !important;
+  }
+
+  .sm-sidebar svg path,
+  .sm-sidebar svg rect,
+  .sm-sidebar svg circle,
+  .sm-sidebar svg line,
+  .sm-sidebar svg polyline {
+    stroke: currentColor;
+  }
+
+  .sm-main,
+  .dv-content {
+    margin-left: 0 !important;
+  }
+}
