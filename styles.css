@@ -1892,3 +1892,69 @@ body {
     overflow-y: hidden !important;
   }
 }
+
+/* =========================================================
+   v25 — Sticky footer inside main scroll area.
+   - Header and sidebar stay fixed by layout.
+   - Breadcrumb/title/content/footer are inside .sm-main and scroll together.
+   - If content is shorter than the viewport, footer sticks to the bottom edge.
+   - If content is longer, footer stays after content and scrolls normally.
+   ========================================================= */
+.sm-main {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.sm-scroll,
+.sm-main > .empty-module-content {
+  flex: 1 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow-y: visible !important;
+  overflow-x: hidden !important;
+}
+
+/* Các view/table bên trong không tạo scroll dọc riêng, nhưng vẫn cho nội dung dài quyết định chiều cao */
+.dt-scroll-area,
+#smTableView,
+#smViewLapDat,
+#smViewThatThoat,
+#smViewVatTu,
+#smViewTruNuoc {
+  flex: 0 0 auto !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow-y: visible !important;
+}
+
+/* Footer: đẩy xuống đáy khi trang ngắn, nhưng vẫn nằm trong flow để cuộn theo nội dung khi trang dài */
+.dv-footer {
+  flex: 0 0 auto !important;
+  margin-top: auto !important;
+  min-height: 52px !important;
+}
+
+/* Dashboard page không có .sm-main: áp dụng cùng nguyên tắc cho .dv-body/.dv-content */
+.dashboard-page > .dv-body {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+.dashboard-page .dv-content {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 0 auto !important;
+  min-height: 0 !important;
+}
+.dashboard-page .dv-center-wrap {
+  flex: 1 0 auto !important;
+  overflow: visible !important;
+}
