@@ -1345,3 +1345,81 @@
 
 
 /* Login Form update theo Figma v5: xem index.html để có override cuối cùng khi chạy trang chủ. */
+
+/* =========================================================
+   GLOBAL PAGE SCROLL FIX — v11
+   Dùng scroll mặc định của trình duyệt, không tạo scroll dọc
+   riêng trong từng page/content area.
+   ========================================================= */
+html,
+body {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.page,
+.dashboard-page,
+.bao-cao-wrapper {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+}
+
+.submod-page,
+.submod-page.active,
+.dv-body,
+.dv-content,
+.dv-center-wrap,
+.sm-main,
+.sm-scroll,
+.sm-grid-wrap,
+.sm-grid,
+.dt-scroll-area {
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  overflow-y: visible !important;
+}
+
+.sm-main,
+.sm-scroll,
+.dt-scroll-area {
+  overflow-x: hidden !important;
+}
+
+.sm-scroll,
+.dt-scroll-area {
+  flex: initial !important;
+}
+
+.sm-scroll > div,
+.sm-scroll > div > div,
+#smTableView,
+#smViewLapDat,
+#smViewThatThoat,
+#smViewVatTu,
+#smViewTruNuoc {
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  overflow-y: visible !important;
+}
+
+/* Giữ scroll ngang cho bảng rộng, nhưng không tạo scroll dọc bên trong. */
+.dt-table-wrap,
+.dt-table-wrap > div,
+.dt-section [style*="overflow-x:auto"],
+.dt-section [style*="overflow-x: auto"] {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+}
+
+@media (max-width: 900px) {
+  .sm-main,
+  .sm-scroll,
+  .dt-scroll-area {
+    overflow-y: visible !important;
+  }
+}
