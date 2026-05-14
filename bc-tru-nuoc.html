@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PMW — Trụ nước uống tại vòi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    html, body { overflow: hidden; }
+    .bao-cao-wrapper { display:flex; flex-direction:column; height:100vh; }
+    .submod-page.active { flex:1; display:flex !important; min-height:0; }
+    .dv-header { flex-shrink:0; }
+
+    /* ── Card wrapper ── */
+    .dt-section {
+      background: #FFFFFF;
+      border: 1px solid rgba(17,24,39,0.08) !important;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .dt-table-wrap { border: none !important; border-radius: 0 !important; display: flex; flex-direction: column; }
+
+    /* ── Tiêu đề bảng ── */
+    .dt-table-title {
+      background: linear-gradient(90deg, rgba(1,138,190,0.16) 31.49%, rgba(255,255,255,0) 100%);
+      height: 56px; display: flex; align-items: center;
+      padding: 8px 8px 8px 20px;
+      font-family: 'Pretendard', sans-serif;
+      font-size: 17px; font-weight: 700; color: #111827; flex-shrink: 0;
+    }
+
+    /* ── Tiêu đề cột ── */
+    .dt-table { width: 100%; border-collapse: collapse; }
+    .dt-table thead tr { height: 40px; }
+    .dt-table thead th {
+      background: linear-gradient(0deg, rgba(1,138,190,0.08), rgba(1,138,190,0.08)), #FFFFFF;
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 700; font-size: 14px; color: #005292;
+      padding: 10px 8px; height: 40px; text-align: right;
+      border-top: none !important;
+      border-bottom: 1px solid rgba(17,24,39,0.08) !important;
+      vertical-align: middle;
+    }
+    .dt-table thead th:first-child {
+      text-align: center; padding-left: 12px; width: 100px; min-width: 100px;
+      background: linear-gradient(0deg, rgba(1,138,190,0.08), rgba(1,138,190,0.08)), #FFFFFF !important;
+    }
+    .dt-table thead th:last-child { padding-right: 12px; }
+    .dt-table td:first-child { position: static !important; }
+
+    /* ── Body rows ── */
+    .dt-table tbody tr { height: 40px; border-bottom: 1px solid rgba(17,24,39,0.08); }
+    .dt-table tbody tr:last-child { border-bottom: none; }
+    .dt-table tbody tr:hover td { background: rgba(1,138,190,0.04) !important; }
+    .dt-table tbody td {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 15px; font-weight: 400; color: #4B5563;
+      border: none; vertical-align: middle; padding: 8px 8px;
+      text-align: right; background: #FFFFFF !important;
+    }
+    .dt-table tbody td:first-child { text-align: center; padding-left: 12px; }
+    .dt-table tbody td:last-child   { padding-right: 12px; }
+  </style>
+  <style>
+    .dt-table td, .dt-table th { word-break: break-word; white-space: normal; }
+    @media (max-width:1200px) {
+      .sm-sidebar { width:52px; padding:12px 6px; overflow:hidden; }
+      .sm-sidebar-label,.sm-nav-cat-label,.sm-nav-cat-arrow,
+      .sm-nav-other-label,.sm-sidebar-bottom { display:none; }
+      .sm-nav-cat,.sm-nav-other { justify-content:center; padding:10px; border-radius:10px; }
+      .sm-subnav { display:none !important; }
+    }
+    @media (max-width:900px) {
+      .submod-page.active { flex-direction:column; }
+      .sm-sidebar { width:100%; height:52px; flex-direction:row; flex-shrink:0; overflow-x:auto; padding:0 12px; }
+      .sm-sidebar-label,.sm-sidebar-bottom,.sm-subnav { display:none !important; }
+      .sm-main { overflow-y:auto; }
+      .dt-table-wrap { overflow-x:auto; }
+    }
+    @media (max-width:640px) {
+      .dv-header { padding:0 12px; }
+      .dv-header-sub { display:none; }
+      .sm-content-title { font-size:17px; }
+      .sm-filter-select,.sm-filter-btn { height:32px; font-size:12px; }
+    }
+  </style>
+
+  <style>
+    /* ── FIX SCROLL: khóa body nhưng cho vùng nội dung chính được cuộn ── */
+    .sm-main {
+      flex: 1;
+      min-width: 0;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .sm-scroll {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .sm-scroll > div {
+      min-height: 100%;
+      overflow: visible !important;
+    }
+
+    #smViewTruNuoc {
+      overflow: visible !important;
+    }
+
+    .dt-scroll-area {
+      overflow: visible !important;
+    }
+
+    .dt-section {
+      flex-shrink: 0;
+    }
+
+    .dt-table-wrap {
+      overflow-x: auto;
+      overflow-y: visible;
+    }
+  </style>
+  <script src="components/components-loader.js" defer></script>
+</head>
+<body>
+  <div class="bao-cao-wrapper">
+
+    <div data-component="header"></div>
+
+    <div class="submod-page active">
+
+            <div data-component="sidebar-report"></div>
+
+      <main class="sm-main">
+
+        <div class="sm-breadcrumb">
+          <a class="sm-bc-item" href="index.html">Trang chủ</a>
+          <span class="sm-bc-sep">›</span>
+          <a class="sm-bc-item" href="bc-so-lieu-kd.html">Báo cáo số liệu nội bộ</a>
+          <span class="sm-bc-sep">›</span>
+          <span class="sm-bc-item active">Trụ nước uống tại vòi</span>
+        </div>
+
+        <div class="sm-content-header">
+          <div class="sm-content-title-wrap">
+            <div class="sm-content-title">Trụ nước uống tại vòi</div>
+            <div class="sm-content-subtitle">Danh sách, địa chỉ và tình trạng hoạt động của các trụ nước uống tại vòi trên toàn địa bàn</div>
+          </div>
+                    <div class="sm-filter-row">
+            <div class="sm-filter-group" style="display:none">
+              <label class="sm-filter-label">Tháng</label>
+              <select class="sm-filter-select" id="selectMonth">
+                <option>4</option><option>3</option><option>2</option><option>1</option>
+                <option>12</option><option>11</option><option>10</option><option>9</option>
+                <option>8</option><option>7</option><option>6</option><option>5</option>
+              </select>
+            </div>
+            <div class="sm-filter-group" style="display:none">
+              <label class="sm-filter-label">Năm</label>
+              <select class="sm-filter-select" id="selectYear">
+                <option>2026</option><option>2025</option><option>2024</option>
+              </select>
+            </div>
+            <div class="sm-filter-group">
+              <label class="sm-filter-label">Đơn vị</label>
+              <select class="sm-filter-select">
+                <option>Toàn công ty</option>
+                <option>XN Vũng Tàu</option><option>XN Bà Rịa</option>
+                <option>XN Long Điền</option><option>CN Xuyên Mộc</option><option>CN Châu Đức</option>
+              </select>
+            </div>
+            <button class="sm-filter-btn">Xem</button>
+          </div>
+        </div>
+
+        <div class="sm-scroll">
+          <div style="display:flex;flex-direction:column;min-height:100%;">
+            <div id="smViewTruNuoc" style="display:flex;flex-direction:column;">
+              <div class="dt-scroll-area">
+                <div class="dt-section">
+                  <div class="dt-table-wrap">
+                    <div class="dt-table-title">Danh sách trụ nước uống tại vòi</div>
+                    <div>
+                    <table class="dt-table" style="table-layout:fixed;width:100%;">
+                      <colgroup>
+                        <col style="width:52px;">        <!-- STT -->
+                        <col style="width:34%;">         <!-- Tên trụ -->
+                        <col style="width:30%;">         <!-- Địa chỉ -->
+                        <col style="width:110px;">       <!-- Ngày sử dụng -->
+                        <col style="width:160px;">       <!-- Tình trạng -->
+                      </colgroup>
+                      <thead><tr>
+  <th style="width:52px;text-align:center;">STT</th>
+  <th style="text-align:left;">Tên trụ</th>
+  <th style="text-align:left;">Địa chỉ</th>
+  <th style="text-align:center;">Ngày sử dụng</th>
+  <th>Tình trạng hoạt động</th>
+</tr></thead>
+                      <tbody><tr><td style="text-align:center;">1</td><td style="text-align:left;">Trụ số 1 - XNCN Bà Rịa (Đã cúp gỡ 2019)</td><td style="text-align:left;">04, Điện Biên Phủ, Phước Hiệp</td><td style="text-align:center;">2019</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">2</td><td style="text-align:left;">Trụ số 2 - TTVH&TT (Đã cúp gỡ 2019)</td><td style="text-align:left;">Đường Nguyễn Thanh Đằng, Phước Hiệp</td><td style="text-align:center;">2019</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">3</td><td style="text-align:left;">Trụ số 3 - Công viên Lê Thành Duy</td><td style="text-align:left;">Đường Cách Mạng Tháng 8, Phước Hiệp</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">4</td><td style="text-align:left;">Trụ số 4 - Nhà Thi Đấu Đa Năng (Đã cúp gỡ 2022)</td><td style="text-align:left;">Đường Nguyễn Tất Thành, Phước Nguyên</td><td style="text-align:center;">2022</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#D97706;display:inline-block;flex-shrink:0;"></span><span style="color:#D97706;font-weight:500;">Cần kiểm tra</span></span></td></tr>
+<tr><td style="text-align:center;">5</td><td style="text-align:left;">Trụ số 5 - Trường THPT Châu Thành</td><td style="text-align:left;">Đường 27 Tháng 4, Phước Hiệp</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">6</td><td style="text-align:left;">Trụ số 7 - Trường TH Lê Thành Duy</td><td style="text-align:left;">Đường Ngô Gia Tự, Phước Trung</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">7</td><td style="text-align:left;">Trụ số 8 - Trường Khuyết Tật (Đã cúp 2015)</td><td style="text-align:left;">Đường Nguyễn Hữu Tiến, Long Tâm</td><td style="text-align:center;">2015</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">8</td><td style="text-align:left;">Trụ số 9 - TTBảo Trợ Cô Nhi K.Tật (Đã cúp gỡ 2023)</td><td style="text-align:left;">Đường Nguyễn Văn Hường, Long Tâm</td><td style="text-align:center;">2023</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#D97706;display:inline-block;flex-shrink:0;"></span><span style="color:#D97706;font-weight:500;">Cần kiểm tra</span></span></td></tr>
+<tr><td style="text-align:center;">9</td><td style="text-align:left;">Trụ số 12 - Làm CCCD (Đã cúp gỡ 2020)</td><td style="text-align:left;">Trụ sở Công An Tỉnh, Trường Chinh, Phước Trung</td><td style="text-align:center;">2020</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">10</td><td style="text-align:left;">Trụ số 13 - PQL Xuất Nhập Cảnh (Đã cúp gỡ 2020)</td><td style="text-align:left;">Trụ sở Công An Tỉnh, Trường Chinh, Phước Trung</td><td style="text-align:center;">2020</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">11</td><td style="text-align:left;">Trụ số 14 - Căn Tin (Đã cúp gỡ 2020)</td><td style="text-align:left;">Trụ sở Công An Tỉnh, Trường Chinh, Phước Trung</td><td style="text-align:center;">2020</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">12</td><td style="text-align:left;">Trụ số 15 - Cảnh Sát Giao Thông (Đã cúp gỡ 2022)</td><td style="text-align:left;">Trụ sở Công An Tỉnh, Bạch Đằng, Phước Trung</td><td style="text-align:center;">2022</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;display:inline-block;flex-shrink:0;"></span><span style="color:#DC2626;font-weight:500;">Tạm ngừng hoạt động</span></span></td></tr>
+<tr><td style="text-align:center;">13</td><td style="text-align:left;">Trụ số 16 - Nhà Thờ Chánh Tòa Bà Rịa</td><td style="text-align:left;">Đường Cách Mạng Tháng 8, Phước Hiệp</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">14</td><td style="text-align:left;">Trụ số 17 - Nhà Tạm Giam Công An TPBR</td><td style="text-align:left;">Đường Trương Phúc Phan, Long Hương</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">15</td><td style="text-align:left;">Trụ số 10 - Nhà Thờ Phước Tân (Đã cúp gỡ 2019)</td><td style="text-align:left;">Đường Lê Trọng Tấn, Tân Hưng</td><td style="text-align:center;">2019</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">16</td><td style="text-align:left;">Trụ số 11 - Trường THCS Lê Quang Cường</td><td style="text-align:left;">Đường Hoàng Hoa Thám, Long Tâm</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#D97706;display:inline-block;flex-shrink:0;"></span><span style="color:#D97706;font-weight:500;">Cần kiểm tra</span></span></td></tr>
+<tr><td style="text-align:center;">17</td><td style="text-align:left;">Trụ số 18 - Trường THCS Phước Hưng</td><td style="text-align:left;">Đường Ngô Tất Tố, Phước Hưng</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">18</td><td style="text-align:left;">Trụ số 19 - Quảng Trường Bà Rịa</td><td style="text-align:left;">Quảng Trường Bà Rịa, Phước Nguyên</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">19</td><td style="text-align:left;">Trụ số 20 - Công Viên Bà Rịa</td><td style="text-align:left;">Công Viên Bà Rịa, Phước Nguyên</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">20</td><td style="text-align:left;">Trụ Uống Nước Tại Vòi 02-CĐ</td><td style="text-align:left;">Trụ Sở Công An Huyện</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">21</td><td style="text-align:left;">Trụ Uống Nước Tại Vòi 02-CĐ (Đã gỡ)</td><td style="text-align:left;">Trụ Sở Công An Huyện</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">22</td><td style="text-align:left;">Trụ Uống Nước Tại Vòi Số 01 - CĐ (Đã gỡ)</td><td style="text-align:left;">CN Châu Đức</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">23</td><td style="text-align:left;">Trụ Uống Nước Tại Vòi Số 1 (Đã gỡ)</td><td style="text-align:left;">Tại XNCN Long Điền</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">24</td><td style="text-align:left;">Trụ Uống Nước Tại Vòi Số 2 (Đã gỡ)</td><td style="text-align:left;">Bãi Giữ Xe Long Hải - Dinh Cô</td><td style="text-align:center;">–</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+<tr><td style="text-align:center;">25</td><td style="text-align:left;">Trụ Uống Nước Tại Vòi Số 3 (Gỡ ngày 19/2/2023)</td><td style="text-align:left;">Công Viên Long Điền</td><td style="text-align:center;">2023</td><td><span style="display:inline-flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;display:inline-block;flex-shrink:0;"></span><span style="color:#16A34A;font-weight:500;">Hoạt động bình thường</span></span></td></tr>
+</tbody>
+                    </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /smViewTruNuoc -->
+          </div>
+        </div>
+
+        <div data-component="footer"></div>
+      </main>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.dv-header-logo').addEventListener('click', e => {
+        e.preventDefault(); window.location.href = 'index.html';
+      });
+    });
+  </script>
+</body>
+</html>
