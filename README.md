@@ -66,3 +66,9 @@ Sau đó mở `http://localhost:8000`.
 
 ## v21
 - Sửa lại style empty-state cho các trang module đang phát triển: có breadcrumb, title page, icon 160×160, tiêu đề “Không có thông tin” và mô tả theo spec.
+
+## v23
+- Header và sidebar được giữ cố định theo layout.
+- Body/browser không còn scroll.
+- Chỉ vùng nội dung chính cuộn dọc.
+- Footer nằm ngoài vùng cuộn nội dung nên không bị trôi khi cuộn nội dung.
