@@ -1058,7 +1058,7 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      padding: var(--sp-2) var(--sp-5) 0;
+      padding: 0 var(--sp-5) 0;
       flex-shrink: 0;
       gap: 7px;
     }
@@ -1495,3 +1495,7 @@ body {
   height: 8px !important;
   stroke: rgba(17, 24, 39, 0.5) !important;
 }
+
+
+/* v15: keep title closer to breadcrumb */
+.sm-content-header { padding-top: 0 !important; }
