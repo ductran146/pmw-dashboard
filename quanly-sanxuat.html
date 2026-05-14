@@ -349,7 +349,7 @@
       .kcd-val-num { font-size: 20px; line-height: 26px; }
       .kcd-val-unit { font-size: 11px; padding-top: 6px; }
       .kcd-stats { padding: 0 12px 8px; gap: 6px; }
-      .kcd-stat { padding: 4px 8px; gap: 4px; border-radius: 8px; }
+      .kcd-stat { padding: 4px 8px; gap: 6px; border-radius: 8px; }
       .kcd-stat-lbl { font-size: 11px; }
       .kcd-stat-val { font-size: 12px; }
 
@@ -362,7 +362,7 @@
       .kcl-val-num { font-size: 20px; line-height: 26px; }
       .kcl-val-unit { font-size: 11px; padding-top: 6px; }
       .kcl-stats { padding: 0 12px 8px; gap: 6px; }
-      .kcl-stat { padding: 4px 8px; gap: 4px; border-radius: 8px; }
+      .kcl-stat { padding: 4px 8px; gap: 6px; border-radius: 8px; }
       .kcl-stat-lbl { font-size: 11px; }
       .kcl-stat-val { font-size: 12px; }
 
@@ -435,7 +435,8 @@
     .kcl-stat {
       overflow: hidden;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
+      gap: 6px;
     }
     .kcd-stat-lbl,
     .kcl-stat-lbl {
@@ -445,11 +446,11 @@
     }
     .kcd-stat-val,
     .kcl-stat-val {
-      flex: 1 1 auto;
+      flex: 0 1 auto;
       min-width: 0;
       white-space: nowrap;
-      justify-content: flex-end;
-      text-align: right;
+      justify-content: flex-start;
+      text-align: left;
       font-variant-numeric: tabular-nums;
     }
     .kcd-stat-val .arr,
@@ -511,7 +512,7 @@
       .kcd-stats,
       .kcl-stats { padding: 6px 10px 10px; gap: 4px; }
       .kcd-stat,
-      .kcl-stat { padding: 4px 7px; gap: 5px; border-radius: 7px; }
+      .kcl-stat { padding: 4px 7px; gap: 6px; border-radius: 7px; }
       .kcd-stat-lbl,
       .kcl-stat-lbl { font-size: 11px; line-height: 15px; }
       .kcd-stat-val,
