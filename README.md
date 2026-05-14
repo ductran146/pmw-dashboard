@@ -29,3 +29,15 @@ python3 -m http.server 8000
 ```
 
 Sau đó mở `http://localhost:8000`.
+
+
+## v3 — Đã gắn link điều hướng
+- Header logo: `index.html`
+- Sidebar báo cáo: các mục con trỏ tới từng file báo cáo.
+- Sidebar sản xuất: dashboard chính trỏ tới `quanly-sanxuat.html`, các mục phụ dùng hash để giữ trạng thái trong cùng trang.
+- Index cards: đã gắn link vào từng card/module.
+- Dashboard cards: đã gắn link tới báo cáo tương ứng hoặc query `?nav=` cho các mục phụ.
+
+
+## v4 update
+- Card / menu “Báo cáo số liệu nội bộ” trỏ trực tiếp tới `bc-so-lieu-kd.html`.
