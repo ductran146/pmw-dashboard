@@ -783,3 +783,240 @@ html, body {
     padding-right: 10px !important;
   }
 }
+
+/* =========================================================
+   v31 Mobile fixes
+   1) Empty-state pages: breadcrumb must not be clipped or overlap title.
+   2) Report pages: keep the View button on the same row as Month/Year filters.
+   ========================================================= */
+@media (max-width: 900px) {
+  .empty-module-content .sm-breadcrumb,
+  .sm-main .empty-module-content .sm-breadcrumb {
+    height: auto !important;
+    min-height: 18px !important;
+    max-height: none !important;
+    padding: 16px var(--pmw-mobile-gutter) 0 !important;
+    margin: 0 !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    line-height: 18px !important;
+  }
+
+  .empty-module-content .empty-page-title {
+    padding: 12px var(--pmw-mobile-gutter) 0 !important;
+    margin: 0 !important;
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  .empty-module-content .empty-page-title-inner {
+    gap: 2px !important;
+  }
+
+  .empty-module-content .empty-page-heading {
+    margin: 0 !important;
+  }
+
+  .empty-module-content .empty-page-desc {
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .sm-content-header .sm-filter-row {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 76px !important;
+    align-items: end !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+
+  .sm-content-header .sm-filter-group {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 6px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .sm-content-header .sm-filter-label {
+    font-size: 13px !important;
+    line-height: 18px !important;
+    white-space: nowrap !important;
+  }
+
+  .sm-content-header .sm-filter-select {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 42px !important;
+    padding-left: 12px !important;
+    padding-right: 28px !important;
+    border-radius: 14px !important;
+  }
+
+  .sm-content-header .sm-filter-btn {
+    grid-column: auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 42px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    border-radius: 14px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .sm-content-header .sm-filter-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 68px !important;
+    gap: 6px !important;
+  }
+  .sm-content-header .sm-filter-group {
+    gap: 4px !important;
+  }
+  .sm-content-header .sm-filter-label {
+    font-size: 12px !important;
+    line-height: 18px !important;
+  }
+  .sm-content-header .sm-filter-select,
+  .sm-content-header .sm-filter-btn {
+    height: 40px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* =========================================================
+   v32 — hard mobile fixes
+   1) Empty-state pages: breadcrumb must reserve space and not be covered by title.
+   2) Report filter: Month / Year / View stay in ONE row on mobile.
+   ========================================================= */
+@media (max-width: 900px) {
+  .empty-module-content {
+    gap: 10px !important;
+    padding-top: 14px !important;
+  }
+
+  .empty-module-content > .sm-breadcrumb,
+  .sm-main .empty-module-content > .sm-breadcrumb {
+    position: relative !important;
+    z-index: 2 !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 24px !important;
+    max-height: none !important;
+    padding: 0 var(--pmw-mobile-gutter) !important;
+    margin: 0 0 8px 0 !important;
+    line-height: 18px !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .empty-module-content > .sm-breadcrumb .sm-bc-item,
+  .empty-module-content > .sm-breadcrumb .sm-bc-sep {
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 18px !important;
+    line-height: 18px !important;
+    flex: 0 0 auto !important;
+  }
+
+  .empty-module-content > .empty-page-title {
+    position: relative !important;
+    z-index: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 0 var(--pmw-mobile-gutter) !important;
+    margin: 0 0 8px 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .sm-content-header .sm-filter-row {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 64px !important;
+    gap: 6px !important;
+    align-items: end !important;
+    width: 100% !important;
+  }
+
+  .sm-content-header .sm-filter-group {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    gap: 5px !important;
+    align-items: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .sm-content-header .sm-filter-label {
+    font-size: 12px !important;
+    line-height: 18px !important;
+    white-space: nowrap !important;
+  }
+
+  .sm-content-header .sm-filter-select {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 38px !important;
+    padding-left: 10px !important;
+    padding-right: 24px !important;
+    border-radius: 12px !important;
+    font-size: 13px !important;
+  }
+
+  .sm-content-header .sm-filter-btn,
+  .sm-filter-row .sm-filter-btn,
+  button.sm-filter-btn {
+    grid-column: auto !important;
+    width: 64px !important;
+    min-width: 64px !important;
+    max-width: 64px !important;
+    height: 38px !important;
+    padding: 0 8px !important;
+    border-radius: 12px !important;
+    font-size: 13px !important;
+    justify-self: stretch !important;
+    align-self: end !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .sm-content-header .sm-filter-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 58px !important;
+    gap: 5px !important;
+  }
+
+  .sm-content-header .sm-filter-group {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    gap: 4px !important;
+  }
+
+  .sm-content-header .sm-filter-label {
+    font-size: 11px !important;
+  }
+
+  .sm-content-header .sm-filter-select {
+    height: 36px !important;
+    font-size: 12px !important;
+    padding-left: 9px !important;
+    padding-right: 22px !important;
+  }
+
+  .sm-content-header .sm-filter-btn,
+  .sm-filter-row .sm-filter-btn,
+  button.sm-filter-btn {
+    grid-column: auto !important;
+    width: 58px !important;
+    min-width: 58px !important;
+    max-width: 58px !important;
+    height: 36px !important;
+    font-size: 12px !important;
+    padding: 0 6px !important;
+  }
+}
