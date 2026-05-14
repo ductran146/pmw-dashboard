@@ -41,3 +41,14 @@ Sau đó mở `http://localhost:8000`.
 
 ## v4 update
 - Card / menu “Báo cáo số liệu nội bộ” trỏ trực tiếp tới `bc-so-lieu-kd.html`.
+
+## Cập nhật v5
+- Cập nhật style Login Form theo layout Figma: modal 860×520, cover 325×520, form 535×400, input 439×40, button 439×40.
+- Di chuyển gạch accent xuống dưới subtitle giống thiết kế mẫu.
+- Chuẩn hóa nút “Quay về trang chủ” không còn ký tự mũi tên.
+
+
+## v6
+- Thu nhỏ form login cho MacBook 14 inch và màn hình 1366×768.
+- Giảm padding form từ 48px xuống 24px ở các breakpoint nhỏ.
+- Giảm kích thước modal, cover, input và button để không bị quá lớn trên màn hình thấp.
