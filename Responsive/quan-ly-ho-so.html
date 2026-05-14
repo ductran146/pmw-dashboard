@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>PMW — Quản lý hồ sơ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="components/components-loader.js" defer></script>
+  <style>
+    html, body { min-height:100%; overflow-x:hidden; }
+    body { background:#F9FAFB; }
+    .bao-cao-wrapper { min-height:100vh; display:flex; flex-direction:column; }
+    .submod-page.active { flex:1; display:flex !important; min-height:0; }
+    .dv-header { flex-shrink:0; }
+    .sm-main { flex:1; min-width:0; display:flex; flex-direction:column; background:#F9FAFB; }
+
+    /* Empty module page */
+    .empty-module-content {
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:20px 0;
+      gap:20px;
+      background:#F9FAFB;
+      min-height:380px;
+    }
+    .sm-breadcrumb {
+      display:flex !important;
+      flex-direction:row !important;
+      align-items:center !important;
+      align-self:stretch !important;
+      padding:0 20px !important;
+      gap:2px !important;
+      height:18px !important;
+      min-height:18px !important;
+      margin:0 !important;
+      overflow:hidden !important;
+    }
+    .sm-bc-item, .sm-breadcrumb a, .sm-breadcrumb span {
+      font-family:'Pretendard', var(--font), sans-serif !important;
+      font-style:normal !important;
+      font-weight:400 !important;
+      font-size:13px !important;
+      line-height:18px !important;
+      white-space:nowrap !important;
+      text-decoration:none !important;
+      flex:none !important;
+    }
+    .sm-breadcrumb a.sm-bc-item,
+    .sm-bc-item:not(.active):not(.current) { color:#111827 !important; }
+    .sm-breadcrumb a.sm-bc-item:hover { color:#02457A !important; }
+    .sm-bc-item.active, .sm-bc-item.current { color:rgba(17,24,39,0.5) !important; }
+    .sm-bc-sep {
+      width:16px !important;
+      height:16px !important;
+      display:inline-flex !important;
+      align-items:center !important;
+      justify-content:center !important;
+      color:rgba(17,24,39,0.21) !important;
+      font-size:13px !important;
+      line-height:16px !important;
+    }
+    .empty-page-title {
+      display:flex;
+      flex-direction:row;
+      justify-content:space-between;
+      align-items:center;
+      align-self:stretch;
+      padding:0 20px;
+      gap:7px;
+      min-height:46px;
+    }
+    .empty-page-title-inner {
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      padding:0;
+      flex:1;
+      min-width:0;
+    }
+    .empty-page-heading {
+      font-family:'Pretendard', var(--font), sans-serif;
+      font-style:normal;
+      font-weight:700;
+      font-size:20px;
+      line-height:28px;
+      color:#111827;
+      align-self:stretch;
+      margin:0;
+    }
+    .empty-page-desc {
+      font-family:'Pretendard', var(--font), sans-serif;
+      font-style:normal;
+      font-weight:400;
+      font-size:13px;
+      line-height:18px;
+      color:#4B5563;
+      align-self:stretch;
+      margin:0;
+    }
+    .empty-main {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      padding:0;
+      gap:20px;
+      width:346px;
+      min-height:236px;
+      flex:0 0 auto;
+      margin:0 auto;
+    }
+    .empty-state {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      width:346px;
+      max-width:100%;
+      margin:0 auto;
+      padding:0;
+      gap:20px;
+    }
+    .empty-state svg {
+      width:160px;
+      height:160px;
+      flex:none;
+      margin:0;
+    }
+    .empty-text-group {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:0;
+      gap:10px;
+      width:346px;
+      max-width:100%;
+    }
+    .empty-title {
+      font-family:'Pretendard', var(--font), sans-serif;
+      font-style:normal;
+      font-weight:700;
+      font-size:17px;
+      line-height:24px;
+      color:#111827;
+      margin:0;
+      text-align:center;
+    }
+    .empty-desc {
+      font-family:'Pretendard', var(--font), sans-serif;
+      font-style:normal;
+      font-weight:400;
+      font-size:15px;
+      line-height:22px;
+      color:#4B5563;
+      margin:0;
+      text-align:center;
+      width:346px;
+      max-width:100%;
+    }
+    .dv-footer { margin-top:auto; }
+    @media (max-width:900px) {
+      .submod-page.active { flex-direction:column; }
+      .sm-sidebar { width:100%; }
+      .empty-module-content { padding:16px 0; }
+    }
+    @media (max-width:640px) {
+      .empty-page-title { padding:0 16px; }
+      .sm-breadcrumb { padding:0 16px !important; }
+      .empty-main, .empty-state, .empty-text-group, .empty-desc { width:100%; max-width:320px; }
+      .empty-state svg { width:128px; height:128px; }
+    }
+  
+    /* v22 — chuẩn hóa empty-state page */
+    .empty-module-content {
+      width: 100%;
+      min-height: calc(100vh - 116px);
+      align-items: center !important;
+      justify-content: flex-start !important;
+      padding: 20px 0 !important;
+      gap: 20px !important;
+      background: #F9FAFB !important;
+    }
+    .empty-page-title { width: 100% !important; }
+    .empty-main {
+      width: 346px !important;
+      min-height: 236px !important;
+      margin: 0 auto !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 20px !important;
+    }
+    .empty-state {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 20px !important;
+      width: 346px !important;
+      text-align: center !important;
+    }
+    .empty-state svg { width:160px !important; height:160px !important; flex:0 0 auto !important; display:block !important; }
+    .empty-title { font-size:17px !important; line-height:24px !important; font-weight:700 !important; color:#111827 !important; }
+    .empty-desc { font-size:15px !important; line-height:22px !important; font-weight:400 !important; color:#4B5563 !important; }
+</style>
+  <link rel="stylesheet" href="responsive.css"/>
+</head>
+<body>
+<div class="bao-cao-wrapper">
+  <div data-component="header"></div>
+  <div class="submod-page active">
+    <div data-component="sidebar-report"></div>
+    <main class="sm-main">
+      <section class="empty-module-content">
+      <div class="sm-breadcrumb">
+        <a class="sm-bc-item" href="bc-so-lieu-kd.html">Báo cáo số liệu nội bộ</a>
+        <span class="sm-bc-sep"></span>
+        <span class="sm-bc-item active">Quản lý hồ sơ</span>
+      </div>
+        <div class="empty-page-title">
+          <div class="empty-page-title-inner">
+            <h1 class="empty-page-heading">Quản lý hồ sơ</h1>
+            <p class="empty-page-desc">Thông tin đang được cập nhật. Vui lòng quay lại sau</p>
+          </div>
+        </div>
+        <section class="empty-main">
+        <div class="empty-state">
+          <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M80 144C115.34 144 144 115.363 144 80C144 44.6373 115.34 16 80 16C44.6599 16 16 44.6373 16 80C16 115.363 44.6599 144 80 144Z" fill="#111827" fill-opacity="0.08"/>
+<path d="M125.999 75.7634V112.253C125.999 119.834 119.818 126 112.118 126H47.8808C40.2818 126 34.1013 119.935 34 112.354C34 112.253 34 112.253 34 112.152V75.7634C34 75.6624 34 75.6624 34 75.5613C34 75.3591 34 75.157 34.1013 74.9548C34.2026 74.6516 34.304 74.4494 34.4053 74.1462L51.6297 41.2955C52.2376 39.9815 53.5548 39.2739 54.9732 39.2739H104.924C106.342 39.2739 107.558 39.9815 108.268 41.2955L125.492 74.1462C125.593 74.3483 125.695 74.6516 125.796 74.9548C125.999 75.157 125.999 75.4602 125.999 75.7634Z" fill="#D1D5DB"/>
+<g filter="url(#filter0_d_empty)"><path d="M125.999 75.7637V115.993C125.999 121.553 121.54 126 115.867 126H44.132C38.5594 126 34 121.553 34 115.993V75.5616C34 75.3594 34 75.1572 34.1013 74.9551H57.2023C60.6472 74.9551 63.4841 77.6842 63.4841 81.222C63.4841 82.9403 64.1933 84.5576 65.3079 85.6695C66.5237 86.8824 67.9422 87.4889 69.766 87.4889H90.3339C93.7788 87.4889 96.6157 84.7597 96.6157 81.222C96.6157 79.5036 97.325 77.8864 98.4395 76.7745C99.6553 75.5616 101.074 74.9551 102.796 74.9551H125.796C125.999 75.1572 125.999 75.4605 125.999 75.7637Z" fill="url(#paint0_linear_empty)"/></g>
+<path d="M105.35 27.1138C106.672 41.5147 107.333 44.8126 104.34 57.8546C103.366 60.754 102.392 63.9297 100.306 66.1388C97.3852 69.5906 92.0999 71.1094 87.7882 70.0048C83.3374 68.9002 79.7211 65.0343 78.8866 60.3398C78.1911 57.4403 79.1647 53.9886 81.6683 52.1936C84.311 50.5368 88.0664 50.951 90.2918 53.0221C92.7953 55.0931 93.769 58.2688 93.6299 61.3063C93.4908 64.3439 92.3781 67.3815 90.8481 70.0048C87.3895 76.4553 85.9657 76.4316 78.8866 87.0257" stroke="#9CA3AF" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="4 4"/>
+<path d="M113.104 21.7501C112.576 23.6744 110.461 24.3742 108.346 23.1496C106.055 22.0999 104.469 21.2252 104.821 19.4758C105.35 17.7264 107.465 17.5515 109.932 17.3766C112.928 17.0267 113.457 19.8257 113.104 21.7501Z" fill="#D1D5DB"/>
+<path d="M96.0098 23.4992C96.891 25.0737 99.3582 26.1233 101.12 24.5489C103.059 22.7995 104.645 21.5749 103.764 19.8255C102.883 18.251 101.473 18.7758 98.477 19.1257C96.0098 19.6505 94.9525 21.7498 96.0098 23.4992Z" fill="#D1D5DB"/>
+<path d="M103.763 17.0268C104.997 16.8519 106.23 17.5516 106.583 18.6013C106.759 18.9511 106.935 19.476 106.935 19.8258C107.288 22.275 106.407 24.3743 104.997 24.5492C103.411 24.8991 101.825 23.1497 101.648 20.8755C101.648 20.1757 101.648 19.8258 101.648 19.301C101.825 18.0764 102.53 17.2017 103.763 17.0268Z" fill="#9CA3AF"/>
+<path d="M68.4389 102.004C69.7227 102.004 70.7635 100.966 70.7635 99.6848C70.7635 98.404 69.7227 97.3657 68.4389 97.3657C67.155 97.3657 66.1143 98.404 66.1143 99.6848C66.1143 100.966 67.155 102.004 68.4389 102.004Z" fill="#9CA3AF"/>
+<path d="M91.558 102.004C92.8419 102.004 93.8826 100.966 93.8826 99.6848C93.8826 98.404 92.8419 97.3657 91.558 97.3657C90.2742 97.3657 89.2334 98.404 89.2334 99.6848C89.2334 100.966 90.2742 102.004 91.558 102.004Z" fill="#9CA3AF"/>
+<path d="M83.7685 117.234H76.4805C75.3496 117.234 74.4072 116.294 74.4072 115.166C74.4072 114.038 75.3496 113.098 76.4805 113.098H83.7057C84.8366 113.098 85.779 114.038 85.779 115.166C85.8418 116.294 84.8994 117.234 83.7685 117.234Z" fill="#9CA3AF"/>
+<defs><filter id="filter0_d_empty" x="12" y="63.9551" width="135.998" height="95.0449" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="11"/><feGaussianBlur stdDeviation="11"/><feColorMatrix type="matrix" values="0 0 0 0 0.397708 0 0 0 0 0.47749 0 0 0 0 0.575 0 0 0 0.27 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_empty"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_empty" result="shape"/></filter><linearGradient id="paint0_linear_empty" x1="79.9693" y1="73.7744" x2="79.9693" y2="126.55" gradientUnits="userSpaceOnUse"><stop stop-color="#FDFEFF"/><stop offset="0.9964" stop-color="#ECF0F5"/></linearGradient></defs>
+</svg>
+          <div class="empty-text-group">
+            <div class="empty-title">Không có thông tin</div>
+            <div class="empty-desc">Thông tin đang được cập nhật. Vui lòng quay lại sau</div>
+          </div>
+        </div>
+        </section>
+      </section>
+      <div data-component="footer"></div>
+    </main>
+  </div>
+</div>
+</body>
+</html>

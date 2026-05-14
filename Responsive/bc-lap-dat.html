@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PMW — Lắp đặt sửa chữa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    html, body { overflow: hidden; }
+    .bao-cao-wrapper { display:flex; flex-direction:column; height:100vh; }
+    .submod-page.active { flex:1; display:flex !important; min-height:0; }
+    .dv-header { flex-shrink:0; }
+
+    /* ── Scroll area ── */
+    .dt-scroll-area {
+      flex: 1; overflow-y: auto; overflow-x: hidden;
+      padding: 20px 24px; display: flex; flex-direction: column; gap: 24px;
+    }
+    .dt-scroll-area::-webkit-scrollbar { width: 5px; }
+    .dt-scroll-area::-webkit-scrollbar-thumb { background: rgba(17,24,39,0.12); border-radius: 4px; }
+
+    /* ── Card wrapper ── */
+    .dt-section {
+      background: #FFFFFF;
+      border: 1px solid rgba(17,24,39,0.08) !important;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    /* Override dt-table-wrap border từ styles.css */
+    .dt-table-wrap {
+      border: none !important;
+      border-radius: 0 !important;
+      display: flex; flex-direction: column;
+    }
+
+    /* ── 1. Tiêu đề bảng ── */
+    .dt-table-title {
+      background: linear-gradient(90deg, rgba(1,138,190,0.16) 31.49%, rgba(255,255,255,0) 100%);
+      height: 56px;
+      display: flex; align-items: center;
+      padding: 8px 8px 8px 20px; gap: 20px;
+      font-family: 'Pretendard', sans-serif;
+      font-size: 17px; font-weight: 700; line-height: 24px;
+      color: #111827; flex-shrink: 0;
+    }
+
+    /* ── 2. Tiêu đề cột ── */
+    .dt-table { width: 100%; border-collapse: collapse; }
+    .dt-table thead tr { height: 40px; }
+    .dt-table thead th {
+      background: linear-gradient(0deg, rgba(1,138,190,0.08), rgba(1,138,190,0.08)), #FFFFFF;
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 700; font-size: 14px; line-height: 20px;
+      color: #005292;
+      padding: 10px 8px; height: 40px;
+      text-align: right; white-space: nowrap; vertical-align: middle;
+      border-top: none !important;
+      border-bottom: 1px solid rgba(17,24,39,0.08) !important;
+    }
+    .dt-table thead th:first-child {
+      text-align: center; padding-left: 12px;
+      width: 100px; min-width: 100px;
+      background: linear-gradient(0deg, rgba(1,138,190,0.08), rgba(1,138,190,0.08)), #FFFFFF !important;
+    }
+    .dt-table thead th:last-child { padding-right: 12px; }
+
+    /* Override sticky từ styles.css */
+    .dt-table td:first-child { position: static !important; background: #FFFFFF !important; }
+
+    /* ── 3. Body rows ── */
+    .dt-table tbody tr { height: 40px; border-bottom: 1px solid rgba(17,24,39,0.08); }
+    .dt-table tbody tr:last-child { border-bottom: none; }
+    .dt-table tbody tr:hover td { background: rgba(1,138,190,0.04) !important; }
+
+    .dt-table tbody td {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 15px; font-weight: 400; line-height: 22px; color: #4B5563;
+      border: none; vertical-align: middle;
+      padding: 8px 8px; text-align: right; white-space: nowrap;
+      background: #FFFFFF !important;
+    }
+    .dt-table tbody td:first-child { text-align: center; padding-left: 12px; }
+    .dt-table tbody td:last-child   { padding-right: 12px; }
+
+    /* ── 4. Row Tổng ── */
+    .dt-table tr.dt-total td {
+      background: linear-gradient(0deg, rgba(2,69,122,0.02), rgba(2,69,122,0.02)), #FFFFFF !important;
+      border-top: 1px solid rgba(17,24,39,0.08);
+      font-weight: 700; color: #02457A;
+    }
+
+    /* ── Responsive ≤1366px ── */
+    @media (max-width: 1366px) {
+      .dt-scroll-area { padding: 14px 16px; gap: 16px; }
+      .dt-table-title { height: 46px; font-size: 14px; padding: 6px 8px 6px 16px; }
+      .dt-table thead th { font-size: 12px; padding: 8px 6px; }
+      .dt-table thead th:first-child { padding-left: 10px; }
+      .dt-table tbody td { font-size: 13px; padding: 7px 6px; }
+      .dt-table tbody td:first-child { padding-left: 10px; }
+    }
+  </style>
+  <style>
+    @media (max-width:1200px) {
+      .sm-sidebar { width:52px; padding:12px 6px; overflow:hidden; }
+      .sm-sidebar-label,.sm-nav-cat-label,.sm-nav-cat-arrow,
+      .sm-nav-other-label,.sm-sidebar-bottom { display:none; }
+      .sm-nav-cat,.sm-nav-other { justify-content:center; padding:10px; border-radius:10px; }
+      .sm-subnav { display:none !important; }
+    }
+    @media (max-width:900px) {
+      .submod-page.active { flex-direction:column; }
+      .sm-sidebar { width:100%; height:52px; flex-direction:row; flex-shrink:0; overflow-x:auto; padding:0 12px; }
+      .sm-sidebar-label,.sm-sidebar-bottom,.sm-subnav { display:none !important; }
+      .sm-main { overflow-y:auto; }
+      .dt-table-wrap { overflow-x:auto; }
+    }
+    @media (max-width:640px) {
+      .dv-header { padding:0 12px; }
+      .dv-header-sub { display:none; }
+      .sm-content-title { font-size:17px; }
+      .sm-filter-select,.sm-filter-btn { height:32px; font-size:12px; }
+    }
+  </style>
+  <script src="components/components-loader.js" defer></script>
+
+  <style>
+    /* v13 breadcrumb page-level override */
+    .sm-breadcrumb {
+      display:flex !important; flex-direction:row !important; align-items:center !important;
+      align-self:stretch !important; gap:10px !important; height:auto !important;
+      min-height:18px !important; padding:20px 20px 0 20px !important; padding-bottom:0 !important; margin:0 0 8px 0 !important;
+      flex:none !important; flex-grow:0 !important; overflow:hidden !important;
+    }
+    .sm-bc-item, .sm-breadcrumb a, .sm-breadcrumb span {
+      font-family:'Pretendard', var(--font), sans-serif !important; font-weight:400 !important;
+      font-size:13px !important; line-height:18px !important; letter-spacing:0 !important;
+      white-space:nowrap !important; text-decoration:none !important; flex:none !important;
+    }
+    .sm-breadcrumb a.sm-bc-item, .sm-bc-item:not(.active):not(.current) { color:#111827 !important; }
+    .sm-breadcrumb a.sm-bc-item:hover { color:#02457A !important; text-decoration:none !important; }
+    .sm-bc-item.active, .sm-bc-item.current { color:rgba(17,24,39,0.5) !important; }
+    .sm-bc-sep {
+      display:inline-flex !important; align-items:center !important; justify-content:center !important;
+      width:8px !important; height:18px !important; color:rgba(17,24,39,0.5) !important;
+      font-family:'Pretendard', var(--font), sans-serif !important; font-weight:400 !important;
+      font-size:13px !important; line-height:18px !important; flex:none !important;
+    }
+    .sm-bc-sep svg { width:8px !important; height:8px !important; stroke:rgba(17,24,39,0.5) !important; }
+  </style>
+  <link rel="stylesheet" href="responsive.css"/>
+</head>
+<body>
+  <div class="bao-cao-wrapper">
+
+    <div data-component="header"></div>
+
+    <div class="submod-page active">
+
+            <div data-component="sidebar-report"></div>
+
+      <main class="sm-main">
+
+        <div class="sm-breadcrumb">
+          <a class="sm-bc-item" href="index.html">Trang chủ</a>
+          <span class="sm-bc-sep"></span>
+          <a class="sm-bc-item" href="bc-so-lieu-kd.html">Báo cáo số liệu nội bộ</a>
+          <span class="sm-bc-sep"></span>
+          <span class="sm-bc-item active">Lắp đặt sửa chữa</span>
+        </div>
+
+        <div class="sm-content-header">
+          <div class="sm-content-title-wrap">
+            <div class="sm-content-title">Lắp đặt sửa chữa</div>
+            <div class="sm-content-subtitle">Thống kê giá trị xây lắp, số lượng đồng hồ, chiều dài ống lắp mới và cải tạo trong kỳ báo cáo</div>
+          </div>
+                    <div class="sm-filter-row">
+            <div class="sm-filter-group">
+              <label class="sm-filter-label">Tháng</label>
+              <select class="sm-filter-select" id="selectMonth">
+                <option>4</option><option>3</option><option>2</option><option>1</option>
+                <option>12</option><option>11</option><option>10</option><option>9</option>
+                <option>8</option><option>7</option><option>6</option><option>5</option>
+              </select>
+            </div>
+            <div class="sm-filter-group">
+              <label class="sm-filter-label">Năm</label>
+              <select class="sm-filter-select" id="selectYear">
+                <option>2026</option><option>2025</option><option>2024</option>
+              </select>
+            </div>
+            <div class="sm-filter-group">
+              <label class="sm-filter-label">Đơn vị</label>
+              <select class="sm-filter-select">
+                <option>Toàn công ty</option>
+                <option>XN Vũng Tàu</option><option>XN Bà Rịa</option>
+                <option>XN Long Điền</option><option>CN Xuyên Mộc</option><option>CN Châu Đức</option>
+              </select>
+            </div>
+            <button class="sm-filter-btn">Xem</button>
+          </div>
+        </div>
+
+        <div class="sm-scroll">
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;">
+            <div id="smViewLapDat" style="display:flex; flex:1; flex-direction:column; overflow:hidden;">
+              <div class="dt-scroll-area">
+                <div class="dt-section">
+                  <div class="dt-table-wrap">
+                    <div class="dt-table-title">Lắp đặt sửa chữa — 12 tháng năm 2026</div>
+                    <div style="overflow-x:auto;">
+                    <table class="dt-table">
+                      <thead><tr>
+                        <th style="width:60px;text-align:center;">STT</th>
+                        <th style="text-align:left;">Công việc</th>
+                        <th style="text-align:center;">ĐVT</th>
+                        <th>Công ty</th>
+                        <th>12 tháng</th>
+                      </tr></thead>
+                      <tbody>
+<tr><td style="text-align:center;">1</td><td style="text-align:left;font-weight:600;">Tổng giá trị xây lắp</td><td style="text-align:center;">đồng</td><td>30.354.478.805</td><td>30.354.478.805</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— Cải tạo ống D=63</td><td style="text-align:center;">đồng</td><td>6.095.847.386</td><td>6.095.847.386</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— Cải tạo ống D ≥100</td><td style="text-align:center;">đồng</td><td>6.206.697.000</td><td>6.206.697.000</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— CTĐT D=63</td><td style="text-align:center;">đồng</td><td>1.850.683.071</td><td>1.850.683.071</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— CTĐT D≥100</td><td style="text-align:center;">đồng</td><td>6.119.971.000</td><td>6.119.971.000</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— Lắp đặt ĐH khách hàng miễn phí</td><td style="text-align:center;">đồng</td><td>0</td><td>0</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— Lắp đặt ĐH khách hàng có phí</td><td style="text-align:center;">đồng</td><td>725.353.856</td><td>725.353.856</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— Sửa chữa, thay, dời ĐH miễn phí</td><td style="text-align:center;">đồng</td><td>7.275.877.267</td><td>7.275.877.267</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— Sửa chữa, thay, dời ĐH có phí</td><td style="text-align:center;">đồng</td><td>217.027.225</td><td>217.027.225</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— Công trình khác</td><td style="text-align:center;">đồng</td><td>1.863.022.000</td><td>1.863.022.000</td></tr>
+<tr><td style="text-align:center;">2</td><td style="text-align:left;font-weight:600;">Số đồng hồ lắp mới</td><td style="text-align:center;">cái</td><td>1.219</td><td>1.219</td></tr>
+<tr><td style="text-align:center;">3</td><td style="text-align:left;font-weight:600;">Ống trước đồng hồ</td><td style="text-align:center;">mét</td><td>2.144</td><td>2.144</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— D = 25</td><td style="text-align:center;">mét</td><td>2.144</td><td>2.144</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— D = 63</td><td style="text-align:center;">mét</td><td>0</td><td>0</td></tr>
+<tr><td style="text-align:center;">4</td><td style="text-align:left;font-weight:600;">Chiều dài ống CTDT</td><td style="text-align:center;">mét</td><td>9.171</td><td>9.171</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— D ≥ 100</td><td style="text-align:center;">mét</td><td>5.114</td><td>5.114</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— D = 63</td><td style="text-align:center;">mét</td><td>4.057</td><td>4.057</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— D &lt; 63</td><td style="text-align:center;">mét</td><td>0</td><td>0</td></tr>
+<tr><td style="text-align:center;">5</td><td style="text-align:left;font-weight:600;">Chiều dài ống cải tạo</td><td style="text-align:center;">mét</td><td>15.523</td><td>15.523</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— D ≥ 100</td><td style="text-align:center;">mét</td><td>3.311</td><td>3.311</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— D = 63</td><td style="text-align:center;">mét</td><td>12.212</td><td>12.212</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">— D &lt; 63</td><td style="text-align:center;">mét</td><td>0</td><td>0</td></tr>
+<tr><td style="text-align:center;">6</td><td style="text-align:left;font-weight:600;">Thay bảo hành đồng hồ định kỳ</td><td style="text-align:center;">cái</td><td>9.992</td><td>9.992</td></tr>
+<tr><td style="text-align:center;">7</td><td style="text-align:left;font-weight:600;">Thay đồng hồ đột xuất</td><td style="text-align:center;">cái</td><td>232</td><td>232</td></tr>
+<tr><td style="text-align:center;">8</td><td style="text-align:left;font-weight:600;">Mất đồng hồ</td><td style="text-align:center;">cái</td><td>23</td><td>23</td></tr>
+<tr><td style="text-align:center;">9</td><td style="text-align:left;font-weight:600;">Thay STK</td><td style="text-align:center;">cái</td><td>0</td><td>0</td></tr>
+<tr><td style="text-align:center;">10</td><td style="text-align:left;font-weight:600;">Hộp đồng hồ</td><td style="text-align:center;">cái</td><td>9.523</td><td>9.523</td></tr>
+                      </tbody>
+                    </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /smViewLapDat -->
+          </div>
+        </div>
+
+        <div data-component="footer"></div>
+      </main>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.dv-header-logo').addEventListener('click', e => {
+        e.preventDefault(); window.location.href = 'index.html';
+      });
+    });
+  </script>
+</body>
+</html>

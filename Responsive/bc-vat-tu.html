@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PMW — Vật tư – Nhiên liệu – Sản xuất</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    html, body { overflow: hidden; }
+    .bao-cao-wrapper { display:flex; flex-direction:column; height:100vh; }
+    .submod-page.active { flex:1; display:flex !important; min-height:0; }
+    .dv-header { flex-shrink:0; }
+
+    /* ── Scroll area ── */
+    .dt-scroll-area {
+      flex: 1; overflow-y: auto; overflow-x: hidden;
+      padding: 20px 24px; display: flex; flex-direction: column; gap: 24px;
+    }
+    .dt-scroll-area::-webkit-scrollbar { width: 5px; }
+    .dt-scroll-area::-webkit-scrollbar-thumb { background: rgba(17,24,39,0.12); border-radius: 4px; }
+
+    /* ── Card wrapper ── */
+    .dt-section {
+      background: #FFFFFF;
+      border: 1px solid rgba(17,24,39,0.08) !important;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    /* Override dt-table-wrap border từ styles.css */
+    .dt-table-wrap {
+      border: none !important;
+      border-radius: 0 !important;
+      display: flex; flex-direction: column;
+    }
+
+    /* ── 1. Tiêu đề bảng ── */
+    .dt-table-title {
+      background: linear-gradient(90deg, rgba(1,138,190,0.16) 31.49%, rgba(255,255,255,0) 100%);
+      height: 56px;
+      display: flex; align-items: center;
+      padding: 8px 8px 8px 20px; gap: 20px;
+      font-family: 'Pretendard', sans-serif;
+      font-size: 17px; font-weight: 700; line-height: 24px;
+      color: #111827; flex-shrink: 0;
+    }
+
+    /* ── 2. Tiêu đề cột ── */
+    .dt-table { width: 100%; border-collapse: collapse; }
+    .dt-table thead tr { height: 40px; }
+    .dt-table thead th {
+      background: linear-gradient(0deg, rgba(1,138,190,0.08), rgba(1,138,190,0.08)), #FFFFFF;
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 700; font-size: 14px; line-height: 20px;
+      color: #005292;
+      padding: 10px 8px; height: 40px;
+      text-align: right; white-space: nowrap; vertical-align: middle;
+      border-top: none !important;
+      border-bottom: 1px solid rgba(17,24,39,0.08) !important;
+    }
+    .dt-table thead th:first-child {
+      text-align: center; padding-left: 12px;
+      width: 100px; min-width: 100px;
+      background: linear-gradient(0deg, rgba(1,138,190,0.08), rgba(1,138,190,0.08)), #FFFFFF !important;
+    }
+    .dt-table thead th:last-child { padding-right: 12px; }
+
+    /* Override sticky từ styles.css */
+    .dt-table td:first-child { position: static !important; background: #FFFFFF !important; }
+
+    /* ── 3. Body rows thường ── */
+    .dt-table tbody tr { height: 40px; border-bottom: 1px solid rgba(17,24,39,0.08); }
+    .dt-table tbody tr:last-child { border-bottom: none; }
+    .dt-table tbody tr:hover td { background: rgba(1,138,190,0.04) !important; }
+
+    .dt-table tbody td {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 15px; font-weight: 400; line-height: 22px; color: #4B5563;
+      border: none; vertical-align: middle;
+      padding: 8px 8px; text-align: right; white-space: nowrap;
+      background: #FFFFFF !important;
+    }
+    .dt-table tbody td:first-child { text-align: center; padding-left: 12px; }
+    .dt-table tbody td:last-child   { padding-right: 12px; }
+
+    /* ── 4. Row Tổng ── */
+    .dt-table tr.dt-total td {
+      background: linear-gradient(0deg, rgba(2,69,122,0.02), rgba(2,69,122,0.02)), #FFFFFF !important;
+      border-top: 1px solid rgba(17,24,39,0.08);
+      font-weight: 700; color: #02457A;
+    }
+
+    /* ── 5. Section header row (nhóm "Sản xuất, phân phối" / "Vật tư, năng lượng") ── */
+    .dt-table tr.dt-section-header td {
+      background: linear-gradient(0deg, rgba(2,69,122,0.06), rgba(2,69,122,0.06)), #FFFFFF !important;
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 700; font-size: 14px; color: #02457A;
+      padding: 10px 16px;
+      border-top: 1px solid rgba(17,24,39,0.08);
+      border-bottom: 1px solid rgba(17,24,39,0.08);
+    }
+    .dt-table tr.dt-section-header:hover td { background: linear-gradient(0deg, rgba(2,69,122,0.06), rgba(2,69,122,0.06)), #FFFFFF !important; }
+
+    /* ── Responsive ≤1366px ── */
+    @media (max-width: 1366px) {
+      .dt-scroll-area { padding: 14px 16px; gap: 16px; }
+      .dt-table-title { height: 46px; font-size: 14px; padding: 6px 8px 6px 16px; }
+      .dt-table thead th { font-size: 12px; padding: 8px 6px; }
+      .dt-table thead th:first-child { padding-left: 10px; }
+      .dt-table tbody td { font-size: 13px; padding: 7px 6px; }
+      .dt-table tbody td:first-child { padding-left: 10px; }
+    }
+  </style>
+  <style>
+    @media (max-width:1200px) {
+      .sm-sidebar { width:52px; padding:12px 6px; overflow:hidden; }
+      .sm-sidebar-label,.sm-nav-cat-label,.sm-nav-cat-arrow,
+      .sm-nav-other-label,.sm-sidebar-bottom { display:none; }
+      .sm-nav-cat,.sm-nav-other { justify-content:center; padding:10px; border-radius:10px; }
+      .sm-subnav { display:none !important; }
+    }
+    @media (max-width:900px) {
+      .submod-page.active { flex-direction:column; }
+      .sm-sidebar { width:100%; height:52px; flex-direction:row; flex-shrink:0; overflow-x:auto; padding:0 12px; }
+      .sm-sidebar-label,.sm-sidebar-bottom,.sm-subnav { display:none !important; }
+      .sm-main { overflow-y:auto; }
+      .dt-table-wrap { overflow-x:auto; }
+    }
+    @media (max-width:640px) {
+      .dv-header { padding:0 12px; }
+      .dv-header-sub { display:none; }
+      .sm-content-title { font-size:17px; }
+      .sm-filter-select,.sm-filter-btn { height:32px; font-size:12px; }
+    }
+  </style>
+  <script src="components/components-loader.js" defer></script>
+
+  <style>
+    /* v13 breadcrumb page-level override */
+    .sm-breadcrumb {
+      display:flex !important; flex-direction:row !important; align-items:center !important;
+      align-self:stretch !important; gap:10px !important; height:auto !important;
+      min-height:18px !important; padding:20px 20px 0 20px !important; padding-bottom:0 !important; margin:0 0 8px 0 !important;
+      flex:none !important; flex-grow:0 !important; overflow:hidden !important;
+    }
+    .sm-bc-item, .sm-breadcrumb a, .sm-breadcrumb span {
+      font-family:'Pretendard', var(--font), sans-serif !important; font-weight:400 !important;
+      font-size:13px !important; line-height:18px !important; letter-spacing:0 !important;
+      white-space:nowrap !important; text-decoration:none !important; flex:none !important;
+    }
+    .sm-breadcrumb a.sm-bc-item, .sm-bc-item:not(.active):not(.current) { color:#111827 !important; }
+    .sm-breadcrumb a.sm-bc-item:hover { color:#02457A !important; text-decoration:none !important; }
+    .sm-bc-item.active, .sm-bc-item.current { color:rgba(17,24,39,0.5) !important; }
+    .sm-bc-sep {
+      display:inline-flex !important; align-items:center !important; justify-content:center !important;
+      width:8px !important; height:18px !important; color:rgba(17,24,39,0.5) !important;
+      font-family:'Pretendard', var(--font), sans-serif !important; font-weight:400 !important;
+      font-size:13px !important; line-height:18px !important; flex:none !important;
+    }
+    .sm-bc-sep svg { width:8px !important; height:8px !important; stroke:rgba(17,24,39,0.5) !important; }
+  </style>
+  <link rel="stylesheet" href="responsive.css"/>
+</head>
+<body>
+  <div class="bao-cao-wrapper">
+
+    <div data-component="header"></div>
+
+    <div class="submod-page active">
+
+            <div data-component="sidebar-report"></div>
+
+      <main class="sm-main">
+
+        <div class="sm-breadcrumb">
+          <a class="sm-bc-item" href="index.html">Trang chủ</a>
+          <span class="sm-bc-sep"></span>
+          <a class="sm-bc-item" href="bc-so-lieu-kd.html">Báo cáo số liệu nội bộ</a>
+          <span class="sm-bc-sep"></span>
+          <span class="sm-bc-item active">Vật tư – Nhiên liệu – Sản xuất</span>
+        </div>
+
+        <div class="sm-content-header">
+          <div class="sm-content-title-wrap">
+            <div class="sm-content-title">Vật tư – Nhiên liệu – Sản xuất</div>
+            <div class="sm-content-subtitle">Theo dõi sản lượng nước sản xuất, điện tiêu thụ, hóa chất và nhiên liệu tại nhà máy theo tháng</div>
+          </div>
+                    <div class="sm-filter-row">
+            <div class="sm-filter-group">
+              <label class="sm-filter-label">Tháng</label>
+              <select class="sm-filter-select" id="selectMonth">
+                <option>4</option><option>3</option><option>2</option><option>1</option>
+                <option>12</option><option>11</option><option>10</option><option>9</option>
+                <option>8</option><option>7</option><option>6</option><option>5</option>
+              </select>
+            </div>
+            <div class="sm-filter-group">
+              <label class="sm-filter-label">Năm</label>
+              <select class="sm-filter-select" id="selectYear">
+                <option>2026</option><option>2025</option><option>2024</option>
+              </select>
+            </div>
+            <div class="sm-filter-group">
+              <label class="sm-filter-label">Đơn vị</label>
+              <select class="sm-filter-select">
+                <option>Toàn công ty</option>
+                <option>XN Vũng Tàu</option><option>XN Bà Rịa</option>
+                <option>XN Long Điền</option><option>CN Xuyên Mộc</option><option>CN Châu Đức</option>
+              </select>
+            </div>
+            <button class="sm-filter-btn">Xem</button>
+          </div>
+        </div>
+
+        <div class="sm-scroll">
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;">
+            <div id="smViewVatTu" style="display:flex; flex:1; flex-direction:column; overflow:hidden;">
+              <div class="dt-scroll-area">
+                <div class="dt-section">
+                  <div class="dt-table-wrap">
+                    <div class="dt-table-title">Vật tư – Nhiên liệu – Sản xuất tháng 4 năm 2026</div>
+                    <div style="overflow-x:auto;">
+                    <table class="dt-table">
+                      <thead><tr>
+                        <th style="width:60px;text-align:center;">STT</th>
+                        <th style="text-align:left;">Chỉ tiêu</th>
+                        <th style="text-align:center;">Đơn vị tính</th>
+                        <th>Kế hoạch</th>
+                        <th>Thực hiện</th>
+                        <th>% Đạt</th>
+                      </tr></thead>
+                      <tbody>
+<tr class="dt-section-header"><td colspan="6" style="text-align:left;font-weight:700;background:#f0f4f8;padding:10px 16px;color:#02457A;">Sản xuất, phân phối</td></tr>
+<tr><td style="text-align:center;">1</td><td style="text-align:left;font-weight:600;">Nước sản xuất</td><td style="text-align:center;">m³/tháng</td><td>600.000</td><td>700.000</td><td><span style="color:#16A34A;font-weight:500;">116,7%</span></td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">Theo ngày</td><td style="text-align:center;">m³/ngày</td><td>20.000</td><td>22.000</td><td><span style="color:#16A34A;font-weight:500;">110,0%</span></td></tr>
+<tr class="dt-section-header"><td colspan="6" style="text-align:left;font-weight:700;background:#f0f4f8;padding:10px 16px;color:#02457A;">Vật tư, năng lượng</td></tr>
+<tr><td style="text-align:center;">2</td><td style="text-align:left;font-weight:600;">Điện tiêu thụ</td><td style="text-align:center;">kWh/tháng</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">Theo m³</td><td style="text-align:center;">kWh/m³</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">Điện trạm bơm 2</td><td style="text-align:center;">kWh/tháng</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">Điện giếng khai thác</td><td style="text-align:center;">kWh/tháng</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">Điện máy phát</td><td style="text-align:center;">kWh/tháng</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">Dầu máy phát</td><td style="text-align:center;">l/tháng</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">Số giờ mất điện</td><td style="text-align:center;">giờ</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td style="text-align:center;">3</td><td style="text-align:left;font-weight:600;">Javen</td><td style="text-align:center;">kg/tháng</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">Theo m³</td><td style="text-align:center;">g/m³</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">Nhập trong tháng</td><td style="text-align:center;">kg</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td></td><td style="text-align:left;padding-left:24px;">Tồn kho</td><td style="text-align:center;">kg</td><td>—</td><td>—</td><td>—</td></tr>
+                      </tbody>
+                    </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /smViewVatTu -->
+          </div>
+        </div>
+
+        <div data-component="footer"></div>
+      </main>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.dv-header-logo').addEventListener('click', e => {
+        e.preventDefault(); window.location.href = 'index.html';
+      });
+    });
+  </script>
+</body>
+</html>
