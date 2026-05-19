@@ -54,7 +54,17 @@
     }
 
     /* ── 2. Tiêu đề cột — theo Figma Table/Header ── */
-    .dt-table { width: 100%; border-collapse: collapse; }
+    .dt-table { width: 100%; min-width: 1280px; border-collapse: collapse; table-layout: fixed; }
+    /* ── Đồng bộ độ rộng cột cho 2 bảng số liệu kinh doanh ── */
+    .dt-table th:nth-child(1), .dt-table td:nth-child(1) { width: 22%; }
+    .dt-table th:nth-child(2), .dt-table td:nth-child(2) { width: 8%; }
+    .dt-table th:nth-child(3), .dt-table td:nth-child(3) { width: 11%; }
+    .dt-table th:nth-child(4), .dt-table td:nth-child(4) { width: 15%; }
+    .dt-table th:nth-child(5), .dt-table td:nth-child(5) { width: 13%; }
+    .dt-table th:nth-child(6), .dt-table td:nth-child(6) { width: 11%; }
+    .dt-table th:nth-child(7), .dt-table td:nth-child(7) { width: 14%; }
+    .dt-table th:nth-child(8), .dt-table td:nth-child(8) { width: 6%; }
+
     .dt-table thead tr { height: 40px; }
     .dt-table thead th {
       background: linear-gradient(0deg, rgba(1,138,190,0.08), rgba(1,138,190,0.08)), #FFFFFF;
@@ -70,6 +80,7 @@
       border-top: none !important;
       border-bottom: 1px solid rgba(17,24,39,0.08) !important;
       white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis;
       vertical-align: middle;
     }
     .dt-table thead th:first-child {
@@ -94,29 +105,44 @@
       border: none;
       vertical-align: middle; padding: 8px 8px;
       text-align: right; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis;
       background: #FFFFFF !important;
     }
     .dt-table tbody td:first-child  { text-align: left; padding-left: 12px; }
     .dt-table tbody td:last-child    { padding-right: 12px; }
 
+    /* ── Row nhấn mạnh: Tổng / Kỳ trước / Tăng giảm ── */
+    .dt-table tr.dt-total td,
+    .dt-table tr.dt-prev td,
+    .dt-table tr.dt-delta td {
+      background: linear-gradient(
+        0deg,
+        var(--P2_UI_Color-Table-Row-Emphasize, rgba(2, 69, 122, 0.05)) 0%,
+        var(--P2_UI_Color-Table-Row-Emphasize, rgba(2, 69, 122, 0.05)) 100%
+      ), var(--p--Neutral-White, #FFF) !important;
+    }
+
     /* ── Row Tổng ── */
     .dt-table tr.dt-total td {
-      background: linear-gradient(0deg, rgba(2,69,122,0.02), rgba(2,69,122,0.02)), #FFFFFF !important;
       border-top: 1px solid rgba(17,24,39,0.08);
       font-weight: 700; color: #02457A;
     }
     /* ── Row Kỳ trước ── */
     .dt-table tr.dt-prev td {
-      background: linear-gradient(0deg, rgba(2,69,122,0.02), rgba(2,69,122,0.02)), #FFFFFF !important;
-      font-weight: 400; color: #9CA3AF;
+      font-weight: 500; color: #4B5563;
     }
     /* ── Row Tăng giảm ── */
     .dt-table tr.dt-delta td {
-      background: linear-gradient(0deg, rgba(2,69,122,0.02), rgba(2,69,122,0.02)), #FFFFFF !important;
       border-top: 1px solid rgba(17,24,39,0.08);
       font-weight: 400;
     }
-    .dt-table tr.dt-delta td:first-child { color: #6B7280; font-style: italic; }
+    .dt-table tr.dt-total td:first-child,
+    .dt-table tr.dt-prev td:first-child,
+    .dt-table tr.dt-delta td:first-child {
+      font-weight: 700 !important;
+      font-style: italic !important;
+    }
+    .dt-table tr.dt-delta td:first-child { solid rgba(17,24,39,0.08) }
     .val-pos { color: #16A34A !important; font-weight: 600; }
     .val-neg { color: #DC2626 !important; font-weight: 600; }
     .dt-cell-icon { display: inline-flex; align-items: center; gap: 2px; font-weight: 600; }
@@ -179,8 +205,9 @@
     }
     .sm-bc-sep svg { width:8px !important; height:8px !important; stroke:rgba(17,24,39,0.5) !important; }
   </style>
+  <link rel="stylesheet" href="responsive.css?v=37"/>
 </head>
-<body>
+<body class="pmw-page-bc-so-lieu-kd">
   <div class="bao-cao-wrapper">
 
     <div data-component="header"></div>
@@ -208,23 +235,15 @@
             <div class="sm-filter-group">
               <label class="sm-filter-label">Tháng</label>
               <select class="sm-filter-select" id="selectMonth">
-                <option>4</option><option>3</option><option>2</option><option>1</option>
-                <option>12</option><option>11</option><option>10</option><option>9</option>
-                <option>8</option><option>7</option><option>6</option><option>5</option>
+                <option>1</option><option>2</option><option>3</option><option>4</option>
+                <option>5</option><option>6</option><option>7</option><option>8</option>
+                <option>9</option><option>10</option><option>11</option><option>12</option>
               </select>
             </div>
             <div class="sm-filter-group">
               <label class="sm-filter-label">Năm</label>
               <select class="sm-filter-select" id="selectYear">
                 <option>2026</option><option>2025</option><option>2024</option>
-              </select>
-            </div>
-            <div class="sm-filter-group">
-              <label class="sm-filter-label">Đơn vị</label>
-              <select class="sm-filter-select">
-                <option>Toàn công ty</option>
-                <option>XN Vũng Tàu</option><option>XN Bà Rịa</option>
-                <option>XN Long Điền</option><option>CN Xuyên Mộc</option><option>CN Châu Đức</option>
               </select>
             </div>
             <button class="sm-filter-btn">Xem</button>
@@ -242,6 +261,16 @@
                   <div class="dt-table-title">Theo khu vực</div>
                   <div style="overflow-x:auto;">
                   <table class="dt-table">
+                    <colgroup>
+                      <col style="width:22%;">
+                      <col style="width:8%;">
+                      <col style="width:11%;">
+                      <col style="width:15%;">
+                      <col style="width:13%;">
+                      <col style="width:11%;">
+                      <col style="width:14%;">
+                      <col style="width:6%;">
+                    </colgroup>
                     <thead><tr><th>Khu vực</th><th>Số KH</th><th>Số M³ Tiêu Thụ</th><th>Doanh Thu</th><th>Phí BV MT</th><th>Thuế 5%</th><th>Tổng</th><th>Số hóa đơn</th></tr></thead>
                     <tbody><tr><td>Xí Nghiệp Cấp Nước Vũng Tàu</td><td>32.847</td><td>891.250</td><td>15.482.300.000</td><td>1.032.180.000</td><td>774.115.000</td><td>18.938.711.000</td><td>38.210</td></tr>
 <tr><td>Xí Nghiệp Cấp nước Bà Rịa</td><td>18.923</td><td>512.880</td><td>8.934.750.000</td><td>595.650.000</td><td>446.737.500</td><td>10.926.510.000</td><td>22.086</td></tr>
@@ -251,7 +280,7 @@
 <tr><td>Nước bán sỉ cho Phú Mỹ</td><td>2.119</td><td>74.969</td><td>1.526.417.620</td><td>101.760.000</td><td>76.320.000</td><td>1.867.855.082</td><td>2.940</td></tr>
 <tr class="dt-total"><td>Tổng</td><td>76.774</td><td>2.106.569</td><td>36.849.967.620</td><td>2.456.690.000</td><td>1.842.497.500</td><td>45.067.390.882</td><td>90.076</td></tr>
 <tr class="dt-prev"><td>Kỳ trước</td><td>207.774</td><td>5.606.569</td><td>70.849.967.620</td><td>3.818.217.176</td><td>3.542.498.381</td><td>88.713.149.781</td><td>192.860</td></tr>
-<tr class="dt-delta"><td>Tăng giảm</td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>4.127</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>114.681</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>1.998.332.380</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>379.490.176</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>42.617.119</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>2.354.219.882</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>2.784</span></td></tr></tbody>
+<tr class="dt-delta"><td>Tăng/ Giảm</td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>4.127</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>114.681</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>1.998.332.380</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>379.490.176</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>42.617.119</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>2.354.219.882</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>2.784</span></td></tr></tbody>
                   </table>
                   </div>
                 </div>
@@ -263,6 +292,16 @@
                   <div class="dt-table-title">Theo đối tượng khách hàng</div>
                   <div style="overflow-x:auto;">
                   <table class="dt-table">
+                    <colgroup>
+                      <col style="width:22%;">
+                      <col style="width:8%;">
+                      <col style="width:11%;">
+                      <col style="width:15%;">
+                      <col style="width:13%;">
+                      <col style="width:11%;">
+                      <col style="width:14%;">
+                      <col style="width:6%;">
+                    </colgroup>
                     <thead><tr><th>Đối tượng</th><th>Số KH</th><th>Số M³ Tiêu Thụ</th><th>Doanh Thu</th><th>Phí BV MT</th><th>Thuế 5%</th><th>Tổng</th><th>Số hóa đơn</th></tr></thead>
                     <tbody><tr><td>Sinh hoạt đô thị</td><td>32.847</td><td>901.200</td><td>15.612.300.000</td><td>1.040.820.000</td><td>780.615.000</td><td>19.015.789.000</td><td>38.980</td></tr>
 <tr><td>Sinh hoạt nông thôn</td><td>14.220</td><td>380.600</td><td>6.120.540.000</td><td>408.036.000</td><td>306.027.000</td><td>7.481.442.600</td><td>16.820</td></tr>
@@ -272,7 +311,7 @@
 <tr><td>Kinh Doanh</td><td>9.740</td><td>262.900</td><td>4.572.300.000</td><td>304.820.000</td><td>228.615.000</td><td>5.589.481.400</td><td>12.660</td></tr>
 <tr class="dt-total"><td>Tổng</td><td>73.431</td><td>1.991.620</td><td>33.866.480.000</td><td>2.257.765.200</td><td>1.693.324.000</td><td>42.334.498.420</td><td>89.460</td></tr>
 <tr class="dt-prev"><td>Kỳ trước</td><td>196.228</td><td>5.296.350</td><td>64.998.070.380</td><td>3.431.527.000</td><td>2.586.450.000</td><td>77.188.130.080</td><td>188.640</td></tr>
-<tr class="dt-delta"><td>Tăng giảm</td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>3.741</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>98.430</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>1.712.410.000</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>173.761.800</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>93.126.000</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>853.631.660</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>9.180</span></td></tr></tbody>
+<tr class="dt-delta"><td>Tăng/ Giảm</td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>3.741</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>98.430</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>1.712.410.000</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>173.761.800</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>93.126.000</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>853.631.660</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>9.180</span></td></tr></tbody>
                   </table>
                   </div>
                 </div>

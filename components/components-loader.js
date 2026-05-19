@@ -44,9 +44,55 @@
     });
   }
 
+
+
+  function initMobileSidebar() {
+    var sidebar = document.querySelector('.sm-sidebar');
+    var toggle = document.querySelector('.pmw-menu-toggle');
+    if (!sidebar) {
+      if (toggle) toggle.style.display = 'none';
+      document.body.classList.remove('pmw-has-sidebar');
+      return;
+    }
+
+    document.body.classList.add('pmw-has-sidebar');
+
+    var backdrop = document.querySelector('.pmw-sidebar-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'pmw-sidebar-backdrop';
+      document.body.appendChild(backdrop);
+    }
+
+    function setOpen(isOpen) {
+      document.body.classList.toggle('pmw-sidebar-open', isOpen);
+      if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        setOpen(!document.body.classList.contains('pmw-sidebar-open'));
+      });
+    }
+    backdrop.addEventListener('click', function () { setOpen(false); });
+    sidebar.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () { setOpen(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setOpen(false);
+    });
+  }
+
+  function initPageClass() {
+    var current = (location.pathname.split('/').pop() || 'index.html').toLowerCase().replace(/\.html$/, '');
+    document.body.classList.add('pmw-page-' + current.replace(/[^a-z0-9_-]/g, '-'));
+  }
+
   function initComponents() {
+    initPageClass();
     document.querySelectorAll('[data-component]').forEach(loadComponent);
     initActiveMenu();
+    initMobileSidebar();
     document.dispatchEvent(new CustomEvent('pmw:components-loaded'));
   }
 

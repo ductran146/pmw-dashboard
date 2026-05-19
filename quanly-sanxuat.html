@@ -195,7 +195,7 @@
     .sx-table thead th:first-child { padding-left: 20px; }
     .sx-table thead th:last-child  { padding-right: 20px; }
     .sx-table tbody tr { background: #FFFFFF; }
-    .sx-table tbody tr:nth-child(even) { background: #F9FAFB; }
+    .sx-table tbody tr:nth-child(even) { background: #FFFFFF; }
     .sx-table tbody tr:hover { background: rgba(1,138,190,0.02); }
     .sx-table tbody tr:last-child td { border-bottom: none; }
     .sx-table tbody td { border-bottom: 1px solid rgba(17,24,39,0.08); vertical-align: middle; }
@@ -575,6 +575,7 @@
     }
     .sm-bc-sep svg { width:8px !important; height:8px !important; stroke:rgba(17,24,39,0.5) !important; }
   </style>
+  <link rel="stylesheet" href="responsive.css?v=37"/>
 </head>
 <body>
 <div class="bao-cao-wrapper">
@@ -620,7 +621,7 @@
               <option value="2025">2025</option><option value="2024">2024</option>
             </select>
           </div>
-          <button class="sm-filter-btn">Xem</button>
+          <button class="sm-filter-btn" id="btnViewFilter" type="button">Xem</button>
         </div>
       </div>
 
@@ -882,7 +883,7 @@
             <!-- RIGHT: Biểu đồ nước phân phối tháng 4 — table -->
             <div class="sx-chart-card">
               <div class="cc-head">
-                <div class="cc-title">Biểu đồ nước phân phối tháng 4</div>
+                <div class="cc-title" id="waterDistributionTitle">Biểu đồ nước phân phối tháng 4</div>
               </div>
               <div class="cc-table-desc">Cơ cấu sản lượng theo nguồn cấp</div>
               <div style="overflow-x:auto;flex:1;">
@@ -896,31 +897,31 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr data-water-source="was">
                       <td class="td-name"><div class="td-name-main">WAS</div><div class="td-name-sub">Nhà máy nước WAS</div></td>
                       <td class="td-num">142.580</td>
                       <td class="td-num">138.246</td>
                       <td class="td-pct-cell"><div class="td-pct-inner"><span class="td-pct-val">48,2%</span><div class="pct-bar-bg"><div class="pct-bar-fill" style="width:48.2%"></div></div></div></td>
                     </tr>
-                    <tr>
+                    <tr data-water-source="self">
                       <td class="td-name"><div class="td-name-main">Nước tự sản xuất</div><div class="td-name-sub">Nội bộ PMW</div></td>
                       <td class="td-num">82.450</td>
                       <td class="td-num">79.815</td>
                       <td class="td-pct-cell"><div class="td-pct-inner"><span class="td-pct-val">27,8%</span><div class="pct-bar-bg"><div class="pct-bar-fill" style="width:27.8%"></div></div></div></td>
                     </tr>
-                    <tr>
+                    <tr data-water-source="tocTien">
                       <td class="td-name"><div class="td-name-main">Nước mua Tóc Tiên</div><div class="td-name-sub">Nguồn ngoài</div></td>
                       <td class="td-num">48.320</td>
                       <td class="td-num">46.971</td>
                       <td class="td-pct-cell"><div class="td-pct-inner"><span class="td-pct-val">16,4%</span><div class="pct-bar-bg"><div class="pct-bar-fill" style="width:16.4%"></div></div></div></td>
                     </tr>
-                    <tr>
+                    <tr data-water-source="bwaco">
                       <td class="td-name"><div class="td-name-main">BWACO</div><div class="td-name-sub">Cấp nước Bà Rịa – Vũng Tàu</div></td>
                       <td class="td-num">22.180</td>
                       <td class="td-num">21.948</td>
                       <td class="td-pct-cell"><div class="td-pct-inner"><span class="td-pct-val">7,6%</span><div class="pct-bar-bg"><div class="pct-bar-fill" style="width:7.6%"></div></div></div></td>
                     </tr>
-                    <tr class="tr-total">
+                    <tr class="tr-total" data-water-source="total">
                       <td class="td-name"><div class="td-name-main">Tổng cộng</div><div class="td-name-sub">Toàn hệ thống</div></td>
                       <td class="td-num" style="font-weight:600;">295.538</td>
                       <td class="td-num" style="font-weight:600;">286.980</td>
@@ -1021,37 +1022,88 @@ const FONT = "'Pretendard','Montserrat',sans-serif";
   });
 })();
 
-// ── Sidebar navigation ──
-const sxMainContent = document.getElementById('sxMainContent');
-const sxEmptyState  = document.getElementById('sxEmptyState');
-const sxEmptyTitle  = document.getElementById('sxEmptyTitle');
 
-function showDashboard() {
-  if (sxMainContent) sxMainContent.style.display = '';
-  if (sxEmptyState)  sxEmptyState.style.display = 'none';
-}
-function showEmpty(label) {
-  if (sxMainContent) sxMainContent.style.display = 'none';
-  if (sxEmptyState)  sxEmptyState.style.display = 'flex';
-  if (sxEmptyTitle)  sxEmptyTitle.textContent = label || 'Đang phát triển';
-}
-function setActiveNav(el) {
-  document.querySelectorAll('.sm-nav-cat, .sm-nav-other').forEach(n => n.classList.remove('active'));
-  el.classList.add('active');
-  const lbl = el.querySelector('.sm-nav-cat-label, .sm-nav-other-label')?.textContent?.trim() || '';
-  const bcEl    = document.getElementById('smBcCurrent');
-  const titleEl = document.getElementById('smContentTitle');
-  if (bcEl)    bcEl.textContent    = el.dataset.nav === 'dashboard' ? 'Dashboard' : lbl;
-  if (titleEl) titleEl.textContent = el.dataset.nav === 'dashboard' ? 'QUẢN LÝ SẢN XUẤT' : lbl.toUpperCase();
-  if (el.dataset.nav === 'dashboard') showDashboard(); else showEmpty(lbl);
-}
 
-document.getElementById('smNavDashboard')?.addEventListener('click', e => {
-  e.preventDefault(); setActiveNav(document.getElementById('smNavDashboard'));
-});
-document.querySelectorAll('.sm-nav-other[data-nav]').forEach(item => {
-  item.addEventListener('click', e => { e.preventDefault(); setActiveNav(item); });
-});
+// ── Filter tháng/năm: cập nhật bảng "Biểu đồ nước phân phối tháng ..." ──
+(function(){
+  const monthSelect = document.getElementById('selectMonth');
+  const yearSelect = document.getElementById('selectYear');
+  const viewButton = document.getElementById('btnViewFilter');
+  const tableTitle = document.getElementById('waterDistributionTitle');
+
+  const baseRows = {
+    was:     { name: 'WAS', plan: 142580, actual: 138246 },
+    self:    { name: 'Nước tự sản xuất', plan: 82450,  actual: 79815  },
+    tocTien: { name: 'Nước mua Tóc Tiên', plan: 48320,  actual: 46971  },
+    bwaco:   { name: 'BWACO', plan: 22180,  actual: 21948  }
+  };
+
+  const monthFactor = {
+    1: 0.86, 2: 0.89, 3: 0.94, 4: 1.00,
+    5: 1.03, 6: 1.06, 7: 1.08, 8: 1.10,
+    9: 1.07, 10: 1.04, 11: 1.01, 12: 1.12
+  };
+
+  function formatNumber(value) {
+    return Math.round(value).toLocaleString('vi-VN');
+  }
+
+  function formatPercent(value) {
+    return value.toLocaleString('vi-VN', { maximumFractionDigits: 1, minimumFractionDigits: 1 }) + '%';
+  }
+
+  function updateWaterDistributionTable() {
+    if (!monthSelect || !tableTitle) return;
+
+    const month = Number(monthSelect.value || 4);
+    const year = yearSelect?.value || '2026';
+    const factor = monthFactor[month] || 1;
+    const monthLabel = String(month).padStart(2, '0');
+
+    tableTitle.textContent = `Biểu đồ nước phân phối tháng ${monthLabel}/${year}`;
+
+    const rows = Object.entries(baseRows).map(([key, row]) => ({
+      key,
+      plan: Math.round(row.plan * factor),
+      actual: Math.round(row.actual * factor * (0.985 + (month % 4) * 0.006))
+    }));
+
+    const totalPlan = rows.reduce((sum, row) => sum + row.plan, 0);
+    const totalActual = rows.reduce((sum, row) => sum + row.actual, 0);
+
+    rows.forEach(row => {
+      const tr = document.querySelector(`[data-water-source="${row.key}"]`);
+      if (!tr) return;
+
+      const percent = totalActual ? (row.actual / totalActual) * 100 : 0;
+      const numberCells = tr.querySelectorAll('.td-num');
+      const percentText = tr.querySelector('.td-pct-val');
+      const percentBar = tr.querySelector('.pct-bar-fill');
+
+      if (numberCells[0]) numberCells[0].textContent = formatNumber(row.plan);
+      if (numberCells[1]) numberCells[1].textContent = formatNumber(row.actual);
+      if (percentText) percentText.textContent = formatPercent(percent);
+      if (percentBar) percentBar.style.width = `${Math.min(percent, 100).toFixed(1)}%`;
+    });
+
+    const totalRow = document.querySelector('[data-water-source="total"]');
+    if (totalRow) {
+      const totalCells = totalRow.querySelectorAll('.td-num');
+      const totalPercentText = totalRow.querySelector('.td-pct-val');
+      const totalBar = totalRow.querySelector('.pct-bar-fill');
+
+      if (totalCells[0]) totalCells[0].textContent = formatNumber(totalPlan);
+      if (totalCells[1]) totalCells[1].textContent = formatNumber(totalActual);
+      if (totalPercentText) totalPercentText.textContent = '100%';
+      if (totalBar) totalBar.style.width = '100%';
+    }
+  }
+
+  viewButton?.addEventListener('click', updateWaterDistributionTable);
+  updateWaterDistributionTable();
+})();
+
+// ── Sidebar navigation is handled by href links + components-loader active state ──
 document.getElementById('dbLogoBack')?.addEventListener('click', e => {
   e.preventDefault(); window.location.href = 'index.html';
 });

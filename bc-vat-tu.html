@@ -165,8 +165,40 @@
     }
     .sm-bc-sep svg { width:8px !important; height:8px !important; stroke:rgba(17,24,39,0.5) !important; }
   </style>
+  <link rel="stylesheet" href="responsive.css?v=37"/>
+
+  <style>
+    /* STT column hover/emphasize fix */
+    .dt-table td:first-child {
+      position: static !important;
+      background: inherit !important;
+    }
+
+    .dt-table tbody td:first-child {
+      background: inherit !important;
+    }
+
+    .dt-table tbody tr:hover td:first-child {
+      background: rgba(1,138,190,0.04) !important;
+    }
+
+    .dt-table tbody tr.dt-total td:first-child,
+    .dt-table tbody tr.dt-total:hover td:first-child {
+      background: linear-gradient(
+        0deg,
+        var(--P2_UI_Color-Table-Row-Emphasize, rgba(2, 69, 122, 0.05)) 0%,
+        var(--P2_UI_Color-Table-Row-Emphasize, rgba(2, 69, 122, 0.05)) 100%
+      ), var(--p--Neutral-White, #FFF) !important;
+    }
+
+    .dt-table tbody tr.dt-section-header td:first-child,
+    .dt-table tbody tr.dt-section-header:hover td:first-child {
+      background: linear-gradient(0deg, rgba(2,69,122,0.06), rgba(2,69,122,0.06)), #FFFFFF !important;
+    }
+  </style>
+
 </head>
-<body>
+<body class="pmw-page-bc-vat-tu pmw-page-stt-table">
   <div class="bao-cao-wrapper">
 
     <div data-component="header"></div>
@@ -194,23 +226,15 @@
             <div class="sm-filter-group">
               <label class="sm-filter-label">Tháng</label>
               <select class="sm-filter-select" id="selectMonth">
-                <option>4</option><option>3</option><option>2</option><option>1</option>
-                <option>12</option><option>11</option><option>10</option><option>9</option>
-                <option>8</option><option>7</option><option>6</option><option>5</option>
+                <option>1</option><option>2</option><option>3</option><option>4</option>
+                <option>5</option><option>6</option><option>7</option><option>8</option>
+                <option>9</option><option>10</option><option>11</option><option>12</option>
               </select>
             </div>
             <div class="sm-filter-group">
               <label class="sm-filter-label">Năm</label>
               <select class="sm-filter-select" id="selectYear">
                 <option>2026</option><option>2025</option><option>2024</option>
-              </select>
-            </div>
-            <div class="sm-filter-group">
-              <label class="sm-filter-label">Đơn vị</label>
-              <select class="sm-filter-select">
-                <option>Toàn công ty</option>
-                <option>XN Vũng Tàu</option><option>XN Bà Rịa</option>
-                <option>XN Long Điền</option><option>CN Xuyên Mộc</option><option>CN Châu Đức</option>
               </select>
             </div>
             <button class="sm-filter-btn">Xem</button>
