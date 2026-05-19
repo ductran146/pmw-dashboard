@@ -197,6 +197,37 @@
     #smViewTruNuoc .dt-table th:nth-child(5), #smViewTruNuoc .dt-table td:nth-child(5) { width: 220px !important; min-width:220px !important; }
   </style>
   <link rel="stylesheet" href="responsive.css?v=37"/>
+
+  <style>
+    /* STT column hover/emphasize fix */
+    .dt-table td:first-child {
+      position: static !important;
+      background: inherit !important;
+    }
+
+    .dt-table tbody td:first-child {
+      background: inherit !important;
+    }
+
+    .dt-table tbody tr:hover td:first-child {
+      background: rgba(1,138,190,0.04) !important;
+    }
+
+    .dt-table tbody tr.dt-total td:first-child,
+    .dt-table tbody tr.dt-total:hover td:first-child {
+      background: linear-gradient(
+        0deg,
+        var(--P2_UI_Color-Table-Row-Emphasize, rgba(2, 69, 122, 0.05)) 0%,
+        var(--P2_UI_Color-Table-Row-Emphasize, rgba(2, 69, 122, 0.05)) 100%
+      ), var(--p--Neutral-White, #FFF) !important;
+    }
+
+    .dt-table tbody tr.dt-section-header td:first-child,
+    .dt-table tbody tr.dt-section-header:hover td:first-child {
+      background: linear-gradient(0deg, rgba(2,69,122,0.06), rgba(2,69,122,0.06)), #FFFFFF !important;
+    }
+  </style>
+
 </head>
 <body class="pmw-page-bc-tru-nuoc pmw-page-stt-table">
   <div class="bao-cao-wrapper">
