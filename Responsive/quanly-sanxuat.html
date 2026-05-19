@@ -575,7 +575,7 @@
     }
     .sm-bc-sep svg { width:8px !important; height:8px !important; stroke:rgba(17,24,39,0.5) !important; }
   </style>
-  <link rel="stylesheet" href="responsive.css"/>
+  <link rel="stylesheet" href="responsive.css?v=37"/>
 </head>
 <body>
 <div class="bao-cao-wrapper">
@@ -1022,37 +1022,7 @@ const FONT = "'Pretendard','Montserrat',sans-serif";
   });
 })();
 
-// ── Sidebar navigation ──
-const sxMainContent = document.getElementById('sxMainContent');
-const sxEmptyState  = document.getElementById('sxEmptyState');
-const sxEmptyTitle  = document.getElementById('sxEmptyTitle');
-
-function showDashboard() {
-  if (sxMainContent) sxMainContent.style.display = '';
-  if (sxEmptyState)  sxEmptyState.style.display = 'none';
-}
-function showEmpty(label) {
-  if (sxMainContent) sxMainContent.style.display = 'none';
-  if (sxEmptyState)  sxEmptyState.style.display = 'flex';
-  if (sxEmptyTitle)  sxEmptyTitle.textContent = label || 'Đang phát triển';
-}
-function setActiveNav(el) {
-  document.querySelectorAll('.sm-nav-cat, .sm-nav-other').forEach(n => n.classList.remove('active'));
-  el.classList.add('active');
-  const lbl = el.querySelector('.sm-nav-cat-label, .sm-nav-other-label')?.textContent?.trim() || '';
-  const bcEl    = document.getElementById('smBcCurrent');
-  const titleEl = document.getElementById('smContentTitle');
-  if (bcEl)    bcEl.textContent    = el.dataset.nav === 'dashboard' ? 'Dashboard' : lbl;
-  if (titleEl) titleEl.textContent = el.dataset.nav === 'dashboard' ? 'QUẢN LÝ SẢN XUẤT' : lbl.toUpperCase();
-  if (el.dataset.nav === 'dashboard') showDashboard(); else showEmpty(lbl);
-}
-
-document.getElementById('smNavDashboard')?.addEventListener('click', e => {
-  e.preventDefault(); setActiveNav(document.getElementById('smNavDashboard'));
-});
-document.querySelectorAll('.sm-nav-other[data-nav]').forEach(item => {
-  item.addEventListener('click', e => { e.preventDefault(); setActiveNav(item); });
-});
+// ── Sidebar navigation is handled by href links + components-loader active state ──
 document.getElementById('dbLogoBack')?.addEventListener('click', e => {
   e.preventDefault(); window.location.href = 'index.html';
 });
