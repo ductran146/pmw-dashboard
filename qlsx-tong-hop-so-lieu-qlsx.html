@@ -10,250 +10,950 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
   <link rel="stylesheet" href="styles.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
   <script src="components/components-loader.js" defer></script>
   <style>
-    html, body { min-height:100%; overflow-x:hidden; }
-    body { background:#F9FAFB; }
-    .bao-cao-wrapper { min-height:100vh; display:flex; flex-direction:column; }
-    .submod-page.active { flex:1; display:flex !important; min-height:0; }
-    .dv-header { flex-shrink:0; }
-    .sm-main { flex:1; min-width:0; display:flex; flex-direction:column; background:#F9FAFB; }
+    :root {
+      --qlsx-bg: rgba(2,69,122,0.02);
+      --qlsx-card: #FFFFFF;
+      --qlsx-blue-900: #012A50;
+      --qlsx-blue-700: #02457A;
+      --qlsx-blue-600: #005292;
+      --qlsx-line: rgba(17,24,39,0.08);
+      --qlsx-text: #111827;
+      --qlsx-muted: #4B5563;
+    }
 
-    /* Empty module page */
-    .empty-module-content {
-      flex:1;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      padding:20px 0;
-      gap:20px;
-      background:#F9FAFB;
-      min-height:380px;
+    html, body {
+      min-height: 100%;
+      margin: 0;
+      background: var(--qlsx-bg);
+      overflow: hidden;
+      font-family: 'Pretendard', var(--font), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
+
+    .bao-cao-wrapper {
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: var(--qlsx-bg);
+    }
+
+    .submod-page.active {
+      flex: 1 1 auto;
+      min-height: 0;
+      display: flex !important;
+      background: var(--qlsx-bg);
+    }
+
+    .sm-main {
+      flex: 1 1 auto;
+      min-width: 0;
+      min-height: 0;
+      width: auto;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: var(--qlsx-bg);
+    }
+
+    .qlsx-content {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px 0 24px;
+      background: var(--qlsx-bg);
+      scrollbar-gutter: stable;
+    }
+
+    .qlsx-content::-webkit-scrollbar { width: 8px; height: 8px; }
+    .qlsx-content::-webkit-scrollbar-track { background: transparent; }
+    .qlsx-content::-webkit-scrollbar-thumb { background: rgba(17,24,39,0.18); border-radius: 999px; }
+
+
+
+    /* Shared component: business-report-page-head used as page head for QLSX */
+    .business-report-page-head {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 20px;
+      flex: 0 0 auto;
+      align-self: stretch;
+    }
+
+    .business-report-page-head .sm-content-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 20px;
+      min-height: 46px;
+      flex: 0 0 auto;
+    }
+
+    .business-report-page-head .sm-content-title-wrap {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .business-report-page-head .sm-content-title {
+      margin: 0;
+      color: var(--qlsx-text);
+      font-family: 'Pretendard', var(--font), sans-serif;
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 700;
+    }
+
+    .business-report-page-head .sm-content-subtitle {
+      color: var(--qlsx-muted);
+      font-family: 'Pretendard', var(--font), sans-serif;
+      font-size: 13px;
+      line-height: 18px;
+      font-weight: 400;
+      white-space: normal;
+    }
+
+    .business-report-page-head .sm-filter-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex: 0 0 auto;
+    }
+
+    .business-report-page-head .sm-filter-group {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .business-report-page-head .sm-filter-label {
+      color: var(--qlsx-muted);
+      font-family: 'Pretendard', var(--font), sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .business-report-page-head .sm-filter-select {
+      width: 95px;
+      height: 40px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(17,24,39,0.08);
+      background: rgba(2,69,122,0.02);
+      color: var(--qlsx-text);
+      font-family: 'Pretendard', var(--font), sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      outline: none;
+    }
+
+    .business-report-page-head .sm-filter-btn {
+      width: 70px;
+      height: 40px;
+      padding: 10px 20px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--qlsx-blue-700);
+      box-shadow: 0 4px 6px -2px rgba(17,24,39,0.05), 0 12px 16px -4px rgba(17,24,39,0.08);
+      color: #F9FAFB;
+      font-family: 'Pretendard', var(--font), sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
     .sm-breadcrumb {
-      display:flex !important;
-      flex-direction:row !important;
-      align-items:center !important;
-      align-self:stretch !important;
-      padding:0 20px !important;
-      gap:2px !important;
-      height:18px !important;
-      min-height:18px !important;
-      margin:0 !important;
-      overflow:hidden !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 2px !important;
+      width: 100% !important;
+      min-height: 18px !important;
+      padding: 0 20px !important;
+      margin: 0 !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+      flex: 0 0 auto !important;
     }
-    .sm-bc-item, .sm-breadcrumb a, .sm-breadcrumb span {
-      font-family:'Pretendard', var(--font), sans-serif !important;
-      font-style:normal !important;
-      font-weight:400 !important;
-      font-size:13px !important;
-      line-height:18px !important;
-      white-space:nowrap !important;
-      text-decoration:none !important;
-      flex:none !important;
+
+    .sm-bc-item,
+    .sm-breadcrumb a,
+    .sm-breadcrumb span {
+      font-family: 'Pretendard', var(--font), sans-serif !important;
+      font-size: 13px !important;
+      line-height: 18px !important;
+      white-space: nowrap !important;
+      text-decoration: none !important;
     }
-    .sm-breadcrumb a.sm-bc-item,
-    .sm-bc-item:not(.active):not(.current) { color:#111827 !important; }
-    .sm-breadcrumb a.sm-bc-item:hover { color:#02457A !important; }
-    .sm-bc-item.active, .sm-bc-item.current { color:rgba(17,24,39,0.5) !important; }
+    .sm-breadcrumb a.sm-bc-item { color: var(--qlsx-text) !important; font-weight: 400 !important; }
+    .sm-bc-item.active { color: rgba(17,24,39,0.5) !important; font-weight: 400 !important; }
     .sm-bc-sep {
-      width:16px !important;
-      height:16px !important;
-      display:inline-flex !important;
-      align-items:center !important;
-      justify-content:center !important;
-      color:rgba(17,24,39,0.21) !important;
-      font-size:13px !important;
-      line-height:16px !important;
+      width: 16px !important;
+      height: 16px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: rgba(17,24,39,0.21) !important;
+      flex: 0 0 16px !important;
     }
-    .empty-page-title {
-      display:flex;
-      flex-direction:row;
-      justify-content:space-between;
-      align-items:center;
-      align-self:stretch;
-      padding:0 20px;
-      gap:7px;
-      min-height:46px;
+
+    .qlsx-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 20px;
+      box-sizing: border-box;
+      flex: 0 0 auto;
     }
-    .empty-page-title-inner {
-      display:flex;
-      flex-direction:column;
-      align-items:flex-start;
-      padding:0;
-      flex:1;
-      min-width:0;
+
+    .qlsx-title-wrap { flex: 1 1 auto; min-width: 0; }
+    .qlsx-title {
+      margin: 0;
+      font-family: var(--font), 'Pretendard', sans-serif;
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 700;
+      color: var(--qlsx-text);
     }
-    .empty-page-heading {
-      font-family:'Pretendard', var(--font), sans-serif;
-      font-style:normal;
-      font-weight:700;
-      font-size:20px;
-      line-height:28px;
-      color:#111827;
-      align-self:stretch;
-      margin:0;
+    .qlsx-subtitle {
+      margin: 0;
+      font-family: var(--font), 'Pretendard', sans-serif;
+      font-size: 13px;
+      line-height: 18px;
+      font-weight: 400;
+      color: var(--qlsx-muted);
     }
-    .empty-page-desc {
-      font-family:'Pretendard', var(--font), sans-serif;
-      font-style:normal;
-      font-weight:400;
-      font-size:13px;
-      line-height:18px;
-      color:#4B5563;
-      align-self:stretch;
-      margin:0;
+
+    .qlsx-filter-row {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
-    .empty-main {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:flex-start;
-      padding:0;
-      gap:20px;
-      width:346px;
-      min-height:236px;
-      flex:0 0 auto;
-      margin:0 auto;
+    .qlsx-filter-group { display: flex; align-items: center; gap: 4px; }
+    .qlsx-filter-label {
+      font-family: var(--font), 'Pretendard', sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+      color: var(--qlsx-muted);
+      white-space: nowrap;
     }
-    .empty-state {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      text-align:center;
-      width:346px;
-      max-width:100%;
-      margin:0 auto;
-      padding:0;
-      gap:20px;
+    .qlsx-select {
+      width: 95px;
+      height: 40px;
+      padding: 10px 38px 10px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--qlsx-line);
+      background-color: rgba(2,69,122,0.02);
+      color: var(--qlsx-text);
+      font-family: var(--font), 'Pretendard', sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      outline: none;
+      appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, #4B5563 50%), linear-gradient(135deg, #4B5563 50%, transparent 50%);
+      background-position: calc(100% - 18px) 17px, calc(100% - 13px) 17px;
+      background-size: 5px 5px;
+      background-repeat: no-repeat;
     }
-    .empty-state svg {
-      width:160px;
-      height:160px;
-      flex:none;
-      margin:0;
+    .qlsx-filter-btn {
+      width: 70px;
+      height: 40px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--qlsx-blue-700);
+      box-shadow: 0 4px 6px -2px rgba(17,24,39,0.05), 0 12px 16px -4px rgba(17,24,39,0.08);
+      color: #F9FAFB;
+      font-family: var(--font), 'Pretendard', sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 700;
+      cursor: pointer;
     }
-    .empty-text-group {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      padding:0;
-      gap:10px;
-      width:346px;
-      max-width:100%;
+    .qlsx-filter-btn:hover { background: #0061B1; }
+
+    .qlsx-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      padding: 0 20px;
+      box-sizing: border-box;
+      flex: 0 0 auto;
     }
-    .empty-title {
-      font-family:'Pretendard', var(--font), sans-serif;
-      font-style:normal;
-      font-weight:700;
-      font-size:17px;
-      line-height:24px;
-      color:#111827;
-      margin:0;
-      text-align:center;
+    .qlsx-kpi-card {
+      min-width: 0;
+      min-height: 158px;
+      background: var(--qlsx-card);
+      border: 1px solid var(--qlsx-line);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform .18s, box-shadow .2s, border-color .2s;
     }
-    .empty-desc {
-      font-family:'Pretendard', var(--font), sans-serif;
-      font-style:normal;
-      font-weight:400;
-      font-size:15px;
-      line-height:22px;
-      color:#4B5563;
-      margin:0;
-      text-align:center;
-      width:346px;
-      max-width:100%;
+    .qlsx-kpi-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(2,69,122,0.10); border-color: rgba(2,69,122,0.18); }
+    .qlsx-kpi-head {
+      height: 52px;
+      display: flex;
+      align-items: center;
+      padding: 8px 8px 8px 16px;
+      gap: 20px;
+      background: linear-gradient(90deg, rgba(1,138,190,0.16) 31.49%, rgba(255,255,255,0) 100%);
+      box-sizing: border-box;
+      flex: 0 0 auto;
     }
-    .dv-footer { margin-top:auto; }
-    @media (max-width:900px) {
-      .submod-page.active { flex-direction:column; }
-      .sm-sidebar { width:100%; }
-      .empty-module-content { padding:16px 0; }
+    .qlsx-kpi-title {
+      flex: 1 1 auto;
+      min-width: 0;
+      color: var(--qlsx-blue-900);
+      font-family: var(--font), 'Pretendard', sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    @media (max-width:640px) {
-      .empty-page-title { padding:0 16px; }
-      .sm-breadcrumb { padding:0 16px !important; }
-      .empty-main, .empty-state, .empty-text-group, .empty-desc { width:100%; max-width:320px; }
-      .empty-state svg { width:128px; height:128px; }
+    .qlsx-kpi-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: rgba(1,138,190,0.08);
+      color: var(--qlsx-blue-700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 36px;
     }
-  
-    /* v22 — chuẩn hóa empty-state page */
-    .empty-module-content {
+    .qlsx-kpi-value {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 0 16px;
+      min-width: 0;
+    }
+    .qlsx-kpi-number {
+      font-family: var(--font), 'Pretendard', sans-serif;
+      font-size: 28px;
+      line-height: 36px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--qlsx-text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .qlsx-kpi-unit {
+      font-family: var(--font), 'Pretendard', sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      color: rgba(17,24,39,0.5);
+      white-space: nowrap;
+    }
+    .qlsx-kpi-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 0 16px 12px;
+      margin-top: auto;
+      box-sizing: border-box;
+    }
+    .qlsx-kpi-stat {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(2,69,122,0.02);
+      box-sizing: border-box;
+    }
+    .qlsx-kpi-stat-label {
+      color: var(--qlsx-muted);
+      font-family: var(--font), 'Pretendard', sans-serif;
+      font-size: 13px;
+      line-height: 18px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .qlsx-kpi-stat-value {
+      min-width: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--qlsx-muted);
+      font-family: var(--font), 'Pretendard', sans-serif;
+      font-size: 15px;
+      line-height: 22px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .qlsx-kpi-stat-value.up { color: #16A34A; }
+    .qlsx-kpi-stat-value.down { color: #DC2626; }
+    .qlsx-kpi-stat-value svg { width: 16px; height: 16px; flex: 0 0 16px; }
+
+    .qlsx-chart-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      padding: 0 20px;
+      box-sizing: border-box;
+      flex: 1 1 auto;
+      min-height: 520px;
+    }
+    .qlsx-panel {
+      min-width: 0;
+      min-height: 520px;
+      background: var(--qlsx-card);
+      border: 1px solid var(--qlsx-line);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .qlsx-panel-head {
+      min-height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 8px 20px;
+      gap: 20px;
+      background: linear-gradient(90deg, rgba(1,138,190,0.16) 31.49%, rgba(255,255,255,0) 100%);
+      box-sizing: border-box;
+      flex: 0 0 auto;
+    }
+    .qlsx-panel-title {
+      color: var(--qlsx-blue-900);
+      font-family: var(--font), 'Pretendard', sans-serif;
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 700;
+    }
+    .qlsx-panel-meta {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 16px 20px;
+      color: var(--qlsx-muted);
+      font-family: var(--font), 'Pretendard', sans-serif;
+      font-size: 13px;
+      line-height: 18px;
+      box-sizing: border-box;
+      flex: 0 0 auto;
+    }
+
+    .donut-row {
+      flex: 1 1 auto;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 0 20px 10px;
+      box-sizing: border-box;
+    }
+    .donut-block { min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+    .donut-year {
+      margin: 0 0 18px;
+      color: var(--qlsx-blue-900);
+      font-family: var(--font), 'Pretendard', sans-serif;
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .donut-wrap {
+      position: relative;
+      width: min(250px, 100%);
+      aspect-ratio: 1/1;
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+    }
+    .donut-wrap canvas {
+      position: absolute;
+      inset: 0;
+      width: 100% !important;
+      height: 100% !important;
+      display: block !important;
+    }
+    .donut-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      pointer-events: none;
+    }
+    .donut-center-value { color: #16A34A; font-family: var(--font), 'Pretendard', sans-serif; font-size: 20px; line-height: 28px; font-weight: 700; white-space: nowrap; }
+    .donut-center-unit { color: var(--qlsx-blue-900); font-family: var(--font), 'Pretendard', sans-serif; font-size: 13px; line-height: 18px; }
+    .qlsx-legend {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 28px;
+      padding: 0 20px 20px;
+      box-sizing: border-box;
+      flex: 0 0 auto;
+    }
+    .legend-item { display: inline-flex; align-items: center; gap: 8px; color: var(--qlsx-muted); font-family: var(--font), 'Pretendard', sans-serif; font-size: 14px; line-height: 20px; white-space: nowrap; }
+    .legend-dot { width: 12px; height: 12px; flex: 0 0 12px; border-radius: 2px; }
+
+    .well-chart-body { flex: 1 1 auto; min-height: 0; padding: 20px; display: flex; flex-direction: column; box-sizing: border-box; }
+    .well-bars {
+      position: relative;
+      flex: 1 1 auto;
+      min-height: 320px;
+      display: grid;
+      grid-template-columns: 90px repeat(5, minmax(0, 1fr));
+      align-items: stretch;
+      overflow: hidden;
+    }
+    .well-bars::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 0 90px;
+      background-image:
+        linear-gradient(to bottom, #E5E7EB 0 6px, transparent 6px 12px),
+        linear-gradient(to bottom, #E5E7EB 0 6px, transparent 6px 12px),
+        linear-gradient(to bottom, #E5E7EB 0 6px, transparent 6px 12px),
+        linear-gradient(to bottom, #E5E7EB 0 6px, transparent 6px 12px),
+        linear-gradient(to bottom, #E5E7EB 0 6px, transparent 6px 12px),
+        linear-gradient(to bottom, #E5E7EB 0 6px, transparent 6px 12px);
+      background-size: 1px 12px;
+      background-position: 0 0, 20% 0, 40% 0, 60% 0, 80% 0, 100% 0;
+      background-repeat: repeat-y;
+      pointer-events: none;
+    }
+    .well-legend-col, .well-group { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; min-width: 0; }
+    .well-bar-pair { height: 270px; display: flex; align-items: flex-end; justify-content: center; gap: 5px; margin-bottom: 1px; }
+    .well-bar { width: 24px; min-height: 8px; border-radius: 4px 4px 0 0; }
+    .well-bar.y2025 { background: #005292; }
+    .well-bar.y2026 { background: rgba(1,138,190,0.36); }
+    .well-table-row {
       width: 100%;
-      min-height: calc(100vh - 116px);
-      align-items: center !important;
-      justify-content: flex-start !important;
-      padding: 20px 0 !important;
-      gap: 20px !important;
-      background: #F9FAFB !important;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 0;
+      box-sizing: border-box;
+      color: var(--qlsx-muted);
+      font-family: var(--font), 'Pretendard', sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: center;
+      white-space: nowrap;
     }
-    .empty-page-title { width: 100% !important; }
-    .empty-main {
-      width: 346px !important;
-      min-height: 236px !important;
-      margin: 0 auto !important;
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      gap: 20px !important;
+    .well-table-row.name { background: rgba(1,138,190,0.08); color: var(--qlsx-blue-600); font-weight: 600; }
+    .well-legend-mark { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; }
+    .well-mini-bar { width: 10px; height: 18px; border-radius: 4px 4px 0 0; }
+
+    @media (max-width: 1512px) {
+      .qlsx-kpi-card { min-height: 142px; gap: 10px; }
+      .qlsx-kpi-head { height: 46px; }
+      .qlsx-kpi-number { font-size: 24px; line-height: 32px; }
+      .qlsx-panel { min-height: 500px; }
+      .donut-wrap { width: min(210px, 100%); }
+      .well-bar-pair { height: 240px; }
     }
-    .empty-state {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important;
-      gap: 20px !important;
-      width: 346px !important;
-      text-align: center !important;
+
+    @media (max-width: 1280px) {
+      .qlsx-header { flex-direction: column; align-items: stretch; }
+      .business-report-page-head .sm-content-header { flex-direction: column; align-items: stretch; padding: 0 16px !important; gap: 16px !important; }
+      .business-report-page-head .sm-filter-row { flex-wrap: wrap; gap: 10px !important; }
+      .business-report-page-head .sm-content-title { font-size: 19px !important; line-height: 26px !important; }
+      .business-report-page-head .sm-content-subtitle { font-size: 13px !important; line-height: 18px !important; }
+      .qlsx-filter-row { justify-content: flex-start; flex-wrap: wrap; }
+      .qlsx-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .qlsx-chart-grid { grid-template-columns: 1fr; min-height: 0; }
+      .qlsx-panel { min-height: 520px; }
     }
-    .empty-state svg { width:160px !important; height:160px !important; flex:0 0 auto !important; display:block !important; }
-    .empty-title { font-size:17px !important; line-height:24px !important; font-weight:700 !important; color:#111827 !important; }
-    .empty-desc { font-size:15px !important; line-height:22px !important; font-weight:400 !important; color:#4B5563 !important; }
-</style>
-  <link rel="stylesheet" href="responsive.css?v=37"/>
+
+    @media (max-width: 900px) {
+      html, body { height: 100% !important; overflow: hidden !important; }
+      .bao-cao-wrapper { height: 100dvh !important; min-height: 100dvh !important; }
+      .submod-page.active { flex: 1 1 auto !important; min-height: 0 !important; }
+      .sm-main { width: 100% !important; flex: 1 1 auto !important; min-height: 0 !important; overflow: hidden !important; }
+      .qlsx-content {
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        padding: 20px 0 24px !important;
+        gap: 20px !important;
+        scrollbar-gutter: auto !important;
+      }
+      .sm-breadcrumb { padding: 0 16px !important; overflow-x: auto !important; }
+      .qlsx-header { padding: 0 16px !important; gap: 16px !important; }
+      .qlsx-title { font-size: 24px !important; line-height: 32px !important; }
+      .qlsx-subtitle { font-size: 15px !important; line-height: 22px !important; }
+      .qlsx-filter-row { display: grid !important; grid-template-columns: 1fr 1fr 88px !important; gap: 10px !important; align-items: end !important; }
+      .qlsx-filter-group { display: grid !important; grid-template-columns: auto minmax(0,1fr) !important; align-items: center !important; gap: 8px !important; }
+      .qlsx-select, .qlsx-filter-btn { width: 100% !important; height: 48px !important; }
+      .qlsx-kpi-grid, .qlsx-chart-grid { padding: 0 16px !important; grid-template-columns: 1fr !important; gap: 12px !important; flex: 0 0 auto !important; min-height: 0 !important; }
+      .qlsx-kpi-card { min-height: 146px !important; }
+      .qlsx-panel { min-height: 0 !important; height: auto !important; }
+      .donut-row { grid-template-columns: 1fr !important; gap: 24px !important; padding: 0 16px 18px !important; }
+      .donut-wrap { width: min(230px, 68vw) !important; }
+      .well-chart-body { min-height: 360px !important; overflow-x: auto !important; overflow-y: hidden !important; padding: 16px !important; }
+      .well-bars { min-width: 720px !important; min-height: 330px !important; height: 330px !important; }
+    }
+
+    @media (max-width: 560px) {
+      .qlsx-filter-row { grid-template-columns: 1fr !important; }
+      .qlsx-filter-group { grid-template-columns: 56px minmax(0,1fr) !important; }
+      .qlsx-kpi-stats { grid-template-columns: 1fr !important; }
+      .qlsx-kpi-number { font-size: 26px !important; line-height: 34px !important; }
+      .donut-wrap { width: min(220px, 70vw) !important; }
+      .qlsx-panel-head { min-height: 48px !important; padding: 10px 16px !important; }
+      .qlsx-panel-title { font-size: 15px !important; line-height: 22px !important; }
+      .qlsx-panel-meta { padding: 10px 16px !important; }
+      .qlsx-legend { gap: 12px !important; padding: 0 14px 16px !important; }
+    }
+
+    @media (max-width: 380px) {
+      .donut-wrap { width: min(190px, 70vw) !important; }
+      .donut-center-value { font-size: 17px !important; line-height: 24px !important; }
+      .donut-center-unit { font-size: 11px !important; line-height: 15px !important; }
+    }
+  </style>
+  <link rel="stylesheet" href="responsive.css?v=38"/>
 </head>
 <body>
 <div class="bao-cao-wrapper">
   <div data-component="header"></div>
+
   <div class="submod-page active">
     <div data-component="sidebar-production"></div>
+
     <main class="sm-main">
-      <section class="empty-module-content">
-      <div class="sm-breadcrumb">
-        <a class="sm-bc-item" href="quanly-sanxuat.html">Quản lý sản xuất</a>
-        <span class="sm-bc-sep"></span>
-        <span class="sm-bc-item active">Tổng hợp số liệu QLSX</span>
-      </div>
-        <div class="empty-page-title">
-          <div class="empty-page-title-inner">
-            <h1 class="empty-page-heading">Tổng hợp số liệu QLSX</h1>
-            <p class="empty-page-desc">Thông tin đang được cập nhật. Vui lòng quay lại sau</p>
-          </div>
+      <section class="qlsx-content">
+        <div data-component="business-report-page-head"></div>
+
+        <div class="qlsx-kpi-grid">
+          <article class="qlsx-kpi-card">
+            <div class="qlsx-kpi-head">
+              <div class="qlsx-kpi-title">Nước sản xuất</div>
+              <div class="qlsx-kpi-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.3337 11.6665C13.3337 13.5074 11.8412 14.9998 10.0003 14.9998M2.91699 11.3982C2.91699 7.91139 5.90098 4.46573 7.99543 2.47669C9.13291 1.39644 10.8677 1.39644 12.0052 2.47669C14.0997 4.46573 17.0837 7.91139 17.0837 11.3982C17.0837 14.8168 14.4013 18.3332 10.0003 18.3332C5.59931 18.3332 2.91699 14.8168 2.91699 11.3982Z" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+              </div>
+            </div>
+            <div class="qlsx-kpi-value"><span class="qlsx-kpi-number" data-kpi="water">5.947.610</span><span class="qlsx-kpi-unit">m³</span></div>
+            <div class="qlsx-kpi-stats">
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Kế hoạch</span><span class="qlsx-kpi-stat-value" data-kpi="waterPlan">0%</span></div>
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Cùng kỳ</span><span class="qlsx-kpi-stat-value up" data-kpi="waterYoY"><svg viewBox="0 0 16 16" fill="none"><path d="M11.23 6.71 8.01 3.5 4.8 6.71M8.01 12.5V3.59" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>106.06%</span></div>
+            </div>
+          </article>
+
+          <article class="qlsx-kpi-card">
+            <div class="qlsx-kpi-head">
+              <div class="qlsx-kpi-title">Điện tiêu thụ</div>
+              <div class="qlsx-kpi-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.49967 1.6665V4.1665M12.4997 1.6665V4.1665M9.99967 14.9998V18.3332M9.99967 14.9998C6.90457 14.9998 5.69639 13.7362 5.26304 10.8816L4.82661 8.0067C4.55565 6.22183 4.42017 5.3294 4.9124 4.74795C5.40462 4.1665 6.29559 4.1665 8.07752 4.1665H11.9218C13.7038 4.1665 14.5948 4.1665 15.0869 4.74795C15.5792 5.3294 15.4437 6.22183 15.1728 8.0067L14.7363 10.8816C14.3029 13.7362 13.0948 14.9998 9.99967 14.9998ZM10.5779 7.08317L8.83541 8.89559C8.64866 9.08975 8.78249 9.36925 9.08699 9.42092L10.9123 9.73092C11.237 9.786 11.3608 10.0954 11.1338 10.2843L8.97183 12.0832" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+            <div class="qlsx-kpi-value"><span class="qlsx-kpi-number" data-kpi="power">0.917</span><span class="qlsx-kpi-unit">kwh/ m³</span></div>
+            <div class="qlsx-kpi-stats">
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Kế hoạch</span><span class="qlsx-kpi-stat-value" data-kpi="powerPlan">0%</span></div>
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Cùng kỳ</span><span class="qlsx-kpi-stat-value down" data-kpi="powerYoY"><svg viewBox="0 0 16 16" fill="none"><path d="M11.23 9.29 8.01 12.5 4.8 9.29M8.01 3.5v8.91" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>105.91%</span></div>
+            </div>
+          </article>
+
+          <article class="qlsx-kpi-card">
+            <div class="qlsx-kpi-head">
+              <div class="qlsx-kpi-title">Sử dụng PAC</div>
+              <div class="qlsx-kpi-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.21336 4.69159C6.35703 3.23459 4.91667 2 4.91667 2C4.91667 2 2 4.5 2 6.58333C2 7.68002 2.60528 8.63534 3.5 9.13345M16.1573 12.2314C17.2396 12.6843 18 13.7534 18 15C18 16.6569 16.6569 18 15 18C13.9565 18 13.0375 17.4672 12.5 16.6589M10.0025 15.75C12.4724 15.75 14.4747 13.7477 14.4747 11.2778C14.4747 8.08333 10.0025 4.25 10.0025 4.25C10.0025 4.25 5.53027 8.08333 5.53027 11.2778C5.53027 13.7477 7.53255 15.75 10.0025 15.75Z" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+              </div>
+            </div>
+            <div class="qlsx-kpi-value"><span class="qlsx-kpi-number" data-kpi="pac">20.41</span><span class="qlsx-kpi-unit">g/ m³</span></div>
+            <div class="qlsx-kpi-stats">
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Kế hoạch</span><span class="qlsx-kpi-stat-value" data-kpi="pacPlan">0%</span></div>
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Cùng kỳ</span><span class="qlsx-kpi-stat-value down" data-kpi="pacYoY"><svg viewBox="0 0 16 16" fill="none"><path d="M11.23 9.29 8.01 12.5 4.8 9.29M8.01 3.5v8.91" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>63.78%</span></div>
+            </div>
+          </article>
+
+          <article class="qlsx-kpi-card">
+            <div class="qlsx-kpi-head">
+              <div class="qlsx-kpi-title">Sử dụng CLO</div>
+              <div class="qlsx-kpi-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.66667 1.66748H13.3334M4.611 9.29257C4.611 9.29257 7.111 8.52099 9.19435 10.8356M15.4444 9.67832C15.4444 9.67832 14.9347 10.4943 14.1944 10.8357M7.93911 1.66748V5.21531C7.93911 5.76695 7.64599 6.24259 7.1617 6.50214C4.67404 7.83531 2.33746 11.6124 4.78841 15.4835C5.337 16.4331 7.14737 18.3324 10.0001 18.3324C12.8528 18.3324 14.6631 16.4331 15.2117 15.4835C17.6627 11.6124 15.3261 7.83531 12.8384 6.50213C12.3541 6.24259 12.0604 5.76695 12.0604 5.21531V1.66748M11.7708 11.6675H11.6667M8.43752 15.0008H8.33333M11.875 11.6675C11.875 11.7826 11.7817 11.8758 11.6667 11.8758C11.5516 11.8758 11.4583 11.7826 11.4583 11.6675C11.4583 11.5524 11.5516 11.4591 11.6667 11.4591C11.7817 11.4591 11.875 11.5524 11.875 11.6675ZM8.54168 15.0008C8.54168 15.1159 8.44835 15.2091 8.33333 15.2091C8.21828 15.2091 8.125 15.1159 8.125 15.0008C8.125 14.8857 8.21828 14.7925 8.33333 14.7925C8.44835 14.7925 8.54168 14.8857 8.54168 15.0008Z" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+              </div>
+            </div>
+            <div class="qlsx-kpi-value"><span class="qlsx-kpi-number" data-kpi="clo">3.07</span><span class="qlsx-kpi-unit">g/ m³</span></div>
+            <div class="qlsx-kpi-stats">
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Kế hoạch</span><span class="qlsx-kpi-stat-value" data-kpi="cloPlan">0%</span></div>
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Cùng kỳ</span><span class="qlsx-kpi-stat-value up" data-kpi="cloYoY"><svg viewBox="0 0 16 16" fill="none"><path d="M11.23 6.71 8.01 3.5 4.8 6.71M8.01 12.5V3.59" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>98.08%</span></div>
+            </div>
+          </article>
         </div>
-        <section class="empty-main">
-        <div class="empty-state">
-          <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M80 144C115.34 144 144 115.363 144 80C144 44.6373 115.34 16 80 16C44.6599 16 16 44.6373 16 80C16 115.363 44.6599 144 80 144Z" fill="#111827" fill-opacity="0.08"/>
-<path d="M125.999 75.7634V112.253C125.999 119.834 119.818 126 112.118 126H47.8808C40.2818 126 34.1013 119.935 34 112.354C34 112.253 34 112.253 34 112.152V75.7634C34 75.6624 34 75.6624 34 75.5613C34 75.3591 34 75.157 34.1013 74.9548C34.2026 74.6516 34.304 74.4494 34.4053 74.1462L51.6297 41.2955C52.2376 39.9815 53.5548 39.2739 54.9732 39.2739H104.924C106.342 39.2739 107.558 39.9815 108.268 41.2955L125.492 74.1462C125.593 74.3483 125.695 74.6516 125.796 74.9548C125.999 75.157 125.999 75.4602 125.999 75.7634Z" fill="#D1D5DB"/>
-<g filter="url(#filter0_d_empty)"><path d="M125.999 75.7637V115.993C125.999 121.553 121.54 126 115.867 126H44.132C38.5594 126 34 121.553 34 115.993V75.5616C34 75.3594 34 75.1572 34.1013 74.9551H57.2023C60.6472 74.9551 63.4841 77.6842 63.4841 81.222C63.4841 82.9403 64.1933 84.5576 65.3079 85.6695C66.5237 86.8824 67.9422 87.4889 69.766 87.4889H90.3339C93.7788 87.4889 96.6157 84.7597 96.6157 81.222C96.6157 79.5036 97.325 77.8864 98.4395 76.7745C99.6553 75.5616 101.074 74.9551 102.796 74.9551H125.796C125.999 75.1572 125.999 75.4605 125.999 75.7637Z" fill="url(#paint0_linear_empty)"/></g>
-<path d="M105.35 27.1138C106.672 41.5147 107.333 44.8126 104.34 57.8546C103.366 60.754 102.392 63.9297 100.306 66.1388C97.3852 69.5906 92.0999 71.1094 87.7882 70.0048C83.3374 68.9002 79.7211 65.0343 78.8866 60.3398C78.1911 57.4403 79.1647 53.9886 81.6683 52.1936C84.311 50.5368 88.0664 50.951 90.2918 53.0221C92.7953 55.0931 93.769 58.2688 93.6299 61.3063C93.4908 64.3439 92.3781 67.3815 90.8481 70.0048C87.3895 76.4553 85.9657 76.4316 78.8866 87.0257" stroke="#9CA3AF" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="4 4"/>
-<path d="M113.104 21.7501C112.576 23.6744 110.461 24.3742 108.346 23.1496C106.055 22.0999 104.469 21.2252 104.821 19.4758C105.35 17.7264 107.465 17.5515 109.932 17.3766C112.928 17.0267 113.457 19.8257 113.104 21.7501Z" fill="#D1D5DB"/>
-<path d="M96.0098 23.4992C96.891 25.0737 99.3582 26.1233 101.12 24.5489C103.059 22.7995 104.645 21.5749 103.764 19.8255C102.883 18.251 101.473 18.7758 98.477 19.1257C96.0098 19.6505 94.9525 21.7498 96.0098 23.4992Z" fill="#D1D5DB"/>
-<path d="M103.763 17.0268C104.997 16.8519 106.23 17.5516 106.583 18.6013C106.759 18.9511 106.935 19.476 106.935 19.8258C107.288 22.275 106.407 24.3743 104.997 24.5492C103.411 24.8991 101.825 23.1497 101.648 20.8755C101.648 20.1757 101.648 19.8258 101.648 19.301C101.825 18.0764 102.53 17.2017 103.763 17.0268Z" fill="#9CA3AF"/>
-<path d="M68.4389 102.004C69.7227 102.004 70.7635 100.966 70.7635 99.6848C70.7635 98.404 69.7227 97.3657 68.4389 97.3657C67.155 97.3657 66.1143 98.404 66.1143 99.6848C66.1143 100.966 67.155 102.004 68.4389 102.004Z" fill="#9CA3AF"/>
-<path d="M91.558 102.004C92.8419 102.004 93.8826 100.966 93.8826 99.6848C93.8826 98.404 92.8419 97.3657 91.558 97.3657C90.2742 97.3657 89.2334 98.404 89.2334 99.6848C89.2334 100.966 90.2742 102.004 91.558 102.004Z" fill="#9CA3AF"/>
-<path d="M83.7685 117.234H76.4805C75.3496 117.234 74.4072 116.294 74.4072 115.166C74.4072 114.038 75.3496 113.098 76.4805 113.098H83.7057C84.8366 113.098 85.779 114.038 85.779 115.166C85.8418 116.294 84.8994 117.234 83.7685 117.234Z" fill="#9CA3AF"/>
-<defs><filter id="filter0_d_empty" x="12" y="63.9551" width="135.998" height="95.0449" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="11"/><feGaussianBlur stdDeviation="11"/><feColorMatrix type="matrix" values="0 0 0 0 0.397708 0 0 0 0 0.47749 0 0 0 0 0.575 0 0 0 0.27 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_empty"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_empty" result="shape"/></filter><linearGradient id="paint0_linear_empty" x1="79.9693" y1="73.7744" x2="79.9693" y2="126.55" gradientUnits="userSpaceOnUse"><stop stop-color="#FDFEFF"/><stop offset="0.9964" stop-color="#ECF0F5"/></linearGradient></defs>
-</svg>
-          <div class="empty-text-group">
-            <div class="empty-title">Không có thông tin</div>
-            <div class="empty-desc">Thông tin đang được cập nhật. Vui lòng quay lại sau</div>
-          </div>
+
+        <div class="qlsx-chart-grid">
+          <section class="qlsx-panel">
+            <div class="qlsx-panel-head"><div class="qlsx-panel-title" id="waterChartTitle">Biểu đồ nước sản xuất tháng 5</div></div>
+            <div class="qlsx-panel-meta">Đơn vị: m³/ ngày</div>
+            <div class="donut-row">
+              <div class="donut-block">
+                <div class="donut-year" id="prevYearLabel">Năm 2025</div>
+                <div class="donut-wrap">
+                  <canvas id="donutPrev"></canvas>
+                  <div class="donut-center"><span class="donut-center-value" data-donut-prev="total">191,858</span><span class="donut-center-unit">m³/ng</span></div>
+                </div>
+              </div>
+              <div class="donut-block">
+                <div class="donut-year" id="currentYearLabel">Năm 2026</div>
+                <div class="donut-wrap">
+                  <canvas id="donutCurrent"></canvas>
+                  <div class="donut-center"><span class="donut-center-value" data-donut-current="total">186,934</span><span class="donut-center-unit">m³/ng</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="qlsx-legend">
+              <span class="legend-item"><i class="legend-dot" style="background:#005292"></i>XN Sản xuất nước:</span>
+              <span class="legend-item"><i class="legend-dot" style="background:rgba(1,138,190,0.36)"></i>Xuyên Mộc</span>
+              <span class="legend-item"><i class="legend-dot" style="background:rgba(1,138,190,0.66)"></i>Châu Đức</span>
+            </div>
+          </section>
+
+          <section class="qlsx-panel">
+            <div class="qlsx-panel-head"><div class="qlsx-panel-title">Sản lượng các giếng khai thác</div></div>
+            <div class="well-chart-body">
+              <div class="well-bars" id="wellBars"></div>
+            </div>
+          </section>
         </div>
-        </section>
       </section>
-      <div data-component="footer"></div>
     </main>
   </div>
 </div>
+
+<script>
+function normalizeQlsxPageHead(){
+  const head = document.querySelector('.business-report-page-head');
+  if(!head) return;
+  const activeBc = head.querySelector('.sm-bc-item.active');
+  const title = head.querySelector('.sm-content-title');
+  const subtitle = head.querySelector('.sm-content-subtitle');
+  if(activeBc) activeBc.textContent = 'Tổng hợp số liệu QLSX';
+  if(title) title.textContent = 'Tổng hợp số liệu QLSX';
+  if(subtitle) subtitle.textContent = 'Sản lượng nước sản xuất, điện năng tiêu thụ, hoá chất và sản lượng các giếng khai thác theo tháng/năm';
+
+  const selects = head.querySelectorAll('.sm-filter-select');
+  if(selects[0]) {
+    selects[0].id = 'selectMonth';
+    selects[0].value = '05';
+  }
+  if(selects[1]) {
+    selects[1].id = 'selectYear';
+    selects[1].value = '2026';
+  }
+  const button = head.querySelector('.sm-filter-btn');
+  if(button) button.id = 'btnView';
+}
+
+function initQlsxPage(){
+  normalizeQlsxPageHead();
+  const monthSelect = document.getElementById('selectMonth');
+  const yearSelect = document.getElementById('selectYear');
+  const viewButton = document.getElementById('btnView');
+  const nf = new Intl.NumberFormat('vi-VN');
+
+  const monthlyFactor = {1:.86,2:.89,3:.94,4:1,5:1.03,6:1.06,7:1.08,8:1.1,9:1.07,10:1.04,11:1.01,12:1.12};
+  const base = {
+    kpi: { water: 5947610, power: .917, pac: 20.41, clo: 3.07 },
+    donut: {
+      prev: { main: 174523, xm: 9906, cd: 7429 },
+      current: { main: 170119, xm: 9660, cd: 7154 }
+    },
+    wells: [
+      { name:'Vũng Tàu', y2025:104179, y2026:111248 },
+      { name:'Bà Rịa', y2025:28978, y2026:29888 },
+      { name:'Long Điền', y2025:31475, y2026:33386 },
+      { name:'Xuyên Mộc', y2025:9348, y2026:9906 },
+      { name:'Châu Đức', y2025:6923, y2026:7429 }
+    ]
+  };
+
+  const colors = ['#005292','rgba(1,138,190,0.36)','rgba(1,138,190,0.66)'];
+  const doughnutOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '56%',
+    layout: { padding: 0 },
+    plugins: {
+      legend: { display:false },
+      tooltip: { enabled:true },
+      datalabels: { display:false },
+      outlabels: { display:false }
+    },
+    animation: { duration: 450 }
+  };
+  let donutPrev;
+  let donutCurrent;
+
+  function num(v){ return nf.format(Math.round(v)); }
+  function dec(v, d=2){ return Number(v).toLocaleString('vi-VN', {minimumFractionDigits:d, maximumFractionDigits:d}); }
+  function setText(selector, value){ const el = document.querySelector(selector); if(el) el.textContent = value; }
+  function setTrend(selector, value, up){
+    const el = document.querySelector(selector); if(!el) return;
+    el.classList.toggle('up', up); el.classList.toggle('down', !up);
+    el.innerHTML = up
+      ? '<svg viewBox="0 0 16 16" fill="none"><path d="M11.23 6.71 8.01 3.5 4.8 6.71M8.01 12.5V3.59" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>' + value
+      : '<svg viewBox="0 0 16 16" fill="none"><path d="M11.23 9.29 8.01 12.5 4.8 9.29M8.01 3.5v8.91" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>' + value;
+  }
+
+  function scaledData(){
+    const month = Number(monthSelect.value || 5);
+    const factor = monthlyFactor[month] || 1;
+    const variance = 0.975 + ((month % 5) * 0.012);
+    return {
+      month,
+      factor,
+      prev: {
+        main: base.donut.prev.main * factor,
+        xm: base.donut.prev.xm * factor,
+        cd: base.donut.prev.cd * factor
+      },
+      current: {
+        main: base.donut.current.main * factor * variance,
+        xm: base.donut.current.xm * factor * (0.99 + month * 0.004),
+        cd: base.donut.current.cd * factor * (0.985 + month * 0.004)
+      },
+      wells: base.wells.map((r, index) => ({
+        name: r.name,
+        y2025: r.y2025 * factor,
+        y2026: r.y2026 * factor * (0.985 + ((month + index) % 4) * 0.01)
+      }))
+    };
+  }
+
+  function updateDonuts(){
+    const year = Number(yearSelect.value || 2026);
+    const data = scaledData();
+    const prevYear = year - 1;
+    document.getElementById('waterChartTitle').textContent = 'Biểu đồ nước sản xuất tháng ' + data.month;
+    document.getElementById('prevYearLabel').textContent = 'Năm ' + prevYear;
+    document.getElementById('currentYearLabel').textContent = 'Năm ' + year;
+
+    const prevArr = [data.prev.main, data.prev.xm, data.prev.cd];
+    const curArr = [data.current.main, data.current.xm, data.current.cd];
+    const prevTotal = prevArr.reduce((a,b)=>a+b,0);
+    const curTotal = curArr.reduce((a,b)=>a+b,0);
+
+    setText('[data-donut-prev="total"]', num(prevTotal));
+    setText('[data-donut-current="total"]', num(curTotal));
+
+    if(!donutPrev){
+      donutPrev = new Chart(document.getElementById('donutPrev'), { type:'doughnut', data:{ labels:['XN Sản xuất nước','Xuyên Mộc','Châu Đức'], datasets:[{ data: prevArr, backgroundColor: colors, borderColor:'#FFFFFF', borderWidth:1, borderRadius:5, hoverBorderRadius:5, spacing:0 }] }, options:doughnutOptions });
+      donutCurrent = new Chart(document.getElementById('donutCurrent'), { type:'doughnut', data:{ labels:['XN Sản xuất nước','Xuyên Mộc','Châu Đức'], datasets:[{ data: curArr, backgroundColor: colors, borderColor:'#FFFFFF', borderWidth:1, borderRadius:5, hoverBorderRadius:5, spacing:0 }] }, options:doughnutOptions });
+    } else {
+      donutPrev.data.datasets[0].data = prevArr;
+      donutCurrent.data.datasets[0].data = curArr;
+      donutPrev.update();
+      donutCurrent.update();
+    }
+  }
+
+  function updateKpis(){
+    const data = scaledData();
+    const totalCurrent = data.current.main + data.current.xm + data.current.cd;
+    const totalPrev = data.prev.main + data.prev.xm + data.prev.cd;
+    const waterKpi = totalCurrent * 31;
+    setText('[data-kpi="water"]', num(waterKpi));
+    setText('[data-kpi="power"]', dec(base.kpi.power * (0.985 + data.month * 0.004), 3));
+    setText('[data-kpi="pac"]', dec(base.kpi.pac * (0.99 + data.month * 0.003), 2));
+    setText('[data-kpi="clo"]', dec(base.kpi.clo * (0.985 + data.month * 0.004), 2));
+
+    setText('[data-kpi="waterPlan"]', '0%');
+    setText('[data-kpi="powerPlan"]', '0%');
+    setText('[data-kpi="pacPlan"]', '0%');
+    setText('[data-kpi="cloPlan"]', '0%');
+
+    const waterYoy = totalPrev ? (totalCurrent / totalPrev) * 100 : 0;
+    setTrend('[data-kpi="waterYoY"]', dec(waterYoy, 2) + '%', waterYoy >= 100);
+    setTrend('[data-kpi="powerYoY"]', dec(102 + data.month * .72, 2) + '%', false);
+    setTrend('[data-kpi="pacYoY"]', dec(61 + data.month * .56, 2) + '%', false);
+    setTrend('[data-kpi="cloYoY"]', dec(96 + data.month * .42, 2) + '%', true);
+  }
+
+  function refreshCharts(){
+    if(donutPrev && donutCurrent){
+      donutPrev.resize();
+      donutCurrent.resize();
+      donutPrev.update('none');
+      donutCurrent.update('none');
+    }
+  }
+  window.addEventListener('resize', () => window.requestAnimationFrame(refreshCharts));
+
+  function updateWells(){
+    const data = scaledData();
+    const max = Math.max(...data.wells.flatMap(r => [r.y2025, r.y2026]));
+    const html = [
+      '<div class="well-legend-col">' +
+        '<div class="well-bar-pair"></div>' +
+        '<div class="well-table-row"><span class="well-legend-mark"><i class="well-mini-bar" style="background:#005292"></i>2025</span></div>' +
+        '<div class="well-table-row"><span class="well-legend-mark"><i class="well-mini-bar" style="background:rgba(1,138,190,0.36)"></i>2026</span></div>' +
+      '</div>'
+    ];
+    data.wells.forEach(row => {
+      const h25 = Math.max(18, Math.round(row.y2025 / max * 250));
+      const h26 = Math.max(18, Math.round(row.y2026 / max * 250));
+      html.push(
+        '<div class="well-group">' +
+          '<div class="well-bar-pair">' +
+            '<div class="well-bar y2025" style="height:'+h25+'px"></div>' +
+            '<div class="well-bar y2026" style="height:'+h26+'px"></div>' +
+          '</div>' +
+          '<div class="well-table-row name">'+row.name+'</div>' +
+          '<div class="well-table-row">'+num(row.y2025)+'</div>' +
+          '<div class="well-table-row">'+num(row.y2026)+'</div>' +
+        '</div>'
+      );
+    });
+    document.getElementById('wellBars').innerHTML = html.join('');
+  }
+
+  function updateAll(){ updateKpis(); updateDonuts(); updateWells(); }
+  if(viewButton) viewButton.addEventListener('click', updateAll);
+  updateAll();
+  window.addEventListener('resize', () => {
+    if(donutPrev) donutPrev.resize();
+    if(donutCurrent) donutCurrent.resize();
+  });
+}
+
+if(document.querySelector('.business-report-page-head')) {
+  initQlsxPage();
+} else {
+  document.addEventListener('pmw:components-loaded', initQlsxPage, { once: true });
+}
+
+document.getElementById('dbLogoBack')?.addEventListener('click', e => {
+  e.preventDefault(); window.location.href = 'index.html';
+});
+</script>
 </body>
 </html>

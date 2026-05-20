@@ -86,25 +86,25 @@
       --cat-sx-primary:      #02457A;
       --cat-sx-hover:        #0061B1;
       --cat-sx-bg:           #DDF0FF;
-      --cat-sx-border:       #B3E2FF;
+      --cat-sx-border:       rgba(2, 69, 122, 0.12);
 
       /* QL Khách Hàng */
       --cat-kh-primary:      #02457A;
       --cat-kh-hover:        #0061B1;
       --cat-kh-bg:           #DDF0FF;
-      --cat-kh-border:       #B3E2FF;
+      --cat-kh-border:       rgba(2, 69, 122, 0.12);
 
       /* QL GIS */
       --cat-gis-primary:     #02457A;
       --cat-gis-hover:       #0061B1;
       --cat-gis-bg:          #DDF0FF;
-      --cat-gis-border:      #B3E2FF;
+      --cat-gis-border:      rgba(2, 69, 122, 0.12);
 
       /* QL Điều Hành */
       --cat-dh-primary:      #02457A;
       --cat-dh-hover:        #0061B1;
       --cat-dh-bg:           #DDF0FF;
-      --cat-dh-border:       #B3E2FF;
+      --cat-dh-border:       rgba(2, 69, 122, 0.12);
 
       /* ── P2_UI_Color — Skeleton ── */
       --skeleton-start:      #f9fafb;   /* p--Neutral.50  */
@@ -1027,8 +1027,14 @@
     }
     .sm-subnav-item:hover::before { background: var(--text-tertiary); }
     .sm-subnav-item:hover span { font-weight: var(--fw-medium); }
-    .sm-subnav-item.active::before { background: var(--pmw-blue); }
-    .sm-subnav-item.active span { color: var(--pmw-blue); font-weight: var(--fw-semibold); }
+    .sm-subnav-item.active {
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: none !important;
+      box-shadow: none !important;
+    }
+    .sm-subnav-item.active::before { background: #FFFFFF !important; }
+    .sm-subnav-item.active span { color: #FFFFFF !important; font-weight: var(--fw-bold); }
 
     /* Sidebar bottom status */
     .sm-sidebar-bottom { margin-top: auto; padding: var(--sp-3) var(--sp-2); border-top: 1px solid var(--border-default); }
