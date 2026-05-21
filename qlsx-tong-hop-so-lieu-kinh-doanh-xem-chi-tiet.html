@@ -23,28 +23,57 @@
     .kd-tabs { display:flex; gap:8px; margin:0 0 12px; flex:none; }
     .kd-tab { height:40px; min-width:118px; padding:0 22px; border:1px solid rgba(17,24,39,.08); border-radius:12px; background:#fff; color:#4B5563; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; font-family:'Pretendard', var(--font), sans-serif; font-size:13px; line-height:18px; font-weight:700; box-shadow:0 1px 2px rgba(17,24,39,.04); }
     body.kd-view-day .kd-tab-daily, body.kd-view-period .kd-tab-period, body.kd-view-detail .kd-tab-detail { background:#0785F2; border-color:#0785F2; color:#fff; box-shadow:0 8px 20px rgba(7,133,242,.20); }
-    .kd-section { display:flex; flex-direction:column; gap:12px; }
-    .kd-card { background:#fff; border:1px solid rgba(17,24,39,.08); border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(17,24,39,.03); }
+    .kd-section { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start; }
+    .kd-card { width:100%; background:#fff; border:1px solid rgba(17,24,39,.08); border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(17,24,39,.03); }
     .kd-card-title { padding:12px 16px; background:linear-gradient(90deg, rgba(1,138,190,.12), rgba(255,255,255,0)); color:#02457A; font-family:'Pretendard', var(--font), sans-serif; font-size:15px; font-weight:700; line-height:22px; }
-    .kd-table-scroll { width:100%; overflow:auto; scrollbar-gutter: stable; }
+    .kd-table-scroll { width:100%; overflow:auto; }
     .kd-table-scroll::-webkit-scrollbar { height:8px; width:8px; }
     .kd-table-scroll::-webkit-scrollbar-thumb { background:rgba(17,24,39,.22); border-radius:99px; }
-    .kd-table { width:100%; border-collapse:separate; border-spacing:0; table-layout:fixed; min-width:980px; font-family:'Pretendard', var(--font), sans-serif; }
+    .kd-table { width:100%; border-collapse:separate; border-spacing:0; table-layout:fixed; min-width:0; font-family:'Pretendard', var(--font), sans-serif; }
     .kd-table th, .kd-table td { border-right:1px solid rgba(17,24,39,.08); border-bottom:1px solid rgba(17,24,39,.08); padding:10px 12px; font-size:13px; line-height:18px; color:#4B5563; background:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
     .kd-table th { background:#EDF8FC; color:#005292; font-weight:700; text-align:left; }
     .kd-table .num { text-align:right; font-variant-numeric:tabular-nums; }
     .kd-table thead tr:first-child th:first-child { border-top-left-radius:14px; }
     .kd-table thead tr:first-child th:last-child { border-top-right-radius:14px; }
     .kd-table tbody tr:last-child td { border-bottom:0; }
+    .kd-table tbody tr:hover td { background: linear-gradient(0deg, rgba(1,138,190,0.02), rgba(1,138,190,0.02)), #FFFFFF !important; }
     .kd-table th:last-child, .kd-table td:last-child { border-right:0; }
     .kd-hint { margin:-4px 4px 4px; color:#6B7280; font-family:'Pretendard', var(--font), sans-serif; font-size:12px; line-height:18px; }
+    .kd-table tbody tr.kd-row-total td {
+      background: linear-gradient(0deg, rgba(2,69,122,0.05), rgba(2,69,122,0.05)), #FFFFFF !important;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 22px;
+      color: #4B5563;
+      border-top: 1px solid rgba(17,24,39,0.08);
+    }
     .w-date{width:110px}.w-sm{width:92px}.w-md{width:130px}.w-lg{width:160px}.w-xl{width:190px}
     @media (max-width:1366px){ .sm-sidebar{width:220px!important}.sm-scroll{padding:0 16px 18px}.kd-table th,.kd-table td{font-size:12px;padding:8px}.kd-tab{height:36px;min-width:108px;padding:0 18px}.kd-table{min-width:900px} }
     @media (max-width:1280px){ .sm-sidebar{width:52px!important;padding:12px 6px!important;overflow:hidden}.sm-sidebar-label,.sm-nav-cat-label,.sm-nav-cat-arrow,.sm-nav-other-label{display:none!important}.sm-nav-cat,.sm-nav-other{justify-content:center!important;padding:10px!important;width:auto!important;height:auto!important}.sm-subnav{display:none!important} }
-    @media (max-width:900px){ html,body{overflow:hidden}.bao-cao-wrapper{height:100dvh}.submod-page.active{display:block!important}.sm-sidebar{display:none!important}.sm-main{width:100%;height:calc(100dvh - var(--pmw-mobile-header-height,70px));overflow:hidden}.sm-scroll{padding:0 24px 24px}.kd-tabs{gap:8px;margin-bottom:12px;display:grid;grid-template-columns:repeat(3,1fr)}.kd-tab{min-width:0;width:100%;height:42px;padding:0 10px;font-size:14px}.kd-table{min-width:760px}.kd-table th,.kd-table td{font-size:13px;padding:9px 10px}.kd-card{border-radius:14px}.kd-card-title{font-size:14px;padding:10px 12px} }
-    @media (max-width:480px){ .sm-scroll{padding:16px 16px 20px}.kd-tab{font-size:13px;height:40px}.kd-table{min-width:680px}.kd-table th,.kd-table td{font-size:12px;padding:8px}.w-date{width:96px}.w-sm{width:78px}.w-md{width:110px}.w-lg{width:136px}.w-xl{width:150px} }
+    @media (max-width:900px){
+      .kd-section { grid-template-columns:1fr !important; }
+      html,body { overflow:hidden; }
+      .bao-cao-wrapper { height:100dvh; }
+      .submod-page.active { display:block !important; }
+      .sm-sidebar { display:none !important; }
+      .sm-main { width:100%; height:calc(100dvh - var(--pmw-mobile-header-height,70px)); overflow:hidden; }
+      .sm-scroll { padding:0 16px 24px; }
+      .kd-tabs { gap:8px; margin-bottom:12px; display:grid; grid-template-columns:repeat(3,1fr); }
+      .kd-tab { min-width:0; width:100%; height:42px; padding:0 10px; font-size:14px; }
+      /* Scroll ngang từng bảng — giữ nguyên min-width từ inline style */
+      .kd-table-scroll { overflow-x:auto; overflow-y:visible; -webkit-overflow-scrolling:touch; }
+      .kd-table { min-width:unset; }
+      .kd-table th, .kd-table td { font-size:13px; padding:9px 10px; white-space:nowrap; }
+      .kd-card { border-radius:14px; }
+      .kd-card-title { font-size:14px; padding:10px 12px; }
+    }
+    @media (max-width:480px){
+      .sm-scroll { padding:12px 12px 20px; }
+      .kd-tab { font-size:13px; height:40px; }
+      .kd-table { min-width:unset; }
+      .kd-table th, .kd-table td { font-size:12px; padding:8px 10px; }
+    }
 
-    
 
   </style>
   <link rel="stylesheet" href="responsive.css?v=38"/>
@@ -60,15 +89,18 @@
            data-parent="Quản lý sản xuất"
            data-current="Tổng hợp số liệu kinh doanh"
            data-title="Tổng hợp số liệu kinh doanh"
-           data-subtitle="Xem chi tiết tổng hợp phải thu, đã thu, chưa thu và doanh thu theo từng đơn vị thu hộ trong kỳ báo cáo"></div>
+           data-subtitle="Xem chi tiết tổng hợp phải thu, đã thu, chưa thu và doanh thu theo từng đơn vị thu hộ trong kỳ báo cáo"
+           data-month="05"
+           data-months="01,02,03,04,05,06,07,08,09,10,11,12"
+           data-year="2026"></div>
       <div class="sm-scroll">
         <div data-component="report-tabs"></div>
         <section class="kd-section">
 
           <article class="kd-card">
             <div class="kd-table-scroll">
-              <table class="kd-table" style="min-width:620px">
-                <colgroup><col class="w-md"><col class="w-md"><col class="w-sm"><col class="w-lg"><col class="w-sm"></colgroup>
+              <table class="kd-table" style="min-width:530px">
+                <colgroup><col style="width:130px"><col style="width:100px"><col style="width:80px"><col style="min-width:140px"><col style="width:80px"></colgroup>
                 <thead><tr><th>Chỉ tiêu</th><th>Hóa đơn</th><th>Tỷ lệ</th><th>Tiền</th><th>Tỷ lệ</th></tr></thead>
                 <tbody><tr><td>Phải thu</td><td class='num'>382.165</td><td class='num'>100%</td><td class='num'>207.619.844.798</td><td class='num'>100%</td></tr>
 <tr><td>Đã thu</td><td class='num'>366.689</td><td class='num'>95,95%</td><td class='num'>187.172.537.953</td><td class='num'>90,15%</td></tr>
@@ -77,11 +109,10 @@
               </table>
             </div>
           </article>
-          <div class="kd-hint">Bảng có nhiều cột, kéo ngang để xem đầy đủ trên màn hình nhỏ.</div>
           <article class="kd-card">
             <div class="kd-table-scroll">
-              <table class="kd-table" style="min-width:680px">
-                <colgroup><col class="w-md"><col class="w-lg"><col class="w-xl"></colgroup>
+              <table class="kd-table" style="min-width:460px">
+                <colgroup><col style="width:140px"><col style="width:160px"><col style="min-width:160px"></colgroup>
                 <thead><tr><th>Đơn vị thu hộ</th><th>Số lượng hóa đơn (cái)</th><th>Tổng tiền thanh toán (VNĐ)</th></tr></thead>
                 <tbody><tr><td>Tiền mặt</td><td class='num'>706</td><td class='num'>306.465.801</td></tr>
 <tr><td>Agribank</td><td class='num'>33.187</td><td class='num'>13.964.381.880</td></tr>
@@ -96,7 +127,7 @@
 <tr><td>Vtelbank</td><td class='num'>5.841</td><td class='num'>1.700.306.253</td></tr>
 <tr><td>Zalopay</td><td class='num'>18.286</td><td class='num'>5.684.996.067</td></tr>
 <tr><td>Ck + Nt gạch tay</td><td class='num'>18.992</td><td class='num'>42.032.084.412</td></tr>
-<tr><td>Tổng cộng</td><td class='num'>366.689</td><td class='num'>187.172.537.953</td></tr>
+<tr class='kd-row-total'><td>Tổng cộng</td><td class='num'>366.689</td><td class='num'>187.172.537.953</td></tr>
 </tbody>
               </table>
             </div>
@@ -107,5 +138,38 @@
     </main>
   </div>
 </div>
+
+<script>
+(function ensureBusinessReportMonthOptions() {
+  function rebuildMonthSelect() {
+    const head = document.querySelector('.business-report-page-head');
+    if (!head) return;
+
+    const monthSelect =
+      head.querySelector('select[name="month"]') ||
+      head.querySelector('.sm-filter-select');
+
+    if (!monthSelect) return;
+
+    const currentValue = monthSelect.value || head.dataset.month || '05';
+    const months = (head.dataset.months || '01,02,03,04,05,06,07,08,09,10,11,12')
+      .split(',')
+      .map(month => month.trim())
+      .filter(Boolean);
+
+    monthSelect.innerHTML = months
+      .map(month => `<option value="${month}">${month}</option>`)
+      .join('');
+
+    const normalizedValue = String(currentValue).padStart(2, '0');
+    monthSelect.value = months.includes(normalizedValue) ? normalizedValue : months[0];
+  }
+
+  document.addEventListener('pmw:components-loaded', rebuildMonthSelect);
+  document.addEventListener('DOMContentLoaded', rebuildMonthSelect);
+  window.addEventListener('load', rebuildMonthSelect);
+})();
+</script>
+
 </body>
 </html>

@@ -23,10 +23,10 @@
     .kd-tabs { display:flex; gap:8px; margin:0 0 12px; flex:none; }
     .kd-tab { height:40px; min-width:118px; padding:0 22px; border:1px solid rgba(17,24,39,.08); border-radius:12px; background:#fff; color:#4B5563; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; font-family:'Pretendard', var(--font), sans-serif; font-size:13px; line-height:18px; font-weight:700; box-shadow:0 1px 2px rgba(17,24,39,.04); }
     body.kd-view-day .kd-tab-daily, body.kd-view-period .kd-tab-period, body.kd-view-detail .kd-tab-detail { background:#0785F2; border-color:#0785F2; color:#fff; box-shadow:0 8px 20px rgba(7,133,242,.20); }
-    .kd-section { display:flex; flex-direction:column; gap:12px; }
+    .kd-section { display:flex; flex-direction:column; gap:20px; }
     .kd-card { background:#fff; border:1px solid rgba(17,24,39,.08); border-radius:16px; overflow:hidden; box-shadow:0 1px 2px rgba(17,24,39,.03); }
     .kd-card-title { padding:12px 16px; background:linear-gradient(90deg, rgba(1,138,190,.12), rgba(255,255,255,0)); color:#02457A; font-family:'Pretendard', var(--font), sans-serif; font-size:15px; font-weight:700; line-height:22px; }
-    .kd-table-scroll { width:100%; overflow:auto; scrollbar-gutter: stable; }
+    .kd-table-scroll { width:100%; overflow:auto; }
     .kd-table-scroll::-webkit-scrollbar { height:8px; width:8px; }
     .kd-table-scroll::-webkit-scrollbar-thumb { background:rgba(17,24,39,.22); border-radius:99px; }
     .kd-table { width:100%; border-collapse:separate; border-spacing:0; table-layout:fixed; min-width:980px; font-family:'Pretendard', var(--font), sans-serif; }
@@ -36,8 +36,29 @@
     .kd-table thead tr:first-child th:first-child { border-top-left-radius:14px; }
     .kd-table thead tr:first-child th:last-child { border-top-right-radius:14px; }
     .kd-table tbody tr:last-child td { border-bottom:0; }
+    .kd-table tbody tr:hover td { background: linear-gradient(0deg, rgba(1,138,190,0.02), rgba(1,138,190,0.02)), #FFFFFF !important; }
     .kd-table th:last-child, .kd-table td:last-child { border-right:0; }
     .kd-hint { margin:-4px 4px 4px; color:#6B7280; font-family:'Pretendard', var(--font), sans-serif; font-size:12px; line-height:18px; }
+    /* Dòng Tổng cộng — Figma Row Total style */
+    .kd-table tbody tr.kd-row-total td {
+      background: linear-gradient(0deg, rgba(2,69,122,0.05), rgba(2,69,122,0.05)), #FFFFFF !important;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 22px;
+      color: #4B5563;
+      border-top: 1px solid rgba(17,24,39,0.08);
+    }
+    /* Merge tháng — căn giữa dọc */
+    .kd-table td.kd-month { vertical-align:middle; font-weight:400; }
+    /* Dòng Hóa đơn — border-top phân tách nhóm */
+    .kd-table tr.kd-group-start td { border-top:1px solid rgba(17,24,39,0.08); }
+    .kd-table tr.kd-group-start td.kd-month { border-top:1px solid rgba(17,24,39,0.08); }
+    /* Dòng Số tiền (cuối nhóm) — bỏ border-bottom để không chồng với border-top nhóm tiếp theo */
+    .kd-table tr:not(.kd-group-start):not(:last-child) td { border-bottom:none; }
+    /* Cột Tháng rowspan=2 — bỏ đường ngang giữa 2 dòng trong nhóm */
+    .kd-table td.kd-month { border-bottom:none !important; }
+    /* Chỉ tiêu bold */
+    .kd-col-chitieu { font-weight:700; color:#111827; }
     .w-date{width:110px}.w-sm{width:92px}.w-md{width:130px}.w-lg{width:160px}.w-xl{width:190px}
     @media (max-width:1366px){ .sm-sidebar{width:220px!important}.sm-scroll{padding:0 16px 18px}.kd-table th,.kd-table td{font-size:12px;padding:8px}.kd-tab{height:36px;min-width:108px;padding:0 18px}.kd-table{min-width:900px} }
     @media (max-width:1280px){ .sm-sidebar{width:52px!important;padding:12px 6px!important;overflow:hidden}.sm-sidebar-label,.sm-nav-cat-label,.sm-nav-cat-arrow,.sm-nav-other-label{display:none!important}.sm-nav-cat,.sm-nav-other{justify-content:center!important;padding:10px!important;width:auto!important;height:auto!important}.sm-subnav{display:none!important} }
@@ -45,12 +66,56 @@
     @media (max-width:480px){.sm-scroll{padding:16px 16px 20px}.kd-tab{font-size:13px;height:40px}.kd-table{min-width:680px}.kd-table th,.kd-table td{font-size:12px;padding:8px}.w-date{width:96px}.w-sm{width:78px}.w-md{width:110px}.w-lg{width:136px}.w-xl{width:150px} }
 
     /* Component: breadcrumb + title page + filter */
-    .business-report-page-head{display:flex;flex-direction:column;gap:20px;padding:0;flex:none;min-width:0;}
-    .business-report-page-head
-    .business-report-page-head
-    @media (max-width:1366px){.business-report-page-head{padding:10px 16px 0;gap:20px;}}
-    @media (max-width:900px){.business-report-page-head{padding:10px 24px 0!important;gap:20px!important;}.business-report-page-head.business-report-page-head}
-    @media (max-width:480px){.business-report-page-head{padding:0px 0px 0!important;gap:20px!important;}}
+    .business-report-page-head {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 0;
+      flex: none;
+      min-width: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    @media (max-width:1366px) {
+      .business-report-page-head { padding: 20px 16px 0; gap: 20px; }
+    }
+
+    @media (max-width:900px) {
+      .business-report-page-head { padding: 20px 24px 0 !important; gap: 20px !important; }
+    }
+
+    @media (max-width:480px) {
+      .business-report-page-head { padding: 20px 16px 0 !important; gap: 20px !important; }
+    }
+
+    /* Fix table width: để bảng/card fill vùng nội dung, không còn khoảng trắng bên phải */
+    .kd-section {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      align-self: stretch;
+    }
+
+    .kd-card {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .kd-table-scroll {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      box-sizing: border-box;
+    }
+
+    .kd-table {
+      width: 100%;
+      min-width: 1180px;
+      table-layout: fixed;
+    }
 
   </style>
   <link rel="stylesheet" href="responsive.css?v=38"/>
@@ -68,7 +133,8 @@
            data-current="Tổng hợp số liệu kinh doanh"
            data-title="Tổng hợp số liệu kinh doanh"
            data-subtitle="Theo dõi thời gian thanh toán, tình trạng chưa thanh toán và tổng tiền thanh toán theo từng kỳ báo cáo"
-           data-month="4"
+           data-month="04"
+           data-months="01,02,03,04,05,06,07,08,09,10,11,12"
            data-year="2026"
            data-years="2026,2025"></div>
       <div class="sm-scroll">
@@ -77,41 +143,110 @@
 
           <article class="kd-card">
             <div class="kd-table-scroll">
-              <table class="kd-table">
-                <colgroup><col class="w-md"><col class="w-sm"><col class="w-md"><col class="w-sm"><col class="w-md"><col class="w-sm"><col class="w-md"><col class="w-sm"><col class="w-md"><col class="w-sm"><col class="w-md"><col class="w-sm"></colgroup>
+              <table class="kd-table" style="min-width:1010px">
+                <colgroup>
+                  <col style="width:110px">
+                  <col style="width:90px">
+                  <col style="width:110px"><col style="width:52px">
+                  <col style="width:110px"><col style="width:52px">
+                  <col style="width:110px"><col style="width:52px">
+                  <col style="width:110px"><col style="width:52px">
+                  <col style="width:110px"><col style="width:52px">
+                </colgroup>
                 <thead><tr><th rowspan="2">Tháng</th><th rowspan="2">Chỉ tiêu</th><th colspan="2">TG thanh toán &lt; 5 ngày</th><th colspan="2">TG thanh toán từ 5 - 10 ngày</th><th colspan="2">TG thanh toán từ 10 - 16 ngày</th><th colspan="2">TG thanh toán &gt; 16 ngày</th><th colspan="2">Chưa thanh toán</th></tr><tr><th>Số lượng</th><th>Tỉ lệ</th><th>Số lượng</th><th>Tỉ lệ</th><th>Số lượng</th><th>Tỉ lệ</th><th>Số lượng</th><th>Tỉ lệ</th><th>Số lượng</th><th>Tỉ lệ</th></tr></thead>
-                <tbody><tr><td>Tháng 5/2026</td><td>Hóa đơn</td><td class='num'>191.438</td><td class='num'>60%</td><td class='num'>191.438</td><td class='num'>60%</td><td class='num'>191.438</td><td class='num'>60%</td><td class='num'>191.438</td><td class='num'>60%</td><td class='num'>191.438</td><td class='num'>60%</td></tr>
-<tr><td>Tháng 5/2026</td><td>Số tiền</td><td class='num'>78.945.803.181</td><td class='num'>50%</td><td class='num'>78.945.803.181</td><td class='num'>50%</td><td class='num'>78.945.803.181</td><td class='num'>50%</td><td class='num'>78.945.803.181</td><td class='num'>50%</td><td class='num'>78.945.803.181</td><td class='num'>50%</td></tr>
-<tr><td>Tháng 4/2026</td><td>Hóa đơn</td><td class='num'>192.860</td><td class='num'>70%</td><td class='num'>192.860</td><td class='num'>70%</td><td class='num'>192.860</td><td class='num'>70%</td><td class='num'>192.860</td><td class='num'>70%</td><td class='num'>192.860</td><td class='num'>70%</td></tr>
-<tr><td>Tháng 4/2026</td><td>Số tiền</td><td class='num'>69.383.913.658</td><td class='num'>69%</td><td class='num'>69.383.913.658</td><td class='num'>69%</td><td class='num'>69.383.913.658</td><td class='num'>69%</td><td class='num'>69.383.913.658</td><td class='num'>69%</td><td class='num'>69.383.913.658</td><td class='num'>69%</td></tr>
-<tr><td>Tháng 3/2026</td><td>Hóa đơn</td><td class='num'>94.232</td><td class='num'>69%</td><td class='num'>94.232</td><td class='num'>69%</td><td class='num'>94.232</td><td class='num'>69%</td><td class='num'>94.232</td><td class='num'>69%</td><td class='num'>94.232</td><td class='num'>69%</td></tr>
-<tr><td>Tháng 3/2026</td><td>Số tiền</td><td class='num'>88.713.149.781</td><td class='num'>65%</td><td class='num'>88.713.149.781</td><td class='num'>65%</td><td class='num'>88.713.149.781</td><td class='num'>65%</td><td class='num'>88.713.149.781</td><td class='num'>65%</td><td class='num'>88.713.149.781</td><td class='num'>65%</td></tr>
-</tbody>
+                <tbody>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Tháng 5/2026</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>191.438</td><td class='num'>60%</td><td class='num'>191.438</td><td class='num'>60%</td><td class='num'>191.438</td><td class='num'>60%</td><td class='num'>191.438</td><td class='num'>60%</td><td class='num'>191.438</td><td class='num'>60%</td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>78.945.803.181</td><td class='num'>50%</td><td class='num'>78.945.803.181</td><td class='num'>50%</td><td class='num'>78.945.803.181</td><td class='num'>50%</td><td class='num'>78.945.803.181</td><td class='num'>50%</td><td class='num'>78.945.803.181</td><td class='num'>50%</td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Tháng 4/2026</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>192.860</td><td class='num'>70%</td><td class='num'>192.860</td><td class='num'>70%</td><td class='num'>192.860</td><td class='num'>70%</td><td class='num'>192.860</td><td class='num'>70%</td><td class='num'>192.860</td><td class='num'>70%</td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>69.383.913.658</td><td class='num'>69%</td><td class='num'>69.383.913.658</td><td class='num'>69%</td><td class='num'>69.383.913.658</td><td class='num'>69%</td><td class='num'>69.383.913.658</td><td class='num'>69%</td><td class='num'>69.383.913.658</td><td class='num'>69%</td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Tháng 3/2026</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>94.232</td><td class='num'>69%</td><td class='num'>94.232</td><td class='num'>69%</td><td class='num'>94.232</td><td class='num'>69%</td><td class='num'>94.232</td><td class='num'>69%</td><td class='num'>94.232</td><td class='num'>69%</td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>88.713.149.781</td><td class='num'>65%</td><td class='num'>88.713.149.781</td><td class='num'>65%</td><td class='num'>88.713.149.781</td><td class='num'>65%</td><td class='num'>88.713.149.781</td><td class='num'>65%</td><td class='num'>88.713.149.781</td><td class='num'>65%</td>
+                </tr>
+                </tbody>
               </table>
             </div>
           </article>
-          <div class="kd-hint">Bảng có nhiều cột, kéo ngang để xem đầy đủ trên màn hình nhỏ.</div>
           <article class="kd-card">
             <div class="kd-table-scroll">
               <table class="kd-table">
                 <colgroup><col class="w-md"><col class="w-sm"><col class="w-md"><col class="w-md"><col class="w-md"><col class="w-md"><col class="w-md"><col class="w-md"><col class="w-md"><col class="w-md"><col class="w-md"><col class="w-md"><col class="w-md"><col class="w-md"></colgroup>
                 <thead><tr><th rowspan="2">Hình thức thu</th><th rowspan="2">Chỉ tiêu</th><th colspan="12">Số lượng hóa đơn (cái) / Tổng tiền thanh toán theo tháng</th></tr><tr><th>01/2026</th><th>02/2026</th><th>03/2026</th><th>04/2026</th><th>05/2026</th><th>06/2026</th><th>07/2026</th><th>08/2026</th><th>09/2026</th><th>10/2026</th><th>11/2026</th><th>12/2026</th></tr></thead>
-                <tbody><tr><td>Tiền mặt</td><td>Hóa đơn</td><td class='num'>204</td><td class='num'>204</td><td class='num'>204</td><td class='num'>204</td><td class='num'>204</td><td class='num'>204</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr>
-<tr><td>Tiền mặt</td><td>Số tiền</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr>
-<tr><td>Agribank</td><td>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr>
-<tr><td>Agribank</td><td>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr>
-<tr><td>Agribank</td><td>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr>
-<tr><td>Agribank</td><td>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr>
-<tr><td>Agribank</td><td>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr>
-<tr><td>Agribank</td><td>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr>
-<tr><td>Agribank</td><td>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr>
-<tr><td>Agribank</td><td>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr>
-<tr><td>Agribank</td><td>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr>
-<tr><td>Agribank</td><td>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr>
-<tr><td>Agribank</td><td>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr>
-<tr><td>Agribank</td><td>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td></tr>
-<tr><td>Tổng cộng</td><td>nan</td><td class='num'>191.408</td><td class='num'>190.865</td><td class='num'>192.775</td><td class='num'>192.543</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td></tr>
-</tbody>
+                <tbody>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Tiền mặt</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>204</td><td class='num'>204</td><td class='num'>204</td><td class='num'>204</td><td class='num'>204</td><td class='num'>204</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Agribank</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Agribank</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Agribank</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Agribank</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Agribank</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Agribank</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Agribank</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-row-total'>
+                  <td colspan='2'>Tổng cộng</td>
+                  <td class='num'>191.408</td><td class='num'>190.865</td><td class='num'>192.775</td><td class='num'>192.543</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td>
+                </tr>
+                </tbody>
               </table>
             </div>
           </article>
@@ -121,5 +256,30 @@
     </main>
   </div>
 </div>
+
+<script>
+(function ensureBusinessReportMonthOptions(){
+  const MONTHS = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+
+  function rebuildMonthSelect(){
+    const head = document.querySelector('.business-report-page-head');
+    if (!head) return;
+
+    const selects = head.querySelectorAll('.sm-filter-select, select[name="month"], select[data-filter="month"]');
+    const monthSelect = selects[0];
+    if (!monthSelect) return;
+
+    const currentValue = monthSelect.value || head.dataset.month || '04';
+    monthSelect.innerHTML = MONTHS.map(month => `<option value="${month}">${month}</option>`).join('');
+    monthSelect.value = MONTHS.includes(String(currentValue).padStart(2, '0'))
+      ? String(currentValue).padStart(2, '0')
+      : '04';
+  }
+
+  document.addEventListener('DOMContentLoaded', rebuildMonthSelect);
+  document.addEventListener('pmw:components-loaded', rebuildMonthSelect);
+  setTimeout(rebuildMonthSelect, 300);
+})();
+</script>
 </body>
 </html>

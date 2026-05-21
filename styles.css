@@ -2413,7 +2413,7 @@ body.pmw-page-bc-tru-nuoc .business-report-page-head .br-filter {
     @media (max-width: 1600px) {
       .kpi-row { gap: 12px; }
       .sx-kpi-section { gap: 20px; }
-      .sx-chart-section { gap: 20px; padding: 12px 20px 20px; }
+      .sx-chart-section { gap: 20px; padding: 20px 20px 20px; }
     }
 
     /* ── 1440px — iMac/màn phổ thông ── */
