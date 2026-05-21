@@ -297,22 +297,22 @@
     }
     .qlsx-kpi-card {
       min-width: 0;
-      min-height: 145px;
+      min-height: 158px;
       background: var(--qlsx-card);
       border: 1px solid var(--qlsx-line);
       border-radius: 16px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
       transition: transform .18s, box-shadow .2s, border-color .2s;
     }
     .qlsx-kpi-card:hover { transform: translateY(0px); box-shadow: 0 6px 20px rgba(2,69,122,0.10); border-color: rgba(2,69,122,0.18); }
     .qlsx-kpi-head {
-      height: 44px;
+      height: 52px;
       display: flex;
       align-items: center;
-      padding: 6px 8px 6px 12px;
+      padding: 8px 8px 8px 16px;
       gap: 20px;
       background: linear-gradient(90deg, rgba(1,138,190,0.16) 31.49%, rgba(255,255,255,0) 100%);
       box-sizing: border-box;
@@ -332,15 +332,15 @@
       text-overflow: ellipsis;
     }
     .qlsx-kpi-icon {
-      width: 30px;
-      height: 30px;
+      width: 36px;
+      height: 36px;
       border-radius: 12px;
       background: rgba(1,138,190,0.08);
       color: var(--qlsx-blue-700);
       display: flex;
       align-items: center;
       justify-content: center;
-      flex: 0 0 30px;
+      flex: 0 0 36px;
     }
     .qlsx-kpi-value {
       display: flex;
@@ -367,15 +367,16 @@
       color: rgba(17,24,39,0.5);
       white-space: nowrap;
     }
+    /* ── Kế hoạch / Cùng kỳ — match kcl-stat light card ── */
     .qlsx-kpi-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      padding: 0 16px 12px;
+      display: flex;
+      gap: 8px;
+      padding: 8px 16px 14px;
       margin-top: auto;
       box-sizing: border-box;
     }
     .qlsx-kpi-stat {
+      flex: 1;
       min-width: 0;
       display: flex;
       align-items: center;
@@ -386,11 +387,11 @@
       box-sizing: border-box;
     }
     .qlsx-kpi-stat-label {
-      color: var(--qlsx-muted);
-      font-family: var(--font), 'Pretendard', sans-serif;
+      font-family: 'Pretendard', var(--font), sans-serif;
       font-size: 13px;
       line-height: 18px;
       font-weight: 500;
+      color: #4B5563;
       white-space: nowrap;
     }
     .qlsx-kpi-stat-value {
@@ -398,18 +399,18 @@
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      color: var(--qlsx-muted);
-      font-family: var(--font), 'Pretendard', sans-serif;
+      font-family: 'Pretendard', var(--font), sans-serif;
       font-size: 15px;
       line-height: 22px;
       font-weight: 600;
+      color: #4B5563;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .qlsx-kpi-stat-value.up { color: #16A34A; }
+    .qlsx-kpi-stat-value.up   { color: #16A34A; }
     .qlsx-kpi-stat-value.down { color: #DC2626; }
-    .qlsx-kpi-stat-value svg { width: 16px; height: 16px; flex: 0 0 16px; }
+    .qlsx-kpi-stat-value svg  { width: 16px; height: 16px; flex: 0 0 16px; }
 
     .qlsx-chart-grid {
       display: grid;
@@ -578,6 +579,13 @@
       .well-bar-pair { height: 240px; }
     }
 
+    @media (max-width: 1366px) {
+      .qlsx-kpi-stats { padding: 6px 12px 12px; gap: 6px; }
+      .qlsx-kpi-stat { padding: 5px 9px; gap: 6px; border-radius: 8px; }
+      .qlsx-kpi-stat-label { font-size: 12px; line-height: 16px; }
+      .qlsx-kpi-stat-value { font-size: 13px; line-height: 16px; }
+    }
+
     @media (max-width: 1280px) {
       .qlsx-header { flex-direction: column; align-items: stretch; }
       .business-report-page-head .sm-content-header { flex-direction: column; align-items: stretch; padding: 0 16px !important; gap: 16px !important; }
@@ -621,7 +629,10 @@
     @media (max-width: 560px) {
       .qlsx-filter-row { grid-template-columns: 1fr !important; }
       .qlsx-filter-group { grid-template-columns: 56px minmax(0,1fr) !important; }
-      .qlsx-kpi-stats { grid-template-columns: 1fr !important; }
+      .qlsx-kpi-stats { gap: 4px !important; padding: 4px 10px 10px !important; }
+      .qlsx-kpi-stat { padding: 4px 7px !important; gap: 4px !important; border-radius: 7px !important; }
+      .qlsx-kpi-stat-label { font-size: 11px !important; line-height: 15px !important; }
+      .qlsx-kpi-stat-value { font-size: 12px !important; line-height: 15px !important; }
       .qlsx-kpi-number { font-size: 26px !important; line-height: 34px !important; }
       .donut-wrap { width: min(220px, 70vw) !important; }
       .qlsx-panel-head { min-height: 48px !important; padding: 10px 16px !important; }
@@ -634,6 +645,11 @@
       .donut-wrap { width: min(190px, 70vw) !important; }
       .donut-center-value { font-size: 17px !important; line-height: 24px !important; }
       .donut-center-unit { font-size: 11px !important; line-height: 15px !important; }
+      .qlsx-kpi-stats { gap: 3px !important; padding: 3px 8px 8px !important; }
+      .qlsx-kpi-stat { padding: 3px 6px !important; gap: 3px !important; }
+      .qlsx-kpi-stat-label { font-size: 10px !important; line-height: 14px !important; }
+      .qlsx-kpi-stat-value { font-size: 11px !important; line-height: 14px !important; }
+      .qlsx-kpi-stat-value svg { width: 12px !important; height: 12px !important; }
     }
   </style>
   <link rel="stylesheet" href="responsive.css?v=38"/>
@@ -663,7 +679,7 @@
             <div class="qlsx-kpi-head">
               <div class="qlsx-kpi-title">Nước sản xuất</div>
               <div class="qlsx-kpi-icon">
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.3337 11.6665C13.3337 13.5074 11.8412 14.9998 10.0003 14.9998M2.91699 11.3982C2.91699 7.91139 5.90098 4.46573 7.99543 2.47669C9.13291 1.39644 10.8677 1.39644 12.0052 2.47669C14.0997 4.46573 17.0837 7.91139 17.0837 11.3982C17.0837 14.8168 14.4013 18.3332 10.0003 18.3332C5.59931 18.3332 2.91699 14.8168 2.91699 11.3982Z" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.3337 11.6665C13.3337 13.5074 11.8412 14.9998 10.0003 14.9998M2.91699 11.3982C2.91699 7.91139 5.90098 4.46573 7.99543 2.47669C9.13291 1.39644 10.8677 1.39644 12.0052 2.47669C14.0997 4.46573 17.0837 7.91139 17.0837 11.3982C17.0837 14.8168 14.4013 18.3332 10.0003 18.3332C5.59931 18.3332 2.91699 14.8168 2.91699 11.3982Z" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
 
               </div>
             </div>
@@ -678,7 +694,7 @@
             <div class="qlsx-kpi-head">
               <div class="qlsx-kpi-title">Điện tiêu thụ</div>
               <div class="qlsx-kpi-icon">
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.49967 1.6665V4.1665M12.4997 1.6665V4.1665M9.99967 14.9998V18.3332M9.99967 14.9998C6.90457 14.9998 5.69639 13.7362 5.26304 10.8816L4.82661 8.0067C4.55565 6.22183 4.42017 5.3294 4.9124 4.74795C5.40462 4.1665 6.29559 4.1665 8.07752 4.1665H11.9218C13.7038 4.1665 14.5948 4.1665 15.0869 4.74795C15.5792 5.3294 15.4437 6.22183 15.1728 8.0067L14.7363 10.8816C14.3029 13.7362 13.0948 14.9998 9.99967 14.9998ZM10.5779 7.08317L8.83541 8.89559C8.64866 9.08975 8.78249 9.36925 9.08699 9.42092L10.9123 9.73092C11.237 9.786 11.3608 10.0954 11.1338 10.2843L8.97183 12.0832" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.49967 1.6665V4.1665M12.4997 1.6665V4.1665M9.99967 14.9998V18.3332M9.99967 14.9998C6.90457 14.9998 5.69639 13.7362 5.26304 10.8816L4.82661 8.0067C4.55565 6.22183 4.42017 5.3294 4.9124 4.74795C5.40462 4.1665 6.29559 4.1665 8.07752 4.1665H11.9218C13.7038 4.1665 14.5948 4.1665 15.0869 4.74795C15.5792 5.3294 15.4437 6.22183 15.1728 8.0067L14.7363 10.8816C14.3029 13.7362 13.0948 14.9998 9.99967 14.9998ZM10.5779 7.08317L8.83541 8.89559C8.64866 9.08975 8.78249 9.36925 9.08699 9.42092L10.9123 9.73092C11.237 9.786 11.3608 10.0954 11.1338 10.2843L8.97183 12.0832" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
             <div class="qlsx-kpi-value"><span class="qlsx-kpi-number" data-kpi="power">0.917</span><span class="qlsx-kpi-unit">kwh/ m³</span></div>
@@ -692,7 +708,7 @@
             <div class="qlsx-kpi-head">
               <div class="qlsx-kpi-title">Sử dụng PAC</div>
               <div class="qlsx-kpi-icon">
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.21336 4.69159C6.35703 3.23459 4.91667 2 4.91667 2C4.91667 2 2 4.5 2 6.58333C2 7.68002 2.60528 8.63534 3.5 9.13345M16.1573 12.2314C17.2396 12.6843 18 13.7534 18 15C18 16.6569 16.6569 18 15 18C13.9565 18 13.0375 17.4672 12.5 16.6589M10.0025 15.75C12.4724 15.75 14.4747 13.7477 14.4747 11.2778C14.4747 8.08333 10.0025 4.25 10.0025 4.25C10.0025 4.25 5.53027 8.08333 5.53027 11.2778C5.53027 13.7477 7.53255 15.75 10.0025 15.75Z" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.21336 4.69159C6.35703 3.23459 4.91667 2 4.91667 2C4.91667 2 2 4.5 2 6.58333C2 7.68002 2.60528 8.63534 3.5 9.13345M16.1573 12.2314C17.2396 12.6843 18 13.7534 18 15C18 16.6569 16.6569 18 15 18C13.9565 18 13.0375 17.4672 12.5 16.6589M10.0025 15.75C12.4724 15.75 14.4747 13.7477 14.4747 11.2778C14.4747 8.08333 10.0025 4.25 10.0025 4.25C10.0025 4.25 5.53027 8.08333 5.53027 11.2778C5.53027 13.7477 7.53255 15.75 10.0025 15.75Z" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
 
               </div>
             </div>
@@ -707,7 +723,7 @@
             <div class="qlsx-kpi-head">
               <div class="qlsx-kpi-title">Sử dụng CLO</div>
               <div class="qlsx-kpi-icon">
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.66667 1.66748H13.3334M4.611 9.29257C4.611 9.29257 7.111 8.52099 9.19435 10.8356M15.4444 9.67832C15.4444 9.67832 14.9347 10.4943 14.1944 10.8357M7.93911 1.66748V5.21531C7.93911 5.76695 7.64599 6.24259 7.1617 6.50214C4.67404 7.83531 2.33746 11.6124 4.78841 15.4835C5.337 16.4331 7.14737 18.3324 10.0001 18.3324C12.8528 18.3324 14.6631 16.4331 15.2117 15.4835C17.6627 11.6124 15.3261 7.83531 12.8384 6.50213C12.3541 6.24259 12.0604 5.76695 12.0604 5.21531V1.66748M11.7708 11.6675H11.6667M8.43752 15.0008H8.33333M11.875 11.6675C11.875 11.7826 11.7817 11.8758 11.6667 11.8758C11.5516 11.8758 11.4583 11.7826 11.4583 11.6675C11.4583 11.5524 11.5516 11.4591 11.6667 11.4591C11.7817 11.4591 11.875 11.5524 11.875 11.6675ZM8.54168 15.0008C8.54168 15.1159 8.44835 15.2091 8.33333 15.2091C8.21828 15.2091 8.125 15.1159 8.125 15.0008C8.125 14.8857 8.21828 14.7925 8.33333 14.7925C8.44835 14.7925 8.54168 14.8857 8.54168 15.0008Z" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.66667 1.66748H13.3334M4.611 9.29257C4.611 9.29257 7.111 8.52099 9.19435 10.8356M15.4444 9.67832C15.4444 9.67832 14.9347 10.4943 14.1944 10.8357M7.93911 1.66748V5.21531C7.93911 5.76695 7.64599 6.24259 7.1617 6.50214C4.67404 7.83531 2.33746 11.6124 4.78841 15.4835C5.337 16.4331 7.14737 18.3324 10.0001 18.3324C12.8528 18.3324 14.6631 16.4331 15.2117 15.4835C17.6627 11.6124 15.3261 7.83531 12.8384 6.50213C12.3541 6.24259 12.0604 5.76695 12.0604 5.21531V1.66748M11.7708 11.6675H11.6667M8.43752 15.0008H8.33333M11.875 11.6675C11.875 11.7826 11.7817 11.8758 11.6667 11.8758C11.5516 11.8758 11.4583 11.7826 11.4583 11.6675C11.4583 11.5524 11.5516 11.4591 11.6667 11.4591C11.7817 11.4591 11.875 11.5524 11.875 11.6675ZM8.54168 15.0008C8.54168 15.1159 8.44835 15.2091 8.33333 15.2091C8.21828 15.2091 8.125 15.1159 8.125 15.0008C8.125 14.8857 8.21828 14.7925 8.33333 14.7925C8.44835 14.7925 8.54168 14.8857 8.54168 15.0008Z" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
 
               </div>
             </div>

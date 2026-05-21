@@ -407,7 +407,7 @@
       /* Header + breadcrumb */
       .sm-breadcrumb { padding: 6px 16px 0 16px; }
       .sm-content-header { padding: 0 16px 10px; }
-      .sm-content-title { font-size: 17px; line-height: 24px; }
+      .sm-content-title { font-size: var(--fs-title2); line-height: var(--lh-title2); }
       .sm-content-subtitle { font-size: 12px; }
       .sm-filter-label { font-size: 13px; }
       .sm-filter-select { height: 34px; font-size: 12px; }
@@ -548,6 +548,17 @@
       .sx-chart-section { padding: 8px 10px 16px; gap: 8px; }
       .sx-chart-card { height: 320px; }
     }
+
+
+    /* Page head component inside Quản lý sản xuất */
+    .sm-main .business-report-page-head {
+      flex: 0 0 auto;
+      width: 100%;
+      display: block;
+    }
+    .sm-main .business-report-page-head + .sm-scroll .sx-kpi-section {
+      padding-top: 14px;
+    }
   </style>
   <script src="components/components-loader.js" defer></script>
 
@@ -591,45 +602,16 @@
     <!-- MAIN -->
     <main class="sm-main">
 
-      <div class="sm-breadcrumb">
-        <a class="sm-bc-item" href="quanly-sanxuat.html">Quản lý sản xuất</a>
-        <span class="sm-bc-sep"></span>
-        <span class="sm-bc-item active" id="smBcCurrent">Dashboard</span>
-      </div>
-
-      <div class="sm-content-header">
-        <div class="sm-content-title-wrap">
-          <div class="sm-content-title" id="smContentTitle">QUẢN LÝ SẢN XUẤT</div>
-          <div class="sm-content-subtitle">Doanh thu, sản lượng nước cung cấp, tỷ lệ thu tiền và các chỉ số kinh doanh theo tháng/quý/năm</div>
-        </div>
-        <div class="sm-filter-row">
-          <div class="sm-filter-group">
-            <label class="sm-filter-label">Tháng</label>
-            <select class="sm-filter-select" id="selectMonth" style="width:86px;">
-              <option value="01">01</option>
-              <option value="02">02</option>
-              <option value="03">03</option>
-              <option value="04" selected>04</option>
-              <option value="05">05</option>
-              <option value="06">06</option>
-              <option value="07">07</option>
-              <option value="08">08</option>
-              <option value="09">09</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>
-          </div>
-          <div class="sm-filter-group">
-            <label class="sm-filter-label">Năm</label>
-            <select class="sm-filter-select" id="selectYear" style="width:86px;">
-              <option value="2026" selected>2026</option>
-              <option value="2025">2025</option><option value="2024">2024</option>
-            </select>
-          </div>
-          <button class="sm-filter-btn" id="btnViewFilter" type="button">Xem</button>
-        </div>
-      </div>
+      <div data-component="business-report-page-head"
+           data-parent="Quản lý sản xuất"
+           data-parent-url="quanly-sanxuat.html"
+           data-current="Dashboard"
+           data-title="Quản lý sản xuất"
+           data-subtitle="Sản lượng nước cung cấp, doanh thu tỷ lệ thu tiền và các chỉ số kinh doanh theo tháng/quý/năm"
+           data-month="04"
+           data-months="01,02,03,04,05,06,07,08,09,10,11,12"
+           data-year="2026"
+           data-years="2026,2025,2024"></div>
 
       <div class="sm-scroll">
         <div id="sxMainContent" style="display:flex;flex-direction:column;flex:1;min-height:0;">
@@ -987,8 +969,40 @@
 
 
 <script>
-function ensureFullMonthOptionsForSelectMonth(){
-  const monthSelect = document.getElementById('selectMonth');
+function normalizeProductionPageHead(){
+  const head = document.querySelector('.business-report-page-head');
+  if(!head) return;
+
+  const title = head.querySelector('.sm-content-title');
+  const subtitle = head.querySelector('.sm-content-subtitle');
+  const current = head.querySelector('.sm-bc-item.active, .sm-bc-item.current');
+  if(title) title.textContent = 'Quản lý sản xuất';
+  if(subtitle) subtitle.textContent = 'Sản lượng nước cung cấp, doanh thu và tỷ lệ thu tiền và các chỉ số kinh doanh theo tháng/quý/năm';
+  if(current) current.textContent = 'Dashboard';
+
+  const selects = head.querySelectorAll('.sm-filter-select');
+  const monthSelect = head.querySelector('select[name="month"], select[data-filter="month"]') || selects[0];
+  const yearSelect = head.querySelector('select[name="year"], select[data-filter="year"]') || selects[1];
+  const viewButton = head.querySelector('.sm-filter-btn, button');
+
+  if(monthSelect){
+    monthSelect.id = 'selectMonth';
+    monthSelect.setAttribute('data-default-month', '04');
+    ensureFullMonthOptionsForSelectMonth(monthSelect);
+  }
+  if(yearSelect){
+    const currentYear = yearSelect.value || '2026';
+    yearSelect.id = 'selectYear';
+    yearSelect.innerHTML = ['2026','2025','2024']
+      .map(year => `<option value="${year}">${year}</option>`)
+      .join('');
+    yearSelect.value = ['2026','2025','2024'].includes(currentYear) ? currentYear : '2026';
+  }
+  if(viewButton) viewButton.id = 'btnViewFilter';
+}
+
+function ensureFullMonthOptionsForSelectMonth(targetSelect){
+  const monthSelect = targetSelect || document.getElementById('selectMonth');
   if(!monthSelect) return;
 
   const fallbackValue = monthSelect.getAttribute('data-default-month') || '04';
@@ -1002,8 +1016,8 @@ function ensureFullMonthOptionsForSelectMonth(){
   monthSelect.value = months.includes(currentValue) ? currentValue : fallbackValue;
 }
 
-document.addEventListener('DOMContentLoaded', ensureFullMonthOptionsForSelectMonth);
-document.addEventListener('pmw:components-loaded', ensureFullMonthOptionsForSelectMonth);
+document.addEventListener('DOMContentLoaded', normalizeProductionPageHead);
+document.addEventListener('pmw:components-loaded', normalizeProductionPageHead);
 </script>
 
 <script>
@@ -1053,6 +1067,8 @@ const FONT = "'Pretendard','Montserrat',sans-serif";
 
 // ── Filter tháng/năm: cập nhật bảng "Biểu đồ nước phân phối tháng ..." ──
 (function(){
+  function initWaterDistributionFilter(){
+  normalizeProductionPageHead();
   const monthSelect = document.getElementById('selectMonth');
   const yearSelect = document.getElementById('selectYear');
   const viewButton = document.getElementById('btnViewFilter');
@@ -1128,6 +1144,10 @@ const FONT = "'Pretendard','Montserrat',sans-serif";
 
   viewButton?.addEventListener('click', updateWaterDistributionTable);
   updateWaterDistributionTable();
+  }
+
+  if(document.querySelector('.business-report-page-head')) initWaterDistributionFilter();
+  document.addEventListener('pmw:components-loaded', initWaterDistributionFilter, { once: true });
 })();
 
 // ── Sidebar navigation is handled by href links + components-loader active state ──
