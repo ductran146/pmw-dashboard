@@ -2042,7 +2042,7 @@ body.pmw-page-bc-tru-nuoc .business-report-page-head .br-filter {
   padding: 0 36px 0 16px !important;
   border: 1px solid rgba(17,24,39,.08) !important;
   border-radius: 12px !important;
-  background-color: rgba(2,69,122,.02) !important;
+  background-color: var(--bg-card) !important;
   color: #111827 !important;
   font-family: 'Pretendard', var(--font), sans-serif !important;
   font-size: 14px !important;
