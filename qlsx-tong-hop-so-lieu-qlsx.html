@@ -647,7 +647,7 @@
 
     <main class="sm-main">
       <section class="qlsx-content">
-        <div data-component="business-report-page-head"
+        <div id="page-head-qlsx-summary" data-component="business-report-page-head"
              data-parent="Quản lý sản xuất"
              data-parent-url="quanly-sanxuat.html"
              data-current="Tổng hợp số liệu QLSX"
@@ -659,97 +659,97 @@
              data-years="2026,2025,2024"></div>
 
         <div class="qlsx-kpi-grid">
-          <article class="qlsx-kpi-card">
+          <article id="kpi-card-water-production" class="qlsx-kpi-card" data-kpi-card="water-production">
             <div class="qlsx-kpi-head">
-              <div class="qlsx-kpi-title">Nước sản xuất</div>
+              <div id="kpi-water-production-title" class="qlsx-kpi-title" data-kpi-title="water-production">Nước sản xuất</div>
               <div class="qlsx-kpi-icon">
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.3337 11.6665C13.3337 13.5074 11.8412 14.9998 10.0003 14.9998M2.91699 11.3982C2.91699 7.91139 5.90098 4.46573 7.99543 2.47669C9.13291 1.39644 10.8677 1.39644 12.0052 2.47669C14.0997 4.46573 17.0837 7.91139 17.0837 11.3982C17.0837 14.8168 14.4013 18.3332 10.0003 18.3332C5.59931 18.3332 2.91699 14.8168 2.91699 11.3982Z" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
 
               </div>
             </div>
-            <div class="qlsx-kpi-value"><span class="qlsx-kpi-number" data-kpi="water">5.947.610</span><span class="qlsx-kpi-unit">m³</span></div>
+            <div class="qlsx-kpi-value"><span id="kpi-water-production-value" class="qlsx-kpi-number" data-kpi="water" data-kpi-value="water-production">5.947.610</span><span id="kpi-water-production-unit" class="qlsx-kpi-unit" data-kpi-unit="water-production">m³</span></div>
             <div class="qlsx-kpi-stats">
-              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Kế hoạch</span><span class="qlsx-kpi-stat-value" data-kpi="waterPlan">0%</span></div>
-              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Cùng kỳ</span><span class="qlsx-kpi-stat-value up" data-kpi="waterYoY"><svg viewBox="0 0 16 16" fill="none"><path d="M11.23 6.71 8.01 3.5 4.8 6.71M8.01 12.5V3.59" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>106.06%</span></div>
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Kế hoạch</span><span id="kpi-water-production-plan" class="qlsx-kpi-stat-value" data-kpi="waterPlan" data-kpi-plan="water-production">0%</span></div>
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Cùng kỳ</span><span id="kpi-water-production-yoy" class="qlsx-kpi-stat-value up" data-kpi="waterYoY" data-kpi-yoy="water-production"><svg viewBox="0 0 16 16" fill="none"><path d="M11.23 6.71 8.01 3.5 4.8 6.71M8.01 12.5V3.59" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>106.06%</span></div>
             </div>
           </article>
 
-          <article class="qlsx-kpi-card">
+          <article id="kpi-card-power-consumption" class="qlsx-kpi-card" data-kpi-card="power-consumption">
             <div class="qlsx-kpi-head">
-              <div class="qlsx-kpi-title">Điện tiêu thụ</div>
+              <div id="kpi-power-consumption-title" class="qlsx-kpi-title" data-kpi-title="power-consumption">Điện tiêu thụ</div>
               <div class="qlsx-kpi-icon">
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.49967 1.6665V4.1665M12.4997 1.6665V4.1665M9.99967 14.9998V18.3332M9.99967 14.9998C6.90457 14.9998 5.69639 13.7362 5.26304 10.8816L4.82661 8.0067C4.55565 6.22183 4.42017 5.3294 4.9124 4.74795C5.40462 4.1665 6.29559 4.1665 8.07752 4.1665H11.9218C13.7038 4.1665 14.5948 4.1665 15.0869 4.74795C15.5792 5.3294 15.4437 6.22183 15.1728 8.0067L14.7363 10.8816C14.3029 13.7362 13.0948 14.9998 9.99967 14.9998ZM10.5779 7.08317L8.83541 8.89559C8.64866 9.08975 8.78249 9.36925 9.08699 9.42092L10.9123 9.73092C11.237 9.786 11.3608 10.0954 11.1338 10.2843L8.97183 12.0832" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
-            <div class="qlsx-kpi-value"><span class="qlsx-kpi-number" data-kpi="power">0.917</span><span class="qlsx-kpi-unit">kwh/ m³</span></div>
+            <div class="qlsx-kpi-value"><span id="kpi-power-consumption-value" class="qlsx-kpi-number" data-kpi="power" data-kpi-value="power-consumption">0.917</span><span id="kpi-power-consumption-unit" class="qlsx-kpi-unit" data-kpi-unit="power-consumption">kwh/ m³</span></div>
             <div class="qlsx-kpi-stats">
-              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Kế hoạch</span><span class="qlsx-kpi-stat-value" data-kpi="powerPlan">0%</span></div>
-              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Cùng kỳ</span><span class="qlsx-kpi-stat-value down" data-kpi="powerYoY"><svg viewBox="0 0 16 16" fill="none"><path d="M11.23 9.29 8.01 12.5 4.8 9.29M8.01 3.5v8.91" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>105.91%</span></div>
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Kế hoạch</span><span id="kpi-power-consumption-plan" class="qlsx-kpi-stat-value" data-kpi="powerPlan" data-kpi-plan="power-consumption">0%</span></div>
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Cùng kỳ</span><span id="kpi-power-consumption-yoy" class="qlsx-kpi-stat-value down" data-kpi="powerYoY" data-kpi-yoy="power-consumption"><svg viewBox="0 0 16 16" fill="none"><path d="M11.23 9.29 8.01 12.5 4.8 9.29M8.01 3.5v8.91" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>105.91%</span></div>
             </div>
           </article>
 
-          <article class="qlsx-kpi-card">
+          <article id="kpi-card-pac-usage" class="qlsx-kpi-card" data-kpi-card="pac-usage">
             <div class="qlsx-kpi-head">
-              <div class="qlsx-kpi-title">Sử dụng PAC</div>
+              <div id="kpi-pac-usage-title" class="qlsx-kpi-title" data-kpi-title="pac-usage">Sử dụng PAC</div>
               <div class="qlsx-kpi-icon">
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.21336 4.69159C6.35703 3.23459 4.91667 2 4.91667 2C4.91667 2 2 4.5 2 6.58333C2 7.68002 2.60528 8.63534 3.5 9.13345M16.1573 12.2314C17.2396 12.6843 18 13.7534 18 15C18 16.6569 16.6569 18 15 18C13.9565 18 13.0375 17.4672 12.5 16.6589M10.0025 15.75C12.4724 15.75 14.4747 13.7477 14.4747 11.2778C14.4747 8.08333 10.0025 4.25 10.0025 4.25C10.0025 4.25 5.53027 8.08333 5.53027 11.2778C5.53027 13.7477 7.53255 15.75 10.0025 15.75Z" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
 
               </div>
             </div>
-            <div class="qlsx-kpi-value"><span class="qlsx-kpi-number" data-kpi="pac">20.41</span><span class="qlsx-kpi-unit">g/ m³</span></div>
+            <div class="qlsx-kpi-value"><span id="kpi-pac-usage-value" class="qlsx-kpi-number" data-kpi="pac" data-kpi-value="pac-usage">20.41</span><span id="kpi-pac-usage-unit" class="qlsx-kpi-unit" data-kpi-unit="pac-usage">g/ m³</span></div>
             <div class="qlsx-kpi-stats">
-              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Kế hoạch</span><span class="qlsx-kpi-stat-value" data-kpi="pacPlan">0%</span></div>
-              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Cùng kỳ</span><span class="qlsx-kpi-stat-value down" data-kpi="pacYoY"><svg viewBox="0 0 16 16" fill="none"><path d="M11.23 9.29 8.01 12.5 4.8 9.29M8.01 3.5v8.91" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>63.78%</span></div>
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Kế hoạch</span><span id="kpi-pac-usage-plan" class="qlsx-kpi-stat-value" data-kpi="pacPlan" data-kpi-plan="pac-usage">0%</span></div>
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Cùng kỳ</span><span id="kpi-pac-usage-yoy" class="qlsx-kpi-stat-value down" data-kpi="pacYoY" data-kpi-yoy="pac-usage"><svg viewBox="0 0 16 16" fill="none"><path d="M11.23 9.29 8.01 12.5 4.8 9.29M8.01 3.5v8.91" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>63.78%</span></div>
             </div>
           </article>
 
-          <article class="qlsx-kpi-card">
+          <article id="kpi-card-clo-usage" class="qlsx-kpi-card" data-kpi-card="clo-usage">
             <div class="qlsx-kpi-head">
-              <div class="qlsx-kpi-title">Sử dụng CLO</div>
+              <div id="kpi-clo-usage-title" class="qlsx-kpi-title" data-kpi-title="clo-usage">Sử dụng CLO</div>
               <div class="qlsx-kpi-icon">
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.66667 1.66748H13.3334M4.611 9.29257C4.611 9.29257 7.111 8.52099 9.19435 10.8356M15.4444 9.67832C15.4444 9.67832 14.9347 10.4943 14.1944 10.8357M7.93911 1.66748V5.21531C7.93911 5.76695 7.64599 6.24259 7.1617 6.50214C4.67404 7.83531 2.33746 11.6124 4.78841 15.4835C5.337 16.4331 7.14737 18.3324 10.0001 18.3324C12.8528 18.3324 14.6631 16.4331 15.2117 15.4835C17.6627 11.6124 15.3261 7.83531 12.8384 6.50213C12.3541 6.24259 12.0604 5.76695 12.0604 5.21531V1.66748M11.7708 11.6675H11.6667M8.43752 15.0008H8.33333M11.875 11.6675C11.875 11.7826 11.7817 11.8758 11.6667 11.8758C11.5516 11.8758 11.4583 11.7826 11.4583 11.6675C11.4583 11.5524 11.5516 11.4591 11.6667 11.4591C11.7817 11.4591 11.875 11.5524 11.875 11.6675ZM8.54168 15.0008C8.54168 15.1159 8.44835 15.2091 8.33333 15.2091C8.21828 15.2091 8.125 15.1159 8.125 15.0008C8.125 14.8857 8.21828 14.7925 8.33333 14.7925C8.44835 14.7925 8.54168 14.8857 8.54168 15.0008Z" stroke="#02457A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
 
               </div>
             </div>
-            <div class="qlsx-kpi-value"><span class="qlsx-kpi-number" data-kpi="clo">3.07</span><span class="qlsx-kpi-unit">g/ m³</span></div>
+            <div class="qlsx-kpi-value"><span id="kpi-clo-usage-value" class="qlsx-kpi-number" data-kpi="clo" data-kpi-value="clo-usage">3.07</span><span id="kpi-clo-usage-unit" class="qlsx-kpi-unit" data-kpi-unit="clo-usage">g/ m³</span></div>
             <div class="qlsx-kpi-stats">
-              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Kế hoạch</span><span class="qlsx-kpi-stat-value" data-kpi="cloPlan">0%</span></div>
-              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Cùng kỳ</span><span class="qlsx-kpi-stat-value up" data-kpi="cloYoY"><svg viewBox="0 0 16 16" fill="none"><path d="M11.23 6.71 8.01 3.5 4.8 6.71M8.01 12.5V3.59" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>98.08%</span></div>
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Kế hoạch</span><span id="kpi-clo-usage-plan" class="qlsx-kpi-stat-value" data-kpi="cloPlan" data-kpi-plan="clo-usage">0%</span></div>
+              <div class="qlsx-kpi-stat"><span class="qlsx-kpi-stat-label">Cùng kỳ</span><span id="kpi-clo-usage-yoy" class="qlsx-kpi-stat-value up" data-kpi="cloYoY" data-kpi-yoy="clo-usage"><svg viewBox="0 0 16 16" fill="none"><path d="M11.23 6.71 8.01 3.5 4.8 6.71M8.01 12.5V3.59" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>98.08%</span></div>
             </div>
           </article>
         </div>
 
         <div class="qlsx-chart-grid">
-          <section class="qlsx-panel">
-            <div class="qlsx-panel-head"><div class="qlsx-panel-title" id="waterChartTitle">Biểu đồ nước sản xuất tháng 5</div></div>
-            <div class="qlsx-panel-meta">Đơn vị: m³/ ngày</div>
+          <section id="panel-water-production-donut" class="qlsx-panel" data-chart-panel="water-production-donut">
+            <div class="qlsx-panel-head"><div class="qlsx-panel-title" id="waterChartTitle" data-chart-title="water-production-donut">Biểu đồ nước sản xuất tháng 5</div></div>
+            <div id="water-chart-unit" class="qlsx-panel-meta" data-chart-unit="water-production-donut">Đơn vị: m³/ ngày</div>
             <div class="donut-row">
-              <div class="donut-block">
-                <div class="donut-year" id="prevYearLabel">Năm 2025</div>
+              <div id="donut-prev-block" class="donut-block" data-donut-block="previous-year">
+                <div class="donut-year" id="prevYearLabel" data-donut-year-label="previous-year">Năm 2025</div>
                 <div class="donut-wrap">
-                  <canvas id="donutPrev"></canvas>
-                  <div class="donut-center"><span class="donut-center-value" data-donut-prev="total">191,858</span><span class="donut-center-unit">m³/ng</span></div>
+                  <canvas id="donutPrev" data-chart-canvas="donut-previous-year"></canvas>
+                  <div class="donut-center"><span id="donut-prev-total" class="donut-center-value" data-donut-prev="total" data-donut-total="previous-year">191,858</span><span id="donut-prev-unit" class="donut-center-unit" data-donut-unit="previous-year">m³/ng</span></div>
                 </div>
               </div>
-              <div class="donut-block">
-                <div class="donut-year" id="currentYearLabel">Năm 2026</div>
+              <div id="donut-current-block" class="donut-block" data-donut-block="current-year">
+                <div class="donut-year" id="currentYearLabel" data-donut-year-label="current-year">Năm 2026</div>
                 <div class="donut-wrap">
-                  <canvas id="donutCurrent"></canvas>
-                  <div class="donut-center"><span class="donut-center-value" data-donut-current="total">186,934</span><span class="donut-center-unit">m³/ng</span></div>
+                  <canvas id="donutCurrent" data-chart-canvas="donut-current-year"></canvas>
+                  <div class="donut-center"><span id="donut-current-total" class="donut-center-value" data-donut-current="total" data-donut-total="current-year">186,934</span><span id="donut-current-unit" class="donut-center-unit" data-donut-unit="current-year">m³/ng</span></div>
                 </div>
               </div>
             </div>
             <div class="qlsx-legend">
-              <span class="legend-item"><i class="legend-dot" style="background:#005292"></i>XN Sản xuất nước:</span>
-              <span class="legend-item"><i class="legend-dot" style="background:rgba(1,138,190,0.36)"></i>Xuyên Mộc</span>
-              <span class="legend-item"><i class="legend-dot" style="background:rgba(1,138,190,0.66)"></i>Châu Đức</span>
+              <span id="legend-main-production" class="legend-item" data-legend="main-production"><i class="legend-dot" style="background:#005292"></i>XN Sản xuất nước:</span>
+              <span id="legend-xuyen-moc" class="legend-item" data-legend="xuyen-moc"><i class="legend-dot" style="background:rgba(1,138,190,0.36)"></i>Xuyên Mộc</span>
+              <span id="legend-chau-duc" class="legend-item" data-legend="chau-duc"><i class="legend-dot" style="background:rgba(1,138,190,0.66)"></i>Châu Đức</span>
             </div>
           </section>
 
-          <section class="qlsx-panel">
-            <div class="qlsx-panel-head"><div class="qlsx-panel-title">Sản lượng các giếng khai thác</div></div>
-            <div class="well-chart-body">
-              <div class="well-bars" id="wellBars"></div>
+          <section id="panel-well-production" class="qlsx-panel" data-chart-panel="well-production">
+            <div class="qlsx-panel-head"><div id="well-chart-title" class="qlsx-panel-title" data-chart-title="well-production">Sản lượng các giếng khai thác</div></div>
+            <div id="well-chart-body" class="well-chart-body" data-chart-body="well-production">
+              <div class="well-bars" id="wellBars" data-chart-container="well-bars"></div>
             </div>
           </section>
         </div>
@@ -929,24 +929,24 @@ function initQlsxPage(){
     const data = scaledData();
     const max = Math.max(...data.wells.flatMap(r => [r.y2025, r.y2026]));
     const html = [
-      '<div class="well-legend-col">' +
+      '<div id="well-legend-col" class="well-legend-col" data-well-legend="years">' +
         '<div class="well-bar-pair"></div>' +
-        '<div class="well-table-row"><span class="well-legend-mark"><i class="well-mini-bar" style="background:#005292"></i>2025</span></div>' +
-        '<div class="well-table-row"><span class="well-legend-mark"><i class="well-mini-bar" style="background:rgba(1,138,190,0.36)"></i>2026</span></div>' +
+        '<div id="well-legend-2025" class="well-table-row" data-well-year="2025"><span class="well-legend-mark"><i class="well-mini-bar" style="background:#005292"></i>2025</span></div>' +
+        '<div id="well-legend-2026" class="well-table-row" data-well-year="2026"><span class="well-legend-mark"><i class="well-mini-bar" style="background:rgba(1,138,190,0.36)"></i>2026</span></div>' +
       '</div>'
     ];
     data.wells.forEach(row => {
       const h25 = Math.max(18, Math.round(row.y2025 / max * 250));
       const h26 = Math.max(18, Math.round(row.y2026 / max * 250));
       html.push(
-        '<div class="well-group">' +
+        '<div id="well-group-'+row.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/\s+/g, '-')+'" class="well-group" data-well-group="'+row.name+'">' +
           '<div class="well-bar-pair">' +
-            '<div class="well-bar y2025" style="height:'+h25+'px"></div>' +
-            '<div class="well-bar y2026" style="height:'+h26+'px"></div>' +
+            '<div id="well-bar-'+row.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/\s+/g, '-')+'-2025" class="well-bar y2025" data-well-bar="2025" style="height:'+h25+'px"></div>' +
+            '<div id="well-bar-'+row.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/\s+/g, '-')+'-2026" class="well-bar y2026" data-well-bar="2026" style="height:'+h26+'px"></div>' +
           '</div>' +
-          '<div class="well-table-row name">'+row.name+'</div>' +
-          '<div class="well-table-row">'+num(row.y2025)+'</div>' +
-          '<div class="well-table-row">'+num(row.y2026)+'</div>' +
+          '<div id="well-name-'+row.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/\s+/g, '-')+'" class="well-table-row name" data-well-name="'+row.name+'">'+row.name+'</div>' +
+          '<div id="well-value-'+row.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/\s+/g, '-')+'-2025" class="well-table-row" data-well-value="2025">'+num(row.y2025)+'</div>' +
+          '<div id="well-value-'+row.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/\s+/g, '-')+'-2026" class="well-table-row" data-well-value="2026">'+num(row.y2026)+'</div>' +
         '</div>'
       );
     });
