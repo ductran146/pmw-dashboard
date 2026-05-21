@@ -240,20 +240,16 @@
 
       <main class="sm-main">
 
-        <div class="sm-breadcrumb">
-          <a class="sm-bc-item" href="index.html">Trang chủ</a>
-          <span class="sm-bc-sep"></span>
-          <a class="sm-bc-item" href="bc-so-lieu-kd.html">Báo cáo số liệu nội bộ</a>
-          <span class="sm-bc-sep"></span>
-          <span class="sm-bc-item active">Trụ nước uống tại vòi</span>
-        </div>
-
-        <div class="sm-content-header">
-          <div class="sm-content-title-wrap">
-            <div class="sm-content-title">Trụ nước uống tại vòi</div>
-            <div class="sm-content-subtitle">Danh sách, địa chỉ và tình trạng hoạt động của các trụ nước uống tại vòi trên toàn địa bàn</div>
-          </div>
-        </div>
+        <div data-component="business-report-page-head"
+             data-show-root="true"
+             data-root="Quản lý điều hành"
+             data-root-url="quanly-dieuhanh.html"
+             data-parent="Báo cáo số liệu nội bộ"
+             data-parent-url="bc-so-lieu-kd.html"
+             data-current="Trụ nước uống tại vòi"
+             data-title="Báo cáo trụ nước uống tại vòi"
+             data-subtitle="Theo dõi danh sách trụ nước uống tại vòi, địa chỉ lắp đặt, thời gian sử dụng và tình trạng hoạt động của từng trụ"
+             data-hide-filter="true"></div>
 
         <div class="sm-scroll">
           <div style="display:flex;flex-direction:column;min-height:100%;">
@@ -319,6 +315,7 @@
   </div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+
       document.querySelector('.dv-header-logo').addEventListener('click', e => {
         e.preventDefault(); window.location.href = 'index.html';
       });

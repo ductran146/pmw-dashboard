@@ -16,8 +16,6 @@
     .bao-cao-wrapper { display: flex; flex-direction: column; height: 100vh; }
     .submod-page.active { flex: 1; display: flex !important; min-height: 0; }
     .dv-header { flex-shrink: 0; }
-    .sm-filter-row { display: flex !important; }
-
     /* ═══════════════════════════════
        KPI CARDS
     ═══════════════════════════════ */
@@ -327,6 +325,16 @@
 
     #smNavDashboard .sm-nav-cat-arrow { display: none; }
 
+    /* Page head component inside Quản lý sản xuất */
+    .sm-main .business-report-page-head {
+      flex: 0 0 auto;
+      width: 100%;
+      display: block;
+    }
+    .sm-main .business-report-page-head + .sx-kpi-section {
+      padding-top: 14px;
+    }
+
     /* ══════════════════════════════════════════════
        RESPONSIVE — từ lớn xuống nhỏ
     ══════════════════════════════════════════════ */
@@ -403,15 +411,6 @@
       .td-pct-cell { padding: 6px 14px 6px 8px; }
       .td-pct-val { font-size: 13px; min-width: 36px; }
       .pct-bar-bg { width: 80px; }
-
-      /* Header + breadcrumb */
-      .sm-breadcrumb { padding: 6px 16px 0 16px; }
-      .sm-content-header { padding: 0 16px 10px; }
-      .sm-content-title { font-size: 17px; line-height: 24px; }
-      .sm-content-subtitle { font-size: 12px; }
-      .sm-filter-label { font-size: 13px; }
-      .sm-filter-select { height: 34px; font-size: 12px; }
-      .sm-filter-btn { height: 34px; padding: 0 14px; font-size: 13px; }
     }
 
     /* ── 1280px — Dell 13", surface ── */
@@ -424,8 +423,7 @@
 
     /* ── 1200px ── */
     @media (max-width: 1200px) {
-      .sm-content-header { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .sm-filter-row { flex-wrap: wrap; width: 100%; }
+
       .kpi-row { grid-template-columns: repeat(2,1fr); }
       .sx-chart-section { grid-template-columns: 1fr; }
       .sx-chart-card { height: 360px; }
@@ -534,10 +532,6 @@
       .kcl-stat-val { font-size: 12px; line-height: 15px; }
       .arr svg { width: 9px; height: 9px; }
 
-      .sm-content-title { font-size: 18px !important; line-height: 24px !important; }
-      .sm-content-subtitle { font-size: 12px !important; line-height: 18px !important; }
-      .sm-filter-select { width: 96px; height: 32px; font-size: 12px; }
-      .sm-filter-btn { height: 32px; min-width: 78px; padding: 0 16px; font-size: 13px; }
     }
 
     /* ── Mobile ── */
@@ -551,33 +545,9 @@
   </style>
   <script src="components/components-loader.js" defer></script>
 
-  <style>
-    /* v13 breadcrumb page-level override */
-    .sm-breadcrumb {
-      display:flex !important; flex-direction:row !important; align-items:center !important;
-      align-self:stretch !important; gap:10px !important; height:auto !important;
-      min-height:18px !important; padding:20px 20px 0 20px !important; padding-bottom:0 !important; margin:0 0 8px 0 !important;
-      flex:none !important; flex-grow:0 !important; overflow:hidden !important;
-    }
-    .sm-bc-item, .sm-breadcrumb a, .sm-breadcrumb span {
-      font-family:'Pretendard', var(--font), sans-serif !important; font-weight:400 !important;
-      font-size:13px !important; line-height:18px !important; letter-spacing:0 !important;
-      white-space:nowrap !important; text-decoration:none !important; flex:none !important;
-    }
-    .sm-breadcrumb a.sm-bc-item, .sm-bc-item:not(.active):not(.current) { color:#111827 !important; }
-    .sm-breadcrumb a.sm-bc-item:hover { color:#02457A !important; text-decoration:none !important; }
-    .sm-bc-item.active, .sm-bc-item.current { color:rgba(17,24,39,0.5) !important; }
-    .sm-bc-sep {
-      display:inline-flex !important; align-items:center !important; justify-content:center !important;
-      width:8px !important; height:18px !important; color:rgba(17,24,39,0.5) !important;
-      font-family:'Pretendard', var(--font), sans-serif !important; font-weight:400 !important;
-      font-size:13px !important; line-height:18px !important; flex:none !important;
-    }
-    .sm-bc-sep svg { width:8px !important; height:8px !important; stroke:rgba(17,24,39,0.5) !important; }
-  </style>
   <link rel="stylesheet" href="responsive.css?v=37"/>
 </head>
-<body>
+<body class="pmw-page-quanly-sanxuat">
 <div class="bao-cao-wrapper">
 
   <!-- HEADER -->
@@ -591,42 +561,14 @@
     <!-- MAIN -->
     <main class="sm-main">
 
-      <div class="sm-breadcrumb">
-        <a class="sm-bc-item" href="quanly-sanxuat.html">Quản lý sản xuất</a>
-        <span class="sm-bc-sep"></span>
-        <span class="sm-bc-item active" id="smBcCurrent">Dashboard</span>
-      </div>
-
-      <div class="sm-content-header">
-        <div class="sm-content-title-wrap">
-          <div class="sm-content-title" id="smContentTitle">QUẢN LÝ SẢN XUẤT</div>
-          <div class="sm-content-subtitle">Doanh thu, sản lượng nước cung cấp, tỷ lệ thu tiền và các chỉ số kinh doanh theo tháng/quý/năm</div>
-        </div>
-        <div class="sm-filter-row">
-          <div class="sm-filter-group">
-            <label class="sm-filter-label">Tháng</label>
-            <select class="sm-filter-select" id="selectMonth" style="width:86px;">
-              
-              <option value="1">01</option><option value="2">02</option><option value="3">03</option>
-              <option value="4" selected>04</option>
-              <option value="5">05</option><option value="6">06</option><option value="7">07</option>
-              <option value="8">08</option><option value="9">09</option><option value="10">10</option>
-              <option value="11">11</option><option value="12">12</option>
-            </select>
-          </div>
-          <div class="sm-filter-group">
-            <label class="sm-filter-label">Năm</label>
-            <select class="sm-filter-select" id="selectYear" style="width:86px;">
-              <option value="2026" selected>2026</option>
-              <option value="2025">2025</option><option value="2024">2024</option>
-            </select>
-          </div>
-          <button class="sm-filter-btn" id="btnViewFilter" type="button">Xem</button>
-        </div>
-      </div>
-
       <div class="sm-scroll">
         <div id="sxMainContent" style="display:flex;flex-direction:column;flex:1;min-height:0;">
+          <div data-component="business-report-page-head"
+               data-parent="Quản lý sản xuất"
+               data-parent-url="quanly-sanxuat.html"
+               data-current="Tổng hợp số liệu sản xuất"
+               data-title="Tổng hợp số liệu sản xuất"
+               data-subtitle="Theo dõi sản lượng nước phân phối, nước thương phẩm, tỷ lệ thất thoát, lắp đặt đồng hồ và các chỉ tiêu vận hành sản xuất theo kỳ báo cáo"></div>
 
           <!-- KPI SECTION -->
           <div class="sx-kpi-section">
@@ -1023,85 +965,6 @@ const FONT = "'Pretendard','Montserrat',sans-serif";
 })();
 
 
-
-// ── Filter tháng/năm: cập nhật bảng "Biểu đồ nước phân phối tháng ..." ──
-(function(){
-  const monthSelect = document.getElementById('selectMonth');
-  const yearSelect = document.getElementById('selectYear');
-  const viewButton = document.getElementById('btnViewFilter');
-  const tableTitle = document.getElementById('waterDistributionTitle');
-
-  const baseRows = {
-    was:     { name: 'WAS', plan: 142580, actual: 138246 },
-    self:    { name: 'Nước tự sản xuất', plan: 82450,  actual: 79815  },
-    tocTien: { name: 'Nước mua Tóc Tiên', plan: 48320,  actual: 46971  },
-    bwaco:   { name: 'BWACO', plan: 22180,  actual: 21948  }
-  };
-
-  const monthFactor = {
-    1: 0.86, 2: 0.89, 3: 0.94, 4: 1.00,
-    5: 1.03, 6: 1.06, 7: 1.08, 8: 1.10,
-    9: 1.07, 10: 1.04, 11: 1.01, 12: 1.12
-  };
-
-  function formatNumber(value) {
-    return Math.round(value).toLocaleString('vi-VN');
-  }
-
-  function formatPercent(value) {
-    return value.toLocaleString('vi-VN', { maximumFractionDigits: 1, minimumFractionDigits: 1 }) + '%';
-  }
-
-  function updateWaterDistributionTable() {
-    if (!monthSelect || !tableTitle) return;
-
-    const month = Number(monthSelect.value || 4);
-    const year = yearSelect?.value || '2026';
-    const factor = monthFactor[month] || 1;
-    const monthLabel = String(month).padStart(2, '0');
-
-    tableTitle.textContent = `Biểu đồ nước phân phối tháng ${monthLabel}/${year}`;
-
-    const rows = Object.entries(baseRows).map(([key, row]) => ({
-      key,
-      plan: Math.round(row.plan * factor),
-      actual: Math.round(row.actual * factor * (0.985 + (month % 4) * 0.006))
-    }));
-
-    const totalPlan = rows.reduce((sum, row) => sum + row.plan, 0);
-    const totalActual = rows.reduce((sum, row) => sum + row.actual, 0);
-
-    rows.forEach(row => {
-      const tr = document.querySelector(`[data-water-source="${row.key}"]`);
-      if (!tr) return;
-
-      const percent = totalActual ? (row.actual / totalActual) * 100 : 0;
-      const numberCells = tr.querySelectorAll('.td-num');
-      const percentText = tr.querySelector('.td-pct-val');
-      const percentBar = tr.querySelector('.pct-bar-fill');
-
-      if (numberCells[0]) numberCells[0].textContent = formatNumber(row.plan);
-      if (numberCells[1]) numberCells[1].textContent = formatNumber(row.actual);
-      if (percentText) percentText.textContent = formatPercent(percent);
-      if (percentBar) percentBar.style.width = `${Math.min(percent, 100).toFixed(1)}%`;
-    });
-
-    const totalRow = document.querySelector('[data-water-source="total"]');
-    if (totalRow) {
-      const totalCells = totalRow.querySelectorAll('.td-num');
-      const totalPercentText = totalRow.querySelector('.td-pct-val');
-      const totalBar = totalRow.querySelector('.pct-bar-fill');
-
-      if (totalCells[0]) totalCells[0].textContent = formatNumber(totalPlan);
-      if (totalCells[1]) totalCells[1].textContent = formatNumber(totalActual);
-      if (totalPercentText) totalPercentText.textContent = '100%';
-      if (totalBar) totalBar.style.width = '100%';
-    }
-  }
-
-  viewButton?.addEventListener('click', updateWaterDistributionTable);
-  updateWaterDistributionTable();
-})();
 
 // ── Sidebar navigation is handled by href links + components-loader active state ──
 document.getElementById('dbLogoBack')?.addEventListener('click', e => {

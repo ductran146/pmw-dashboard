@@ -20,20 +20,6 @@
     .sm-scroll { flex: 1; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; min-height: 0; padding: 20px 0 20px 24px; }
     .sm-scroll::-webkit-scrollbar { width: 6px; }
     .sm-scroll::-webkit-scrollbar-thumb { background: rgba(17,24,39,0.16); border-radius: 99px; }
-    .sm-breadcrumb { display:flex; align-items:center; gap:10px; padding:20px 20px 0; margin:0 0 8px; flex:none; overflow:hidden; }
-    .sm-bc-item, .sm-breadcrumb a, .sm-breadcrumb span { font-family:'Pretendard', var(--font), sans-serif; font-size:13px; line-height:18px; font-weight:400; white-space:nowrap; text-decoration:none; }
-    .sm-breadcrumb a { color:#111827; }
-    .sm-bc-item.active { color:rgba(17,24,39,.5); }
-    .sm-bc-sep { color:rgba(17,24,39,.35); }
-    .sm-content-header { padding:0 20px 14px; display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex:none; }
-    .sm-content-title-wrap { min-width:0; }
-    .sm-content-title { font-family:'Pretendard', var(--font), sans-serif; font-size:24px; line-height:32px; font-weight:700; color:#111827; letter-spacing:-.02em; margin:0; }
-    .sm-content-subtitle { font-family:'Pretendard', var(--font), sans-serif; font-size:13px; line-height:20px; color:#4B5563; margin-top:2px; }
-    .sm-filter-row { display:flex; align-items:center; gap:12px; flex:none; }
-    .sm-filter-group { display:flex; align-items:center; gap:8px; }
-    .sm-filter-label { font-family:'Pretendard', var(--font), sans-serif; font-size:13px; font-weight:500; color:#4B5563; }
-    .sm-filter-select { height:36px; min-width:86px; padding:0 34px 0 14px; border:1px solid rgba(17,24,39,.08); border-radius:10px; background:#fff; color:#111827; font-family:'Pretendard', var(--font), sans-serif; font-size:13px; appearance:none; background-image:linear-gradient(45deg,transparent 50%,#4B5563 50%),linear-gradient(135deg,#4B5563 50%,transparent 50%); background-position:calc(100% - 16px) 15px,calc(100% - 10px) 15px; background-size:6px 6px,6px 6px; background-repeat:no-repeat; }
-    .sm-filter-btn { height:36px; min-width:72px; border:0; border-radius:10px; background:#02457A; color:#fff; font-family:'Pretendard', var(--font), sans-serif; font-size:13px; font-weight:700; padding:0 18px; }
     .kd-tabs { display:flex; gap:8px; margin:0 0 12px; flex:none; }
     .kd-tab { height:40px; min-width:118px; padding:0 22px; border:1px solid rgba(17,24,39,.08); border-radius:12px; background:#fff; color:#4B5563; display:inline-flex; align-items:center; justify-content:center; text-decoration:none; font-family:'Pretendard', var(--font), sans-serif; font-size:13px; line-height:18px; font-weight:700; box-shadow:0 1px 2px rgba(17,24,39,.04); }
     body.kd-view-day .kd-tab-daily, body.kd-view-period .kd-tab-period, body.kd-view-detail .kd-tab-detail { background:#0785F2; border-color:#0785F2; color:#fff; box-shadow:0 8px 20px rgba(7,133,242,.20); }
@@ -53,18 +39,12 @@
     .kd-table th:last-child, .kd-table td:last-child { border-right:0; }
     .kd-hint { margin:-4px 4px 4px; color:#6B7280; font-family:'Pretendard', var(--font), sans-serif; font-size:12px; line-height:18px; }
     .w-date{width:110px}.w-sm{width:92px}.w-md{width:130px}.w-lg{width:160px}.w-xl{width:190px}
-    @media (max-width:1366px){ .sm-sidebar{width:220px!important}.sm-content-title{font-size:18px;line-height:24px}.sm-content-subtitle{font-size:12px;line-height:18px}.sm-content-header{padding:0 16px 10px}.sm-breadcrumb{padding:6px 16px 0}.sm-scroll{padding:0 16px 18px}.kd-table th,.kd-table td{font-size:12px;padding:8px}.kd-tab{height:36px;min-width:108px;padding:0 18px}.kd-table{min-width:900px} }
+    @media (max-width:1366px){ .sm-sidebar{width:220px!important}.sm-scroll{padding:0 16px 18px}.kd-table th,.kd-table td{font-size:12px;padding:8px}.kd-tab{height:36px;min-width:108px;padding:0 18px}.kd-table{min-width:900px} }
     @media (max-width:1280px){ .sm-sidebar{width:52px!important;padding:12px 6px!important;overflow:hidden}.sm-sidebar-label,.sm-nav-cat-label,.sm-nav-cat-arrow,.sm-nav-other-label{display:none!important}.sm-nav-cat,.sm-nav-other{justify-content:center!important;padding:10px!important;width:auto!important;height:auto!important}.sm-subnav{display:none!important} }
-    @media (max-width:900px){ html,body{overflow:hidden}.bao-cao-wrapper{height:100dvh}.submod-page.active{display:block!important}.sm-sidebar{display:none!important}.sm-main{width:100%;height:calc(100dvh - var(--pmw-mobile-header-height,70px));overflow:hidden}.sm-breadcrumb{padding:14px 24px 0;margin-bottom:8px}.sm-content-header{padding:0 24px 14px;display:block}.sm-content-title{font-size:26px;line-height:34px}.sm-content-subtitle{font-size:17px;line-height:25px;margin-top:4px}.sm-filter-row{margin-top:16px;gap:12px;display:grid;grid-template-columns:auto 1fr auto 1fr auto}.sm-filter-select{width:100%;height:36px}.sm-filter-btn{height:36px}.sm-scroll{padding:0 24px 24px}.kd-tabs{gap:8px;margin-bottom:12px;display:grid;grid-template-columns:repeat(3,1fr)}.kd-tab{min-width:0;width:100%;height:42px;padding:0 10px;font-size:14px}.kd-table{min-width:760px}.kd-table th,.kd-table td{font-size:13px;padding:9px 10px}.kd-card{border-radius:14px}.kd-card-title{font-size:14px;padding:10px 12px} }
-    @media (max-width:480px){ .sm-breadcrumb{padding:12px 16px 0}.sm-content-header{padding:0 16px 12px}.sm-scroll{padding:0 16px 20px}.sm-content-title{font-size:22px;line-height:30px}.sm-content-subtitle{font-size:15px;line-height:22px}.sm-filter-row{grid-template-columns:auto 1fr auto 1fr;row-gap:10px}.sm-filter-btn{grid-column:1/-1;width:100%;height:40px}.kd-tab{font-size:13px;height:40px}.kd-table{min-width:680px}.kd-table th,.kd-table td{font-size:12px;padding:8px}.w-date{width:96px}.w-sm{width:78px}.w-md{width:110px}.w-lg{width:136px}.w-xl{width:150px} }
+    @media (max-width:900px){ html,body{overflow:hidden}.bao-cao-wrapper{height:100dvh}.submod-page.active{display:block!important}.sm-sidebar{display:none!important}.sm-main{width:100%;height:calc(100dvh - var(--pmw-mobile-header-height,70px));overflow:hidden}.sm-scroll{padding:0 24px 24px}.kd-tabs{gap:8px;margin-bottom:12px;display:grid;grid-template-columns:repeat(3,1fr)}.kd-tab{min-width:0;width:100%;height:42px;padding:0 10px;font-size:14px}.kd-table{min-width:760px}.kd-table th,.kd-table td{font-size:13px;padding:9px 10px}.kd-card{border-radius:14px}.kd-card-title{font-size:14px;padding:10px 12px} }
+    @media (max-width:480px){ .sm-scroll{padding:16px 16px 20px}.kd-tab{font-size:13px;height:40px}.kd-table{min-width:680px}.kd-table th,.kd-table td{font-size:12px;padding:8px}.w-date{width:96px}.w-sm{width:78px}.w-md{width:110px}.w-lg{width:136px}.w-xl{width:150px} }
 
-    /* Component: breadcrumb + title page + filter */
-    .business-report-page-head{display:flex;flex-direction:column;gap:20px;padding:20px 20px 0;flex:none;min-width:0;}
-    .business-report-page-head .sm-breadcrumb{padding:0!important;margin:0!important;height:auto!important;min-height:18px!important;}
-    .business-report-page-head .sm-content-header{padding:0!important;margin:0!important;}
-    @media (max-width:1366px){.business-report-page-head{padding:10px 16px 0;gap:20px;}}
-    @media (max-width:900px){.business-report-page-head{padding:10px 24px 0!important;gap:20px!important;}.business-report-page-head .sm-content-header{display:block!important;}.business-report-page-head .sm-breadcrumb{padding:0!important;margin:0!important;}}
-    @media (max-width:480px){.business-report-page-head{padding:10px 16px 0!important;gap:20px!important;}}
+    
 
   </style>
   <link rel="stylesheet" href="responsive.css?v=38"/>
@@ -76,7 +56,11 @@
   <div class="submod-page active">
     <div data-component="sidebar-production"></div>
     <main class="sm-main">
-      <div data-component="business-report-page-head"></div>
+      <div data-component="business-report-page-head"
+           data-parent="Quản lý sản xuất"
+           data-current="Tổng hợp số liệu kinh doanh"
+           data-title="Tổng hợp số liệu kinh doanh"
+           data-subtitle="Xem chi tiết tổng hợp phải thu, đã thu, chưa thu và doanh thu theo từng đơn vị thu hộ trong kỳ báo cáo"></div>
       <div class="sm-scroll">
         <div data-component="report-tabs"></div>
         <section class="kd-section">

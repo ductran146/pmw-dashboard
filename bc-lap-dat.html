@@ -123,37 +123,10 @@
     @media (max-width:640px) {
       .dv-header { padding:0 12px; }
       .dv-header-sub { display:none; }
-      .sm-content-title { font-size:17px; }
-      .sm-filter-select,.sm-filter-btn { height:32px; font-size:12px; }
     }
   </style>
   <script src="components/components-loader.js" defer></script>
-
-  <style>
-    /* v13 breadcrumb page-level override */
-    .sm-breadcrumb {
-      display:flex !important; flex-direction:row !important; align-items:center !important;
-      align-self:stretch !important; gap:10px !important; height:auto !important;
-      min-height:18px !important; padding:20px 20px 0 20px !important; padding-bottom:0 !important; margin:0 0 8px 0 !important;
-      flex:none !important; flex-grow:0 !important; overflow:hidden !important;
-    }
-    .sm-bc-item, .sm-breadcrumb a, .sm-breadcrumb span {
-      font-family:'Pretendard', var(--font), sans-serif !important; font-weight:400 !important;
-      font-size:13px !important; line-height:18px !important; letter-spacing:0 !important;
-      white-space:nowrap !important; text-decoration:none !important; flex:none !important;
-    }
-    .sm-breadcrumb a.sm-bc-item, .sm-bc-item:not(.active):not(.current) { color:#111827 !important; }
-    .sm-breadcrumb a.sm-bc-item:hover { color:#02457A !important; text-decoration:none !important; }
-    .sm-bc-item.active, .sm-bc-item.current { color:rgba(17,24,39,0.5) !important; }
-    .sm-bc-sep {
-      display:inline-flex !important; align-items:center !important; justify-content:center !important;
-      width:8px !important; height:18px !important; color:rgba(17,24,39,0.5) !important;
-      font-family:'Pretendard', var(--font), sans-serif !important; font-weight:400 !important;
-      font-size:13px !important; line-height:18px !important; flex:none !important;
-    }
-    .sm-bc-sep svg { width:8px !important; height:8px !important; stroke:rgba(17,24,39,0.5) !important; }
-  </style>
-  <link rel="stylesheet" href="responsive.css?v=37"/>
+<link rel="stylesheet" href="responsive.css?v=37"/>
 
   <style>
     /* STT column hover/emphasize fix */
@@ -197,39 +170,19 @@
 
       <main class="sm-main">
 
-        <div class="sm-breadcrumb">
-          <a class="sm-bc-item" href="index.html">Trang chủ</a>
-          <span class="sm-bc-sep"></span>
-          <a class="sm-bc-item" href="bc-so-lieu-kd.html">Báo cáo số liệu nội bộ</a>
-          <span class="sm-bc-sep"></span>
-          <span class="sm-bc-item active">Lắp đặt sửa chữa</span>
-        </div>
-
-        <div class="sm-content-header">
-          <div class="sm-content-title-wrap">
-            <div class="sm-content-title">Lắp đặt sửa chữa</div>
-            <div class="sm-content-subtitle">Thống kê giá trị xây lắp, số lượng đồng hồ, chiều dài ống lắp mới và cải tạo trong kỳ báo cáo</div>
-          </div>
-                    <div class="sm-filter-row">
-            <div class="sm-filter-group">
-              <label class="sm-filter-label">Tháng</label>
-              <select class="sm-filter-select" id="selectMonth">
-                <option>1</option><option>2</option><option>3</option><option>4</option>
-                <option>5</option><option>6</option><option>7</option><option>8</option>
-                <option>9</option><option>10</option><option>11</option><option>12</option>
-              </select>
-            </div>
-            <div class="sm-filter-group">
-              <label class="sm-filter-label">Năm</label>
-              <select class="sm-filter-select" id="selectYear">
-                <option>2026</option><option>2025</option><option>2024</option>
-              </select>
-            </div>
-            <button class="sm-filter-btn">Xem</button>
-          </div>
-        </div>
-
         <div class="sm-scroll">
+          <div data-component="business-report-page-head"
+               data-show-root="true"
+               data-root="Quản lý điều hành"
+               data-root-url="quanly-dieuhanh.html"
+               data-parent="Báo cáo số liệu nội bộ"
+               data-parent-url="bc-so-lieu-kd.html"
+               data-current="Lắp đặt sửa chữa"
+               data-title="Báo cáo lắp đặt sửa chữa"
+               data-subtitle="Theo dõi tình hình lắp đặt, sửa chữa đồng hồ, giá trị xây lắp, chiều dài tuyến ống cải tạo và công trình đầu tư theo kỳ báo cáo"
+               data-month="4"
+               data-year="2026"
+               data-years="2026,2025,2024"></div>
           <div style="flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;">
             <div id="smViewLapDat" style="display:flex; flex:1; flex-direction:column; overflow:hidden;">
               <div class="dt-scroll-area">
@@ -287,6 +240,53 @@
       </main>
     </div>
   </div>
+  <script>
+    document.addEventListener('pmw:components-loaded', () => {
+      const head = document.querySelector('.business-report-page-head');
+      if (!head) return;
+
+      const rootText = 'Quản lý điều hành';
+      const rootUrl = 'quanly-dieuhanh.html';
+      const parentText = 'Báo cáo số liệu nội bộ';
+      const parentUrl = 'bc-so-lieu-kd.html';
+      const currentText = 'Lắp đặt sửa chữa';
+
+      const breadcrumb = head.querySelector('.sm-breadcrumb, .br-breadcrumb');
+      if (breadcrumb) {
+        const firstExisting = breadcrumb.querySelector('.sm-bc-item, .br-breadcrumb-link, a, span');
+        const needsRoot = !Array.from(breadcrumb.querySelectorAll('a, span')).some(el => el.textContent.trim() === rootText);
+        if (needsRoot) {
+          const rootLink = document.createElement('a');
+          rootLink.className = 'sm-bc-item br-breadcrumb-root';
+          rootLink.href = rootUrl;
+          rootLink.textContent = rootText;
+
+          const sep = document.createElement('span');
+          sep.className = 'sm-bc-sep br-breadcrumb-sep';
+          sep.textContent = '›';
+
+          if (firstExisting) {
+            breadcrumb.insertBefore(sep, firstExisting);
+            breadcrumb.insertBefore(rootLink, sep);
+          } else {
+            breadcrumb.appendChild(rootLink);
+            breadcrumb.appendChild(sep);
+          }
+        }
+
+        const links = breadcrumb.querySelectorAll('a');
+        const root = Array.from(links).find(el => el.textContent.trim() === rootText) || links[0];
+        if (root) { root.textContent = rootText; root.setAttribute('href', rootUrl); }
+
+        const parent = Array.from(links).find(el => el.textContent.trim() === parentText) || links[1];
+        if (parent) { parent.textContent = parentText; parent.setAttribute('href', parentUrl); }
+
+        const current = breadcrumb.querySelector('.br-breadcrumb-current, .sm-bc-item.active, .sm-bc-item.current');
+        if (current) current.textContent = currentText;
+      }
+    });
+  </script>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.dv-header-logo').addEventListener('click', e => {
