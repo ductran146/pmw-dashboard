@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PMW — Tổng hợp số liệu kinh doanh</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PMW — Tổng hợp số liệu kinh doanh</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
 
     /* Business report rebuild: chỉ dùng layout chuẩn, không ghi đè header/sidebar */
     html, body { overflow: hidden; }
@@ -17,7 +18,7 @@
     .submod-page.active { flex: 1; display: flex !important; min-height: 0; }
     .dv-header { flex-shrink: 0; }
     .sm-main { flex: 1; min-width: 0; width: 0; display: flex; flex-direction: column; overflow: hidden; background: #F9FAFB; min-height: 0; gap: 0; }
-    .sm-scroll { flex: 1; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; min-height: 0; padding: 20px 0 20px 24px; }
+    .sm-scroll { flex: 1; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; min-height: 0; padding: 20px 20px 20px 20px; }
     .sm-scroll::-webkit-scrollbar { width: 6px; }
     .sm-scroll::-webkit-scrollbar-thumb { background: rgba(17,24,39,0.16); border-radius: 99px; }
     .kd-tabs { display:flex; gap:8px; margin:0 0 12px; flex:none; }
@@ -79,95 +80,84 @@
     }
 
   </style>
-  <link rel="stylesheet" href="responsive.css?v=38"/>
-  <script src="components/components-loader.js" defer></script>
+<link href="responsive.css?v=38" rel="stylesheet"/>
+<script defer="" src="components/components-loader.js"></script>
 </head>
 <body class="kd-view-day">
 <div class="bao-cao-wrapper">
-  <div data-component="header"></div>
-  <div class="submod-page active">
-    <div data-component="sidebar-production"></div>
-    <main class="sm-main">
-      <div
-        data-component="business-report-page-head"
-        data-section="Quản lý sản xuất"
-        data-current="Tổng hợp số liệu kinh doanh"
-        data-title="Tổng hợp số liệu kinh doanh"
-        data-subtitle="Doanh thu, sản lượng nước cung cấp, tỷ lệ thu tiền và các chỉ số kinh doanh theo tháng/quý/năm"
-        data-month="05"
-        data-months="01,02,03,04,05,06,07,08,09,10,11,12"
-        data-year="2026"
-      ></div>
-      <div class="sm-scroll">
-        <div data-component="report-tabs"></div>
-        <section class="kd-section">
-
-          <article class="kd-card">
-            <div class="kd-table-scroll">
-              <table class="kd-table">
-                <colgroup>
-                  <col style="width:90px">
-                  <col style="width:72px">
-                  <col style="width:130px">
-                  <col style="width:72px">
-                  <col style="width:62px">
-                  <col style="width:130px">
-                  <col style="width:62px">
-                  <col style="width:72px">
-                  <col style="width:62px">
-                  <col style="width:130px">
-                  <col style="width:62px">
-                </colgroup>
-                <thead><tr><th rowspan="3">Ngày</th><th colspan="2">Phải thu</th><th colspan="4">Đã thu</th><th colspan="4">Chưa thu</th></tr><tr><th rowspan="2">Hóa đơn</th><th rowspan="2">Tiền</th><th colspan="2">Hóa đơn</th><th colspan="2">Tiền</th><th colspan="2">Hóa đơn</th><th colspan="2">Tiền</th></tr><tr><th>Số HĐ</th><th>Tỷ lệ</th><th>Số tiền</th><th>Tỷ lệ</th><th>Số HĐ</th><th>Tỷ lệ</th><th>Số tiền</th><th>Tỷ lệ</th></tr></thead>
-                <tbody><tr><td>19/05/2026</td><td class='num'>9.504</td><td class='num'>3.450.989.991</td><td class='num'>2.126</td><td class='num'>22,37%</td><td class='num'>682.043.685</td><td class='num'>19,76%</td><td class='num'>7.378</td><td class='num'>77,63%</td><td class='num'>2.768.946.306</td><td class='num'>80,24%</td></tr>
-<tr><td>18/05/2026</td><td class='num'>8.255</td><td class='num'>3.959.177.323</td><td class='num'>3.792</td><td class='num'>45,94%</td><td class='num'>1.341.686.191</td><td class='num'>33,89%</td><td class='num'>4.463</td><td class='num'>54,06%</td><td class='num'>2.617.491.132</td><td class='num'>66,11%</td></tr>
-<tr><td>17/05/2026</td><td class='num'>10.895</td><td class='num'>3.712.022.302</td><td class='num'>6.624</td><td class='num'>60,8%</td><td class='num'>2.005.661.063</td><td class='num'>54,03%</td><td class='num'>4.271</td><td class='num'>39,2%</td><td class='num'>1.706.361.239</td><td class='num'>45,97%</td></tr>
+<div data-component="header" id="pmw-header"></div>
+<div class="submod-page active">
+<div data-component="sidebar-qlsx" id="pmw-sidebar-qlsx"></div>
+<main class="sm-main">
+<div data-component="business-report-page-head" data-current="Tổng hợp số liệu kinh doanh" data-month="05" data-months="01,02,03,04,05,06,07,08,09,10,11,12" data-section="Quản lý sản xuất" data-subtitle="Doanh thu, sản lượng nước cung cấp, tỷ lệ thu tiền và các chỉ số kinh doanh theo tháng/quý/năm" data-title="Tổng hợp số liệu kinh doanh" data-year="2026" id="pmw-business-report-page-head"></div>
+<div class="sm-scroll">
+<div data-component="report-tabs" id="pmw-report-tabs"></div>
+<section class="kd-section">
+<article class="kd-card">
+<div class="kd-table-scroll">
+<table class="kd-table">
+<colgroup>
+<col style="width:90px"/>
+<col style="width:72px"/>
+<col style="width:130px"/>
+<col style="width:72px"/>
+<col style="width:62px"/>
+<col style="width:130px"/>
+<col style="width:62px"/>
+<col style="width:72px"/>
+<col style="width:62px"/>
+<col style="width:130px"/>
+<col style="width:62px"/>
+</colgroup>
+<thead><tr><th rowspan="3">Ngày</th><th colspan="2">Phải thu</th><th colspan="4">Đã thu</th><th colspan="4">Chưa thu</th></tr><tr><th rowspan="2">Hóa đơn</th><th rowspan="2">Tiền</th><th colspan="2">Hóa đơn</th><th colspan="2">Tiền</th><th colspan="2">Hóa đơn</th><th colspan="2">Tiền</th></tr><tr><th>Số HĐ</th><th>Tỷ lệ</th><th>Số tiền</th><th>Tỷ lệ</th><th>Số HĐ</th><th>Tỷ lệ</th><th>Số tiền</th><th>Tỷ lệ</th></tr></thead>
+<tbody><tr><td>19/05/2026</td><td class="num" id="kd-daily-19052026-phai-thu-hoa-don">9.504</td><td class="num" id="kd-daily-19052026-phai-thu-tien">3.450.989.991</td><td class="num" id="kd-daily-19052026-da-thu-hoa-don-so-hd">2.126</td><td class="num" id="kd-daily-19052026-da-thu-hoa-don-ty-le">22,37%</td><td class="num" id="kd-daily-19052026-da-thu-tien-so-tien">682.043.685</td><td class="num" id="kd-daily-19052026-da-thu-tien-ty-le">19,76%</td><td class="num" id="kd-daily-19052026-chua-thu-hoa-don-so-hd">7.378</td><td class="num" id="kd-daily-19052026-chua-thu-hoa-don-ty-le">77,63%</td><td class="num" id="kd-daily-19052026-chua-thu-tien-so-tien">2.768.946.306</td><td class="num" id="kd-daily-19052026-chua-thu-tien-ty-le">80,24%</td></tr>
+<tr><td>18/05/2026</td><td class="num" id="kd-daily-18052026-phai-thu-hoa-don">8.255</td><td class="num" id="kd-daily-18052026-phai-thu-tien">3.959.177.323</td><td class="num" id="kd-daily-18052026-da-thu-hoa-don-so-hd">3.792</td><td class="num" id="kd-daily-18052026-da-thu-hoa-don-ty-le">45,94%</td><td class="num" id="kd-daily-18052026-da-thu-tien-so-tien">1.341.686.191</td><td class="num" id="kd-daily-18052026-da-thu-tien-ty-le">33,89%</td><td class="num" id="kd-daily-18052026-chua-thu-hoa-don-so-hd">4.463</td><td class="num" id="kd-daily-18052026-chua-thu-hoa-don-ty-le">54,06%</td><td class="num" id="kd-daily-18052026-chua-thu-tien-so-tien">2.617.491.132</td><td class="num" id="kd-daily-18052026-chua-thu-tien-ty-le">66,11%</td></tr>
+<tr><td>17/05/2026</td><td class="num" id="kd-daily-17052026-phai-thu-hoa-don">10.895</td><td class="num" id="kd-daily-17052026-phai-thu-tien">3.712.022.302</td><td class="num" id="kd-daily-17052026-da-thu-hoa-don-so-hd">6.624</td><td class="num" id="kd-daily-17052026-da-thu-hoa-don-ty-le">60,8%</td><td class="num" id="kd-daily-17052026-da-thu-tien-so-tien">2.005.661.063</td><td class="num" id="kd-daily-17052026-da-thu-tien-ty-le">54,03%</td><td class="num" id="kd-daily-17052026-chua-thu-hoa-don-so-hd">4.271</td><td class="num" id="kd-daily-17052026-chua-thu-hoa-don-ty-le">39,2%</td><td class="num" id="kd-daily-17052026-chua-thu-tien-so-tien">1.706.361.239</td><td class="num" id="kd-daily-17052026-chua-thu-tien-ty-le">45,97%</td></tr>
 </tbody>
-              </table>
-            </div>
-          </article>
-          <article class="kd-card">
-            <div class="kd-table-scroll">
-              <table class="kd-table">
-                <colgroup>
-                  <col style="width:120px">
-                  <col style="width:72px">
-                  <col style="width:72px">
-                  <col style="width:72px">
-                  <col style="width:120px">
-                  <col style="width:120px">
-                  <col style="width:120px">
-                </colgroup>
-                <thead><tr><th rowspan="2">Hình thức</th><th colspan="3">Số lượng hóa đơn (cái)</th><th colspan="3">Tổng tiền thanh toán (VNĐ)</th></tr><tr><th>17/05/2026</th><th>18/05/2026</th><th>19/05/2026</th><th>17/05/2026</th><th>18/05/2026</th><th>19/05/2026</th></tr></thead>
-                <tbody><tr><td>Tiền mặt</td><td class='num'>8</td><td class='num'>2</td><td class='num'>0</td><td class='num'>3.512.008</td><td class='num'>528.762</td><td class='num'>0</td></tr>
-<tr><td>Agribank</td><td class='num'>640</td><td class='num'>519</td><td class='num'>434</td><td class='num'>166.153.296</td><td class='num'>134.733.439</td><td class='num'>140.415.507</td></tr>
-<tr><td>Anbinh</td><td class='num'>38</td><td class='num'>26</td><td class='num'>20</td><td class='num'>16.789.383</td><td class='num'>6.013.723</td><td class='num'>6.923.524</td></tr>
-<tr><td>Buudien</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td><td class='num'>0</td></tr>
-<tr><td>Lienviet</td><td class='num'>5</td><td class='num'>2</td><td class='num'>2</td><td class='num'>1.414.845</td><td class='num'>150.420</td><td class='num'>165.370</td></tr>
-<tr><td>Momobank</td><td class='num'>711</td><td class='num'>428</td><td class='num'>136</td><td class='num'>187.947.196</td><td class='num'>102.419.048</td><td class='num'>35.928.745</td></tr>
-<tr><td>Msbbank</td><td class='num'>24</td><td class='num'>23</td><td class='num'>10</td><td class='num'>7.321.085</td><td class='num'>7.056.607</td><td class='num'>3.208.814</td></tr>
-<tr><td>Payoo</td><td class='num'>880</td><td class='num'>241</td><td class='num'>72</td><td class='num'>281.594.919</td><td class='num'>69.712.136</td><td class='num'>23.607.764</td></tr>
-<tr><td>Payoopayoo</td><td class='num'>1.401</td><td class='num'>782</td><td class='num'>315</td><td class='num'>377.171.910</td><td class='num'>240.514.370</td><td class='num'>111.243.801</td></tr>
-<tr><td>Sacombank</td><td class='num'>200</td><td class='num'>133</td><td class='num'>65</td><td class='num'>102.939.142</td><td class='num'>40.629.741</td><td class='num'>18.122.575</td></tr>
-<tr><td>Bidv</td><td class='num'>812</td><td class='num'>564</td><td class='num'>368</td><td class='num'>276.957.358</td><td class='num'>289.850.887</td><td class='num'>119.428.974</td></tr>
-<tr><td>Vietinbank</td><td class='num'>394</td><td class='num'>244</td><td class='num'>185</td><td class='num'>191.059.976</td><td class='num'>243.456.651</td><td class='num'>56.218.107</td></tr>
-<tr><td>Vnpay</td><td class='num'>334</td><td class='num'>173</td><td class='num'>143</td><td class='num'>93.258.397</td><td class='num'>42.472.802</td><td class='num'>68.147.183</td></tr>
-<tr><td>Vnptpay</td><td class='num'>112</td><td class='num'>83</td><td class='num'>25</td><td class='num'>29.159.314</td><td class='num'>23.304.416</td><td class='num'>6.295.020</td></tr>
-<tr><td>Vtelbank</td><td class='num'>109</td><td class='num'>48</td><td class='num'>31</td><td class='num'>21.591.965</td><td class='num'>10.068.186</td><td class='num'>5.127.635</td></tr>
-<tr><td>Zalopay</td><td class='num'>315</td><td class='num'>187</td><td class='num'>79</td><td class='num'>79.474.347</td><td class='num'>52.789.166</td><td class='num'>26.386.195</td></tr>
-<tr><td>Ck + Nt gạch tay</td><td class='num'>641</td><td class='num'>337</td><td class='num'>241</td><td class='num'>169.315.922</td><td class='num'>77.985.837</td><td class='num'>60.824.471</td></tr>
-<tr class='kd-row-total'><td>Tổng cộng</td><td class='num'>6.624</td><td class='num'>3.792</td><td class='num'>2.126</td><td class='num'>2.005.661.063</td><td class='num'>1.341.686.191</td><td class='num'>682.043.685</td></tr>
-</tbody>
-              </table>
-            </div>
-          </article>
-        </section>
-      </div>
-      <div data-component="footer"></div>
-    </main>
-  </div>
+</table>
 </div>
-
+</article>
+<article class="kd-card">
+<div class="kd-table-scroll">
+<table class="kd-table">
+<colgroup>
+<col style="width:120px"/>
+<col style="width:72px"/>
+<col style="width:72px"/>
+<col style="width:72px"/>
+<col style="width:120px"/>
+<col style="width:120px"/>
+<col style="width:120px"/>
+</colgroup>
+<thead><tr><th rowspan="2">Hình thức</th><th colspan="3">Số lượng hóa đơn (cái)</th><th colspan="3">Tổng tiền thanh toán (VNĐ)</th></tr><tr><th>17/05/2026</th><th>18/05/2026</th><th>19/05/2026</th><th>17/05/2026</th><th>18/05/2026</th><th>19/05/2026</th></tr></thead>
+<tbody><tr><td>Tiền mặt</td><td class="num" id="kd-payment-tien-mat-17052026-hoa-don">8</td><td class="num" id="kd-payment-tien-mat-18052026-hoa-don">2</td><td class="num" id="kd-payment-tien-mat-19052026-hoa-don">0</td><td class="num" id="kd-payment-tien-mat-17052026-tong-tien">3.512.008</td><td class="num" id="kd-payment-tien-mat-18052026-tong-tien">528.762</td><td class="num" id="kd-payment-tien-mat-19052026-tong-tien">0</td></tr>
+<tr><td>Agribank</td><td class="num" id="kd-payment-agribank-17052026-hoa-don">640</td><td class="num" id="kd-payment-agribank-18052026-hoa-don">519</td><td class="num" id="kd-payment-agribank-19052026-hoa-don">434</td><td class="num" id="kd-payment-agribank-17052026-tong-tien">166.153.296</td><td class="num" id="kd-payment-agribank-18052026-tong-tien">134.733.439</td><td class="num" id="kd-payment-agribank-19052026-tong-tien">140.415.507</td></tr>
+<tr><td>Anbinh</td><td class="num" id="kd-payment-anbinh-17052026-hoa-don">38</td><td class="num" id="kd-payment-anbinh-18052026-hoa-don">26</td><td class="num" id="kd-payment-anbinh-19052026-hoa-don">20</td><td class="num" id="kd-payment-anbinh-17052026-tong-tien">16.789.383</td><td class="num" id="kd-payment-anbinh-18052026-tong-tien">6.013.723</td><td class="num" id="kd-payment-anbinh-19052026-tong-tien">6.923.524</td></tr>
+<tr><td>Buudien</td><td class="num" id="kd-payment-buudien-17052026-hoa-don">0</td><td class="num" id="kd-payment-buudien-18052026-hoa-don">0</td><td class="num" id="kd-payment-buudien-19052026-hoa-don">0</td><td class="num" id="kd-payment-buudien-17052026-tong-tien">0</td><td class="num" id="kd-payment-buudien-18052026-tong-tien">0</td><td class="num" id="kd-payment-buudien-19052026-tong-tien">0</td></tr>
+<tr><td>Lienviet</td><td class="num" id="kd-payment-lienviet-17052026-hoa-don">5</td><td class="num" id="kd-payment-lienviet-18052026-hoa-don">2</td><td class="num" id="kd-payment-lienviet-19052026-hoa-don">2</td><td class="num" id="kd-payment-lienviet-17052026-tong-tien">1.414.845</td><td class="num" id="kd-payment-lienviet-18052026-tong-tien">150.420</td><td class="num" id="kd-payment-lienviet-19052026-tong-tien">165.370</td></tr>
+<tr><td>Momobank</td><td class="num" id="kd-payment-momobank-17052026-hoa-don">711</td><td class="num" id="kd-payment-momobank-18052026-hoa-don">428</td><td class="num" id="kd-payment-momobank-19052026-hoa-don">136</td><td class="num" id="kd-payment-momobank-17052026-tong-tien">187.947.196</td><td class="num" id="kd-payment-momobank-18052026-tong-tien">102.419.048</td><td class="num" id="kd-payment-momobank-19052026-tong-tien">35.928.745</td></tr>
+<tr><td>Msbbank</td><td class="num" id="kd-payment-msbbank-17052026-hoa-don">24</td><td class="num" id="kd-payment-msbbank-18052026-hoa-don">23</td><td class="num" id="kd-payment-msbbank-19052026-hoa-don">10</td><td class="num" id="kd-payment-msbbank-17052026-tong-tien">7.321.085</td><td class="num" id="kd-payment-msbbank-18052026-tong-tien">7.056.607</td><td class="num" id="kd-payment-msbbank-19052026-tong-tien">3.208.814</td></tr>
+<tr><td>Payoo</td><td class="num" id="kd-payment-payoo-17052026-hoa-don">880</td><td class="num" id="kd-payment-payoo-18052026-hoa-don">241</td><td class="num" id="kd-payment-payoo-19052026-hoa-don">72</td><td class="num" id="kd-payment-payoo-17052026-tong-tien">281.594.919</td><td class="num" id="kd-payment-payoo-18052026-tong-tien">69.712.136</td><td class="num" id="kd-payment-payoo-19052026-tong-tien">23.607.764</td></tr>
+<tr><td>Payoopayoo</td><td class="num" id="kd-payment-payoopayoo-17052026-hoa-don">1.401</td><td class="num" id="kd-payment-payoopayoo-18052026-hoa-don">782</td><td class="num" id="kd-payment-payoopayoo-19052026-hoa-don">315</td><td class="num" id="kd-payment-payoopayoo-17052026-tong-tien">377.171.910</td><td class="num" id="kd-payment-payoopayoo-18052026-tong-tien">240.514.370</td><td class="num" id="kd-payment-payoopayoo-19052026-tong-tien">111.243.801</td></tr>
+<tr><td>Sacombank</td><td class="num" id="kd-payment-sacombank-17052026-hoa-don">200</td><td class="num" id="kd-payment-sacombank-18052026-hoa-don">133</td><td class="num" id="kd-payment-sacombank-19052026-hoa-don">65</td><td class="num" id="kd-payment-sacombank-17052026-tong-tien">102.939.142</td><td class="num" id="kd-payment-sacombank-18052026-tong-tien">40.629.741</td><td class="num" id="kd-payment-sacombank-19052026-tong-tien">18.122.575</td></tr>
+<tr><td>Bidv</td><td class="num" id="kd-payment-bidv-17052026-hoa-don">812</td><td class="num" id="kd-payment-bidv-18052026-hoa-don">564</td><td class="num" id="kd-payment-bidv-19052026-hoa-don">368</td><td class="num" id="kd-payment-bidv-17052026-tong-tien">276.957.358</td><td class="num" id="kd-payment-bidv-18052026-tong-tien">289.850.887</td><td class="num" id="kd-payment-bidv-19052026-tong-tien">119.428.974</td></tr>
+<tr><td>Vietinbank</td><td class="num" id="kd-payment-vietinbank-17052026-hoa-don">394</td><td class="num" id="kd-payment-vietinbank-18052026-hoa-don">244</td><td class="num" id="kd-payment-vietinbank-19052026-hoa-don">185</td><td class="num" id="kd-payment-vietinbank-17052026-tong-tien">191.059.976</td><td class="num" id="kd-payment-vietinbank-18052026-tong-tien">243.456.651</td><td class="num" id="kd-payment-vietinbank-19052026-tong-tien">56.218.107</td></tr>
+<tr><td>Vnpay</td><td class="num" id="kd-payment-vnpay-17052026-hoa-don">334</td><td class="num" id="kd-payment-vnpay-18052026-hoa-don">173</td><td class="num" id="kd-payment-vnpay-19052026-hoa-don">143</td><td class="num" id="kd-payment-vnpay-17052026-tong-tien">93.258.397</td><td class="num" id="kd-payment-vnpay-18052026-tong-tien">42.472.802</td><td class="num" id="kd-payment-vnpay-19052026-tong-tien">68.147.183</td></tr>
+<tr><td>Vnptpay</td><td class="num" id="kd-payment-vnptpay-17052026-hoa-don">112</td><td class="num" id="kd-payment-vnptpay-18052026-hoa-don">83</td><td class="num" id="kd-payment-vnptpay-19052026-hoa-don">25</td><td class="num" id="kd-payment-vnptpay-17052026-tong-tien">29.159.314</td><td class="num" id="kd-payment-vnptpay-18052026-tong-tien">23.304.416</td><td class="num" id="kd-payment-vnptpay-19052026-tong-tien">6.295.020</td></tr>
+<tr><td>Vtelbank</td><td class="num" id="kd-payment-vtelbank-17052026-hoa-don">109</td><td class="num" id="kd-payment-vtelbank-18052026-hoa-don">48</td><td class="num" id="kd-payment-vtelbank-19052026-hoa-don">31</td><td class="num" id="kd-payment-vtelbank-17052026-tong-tien">21.591.965</td><td class="num" id="kd-payment-vtelbank-18052026-tong-tien">10.068.186</td><td class="num" id="kd-payment-vtelbank-19052026-tong-tien">5.127.635</td></tr>
+<tr><td>Zalopay</td><td class="num" id="kd-payment-zalopay-17052026-hoa-don">315</td><td class="num" id="kd-payment-zalopay-18052026-hoa-don">187</td><td class="num" id="kd-payment-zalopay-19052026-hoa-don">79</td><td class="num" id="kd-payment-zalopay-17052026-tong-tien">79.474.347</td><td class="num" id="kd-payment-zalopay-18052026-tong-tien">52.789.166</td><td class="num" id="kd-payment-zalopay-19052026-tong-tien">26.386.195</td></tr>
+<tr><td>Ck + Nt gạch tay</td><td class="num" id="kd-payment-ck-nt-gach-tay-17052026-hoa-don">641</td><td class="num" id="kd-payment-ck-nt-gach-tay-18052026-hoa-don">337</td><td class="num" id="kd-payment-ck-nt-gach-tay-19052026-hoa-don">241</td><td class="num" id="kd-payment-ck-nt-gach-tay-17052026-tong-tien">169.315.922</td><td class="num" id="kd-payment-ck-nt-gach-tay-18052026-tong-tien">77.985.837</td><td class="num" id="kd-payment-ck-nt-gach-tay-19052026-tong-tien">60.824.471</td></tr>
+<tr class="kd-row-total"><td>Tổng cộng</td><td class="num" id="kd-payment-tong-cong-17052026-hoa-don">6.624</td><td class="num" id="kd-payment-tong-cong-18052026-hoa-don">3.792</td><td class="num" id="kd-payment-tong-cong-19052026-hoa-don">2.126</td><td class="num" id="kd-payment-tong-cong-17052026-tong-tien">2.005.661.063</td><td class="num" id="kd-payment-tong-cong-18052026-tong-tien">1.341.686.191</td><td class="num" id="kd-payment-tong-cong-19052026-tong-tien">682.043.685</td></tr>
+</tbody>
+</table>
+</div>
+</article>
+</section>
+</div>
+<div data-component="footer" id="pmw-footer"></div>
+</main>
+</div>
+</div>
 <script>
 (function ensureBusinessReportMonthOptions(){
   const MONTHS = ['01','02','03','04','05','06','07','08','09','10','11','12'];

@@ -1,16 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PMW — Số liệu kinh doanh</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PMW — Số liệu kinh doanh</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
     html, body { overflow: hidden; }
     .bao-cao-wrapper { display:flex; flex-direction:column; height:100vh; }
     .submod-page.active { flex:1; display:flex !important; min-height:0; }
@@ -19,7 +20,7 @@
     /* ── Scroll area ── */
     .dt-scroll-area {
       flex: 1; overflow-y: auto; overflow-x: hidden;
-      padding: 20px 24px; display: flex; flex-direction: column; gap: 24px;
+      padding: 20px; display: flex; flex-direction: column; gap: 20px;
     }
     .dt-scroll-area::-webkit-scrollbar { width: 5px; }
     .dt-scroll-area::-webkit-scrollbar-thumb { background: rgba(17,24,39,0.12); border-radius: 4px; }
@@ -157,7 +158,7 @@
       .dt-table tbody td:first-child { padding-left: 10px; }
     }
   </style>
-  <style>
+<style>
     @media (max-width:1200px) {
       .sm-sidebar { width:52px; padding:12px 6px; overflow:hidden; }
       .sm-sidebar-label,.sm-nav-cat-label,.sm-nav-cat-arrow,
@@ -177,105 +178,90 @@
       .dv-header-sub { display:none; }
     }
   </style>
-  <script src="components/components-loader.js" defer></script>
-<link rel="stylesheet" href="responsive.css?v=37"/>
+<script defer="" src="components/components-loader.js"></script>
+<link href="responsive.css?v=37" rel="stylesheet"/>
 </head>
 <body class="pmw-page-bc-so-lieu-kd">
-  <div class="bao-cao-wrapper">
-
-    <div data-component="header"></div>
-
-    <div class="submod-page active">
-
-            <div data-component="sidebar-report"></div>
-
-      <main class="sm-main">
-        <div
-          data-component="business-report-page-head"
-          data-root="Báo cáo số liệu nội bộ"
-          data-root-url="bc-so-lieu-kd.html"
-          data-current="Số liệu kinh doanh"
-          data-title="Báo cáo số liệu kinh doanh"
-          data-subtitle="Theo dõi số khách hàng, sản lượng tiêu thụ, doanh thu, phí bảo vệ môi trường, thuế và tổng giá trị hóa đơn theo khu vực và đối tượng khách hàng">
-        </div>
-
-        <div class="sm-scroll">
-          <div style="flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;">
-            <div id="smTableView" style="display:flex; flex:1; flex-direction:column; overflow:hidden;">
-            <div class="dt-scroll-area">
-
-              <!-- Table 1: Khu vực -->
-              <div class="dt-section">
-                <div class="dt-table-wrap">
-                  <div class="dt-table-title">Theo khu vực</div>
-                  <div style="overflow-x:auto;">
-                  <table class="dt-table">
-                    <colgroup>
-                      <col style="width:22%;">
-                      <col style="width:8%;">
-                      <col style="width:11%;">
-                      <col style="width:15%;">
-                      <col style="width:13%;">
-                      <col style="width:11%;">
-                      <col style="width:14%;">
-                      <col style="width:6%;">
-                    </colgroup>
-                    <thead><tr><th>Khu vực</th><th>Số KH</th><th>Số m³ Tiêu Thụ</th><th>Doanh Thu</th><th>Phí BV MT</th><th>Thuế 5%</th><th>Tổng</th><th>Số hóa đơn</th></tr></thead>
-                    <tbody><tr><td>Xí Nghiệp Cấp Nước Vũng Tàu</td><td>32.847</td><td>891.250</td><td>15.482.300.000</td><td>1.032.180.000</td><td>774.115.000</td><td>18.938.711.000</td><td>38.210</td></tr>
-<tr><td>Xí Nghiệp Cấp nước Bà Rịa</td><td>18.923</td><td>512.880</td><td>8.934.750.000</td><td>595.650.000</td><td>446.737.500</td><td>10.926.510.000</td><td>22.086</td></tr>
-<tr><td>Xí Nghiệp Cấp nước Long Điền</td><td>9.442</td><td>258.400</td><td>4.512.300.000</td><td>300.820.000</td><td>225.615.000</td><td>5.521.080.000</td><td>11.120</td></tr>
-<tr><td>Chi nhánh cấp nước Xuyên Mộc</td><td>6.287</td><td>172.350</td><td>2.981.400.000</td><td>198.760.000</td><td>149.070.000</td><td>3.649.321.200</td><td>7.340</td></tr>
-<tr><td>Chi nhánh cấp nước Châu Đức</td><td>7.156</td><td>196.720</td><td>3.412.800.000</td><td>227.520.000</td><td>170.640.000</td><td>4.163.913.600</td><td>8.380</td></tr>
-<tr><td>Nước bán sỉ cho Phú Mỹ</td><td>2.119</td><td>74.969</td><td>1.526.417.620</td><td>101.760.000</td><td>76.320.000</td><td>1.867.855.082</td><td>2.940</td></tr>
-<tr class="dt-total"><td>Tổng</td><td>76.774</td><td>2.106.569</td><td>36.849.967.620</td><td>2.456.690.000</td><td>1.842.497.500</td><td>45.067.390.882</td><td>90.076</td></tr>
-<tr class="dt-prev"><td>Kỳ trước</td><td>207.774</td><td>5.606.569</td><td>70.849.967.620</td><td>3.818.217.176</td><td>3.542.498.381</td><td>88.713.149.781</td><td>192.860</td></tr>
-<tr class="dt-delta"><td>Tăng/ Giảm</td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>4.127</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>114.681</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>1.998.332.380</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>379.490.176</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>42.617.119</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>2.354.219.882</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>2.784</span></td></tr></tbody>
-                  </table>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Table 2: Đối tượng -->
-              <div class="dt-section">
-                <div class="dt-table-wrap">
-                  <div class="dt-table-title">Theo đối tượng khách hàng</div>
-                  <div style="overflow-x:auto;">
-                  <table class="dt-table">
-                    <colgroup>
-                      <col style="width:22%;">
-                      <col style="width:8%;">
-                      <col style="width:11%;">
-                      <col style="width:15%;">
-                      <col style="width:13%;">
-                      <col style="width:11%;">
-                      <col style="width:14%;">
-                      <col style="width:6%;">
-                    </colgroup>
-                    <thead><tr><th>Đối tượng</th><th>Số KH</th><th>Số m³ Tiêu Thụ</th><th>Doanh Thu</th><th>Phí BV MT</th><th>Thuế 5%</th><th>Tổng</th><th>Số hóa đơn</th></tr></thead>
-                    <tbody><tr><td>Sinh hoạt đô thị</td><td>32.847</td><td>901.200</td><td>15.612.300.000</td><td>1.040.820.000</td><td>780.615.000</td><td>19.015.789.000</td><td>38.980</td></tr>
-<tr><td>Sinh hoạt nông thôn</td><td>14.220</td><td>380.600</td><td>6.120.540.000</td><td>408.036.000</td><td>306.027.000</td><td>7.481.442.600</td><td>16.820</td></tr>
-<tr><td>Đồng bào DT</td><td>2.438</td><td>64.300</td><td>918.480.000</td><td>61.231.200</td><td>45.924.000</td><td>1.123.734.320</td><td>2.690</td></tr>
-<tr><td>Cơ quan</td><td>5.874</td><td>157.820</td><td>2.728.300.000</td><td>181.887.000</td><td>136.415.000</td><td>3.335.459.600</td><td>7.490</td></tr>
-<tr><td>Sản xuất</td><td>8.312</td><td>224.800</td><td>3.914.560.000</td><td>260.971.000</td><td>195.728.000</td><td>4.787.591.800</td><td>10.820</td></tr>
-<tr><td>Kinh Doanh</td><td>9.740</td><td>262.900</td><td>4.572.300.000</td><td>304.820.000</td><td>228.615.000</td><td>5.589.481.400</td><td>12.660</td></tr>
-<tr class="dt-total"><td>Tổng</td><td>73.431</td><td>1.991.620</td><td>33.866.480.000</td><td>2.257.765.200</td><td>1.693.324.000</td><td>42.334.498.420</td><td>89.460</td></tr>
-<tr class="dt-prev"><td>Kỳ trước</td><td>196.228</td><td>5.296.350</td><td>64.998.070.380</td><td>3.431.527.000</td><td>2.586.450.000</td><td>77.188.130.080</td><td>188.640</td></tr>
-<tr class="dt-delta"><td>Tăng/ Giảm</td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>3.741</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>98.430</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>1.712.410.000</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>173.761.800</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>93.126.000</span></td><td class="val-pos"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>853.631.660</span></td><td class="val-neg"><span class="dt-cell-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>9.180</span></td></tr></tbody>
-                  </table>
-                  </div>
-                </div>
-              </div>
-
-            </div><!-- /dt-scroll-area -->
-          </div><!-- /smTableView -->
-          </div>
-        </div>
-
-        <div data-component="footer"></div>
-      </main>
-    </div>
-  </div>
-  <script>
+<div class="bao-cao-wrapper">
+<div data-component="header" id="pmw-header"></div>
+<div class="submod-page active">
+<div data-component="sidebar-qldh-bc-sl-noi-bo" id="pmw-sidebar-qldh-bc-sl-noi-bo"></div>
+<main class="sm-main">
+<div data-component="business-report-page-head" data-current="Số liệu kinh doanh" data-root="Báo cáo số liệu nội bộ" data-root-url="bc-so-lieu-kd.html" data-subtitle="Theo dõi số khách hàng, sản lượng tiêu thụ, doanh thu, phí bảo vệ môi trường, thuế và tổng giá trị hóa đơn theo khu vực và đối tượng khách hàng" data-title="Báo cáo số liệu kinh doanh" id="pmw-business-report-page-head">
+</div>
+<div class="sm-scroll">
+<div style="flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;">
+<div id="smTableView" style="display:flex; flex:1; flex-direction:column; overflow:hidden;">
+<div class="dt-scroll-area">
+<!-- Table 1: Khu vực -->
+<div class="dt-section" id="bc-kd-section-khu-vuc">
+<div class="dt-table-wrap">
+<div class="dt-table-title" id="bc-kd-title-khu-vuc">Theo khu vực</div>
+<div style="overflow-x:auto;">
+<table class="dt-table" id="bc-kd-table-khu-vuc">
+<colgroup>
+<col style="width:22%;"/>
+<col style="width:8%;"/>
+<col style="width:11%;"/>
+<col style="width:15%;"/>
+<col style="width:13%;"/>
+<col style="width:11%;"/>
+<col style="width:14%;"/>
+<col style="width:6%;"/>
+</colgroup>
+<thead><tr><th>Khu vực</th><th>Số KH</th><th>Số m³ Tiêu Thụ</th><th>Doanh Thu</th><th>Phí BV MT</th><th>Thuế 5%</th><th>Tổng</th><th>Số hóa đơn</th></tr></thead>
+<tbody><tr><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-vung-tau-label">Xí Nghiệp Cấp Nước Vũng Tàu</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-vung-tau-so-kh">32.847</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-vung-tau-so-m3-tieu-thu">891.250</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-vung-tau-doanh-thu">15.482.300.000</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-vung-tau-phi-bvmt">1.032.180.000</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-vung-tau-thue-5">774.115.000</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-vung-tau-tong">18.938.711.000</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-vung-tau-so-hoa-don">38.210</td></tr>
+<tr><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-ba-ria-label">Xí Nghiệp Cấp nước Bà Rịa</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-ba-ria-so-kh">18.923</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-ba-ria-so-m3-tieu-thu">512.880</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-ba-ria-doanh-thu">8.934.750.000</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-ba-ria-phi-bvmt">595.650.000</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-ba-ria-thue-5">446.737.500</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-ba-ria-tong">10.926.510.000</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-ba-ria-so-hoa-don">22.086</td></tr>
+<tr><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-long-dien-label">Xí Nghiệp Cấp nước Long Điền</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-long-dien-so-kh">9.442</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-long-dien-so-m3-tieu-thu">258.400</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-long-dien-doanh-thu">4.512.300.000</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-long-dien-phi-bvmt">300.820.000</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-long-dien-thue-5">225.615.000</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-long-dien-tong">5.521.080.000</td><td id="bc-kd-khu-vuc-xi-nghiep-cap-nuoc-long-dien-so-hoa-don">11.120</td></tr>
+<tr><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-xuyen-moc-label">Chi nhánh cấp nước Xuyên Mộc</td><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-xuyen-moc-so-kh">6.287</td><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-xuyen-moc-so-m3-tieu-thu">172.350</td><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-xuyen-moc-doanh-thu">2.981.400.000</td><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-xuyen-moc-phi-bvmt">198.760.000</td><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-xuyen-moc-thue-5">149.070.000</td><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-xuyen-moc-tong">3.649.321.200</td><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-xuyen-moc-so-hoa-don">7.340</td></tr>
+<tr><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-chau-duc-label">Chi nhánh cấp nước Châu Đức</td><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-chau-duc-so-kh">7.156</td><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-chau-duc-so-m3-tieu-thu">196.720</td><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-chau-duc-doanh-thu">3.412.800.000</td><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-chau-duc-phi-bvmt">227.520.000</td><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-chau-duc-thue-5">170.640.000</td><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-chau-duc-tong">4.163.913.600</td><td id="bc-kd-khu-vuc-chi-nhanh-cap-nuoc-chau-duc-so-hoa-don">8.380</td></tr>
+<tr><td id="bc-kd-khu-vuc-nuoc-ban-si-cho-phu-my-label">Nước bán sỉ cho Phú Mỹ</td><td id="bc-kd-khu-vuc-nuoc-ban-si-cho-phu-my-so-kh">2.119</td><td id="bc-kd-khu-vuc-nuoc-ban-si-cho-phu-my-so-m3-tieu-thu">74.969</td><td id="bc-kd-khu-vuc-nuoc-ban-si-cho-phu-my-doanh-thu">1.526.417.620</td><td id="bc-kd-khu-vuc-nuoc-ban-si-cho-phu-my-phi-bvmt">101.760.000</td><td id="bc-kd-khu-vuc-nuoc-ban-si-cho-phu-my-thue-5">76.320.000</td><td id="bc-kd-khu-vuc-nuoc-ban-si-cho-phu-my-tong">1.867.855.082</td><td id="bc-kd-khu-vuc-nuoc-ban-si-cho-phu-my-so-hoa-don">2.940</td></tr>
+<tr class="dt-total"><td id="bc-kd-khu-vuc-tong-label">Tổng</td><td id="bc-kd-khu-vuc-tong-so-kh">76.774</td><td id="bc-kd-khu-vuc-tong-so-m3-tieu-thu">2.106.569</td><td id="bc-kd-khu-vuc-tong-doanh-thu">36.849.967.620</td><td id="bc-kd-khu-vuc-tong-phi-bvmt">2.456.690.000</td><td id="bc-kd-khu-vuc-tong-thue-5">1.842.497.500</td><td id="bc-kd-khu-vuc-tong-tong">45.067.390.882</td><td id="bc-kd-khu-vuc-tong-so-hoa-don">90.076</td></tr>
+<tr class="dt-prev"><td id="bc-kd-khu-vuc-ky-truoc-label">Kỳ trước</td><td id="bc-kd-khu-vuc-ky-truoc-so-kh">207.774</td><td id="bc-kd-khu-vuc-ky-truoc-so-m3-tieu-thu">5.606.569</td><td id="bc-kd-khu-vuc-ky-truoc-doanh-thu">70.849.967.620</td><td id="bc-kd-khu-vuc-ky-truoc-phi-bvmt">3.818.217.176</td><td id="bc-kd-khu-vuc-ky-truoc-thue-5">3.542.498.381</td><td id="bc-kd-khu-vuc-ky-truoc-tong">88.713.149.781</td><td id="bc-kd-khu-vuc-ky-truoc-so-hoa-don">192.860</td></tr>
+<tr class="dt-delta"><td id="bc-kd-khu-vuc-tang-giam-label">Tăng/ Giảm</td><td class="val-pos" id="bc-kd-khu-vuc-tang-giam-so-kh"><span class="dt-cell-icon"><svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.25"></path></svg>4.127</span></td><td class="val-pos" id="bc-kd-khu-vuc-tang-giam-so-m3-tieu-thu"><span class="dt-cell-icon"><svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.25"></path></svg>114.681</span></td><td class="val-pos" id="bc-kd-khu-vuc-tang-giam-doanh-thu"><span class="dt-cell-icon"><svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.25"></path></svg>1.998.332.380</span></td><td class="val-neg" id="bc-kd-khu-vuc-tang-giam-phi-bvmt"><span class="dt-cell-icon"><svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.25"></path></svg>379.490.176</span></td><td class="val-pos" id="bc-kd-khu-vuc-tang-giam-thue-5"><span class="dt-cell-icon"><svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.25"></path></svg>42.617.119</span></td><td class="val-pos" id="bc-kd-khu-vuc-tang-giam-tong"><span class="dt-cell-icon"><svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.25"></path></svg>2.354.219.882</span></td><td class="val-neg" id="bc-kd-khu-vuc-tang-giam-so-hoa-don"><span class="dt-cell-icon"><svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.25"></path></svg>2.784</span></td></tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Table 2: Đối tượng -->
+<div class="dt-section" id="bc-kd-section-doi-tuong">
+<div class="dt-table-wrap">
+<div class="dt-table-title" id="bc-kd-title-doi-tuong">Theo đối tượng khách hàng</div>
+<div style="overflow-x:auto;">
+<table class="dt-table" id="bc-kd-table-doi-tuong">
+<colgroup>
+<col style="width:22%;"/>
+<col style="width:8%;"/>
+<col style="width:11%;"/>
+<col style="width:15%;"/>
+<col style="width:13%;"/>
+<col style="width:11%;"/>
+<col style="width:14%;"/>
+<col style="width:6%;"/>
+</colgroup>
+<thead><tr><th>Đối tượng</th><th>Số KH</th><th>Số m³ Tiêu Thụ</th><th>Doanh Thu</th><th>Phí BV MT</th><th>Thuế 5%</th><th>Tổng</th><th>Số hóa đơn</th></tr></thead>
+<tbody><tr><td id="bc-kd-doi-tuong-sinh-hoat-do-thi-label">Sinh hoạt đô thị</td><td id="bc-kd-doi-tuong-sinh-hoat-do-thi-so-kh">32.847</td><td id="bc-kd-doi-tuong-sinh-hoat-do-thi-so-m3-tieu-thu">901.200</td><td id="bc-kd-doi-tuong-sinh-hoat-do-thi-doanh-thu">15.612.300.000</td><td id="bc-kd-doi-tuong-sinh-hoat-do-thi-phi-bvmt">1.040.820.000</td><td id="bc-kd-doi-tuong-sinh-hoat-do-thi-thue-5">780.615.000</td><td id="bc-kd-doi-tuong-sinh-hoat-do-thi-tong">19.015.789.000</td><td id="bc-kd-doi-tuong-sinh-hoat-do-thi-so-hoa-don">38.980</td></tr>
+<tr><td id="bc-kd-doi-tuong-sinh-hoat-nong-thon-label">Sinh hoạt nông thôn</td><td id="bc-kd-doi-tuong-sinh-hoat-nong-thon-so-kh">14.220</td><td id="bc-kd-doi-tuong-sinh-hoat-nong-thon-so-m3-tieu-thu">380.600</td><td id="bc-kd-doi-tuong-sinh-hoat-nong-thon-doanh-thu">6.120.540.000</td><td id="bc-kd-doi-tuong-sinh-hoat-nong-thon-phi-bvmt">408.036.000</td><td id="bc-kd-doi-tuong-sinh-hoat-nong-thon-thue-5">306.027.000</td><td id="bc-kd-doi-tuong-sinh-hoat-nong-thon-tong">7.481.442.600</td><td id="bc-kd-doi-tuong-sinh-hoat-nong-thon-so-hoa-don">16.820</td></tr>
+<tr><td id="bc-kd-doi-tuong-dong-bao-dt-label">Đồng bào DT</td><td id="bc-kd-doi-tuong-dong-bao-dt-so-kh">2.438</td><td id="bc-kd-doi-tuong-dong-bao-dt-so-m3-tieu-thu">64.300</td><td id="bc-kd-doi-tuong-dong-bao-dt-doanh-thu">918.480.000</td><td id="bc-kd-doi-tuong-dong-bao-dt-phi-bvmt">61.231.200</td><td id="bc-kd-doi-tuong-dong-bao-dt-thue-5">45.924.000</td><td id="bc-kd-doi-tuong-dong-bao-dt-tong">1.123.734.320</td><td id="bc-kd-doi-tuong-dong-bao-dt-so-hoa-don">2.690</td></tr>
+<tr><td id="bc-kd-doi-tuong-co-quan-label">Cơ quan</td><td id="bc-kd-doi-tuong-co-quan-so-kh">5.874</td><td id="bc-kd-doi-tuong-co-quan-so-m3-tieu-thu">157.820</td><td id="bc-kd-doi-tuong-co-quan-doanh-thu">2.728.300.000</td><td id="bc-kd-doi-tuong-co-quan-phi-bvmt">181.887.000</td><td id="bc-kd-doi-tuong-co-quan-thue-5">136.415.000</td><td id="bc-kd-doi-tuong-co-quan-tong">3.335.459.600</td><td id="bc-kd-doi-tuong-co-quan-so-hoa-don">7.490</td></tr>
+<tr><td id="bc-kd-doi-tuong-san-xuat-label">Sản xuất</td><td id="bc-kd-doi-tuong-san-xuat-so-kh">8.312</td><td id="bc-kd-doi-tuong-san-xuat-so-m3-tieu-thu">224.800</td><td id="bc-kd-doi-tuong-san-xuat-doanh-thu">3.914.560.000</td><td id="bc-kd-doi-tuong-san-xuat-phi-bvmt">260.971.000</td><td id="bc-kd-doi-tuong-san-xuat-thue-5">195.728.000</td><td id="bc-kd-doi-tuong-san-xuat-tong">4.787.591.800</td><td id="bc-kd-doi-tuong-san-xuat-so-hoa-don">10.820</td></tr>
+<tr><td id="bc-kd-doi-tuong-kinh-doanh-label">Kinh Doanh</td><td id="bc-kd-doi-tuong-kinh-doanh-so-kh">9.740</td><td id="bc-kd-doi-tuong-kinh-doanh-so-m3-tieu-thu">262.900</td><td id="bc-kd-doi-tuong-kinh-doanh-doanh-thu">4.572.300.000</td><td id="bc-kd-doi-tuong-kinh-doanh-phi-bvmt">304.820.000</td><td id="bc-kd-doi-tuong-kinh-doanh-thue-5">228.615.000</td><td id="bc-kd-doi-tuong-kinh-doanh-tong">5.589.481.400</td><td id="bc-kd-doi-tuong-kinh-doanh-so-hoa-don">12.660</td></tr>
+<tr class="dt-total"><td id="bc-kd-doi-tuong-tong-label">Tổng</td><td id="bc-kd-doi-tuong-tong-so-kh">73.431</td><td id="bc-kd-doi-tuong-tong-so-m3-tieu-thu">1.991.620</td><td id="bc-kd-doi-tuong-tong-doanh-thu">33.866.480.000</td><td id="bc-kd-doi-tuong-tong-phi-bvmt">2.257.765.200</td><td id="bc-kd-doi-tuong-tong-thue-5">1.693.324.000</td><td id="bc-kd-doi-tuong-tong-tong">42.334.498.420</td><td id="bc-kd-doi-tuong-tong-so-hoa-don">89.460</td></tr>
+<tr class="dt-prev"><td id="bc-kd-doi-tuong-ky-truoc-label">Kỳ trước</td><td id="bc-kd-doi-tuong-ky-truoc-so-kh">196.228</td><td id="bc-kd-doi-tuong-ky-truoc-so-m3-tieu-thu">5.296.350</td><td id="bc-kd-doi-tuong-ky-truoc-doanh-thu">64.998.070.380</td><td id="bc-kd-doi-tuong-ky-truoc-phi-bvmt">3.431.527.000</td><td id="bc-kd-doi-tuong-ky-truoc-thue-5">2.586.450.000</td><td id="bc-kd-doi-tuong-ky-truoc-tong">77.188.130.080</td><td id="bc-kd-doi-tuong-ky-truoc-so-hoa-don">188.640</td></tr>
+<tr class="dt-delta"><td id="bc-kd-doi-tuong-tang-giam-label">Tăng/ Giảm</td><td class="val-pos" id="bc-kd-doi-tuong-tang-giam-so-kh"><span class="dt-cell-icon"><svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.25"></path></svg>3.741</span></td><td class="val-pos" id="bc-kd-doi-tuong-tang-giam-so-m3-tieu-thu"><span class="dt-cell-icon"><svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.25"></path></svg>98.430</span></td><td class="val-pos" id="bc-kd-doi-tuong-tang-giam-doanh-thu"><span class="dt-cell-icon"><svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.25"></path></svg>1.712.410.000</span></td><td class="val-neg" id="bc-kd-doi-tuong-tang-giam-phi-bvmt"><span class="dt-cell-icon"><svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.25"></path></svg>173.761.800</span></td><td class="val-pos" id="bc-kd-doi-tuong-tang-giam-thue-5"><span class="dt-cell-icon"><svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.25"></path></svg>93.126.000</span></td><td class="val-pos" id="bc-kd-doi-tuong-tang-giam-tong"><span class="dt-cell-icon"><svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.2269 6.71353L8.01333 3.5L4.7998 6.71353M8.01333 12.5V3.59" stroke="#16A34A" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.25"></path></svg>853.631.660</span></td><td class="val-neg" id="bc-kd-doi-tuong-tang-giam-so-hoa-don"><span class="dt-cell-icon"><svg fill="none" height="16" viewbox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M11.2271 9.28647L8.01358 12.5L4.80005 9.28647M8.01358 3.5V12.41" stroke="#DC2626" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.25"></path></svg>9.180</span></td></tr></tbody>
+</table>
+</div>
+</div>
+</div>
+</div><!-- /dt-scroll-area -->
+</div><!-- /smTableView -->
+</div>
+</div>
+<div data-component="footer" id="pmw-footer"></div>
+</main>
+</div>
+</div>
+<script>
     document.addEventListener('pmw:components-loaded', () => {
       const head = document.querySelector('.business-report-page-head');
       if (!head) return;
@@ -305,7 +291,7 @@
       if (form) form.addEventListener('submit', (event) => event.preventDefault());
     });
   </script>
-  <script>
+<script>
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.dv-header-logo').addEventListener('click', e => {
         e.preventDefault(); window.location.href = 'index.html';

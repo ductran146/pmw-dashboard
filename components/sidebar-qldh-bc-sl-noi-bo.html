@@ -1,0 +1,291 @@
+<style>
+/* Scoped sidebar-report menu states: default / active / hover */
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo {
+  box-sizing: border-box !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  flex: 0 0 280px !important;
+  align-self: stretch !important;
+  padding: 35px 0 24px 0 !important;
+  gap: 2px !important;
+  background: #02457A !important;
+  border-right: 1px solid rgba(17, 24, 39, 0.08) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo *,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo *::before,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo *::after {
+  box-sizing: border-box !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-sidebar-label {
+  display: block !important;
+  width: 280px !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  margin: 0 0 19px 0 !important;
+  padding: 0 0 0 12px !important;
+  font-family: 'Pretendard', var(--font, sans-serif) !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  line-height: 18px !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+  color: rgba(255, 255, 255, 0.67) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+
+/* Category menu: default */
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-other {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  flex: 0 0 44px !important;
+  padding: 10px 16px !important;
+  gap: 12px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #E5E7EB !important;
+  text-decoration: none !important;
+  overflow: hidden !important;
+}
+
+/* Category menu: active */
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat.active,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat.expanded.active,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-other.active {
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  height: 44px !important;
+  padding: 10px 16px !important;
+  background: #009AFF !important;
+  border-radius: 0 !important;
+  color: #F9FAFB !important;
+}
+
+/* Category menu: hover */
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat:hover,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-other:hover {
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  height: 44px !important;
+  padding: 10px 16px !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-radius: 0 !important;
+  color: #F9FAFB !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat.expanded:not(.active) {
+  background: transparent !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat-icon,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-other-icon {
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  max-width: 20px !important;
+  flex: 0 0 20px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: currentColor !important;
+  overflow: visible !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat-icon svg,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-other-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+  display: block !important;
+  color: currentColor !important;
+  stroke: currentColor !important;
+  fill: none !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo svg path,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo svg rect,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo svg circle,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo svg line,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo svg polyline {
+  stroke: currentColor !important;
+  fill: none !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-other-label {
+  display: block !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  height: 22px !important;
+  font-family: 'Pretendard', var(--font, sans-serif) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  color: #E5E7EB !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat.expanded.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-other.active .sm-nav-other-label,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat:hover .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-other:hover .sm-nav-other-label {
+  color: #F9FAFB !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat.expanded.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-other.active .sm-nav-other-label {
+  font-weight: 600 !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-other:hover .sm-nav-other-label,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat:hover .sm-nav-cat-label {
+  font-weight: 400 !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-nav-cat-arrow {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  flex: 0 0 16px !important;
+  color: currentColor !important;
+  transform: rotate(90deg) !important;
+}
+
+/* Sub category: default / active / hover */
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-subnav {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 2px !important;
+  overflow: visible !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-subnav-item {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  flex: 0 0 44px !important;
+  padding: 12px 8px 12px 24px !important;
+  gap: 20px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #B3E2FF !important;
+  text-decoration: none !important;
+  overflow: hidden !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-subnav-item:hover {
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-radius: 0 !important;
+  color: #F9FAFB !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-subnav-item.active {
+  background: transparent !important;
+  border-radius: 0 !important;
+  color: #F9FAFB !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-subnav-item::before {
+  content: '' !important;
+  display: block !important;
+  width: 6px !important;
+  height: 6px !important;
+  min-width: 6px !important;
+  flex: 0 0 6px !important;
+  border-radius: 50% !important;
+  background: #B3E2FF !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-subnav-item.active::before,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-subnav-item:hover::before {
+  background: #F9FAFB !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-subnav-item span {
+  display: block !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  height: 22px !important;
+  font-family: 'Pretendard', var(--font, sans-serif) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  color: #B3E2FF !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-subnav-item.active span,
+.sm-sidebar.sm-sidebar-qldh-bc-sl-noi-bo .sm-subnav-item:hover span {
+  color: #F9FAFB !important;
+  font-weight: 600 !important;
+}
+</style>
+<!-- Shared sidebar cho Quản lý điều hành / Báo cáo số liệu nội bộ -->
+<aside class="sm-sidebar sm-sidebar-qldh-bc-sl-noi-bo" id="sidebar-qldh-bc-sl-noi-bo">
+        <div class="sm-sidebar-label" id="sidebar-qldh-bc-sl-noi-bo-label">Quản lý điều hành</div>
+        <a class="sm-nav-cat expanded active" id="sidebar-qldh-bc-sl-noi-bo-root" href="bc-so-lieu-kd.html">
+          <div class="sm-nav-cat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 17H16M8 13H12M13 2.5V3C13 5.82843 13 7.24264 13.8787 8.12132C14.7574 9 16.1716 9 19 9H19.5M20 10.6569V14C20 17.7712 20 19.6569 18.8284 20.8284C17.6569 22 15.7712 22 12 22C8.22876 22 6.34315 22 5.17157 20.8284C4 19.6569 4 17.7712 4 14V9.45584C4 6.21082 4 4.58831 4.88607 3.48933C5.06508 3.26731 5.26731 3.06508 5.48933 2.88607C6.58831 2 8.21082 2 11.4558 2C12.1614 2 12.5141 2 12.8372 2.11401C12.9044 2.13772 12.9702 2.165 13.0345 2.19575C13.3436 2.34355 13.593 2.593 14.0919 3.09188L18.8284 7.82843C19.4065 8.40649 19.6955 8.69552 19.8478 9.06306C20 9.4306 20 9.83935 20 10.6569Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="sm-nav-cat-label">Báo cáo số liệu nội bộ</span>
+          <svg class="sm-nav-cat-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 3l4 4-4 4"/></svg>
+        </a>
+        <div class="sm-subnav" id="sidebar-qldh-bc-sl-noi-bo-subnav" style="display:flex;flex-direction:column;">
+          <a class="sm-subnav-item active" id="sidebar-qldh-bc-sl-noi-bo-so-lieu-kd" href="bc-so-lieu-kd.html"><span>Số liệu kinh doanh</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-bc-sl-noi-bo-that-thoat" href="bc-that-thoat.html"><span>Tỷ lệ thất thoát</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-bc-sl-noi-bo-lap-dat" href="bc-lap-dat.html"><span>Lắp đặt sửa chữa</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-bc-sl-noi-bo-vat-tu" href="bc-vat-tu.html"><span>Vật tư - Nhiên liệu - Sản xuất</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-bc-sl-noi-bo-tru-nuoc" href="bc-tru-nuoc.html"><span>Trụ nước uống tại vòi</span></a>
+        </div>
+      </aside>

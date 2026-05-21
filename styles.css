@@ -2283,7 +2283,6 @@ body.pmw-page-bc-tru-nuoc .business-report-page-head .br-filter {
       flex: 1; min-width: 0; width: 0;
       display: flex; flex-direction: column;
       overflow: hidden; background: #F9FAFB; min-height: 0;
-      gap: 10px;
     }
     .sm-scroll {
       flex: 1; overflow-y: auto; overflow-x: hidden;
@@ -2316,8 +2315,8 @@ body.pmw-page-bc-tru-nuoc .business-report-page-head .br-filter {
       margin-bottom: var(--sp-2);
     }
 
-    .sm-sidebar-production .sm-nav-cat,
-    .sm-sidebar-production .sm-nav-other {
+    .sm-sidebar-qlsx .sm-nav-cat,
+    .sm-sidebar-qlsx .sm-nav-other {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -2338,8 +2337,8 @@ body.pmw-page-bc-tru-nuoc .business-report-page-head .br-filter {
       color: var(--text-secondary) !important;
     }
 
-    .sm-sidebar-production .sm-nav-cat-label,
-    .sm-sidebar-production .sm-nav-other-label {
+    .sm-sidebar-qlsx .sm-nav-cat-label,
+    .sm-sidebar-qlsx .sm-nav-other-label {
       font-family: var(--font);
       font-size: var(--fs-body3);
       line-height: var(--lh-body3);
@@ -2352,8 +2351,8 @@ body.pmw-page-bc-tru-nuoc .business-report-page-head .br-filter {
       text-overflow: ellipsis;
     }
 
-    .sm-sidebar-production .sm-nav-cat-icon,
-    .sm-sidebar-production .sm-nav-other-icon {
+    .sm-sidebar-qlsx .sm-nav-cat-icon,
+    .sm-sidebar-qlsx .sm-nav-other-icon {
       width: 20px;
       height: 20px;
       display: flex;
@@ -2363,8 +2362,8 @@ body.pmw-page-bc-tru-nuoc .business-report-page-head .br-filter {
       color: inherit;
     }
 
-    .sm-sidebar-production .sm-nav-cat-icon svg,
-    .sm-sidebar-production .sm-nav-other-icon svg {
+    .sm-sidebar-qlsx .sm-nav-cat-icon svg,
+    .sm-sidebar-qlsx .sm-nav-other-icon svg {
       width: 20px;
       height: 20px;
       color: inherit;
@@ -2372,20 +2371,20 @@ body.pmw-page-bc-tru-nuoc .business-report-page-head .br-filter {
       fill: none !important;
     }
 
-    .sm-sidebar-production .sm-nav-cat-icon path,
-    .sm-sidebar-production .sm-nav-other-icon path {
+    .sm-sidebar-qlsx .sm-nav-cat-icon path,
+    .sm-sidebar-qlsx .sm-nav-other-icon path {
       stroke: currentColor !important;
     }
 
-    .sm-sidebar-production .sm-nav-cat:hover,
-    .sm-sidebar-production .sm-nav-other:hover {
+    .sm-sidebar-qlsx .sm-nav-cat:hover,
+    .sm-sidebar-qlsx .sm-nav-other:hover {
       background: rgba(26,66,138,0.08) !important;
       color: var(--text-secondary) !important;
       font-weight: var(--fw-medium) !important;
     }
 
-    .sm-sidebar-production .sm-nav-cat.active,
-    .sm-sidebar-production .sm-nav-other.active {
+    .sm-sidebar-qlsx .sm-nav-cat.active,
+    .sm-sidebar-qlsx .sm-nav-other.active {
       background: rgba(26,66,138,0.08) !important;
       color: var(--pmw-blue) !important;
       font-weight: var(--fw-semibold) !important;

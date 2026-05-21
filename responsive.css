@@ -505,7 +505,7 @@ html, body {
   }
 
   .sm-sidebar,
-  .sm-sidebar-production,
+  .sm-sidebar-qlsx,
   .sm-sidebar-report {
     display: flex !important;
     flex-direction: column !important;
@@ -535,7 +535,7 @@ html, body {
   }
 
   body.pmw-sidebar-open .sm-sidebar,
-  body.pmw-sidebar-open .sm-sidebar-production,
+  body.pmw-sidebar-open .sm-sidebar-qlsx,
   body.pmw-sidebar-open .sm-sidebar-report {
     transform: translateX(0) !important;
   }
@@ -1038,7 +1038,7 @@ html, body {
 
 .sm-sidebar,
 .sm-sidebar-report,
-.sm-sidebar-production {
+.sm-sidebar-qlsx {
   width: var(--pmw-sidebar-width) !important;
   flex: 0 0 var(--pmw-sidebar-width) !important;
   box-sizing: border-box !important;
@@ -1234,7 +1234,7 @@ html, body {
 @media (max-width: 900px) {
   .sm-sidebar,
   .sm-sidebar-report,
-  .sm-sidebar-production {
+  .sm-sidebar-qlsx {
     position: fixed !important;
     left: 0 !important;
     top: var(--pmw-header-height, 70px) !important;
@@ -1250,7 +1250,7 @@ html, body {
 
   body.pmw-sidebar-open .sm-sidebar,
   body.pmw-sidebar-open .sm-sidebar-report,
-  body.pmw-sidebar-open .sm-sidebar-production {
+  body.pmw-sidebar-open .sm-sidebar-qlsx {
     transform: translateX(0) !important;
   }
 
@@ -1288,7 +1288,7 @@ html, body {
 
 .sm-sidebar,
 .sm-sidebar-report,
-.sm-sidebar-production {
+.sm-sidebar-qlsx {
   box-sizing: border-box !important;
   width: var(--pmw-sidebar-width) !important;
   min-width: var(--pmw-sidebar-width) !important;
@@ -1488,7 +1488,7 @@ html, body {
 @media (max-width: 900px) {
   .sm-sidebar,
   .sm-sidebar-report,
-  .sm-sidebar-production {
+  .sm-sidebar-qlsx {
     position: fixed !important;
     left: 0 !important;
     top: var(--pmw-header-height, 70px) !important;
@@ -1504,7 +1504,7 @@ html, body {
   }
   body.pmw-sidebar-open .sm-sidebar,
   body.pmw-sidebar-open .sm-sidebar-report,
-  body.pmw-sidebar-open .sm-sidebar-production {
+  body.pmw-sidebar-open .sm-sidebar-qlsx {
     transform: translateX(0) !important;
   }
   .sm-sidebar .sm-sidebar-label,
@@ -1545,7 +1545,7 @@ html, body {
 
 body .sm-sidebar,
 body .sm-sidebar-report,
-body .sm-sidebar-production {
+body .sm-sidebar-qlsx {
   box-sizing: border-box !important;
   width: var(--pmw-sidebar-width) !important;
   min-width: var(--pmw-sidebar-width) !important;
@@ -1703,7 +1703,7 @@ body .sm-sidebar .sm-nav-cat-arrow {
   color: var(--pmw-sidebar-text-active) !important;
   transform: rotate(90deg) !important;
 }
-body .sm-sidebar-production .sm-nav-cat-arrow { display: none !important; }
+body .sm-sidebar-qlsx .sm-nav-cat-arrow { display: none !important; }
 
 body .sm-sidebar .sm-subnav {
   display: flex !important;
@@ -1789,7 +1789,7 @@ body .sm-sidebar svg circle[fill]:not([fill="none"]) {
 @media (min-width: 901px) {
   body .sm-sidebar,
   body .sm-sidebar-report,
-  body .sm-sidebar-production {
+  body .sm-sidebar-qlsx {
     position: sticky !important;
     top: var(--pmw-header-height, 70px) !important;
     height: calc(100vh - var(--pmw-header-height, 70px)) !important;
@@ -1799,7 +1799,7 @@ body .sm-sidebar svg circle[fill]:not([fill="none"]) {
 @media (max-width: 900px) {
   body .sm-sidebar,
   body .sm-sidebar-report,
-  body .sm-sidebar-production {
+  body .sm-sidebar-qlsx {
     position: fixed !important;
     left: 0 !important;
     top: var(--pmw-header-height, 70px) !important;
@@ -1816,7 +1816,7 @@ body .sm-sidebar svg circle[fill]:not([fill="none"]) {
   }
   body.pmw-sidebar-open .sm-sidebar,
   body.pmw-sidebar-open .sm-sidebar-report,
-  body.pmw-sidebar-open .sm-sidebar-production {
+  body.pmw-sidebar-open .sm-sidebar-qlsx {
     transform: translateX(0) !important;
   }
 }
@@ -1839,7 +1839,7 @@ body .sm-sidebar svg circle[fill]:not([fill="none"]) {
 
 body .sm-sidebar,
 body .sm-sidebar-report,
-body .sm-sidebar-production{
+body .sm-sidebar-qlsx{
   width:var(--pmw-sidebar-width) !important;
   min-width:var(--pmw-sidebar-width) !important;
   max-width:var(--pmw-sidebar-width) !important;
@@ -1877,7 +1877,7 @@ body .sm-sidebar-label{
 
 body .sm-sidebar-menu,
 body .sm-sidebar-report > nav,
-body .sm-sidebar-production > nav{
+body .sm-sidebar-qlsx > nav{
   display:flex !important;
   flex-direction:column !important;
   align-items:flex-start !important;
@@ -1998,7 +1998,7 @@ body .sm-sidebar .sm-nav-cat-arrow{
   color:var(--pmw-sidebar-text-active) !important;
   transform:rotate(90deg) !important;
 }
-body .sm-sidebar-production .sm-nav-cat-arrow{display:none !important;}
+body .sm-sidebar-qlsx .sm-nav-cat-arrow{display:none !important;}
 
 body .sm-sidebar .sm-subnav{
   display:flex !important;
@@ -2064,7 +2064,7 @@ body .sm-sidebar .sm-subnav-item:hover span{
 @media (min-width:901px){
   body .sm-sidebar,
   body .sm-sidebar-report,
-  body .sm-sidebar-production{
+  body .sm-sidebar-qlsx{
     position:sticky !important;
     top:var(--pmw-header-height,70px) !important;
     height:calc(100vh - var(--pmw-header-height,70px)) !important;
@@ -2073,7 +2073,7 @@ body .sm-sidebar .sm-subnav-item:hover span{
 @media (max-width:900px){
   body .sm-sidebar,
   body .sm-sidebar-report,
-  body .sm-sidebar-production{
+  body .sm-sidebar-qlsx{
     position:fixed !important;
     left:0 !important;
     top:var(--pmw-header-height,70px) !important;
@@ -2089,7 +2089,7 @@ body .sm-sidebar .sm-subnav-item:hover span{
   }
   body.pmw-sidebar-open .sm-sidebar,
   body.pmw-sidebar-open .sm-sidebar-report,
-  body.pmw-sidebar-open .sm-sidebar-production{transform:translateX(0) !important;}
+  body.pmw-sidebar-open .sm-sidebar-qlsx{transform:translateX(0) !important;}
 }
 
 /* =========================================================
@@ -2110,7 +2110,7 @@ body .sm-sidebar .sm-subnav-item:hover span{
 
 html body .sm-sidebar,
 html body .sm-sidebar-report,
-html body .sm-sidebar-production{
+html body .sm-sidebar-qlsx{
   box-sizing:border-box !important;
   display:flex !important;
   flex-direction:column !important;
@@ -2148,7 +2148,7 @@ html body .sm-sidebar-label{
 
 html body .sm-sidebar-menu,
 html body .sm-sidebar-report > .sm-sidebar-menu,
-html body .sm-sidebar-production > .sm-sidebar-menu{
+html body .sm-sidebar-qlsx > .sm-sidebar-menu{
   box-sizing:border-box !important;
   display:flex !important;
   flex-direction:column !important;
@@ -2291,7 +2291,7 @@ html body .sm-sidebar .sm-nav-cat-arrow{
   color:currentColor !important;
   transform:rotate(90deg) !important;
 }
-html body .sm-sidebar-production .sm-nav-cat-arrow{display:none !important;}
+html body .sm-sidebar-qlsx .sm-nav-cat-arrow{display:none !important;}
 
 html body .sm-sidebar .sm-subnav{
   display:flex !important;
@@ -2366,7 +2366,7 @@ html body .sm-sidebar .sm-subnav-item:hover span{
 @media (max-width:900px){
   html body .sm-sidebar,
   html body .sm-sidebar-report,
-  html body .sm-sidebar-production{
+  html body .sm-sidebar-qlsx{
     position:fixed !important;
     left:0 !important;
     top:var(--pmw-header-height,70px) !important;
@@ -2383,7 +2383,7 @@ html body .sm-sidebar .sm-subnav-item:hover span{
   }
   html body.pmw-sidebar-open .sm-sidebar,
   html body.pmw-sidebar-open .sm-sidebar-report,
-  html body.pmw-sidebar-open .sm-sidebar-production{transform:translateX(0) !important;}
+  html body.pmw-sidebar-open .sm-sidebar-qlsx{transform:translateX(0) !important;}
 }
 
 
@@ -2785,7 +2785,7 @@ html body .sm-sidebar-report .sm-sidebar-bottom {
 
 /* =========================================================
    v39 — FINAL QL Sản xuất sidebar category active exact Figma spec
-   Scope: sidebar-production.html only.
+   Scope: sidebar-qlsx.html only.
    Active/Hover rows must equal full sidebar width: 280px.
    ========================================================= */
 :root {
@@ -2798,7 +2798,7 @@ html body .sm-sidebar-report .sm-sidebar-bottom {
   --pmw-production-sidebar-text-active: #F9FAFB !important;
 }
 
-html body .sm-sidebar-production {
+html body .sm-sidebar-qlsx {
   box-sizing: border-box !important;
   position: relative !important;
   width: 280px !important;
@@ -2820,13 +2820,13 @@ html body .sm-sidebar-production {
   overflow-y: auto !important;
 }
 
-html body .sm-sidebar-production *,
-html body .sm-sidebar-production *::before,
-html body .sm-sidebar-production *::after {
+html body .sm-sidebar-qlsx *,
+html body .sm-sidebar-qlsx *::before,
+html body .sm-sidebar-qlsx *::after {
   box-sizing: border-box !important;
 }
 
-html body .sm-sidebar-production .sm-sidebar-label {
+html body .sm-sidebar-qlsx .sm-sidebar-label {
   display: block !important;
   flex: 0 0 18px !important;
   width: 280px !important;
@@ -2848,7 +2848,7 @@ html body .sm-sidebar-production .sm-sidebar-label {
   visibility: visible !important;
 }
 
-html body .sm-sidebar-production .sm-sidebar-menu {
+html body .sm-sidebar-qlsx .sm-sidebar-menu {
   display: flex !important;
   flex-direction: column !important;
   align-items: flex-start !important;
@@ -2862,9 +2862,9 @@ html body .sm-sidebar-production .sm-sidebar-menu {
   overflow: visible !important;
 }
 
-html body .sm-sidebar-production a,
-html body .sm-sidebar-production .sm-nav-cat,
-html body .sm-sidebar-production .sm-nav-other {
+html body .sm-sidebar-qlsx a,
+html body .sm-sidebar-qlsx .sm-nav-cat,
+html body .sm-sidebar-qlsx .sm-nav-other {
   position: relative !important;
   left: auto !important;
   right: auto !important;
@@ -2878,8 +2878,8 @@ html body .sm-sidebar-production .sm-nav-other {
   text-decoration: none !important;
 }
 
-html body .sm-sidebar-production .sm-nav-cat,
-html body .sm-sidebar-production .sm-nav-other {
+html body .sm-sidebar-qlsx .sm-nav-cat,
+html body .sm-sidebar-qlsx .sm-nav-other {
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
@@ -2902,8 +2902,8 @@ html body .sm-sidebar-production .sm-nav-other {
   overflow: hidden !important;
 }
 
-html body .sm-sidebar-production .sm-nav-cat:hover,
-html body .sm-sidebar-production .sm-nav-other:hover {
+html body .sm-sidebar-qlsx .sm-nav-cat:hover,
+html body .sm-sidebar-qlsx .sm-nav-other:hover {
   width: 280px !important;
   min-width: 280px !important;
   max-width: 280px !important;
@@ -2913,9 +2913,9 @@ html body .sm-sidebar-production .sm-nav-other:hover {
   color: var(--pmw-production-sidebar-text-active) !important;
 }
 
-html body .sm-sidebar-production .sm-nav-cat.active,
-html body .sm-sidebar-production .sm-nav-cat.expanded.active,
-html body .sm-sidebar-production .sm-nav-other.active {
+html body .sm-sidebar-qlsx .sm-nav-cat.active,
+html body .sm-sidebar-qlsx .sm-nav-cat.expanded.active,
+html body .sm-sidebar-qlsx .sm-nav-other.active {
   width: 280px !important;
   min-width: 280px !important;
   max-width: 280px !important;
@@ -2925,12 +2925,12 @@ html body .sm-sidebar-production .sm-nav-other.active {
   color: var(--pmw-production-sidebar-text-active) !important;
 }
 
-html body .sm-sidebar-production .sm-nav-cat.expanded:not(.active) {
+html body .sm-sidebar-qlsx .sm-nav-cat.expanded:not(.active) {
   background: transparent !important;
 }
 
-html body .sm-sidebar-production .sm-nav-cat-icon,
-html body .sm-sidebar-production .sm-nav-other-icon {
+html body .sm-sidebar-qlsx .sm-nav-cat-icon,
+html body .sm-sidebar-qlsx .sm-nav-other-icon {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -2943,8 +2943,8 @@ html body .sm-sidebar-production .sm-nav-other-icon {
   overflow: visible !important;
 }
 
-html body .sm-sidebar-production .sm-nav-cat-icon svg,
-html body .sm-sidebar-production .sm-nav-other-icon svg {
+html body .sm-sidebar-qlsx .sm-nav-cat-icon svg,
+html body .sm-sidebar-qlsx .sm-nav-other-icon svg {
   display: block !important;
   width: 20px !important;
   height: 20px !important;
@@ -2957,17 +2957,17 @@ html body .sm-sidebar-production .sm-nav-other-icon svg {
   overflow: visible !important;
 }
 
-html body .sm-sidebar-production svg path,
-html body .sm-sidebar-production svg rect,
-html body .sm-sidebar-production svg circle,
-html body .sm-sidebar-production svg line,
-html body .sm-sidebar-production svg polyline {
+html body .sm-sidebar-qlsx svg path,
+html body .sm-sidebar-qlsx svg rect,
+html body .sm-sidebar-qlsx svg circle,
+html body .sm-sidebar-qlsx svg line,
+html body .sm-sidebar-qlsx svg polyline {
   stroke: currentColor !important;
   fill: none !important;
 }
 
-html body .sm-sidebar-production .sm-nav-cat-label,
-html body .sm-sidebar-production .sm-nav-other-label {
+html body .sm-sidebar-qlsx .sm-nav-cat-label,
+html body .sm-sidebar-qlsx .sm-nav-other-label {
   display: block !important;
   flex: 1 1 auto !important;
   width: auto !important;
@@ -2985,20 +2985,20 @@ html body .sm-sidebar-production .sm-nav-other-label {
   text-overflow: ellipsis !important;
 }
 
-html body .sm-sidebar-production .sm-nav-cat.active .sm-nav-cat-label,
-html body .sm-sidebar-production .sm-nav-cat.expanded.active .sm-nav-cat-label,
-html body .sm-sidebar-production .sm-nav-other.active .sm-nav-other-label {
+html body .sm-sidebar-qlsx .sm-nav-cat.active .sm-nav-cat-label,
+html body .sm-sidebar-qlsx .sm-nav-cat.expanded.active .sm-nav-cat-label,
+html body .sm-sidebar-qlsx .sm-nav-other.active .sm-nav-other-label {
   color: var(--pmw-production-sidebar-text-active) !important;
   font-weight: 600 !important;
 }
 
-html body .sm-sidebar-production .sm-nav-cat:hover .sm-nav-cat-label,
-html body .sm-sidebar-production .sm-nav-other:hover .sm-nav-other-label {
+html body .sm-sidebar-qlsx .sm-nav-cat:hover .sm-nav-cat-label,
+html body .sm-sidebar-qlsx .sm-nav-other:hover .sm-nav-other-label {
   color: var(--pmw-production-sidebar-text) !important;
   font-weight: 400 !important;
 }
 
-html body .sm-sidebar-production .sm-nav-cat-arrow {
+html body .sm-sidebar-qlsx .sm-nav-cat-arrow {
   display: block !important;
   width: 16px !important;
   height: 16px !important;
@@ -3009,7 +3009,7 @@ html body .sm-sidebar-production .sm-nav-cat-arrow {
 }
 
 @media (min-width: 901px) {
-  html body .sm-sidebar-production {
+  html body .sm-sidebar-qlsx {
     position: relative !important;
     top: auto !important;
     height: auto !important;
@@ -3019,7 +3019,7 @@ html body .sm-sidebar-production .sm-nav-cat-arrow {
 }
 
 @media (max-width: 900px) {
-  html body .sm-sidebar-production {
+  html body .sm-sidebar-qlsx {
     position: fixed !important;
     left: 0 !important;
     top: var(--pmw-header-height, 70px) !important;
@@ -3034,7 +3034,7 @@ html body .sm-sidebar-production .sm-nav-cat-arrow {
     z-index: 1001 !important;
   }
 
-  html body.pmw-sidebar-open .sm-sidebar-production {
+  html body.pmw-sidebar-open .sm-sidebar-qlsx {
     transform: translateX(0) !important;
   }
 }

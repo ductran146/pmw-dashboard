@@ -1,16 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PMW — Tỷ lệ thất thoát</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PMW — Tỷ lệ thất thoát</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
     html, body { overflow: hidden; }
     .bao-cao-wrapper { display:flex; flex-direction:column; height:100vh; }
     .submod-page.active { flex:1; display:flex !important; min-height:0; }
@@ -19,7 +20,7 @@
     /* ── Scroll area ── */
     .dt-scroll-area {
       flex: 1; overflow-y: auto; overflow-x: hidden;
-      padding: 20px 24px; display: flex; flex-direction: column; gap: 24px;
+      padding: 20px; display: flex; flex-direction: column; gap: 20px;
     }
     .dt-scroll-area::-webkit-scrollbar { width: 5px; }
     .dt-scroll-area::-webkit-scrollbar-thumb { background: rgba(17,24,39,0.12); border-radius: 4px; }
@@ -136,7 +137,7 @@
       .dt-table tbody td:first-child { padding-left: 10px; }
     }
   </style>
-  <style>
+<style>
     @media (max-width:1200px) {
       .sm-sidebar { width:52px; padding:12px 6px; overflow:hidden; }
       .sm-sidebar-label,.sm-nav-cat-label,.sm-nav-cat-arrow,
@@ -156,96 +157,76 @@
       .dv-header-sub { display:none; }
     }
   </style>
-  <script src="components/components-loader.js" defer></script>
-<link rel="stylesheet" href="responsive.css?v=37"/>
+<script defer="" src="components/components-loader.js"></script>
+<link href="responsive.css?v=37" rel="stylesheet"/>
 </head>
 <body class="pmw-page-bc-that-thoat pmw-page-stt-table">
-  <div class="bao-cao-wrapper">
-
-    <div data-component="header"></div>
-
-    <div class="submod-page active">
-
-            <div data-component="sidebar-report"></div>
-
-      <main class="sm-main">
-
-        <div data-component="business-report-page-head"
-             data-show-root="true"
-             data-root="Quản lý điều hành"
-             data-root-url="quanly-dieuhanh.html"
-             data-parent="Báo cáo số liệu nội bộ"
-             data-parent-url="bc-so-lieu-kd.html"
-             data-current="Tỷ lệ thất thoát"
-             data-title="Báo cáo tỷ lệ thất thoát"
-             data-subtitle="Theo dõi tỷ lệ thất thoát nước theo tháng và cộng dồn năm, so sánh nước phân phối với nước thương phẩm theo từng khu vực"
-             data-month="4"
-             data-year="2026"></div>
-
-        <div class="sm-scroll">
-          <div style="flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;">
-            <div id="smViewThatThoat" style="display:flex; flex:1; flex-direction:column; overflow:hidden;">
-              <div class="dt-scroll-area">
-
-                <!-- Bảng 1: Tháng — title dynamic -->
-                <div class="dt-section">
-                  <div class="dt-table-wrap">
-                    <div class="dt-table-title" id="ttTitle1">Tỷ lệ thất thoát tháng 4 năm 2026</div>
-                    <div style="overflow-x:auto;">
-                    <table class="dt-table">
-                      <thead><tr>
-  <th style="width:100px;text-align:center;">STT</th>
-  <th style="text-align:left;">Khu vực</th>
-  <th>Nước phân phối (m³)</th>
-  <th>Nước thương phẩm (m³)</th>
-  <th>Tỷ lệ thất thoát (%)</th>
+<div class="bao-cao-wrapper">
+<div data-component="header" id="pmw-header"></div>
+<div class="submod-page active">
+<div data-component="sidebar-qldh-bc-sl-noi-bo" id="pmw-sidebar-qldh-bc-sl-noi-bo"></div>
+<main class="sm-main">
+<div data-component="business-report-page-head" data-current="Tỷ lệ thất thoát" data-month="4" data-parent="Báo cáo số liệu nội bộ" data-parent-url="bc-so-lieu-kd.html" data-root="Quản lý điều hành" data-root-url="quanly-dieuhanh.html" data-show-root="true" data-subtitle="Theo dõi tỷ lệ thất thoát nước theo tháng và cộng dồn năm, so sánh nước phân phối với nước thương phẩm theo từng khu vực" data-title="Báo cáo tỷ lệ thất thoát" data-year="2026" id="pmw-business-report-page-head"></div>
+<div class="sm-scroll">
+<div style="flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;">
+<div id="smViewThatThoat" style="display:flex; flex:1; flex-direction:column; overflow:hidden;">
+<div class="dt-scroll-area">
+<!-- Bảng 1: Tháng — title dynamic -->
+<div class="dt-section" id="bc-that-thoat-thang-section">
+<div class="dt-table-wrap" id="bc-that-thoat-thang-table-wrap">
+<div class="dt-table-title" id="ttTitle1">Tỷ lệ thất thoát tháng 4 năm 2026</div>
+<div style="overflow-x:auto;">
+<table class="dt-table" id="bc-that-thoat-thang-table">
+<thead><tr>
+<th style="width:100px;text-align:center;">STT</th>
+<th style="text-align:left;">Khu vực</th>
+<th>Nước phân phối (m³)</th>
+<th>Nước thương phẩm (m³)</th>
+<th>Tỷ lệ thất thoát (%)</th>
 </tr></thead>
-                      <tbody><tr><td style="text-align:center;">1</td><td style="text-align:left;">Xí Nghiệp Cấp Nước Vũng Tàu</td><td>891.250</td><td>748.650</td><td>16,00%</td></tr>
-<tr><td style="text-align:center;">2</td><td style="text-align:left;">Xí Nghiệp Cấp nước Bà Rịa</td><td>512.880</td><td>435.037</td><td>15,18%</td></tr>
-<tr><td style="text-align:center;">3</td><td style="text-align:left;">Xí Nghiệp Cấp nước Long Điền</td><td>258.400</td><td>221.440</td><td>14,30%</td></tr>
-<tr><td style="text-align:center;">4</td><td style="text-align:left;">Chi nhánh cấp nước Xuyên Mộc</td><td>172.350</td><td>144.953</td><td>15,90%</td></tr>
-<tr><td style="text-align:center;">5</td><td style="text-align:left;">Chi nhánh cấp nước Châu Đức</td><td>196.720</td><td>167.409</td><td>14,90%</td></tr>
-<tr><td style="text-align:center;">6</td><td style="text-align:left;">Nước bán sỉ cho Phú Mỹ</td><td>74.969</td><td>66.723</td><td>10,99%</td></tr>
-<tr class="dt-total"><td style="text-align:center;">–</td><td style="text-align:left;">Tổng</td><td>2.106.569</td><td>1.784.212</td><td>15,30%</td></tr></tbody>
-                    </table>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Bảng 2: Cộng dồn -->
-                <div class="dt-section">
-                  <div class="dt-table-wrap">
-                    <div class="dt-table-title" id="ttTitle2">Tỷ lệ thất thoát (cộng dồn) năm 2026</div>
-                    <div style="overflow-x:auto;">
-                    <table class="dt-table">
-                      <thead><tr>
-  <th style="width:100px;text-align:center;">STT</th>
-  <th style="text-align:left;">Khu vực</th>
-  <th>Nước phân phối (m³)</th>
-  <th>Nước thương phẩm (m³)</th>
-  <th>Tỷ lệ thất thoát (%)</th>
+<tbody><tr id="bc-that-thoat-thang-row-xi-nghiep-cap-nuoc-vung-tau"><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-vung-tau-stt" style="text-align:center;">1</td><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-vung-tau-khu-vuc" style="text-align:left;">Xí Nghiệp Cấp Nước Vũng Tàu</td><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-vung-tau-nuoc-phan-phoi">891.250</td><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-vung-tau-nuoc-thuong-pham">748.650</td><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-vung-tau-ty-le-that-thoat">16,00%</td></tr>
+<tr id="bc-that-thoat-thang-row-xi-nghiep-cap-nuoc-ba-ria"><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-ba-ria-stt" style="text-align:center;">2</td><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-ba-ria-khu-vuc" style="text-align:left;">Xí Nghiệp Cấp nước Bà Rịa</td><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-ba-ria-nuoc-phan-phoi">512.880</td><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-ba-ria-nuoc-thuong-pham">435.037</td><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-ba-ria-ty-le-that-thoat">15,18%</td></tr>
+<tr id="bc-that-thoat-thang-row-xi-nghiep-cap-nuoc-long-dien"><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-long-dien-stt" style="text-align:center;">3</td><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-long-dien-khu-vuc" style="text-align:left;">Xí Nghiệp Cấp nước Long Điền</td><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-long-dien-nuoc-phan-phoi">258.400</td><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-long-dien-nuoc-thuong-pham">221.440</td><td id="bc-that-thoat-thang-xi-nghiep-cap-nuoc-long-dien-ty-le-that-thoat">14,30%</td></tr>
+<tr id="bc-that-thoat-thang-row-chi-nhanh-cap-nuoc-xuyen-moc"><td id="bc-that-thoat-thang-chi-nhanh-cap-nuoc-xuyen-moc-stt" style="text-align:center;">4</td><td id="bc-that-thoat-thang-chi-nhanh-cap-nuoc-xuyen-moc-khu-vuc" style="text-align:left;">Chi nhánh cấp nước Xuyên Mộc</td><td id="bc-that-thoat-thang-chi-nhanh-cap-nuoc-xuyen-moc-nuoc-phan-phoi">172.350</td><td id="bc-that-thoat-thang-chi-nhanh-cap-nuoc-xuyen-moc-nuoc-thuong-pham">144.953</td><td id="bc-that-thoat-thang-chi-nhanh-cap-nuoc-xuyen-moc-ty-le-that-thoat">15,90%</td></tr>
+<tr id="bc-that-thoat-thang-row-chi-nhanh-cap-nuoc-chau-duc"><td id="bc-that-thoat-thang-chi-nhanh-cap-nuoc-chau-duc-stt" style="text-align:center;">5</td><td id="bc-that-thoat-thang-chi-nhanh-cap-nuoc-chau-duc-khu-vuc" style="text-align:left;">Chi nhánh cấp nước Châu Đức</td><td id="bc-that-thoat-thang-chi-nhanh-cap-nuoc-chau-duc-nuoc-phan-phoi">196.720</td><td id="bc-that-thoat-thang-chi-nhanh-cap-nuoc-chau-duc-nuoc-thuong-pham">167.409</td><td id="bc-that-thoat-thang-chi-nhanh-cap-nuoc-chau-duc-ty-le-that-thoat">14,90%</td></tr>
+<tr id="bc-that-thoat-thang-row-nuoc-ban-si-cho-phu-my"><td id="bc-that-thoat-thang-nuoc-ban-si-cho-phu-my-stt" style="text-align:center;">6</td><td id="bc-that-thoat-thang-nuoc-ban-si-cho-phu-my-khu-vuc" style="text-align:left;">Nước bán sỉ cho Phú Mỹ</td><td id="bc-that-thoat-thang-nuoc-ban-si-cho-phu-my-nuoc-phan-phoi">74.969</td><td id="bc-that-thoat-thang-nuoc-ban-si-cho-phu-my-nuoc-thuong-pham">66.723</td><td id="bc-that-thoat-thang-nuoc-ban-si-cho-phu-my-ty-le-that-thoat">10,99%</td></tr>
+<tr class="dt-total" id="bc-that-thoat-thang-row-tong"><td id="bc-that-thoat-thang-tong-stt" style="text-align:center;">–</td><td id="bc-that-thoat-thang-tong-khu-vuc" style="text-align:left;">Tổng</td><td id="bc-that-thoat-thang-tong-nuoc-phan-phoi">2.106.569</td><td id="bc-that-thoat-thang-tong-nuoc-thuong-pham">1.784.212</td><td id="bc-that-thoat-thang-tong-ty-le-that-thoat">15,30%</td></tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Bảng 2: Cộng dồn -->
+<div class="dt-section" id="bc-that-thoat-cong-don-section">
+<div class="dt-table-wrap" id="bc-that-thoat-cong-don-table-wrap">
+<div class="dt-table-title" id="ttTitle2">Tỷ lệ thất thoát (cộng dồn) năm 2026</div>
+<div style="overflow-x:auto;">
+<table class="dt-table" id="bc-that-thoat-cong-don-table">
+<thead><tr>
+<th style="width:100px;text-align:center;">STT</th>
+<th style="text-align:left;">Khu vực</th>
+<th>Nước phân phối (m³)</th>
+<th>Nước thương phẩm (m³)</th>
+<th>Tỷ lệ thất thoát (%)</th>
 </tr></thead>
-                      <tbody><tr><td style="text-align:center;">1</td><td style="text-align:left;">Xí Nghiệp Cấp Nước Vũng Tàu</td><td>3.421.800</td><td>2.858.703</td><td>16,45%</td></tr>
-<tr><td style="text-align:center;">2</td><td style="text-align:left;">Xí Nghiệp Cấp nước Bà Rịa</td><td>1.984.320</td><td>1.668.070</td><td>15,94%</td></tr>
-<tr><td style="text-align:center;">3</td><td style="text-align:left;">Xí Nghiệp Cấp nước Long Điền</td><td>998.400</td><td>855.426</td><td>14,32%</td></tr>
-<tr><td style="text-align:center;">4</td><td style="text-align:left;">Chi nhánh cấp nước Xuyên Mộc</td><td>668.500</td><td>562.666</td><td>15,83%</td></tr>
-<tr><td style="text-align:center;">5</td><td style="text-align:left;">Chi nhánh cấp nước Châu Đức</td><td>762.380</td><td>649.508</td><td>14,80%</td></tr>
-<tr><td style="text-align:center;">6</td><td style="text-align:left;">Nước bán sỉ cho Phú Mỹ</td><td>286.400</td><td>255.024</td><td>10,96%</td></tr>
-<tr class="dt-total"><td style="text-align:center;">–</td><td style="text-align:left;">Tổng</td><td>8.121.800</td><td>6.849.397</td><td>15,67%</td></tr></tbody>
-                    </table>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- /smViewThatThoat -->
-          </div>
-        </div>
-
-        <div data-component="footer"></div>
-      </main>
-    </div>
-  </div>
+<tbody><tr id="bc-that-thoat-cong-don-row-xi-nghiep-cap-nuoc-vung-tau"><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-vung-tau-stt" style="text-align:center;">1</td><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-vung-tau-khu-vuc" style="text-align:left;">Xí Nghiệp Cấp Nước Vũng Tàu</td><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-vung-tau-nuoc-phan-phoi">3.421.800</td><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-vung-tau-nuoc-thuong-pham">2.858.703</td><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-vung-tau-ty-le-that-thoat">16,45%</td></tr>
+<tr id="bc-that-thoat-cong-don-row-xi-nghiep-cap-nuoc-ba-ria"><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-ba-ria-stt" style="text-align:center;">2</td><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-ba-ria-khu-vuc" style="text-align:left;">Xí Nghiệp Cấp nước Bà Rịa</td><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-ba-ria-nuoc-phan-phoi">1.984.320</td><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-ba-ria-nuoc-thuong-pham">1.668.070</td><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-ba-ria-ty-le-that-thoat">15,94%</td></tr>
+<tr id="bc-that-thoat-cong-don-row-xi-nghiep-cap-nuoc-long-dien"><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-long-dien-stt" style="text-align:center;">3</td><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-long-dien-khu-vuc" style="text-align:left;">Xí Nghiệp Cấp nước Long Điền</td><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-long-dien-nuoc-phan-phoi">998.400</td><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-long-dien-nuoc-thuong-pham">855.426</td><td id="bc-that-thoat-cong-don-xi-nghiep-cap-nuoc-long-dien-ty-le-that-thoat">14,32%</td></tr>
+<tr id="bc-that-thoat-cong-don-row-chi-nhanh-cap-nuoc-xuyen-moc"><td id="bc-that-thoat-cong-don-chi-nhanh-cap-nuoc-xuyen-moc-stt" style="text-align:center;">4</td><td id="bc-that-thoat-cong-don-chi-nhanh-cap-nuoc-xuyen-moc-khu-vuc" style="text-align:left;">Chi nhánh cấp nước Xuyên Mộc</td><td id="bc-that-thoat-cong-don-chi-nhanh-cap-nuoc-xuyen-moc-nuoc-phan-phoi">668.500</td><td id="bc-that-thoat-cong-don-chi-nhanh-cap-nuoc-xuyen-moc-nuoc-thuong-pham">562.666</td><td id="bc-that-thoat-cong-don-chi-nhanh-cap-nuoc-xuyen-moc-ty-le-that-thoat">15,83%</td></tr>
+<tr id="bc-that-thoat-cong-don-row-chi-nhanh-cap-nuoc-chau-duc"><td id="bc-that-thoat-cong-don-chi-nhanh-cap-nuoc-chau-duc-stt" style="text-align:center;">5</td><td id="bc-that-thoat-cong-don-chi-nhanh-cap-nuoc-chau-duc-khu-vuc" style="text-align:left;">Chi nhánh cấp nước Châu Đức</td><td id="bc-that-thoat-cong-don-chi-nhanh-cap-nuoc-chau-duc-nuoc-phan-phoi">762.380</td><td id="bc-that-thoat-cong-don-chi-nhanh-cap-nuoc-chau-duc-nuoc-thuong-pham">649.508</td><td id="bc-that-thoat-cong-don-chi-nhanh-cap-nuoc-chau-duc-ty-le-that-thoat">14,80%</td></tr>
+<tr id="bc-that-thoat-cong-don-row-nuoc-ban-si-cho-phu-my"><td id="bc-that-thoat-cong-don-nuoc-ban-si-cho-phu-my-stt" style="text-align:center;">6</td><td id="bc-that-thoat-cong-don-nuoc-ban-si-cho-phu-my-khu-vuc" style="text-align:left;">Nước bán sỉ cho Phú Mỹ</td><td id="bc-that-thoat-cong-don-nuoc-ban-si-cho-phu-my-nuoc-phan-phoi">286.400</td><td id="bc-that-thoat-cong-don-nuoc-ban-si-cho-phu-my-nuoc-thuong-pham">255.024</td><td id="bc-that-thoat-cong-don-nuoc-ban-si-cho-phu-my-ty-le-that-thoat">10,96%</td></tr>
+<tr class="dt-total" id="bc-that-thoat-cong-don-row-tong"><td id="bc-that-thoat-cong-don-tong-stt" style="text-align:center;">–</td><td id="bc-that-thoat-cong-don-tong-khu-vuc" style="text-align:left;">Tổng</td><td id="bc-that-thoat-cong-don-tong-nuoc-phan-phoi">8.121.800</td><td id="bc-that-thoat-cong-don-tong-nuoc-thuong-pham">6.849.397</td><td id="bc-that-thoat-cong-don-tong-ty-le-that-thoat">15,67%</td></tr></tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div><!-- /smViewThatThoat -->
+</div>
+</div>
+<div data-component="footer" id="pmw-footer"></div>
+</main>
+</div>
+</div>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.dv-header-logo').addEventListener('click', e => {

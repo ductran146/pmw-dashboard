@@ -187,6 +187,14 @@
         link.classList.add('active');
       }
     });
+
+    // Các trang tab của cùng module kinh doanh dùng nhiều file HTML
+    // nhưng cùng một menu cha trong sidebar QLSX.
+    if (current.indexOf('qlsx-tong-hop-so-lieu-kinh-doanh') === 0) {
+      document.querySelectorAll('.sm-sidebar a[href="qlsx-tong-hop-so-lieu-kinh-doanh.html"]').forEach(function (link) {
+        link.classList.add('active');
+      });
+    }
   }
 
   function normalizeSubnavActiveState() {
