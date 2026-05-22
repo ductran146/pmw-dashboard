@@ -21,7 +21,7 @@
     /* ── Scroll area ── */
     .dt-scroll-area {
       flex: 1; overflow-y: auto; overflow-x: hidden;
-      padding: 20px; display: flex; flex-direction: column; gap: 20px;
+      padding: 20px 24px; display: flex; flex-direction: column; gap: 24px;
     }
     .dt-scroll-area::-webkit-scrollbar { width: 5px; }
     .dt-scroll-area::-webkit-scrollbar-thumb { background: rgba(17,24,39,0.12); border-radius: 4px; }
@@ -169,6 +169,497 @@
       background: linear-gradient(0deg, rgba(2,69,122,0.06), rgba(2,69,122,0.06)), #FFFFFF !important;
     }
   </style>
+
+  <style>
+    /* Redesigned card-based layout for bc-vat-tu: easier to scan than a long table */
+    body.pmw-page-bc-vat-tu .sm-scroll {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body.pmw-page-bc-vat-tu #smViewVatTu,
+    body.pmw-page-bc-vat-tu #smViewVatTu .dt-scroll-area {
+      min-height: 0;
+    }
+
+    body.pmw-page-bc-vat-tu .dt-scroll-area {
+      background: #F9FAFB;
+      padding: 20px;
+      gap: 16px;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .pmw-vt-summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      flex: none;
+    }
+
+    @keyframes kpiSlideUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .pmw-vt-summary-card.kpi-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(17,24,39,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      cursor: pointer;
+      opacity: 0;
+      padding: 0;
+      box-shadow: none;
+      animation: kpiSlideUp 0.44s cubic-bezier(0.34,1.2,0.64,1) forwards;
+      transition: box-shadow 0.2s, transform 0.18s, border-color 0.2s;
+    }
+
+    .pmw-vt-summary-card.kpi-card:hover {
+      box-shadow: 0 6px 20px rgba(2,69,122,0.10);
+      transform: translateY(-2px);
+      border-color: rgba(2,69,122,0.18);
+    }
+
+    .pmw-vt-summary-card.kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #02457a;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      z-index: 2;
+    }
+
+    .pmw-vt-summary-card.kpi-card:hover::before { transform: scaleX(1); }
+
+    .pmw-vt-summary-card:nth-child(1) { animation-delay: 0.04s; }
+    .pmw-vt-summary-card:nth-child(2) { animation-delay: 0.09s; }
+    .pmw-vt-summary-card:nth-child(3) { animation-delay: 0.14s; }
+
+    .pmw-vt-summary-card .kcl-top {
+      display: flex;
+      align-items: center;
+      padding: 8px 8px 8px 16px;
+      gap: 12px;
+      background: linear-gradient(90deg, rgba(1,138,190,0.16) 31.49%, rgba(255,255,255,0) 100%);
+      min-height: 52px;
+    }
+
+    .pmw-vt-summary-card .kcl-title {
+      flex: 1;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 600;
+      color: #012A50;
+      line-height: 20px;
+    }
+
+    .pmw-vt-summary-card .kcl-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      flex-shrink: 0;
+      background: rgba(1,138,190,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .pmw-vt-summary-card .kcl-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: #02457A;
+      transition: stroke 0.2s;
+    }
+
+    .pmw-vt-summary-card .kcl-value {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 12px 16px 2px;
+    }
+
+    .pmw-vt-summary-card .kcl-val-num {
+      font-family: var(--font);
+      font-size: 28px;
+      font-weight: 600;
+      color: #111827;
+      line-height: 36px;
+      letter-spacing: -0.02em;
+    }
+
+    .pmw-vt-summary-card .kcl-val-unit {
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(17,24,39,0.5);
+      padding-top: 8px;
+    }
+
+    .pmw-vt-summary-card .kcl-stats {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px 16px;
+    }
+
+    .pmw-vt-summary-card .kcl-stat {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(243,244,246,1);
+      border-radius: 10px;
+      padding: 6px 10px;
+      min-width: 0;
+    }
+
+    .pmw-vt-summary-card .kcl-stat-lbl {
+      font-family: var(--font);
+      font-size: 13px;
+      font-weight: 500;
+      color: #4B5563;
+      white-space: nowrap;
+    }
+
+    .pmw-vt-summary-card .kcl-stat-val {
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      color: #4B5563;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .pmw-vt-summary-card .kcl-stat-val.up { color: #16A34A; }
+    .pmw-vt-summary-card .kcl-stat-val.down { color: #DC2626; }
+
+    .pmw-vt-layout {
+      display: grid;
+      grid-template-columns: minmax(360px, 0.95fr) minmax(420px, 1.35fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .pmw-vt-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(17, 24, 39, 0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(17, 24, 39, 0.04), 0 12px 24px rgba(17, 24, 39, 0.04);
+    }
+
+    .pmw-vt-card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px;
+      height: 56px;
+      background: linear-gradient(90deg, rgba(1, 138, 190, 0.14), rgba(255, 255, 255, 0));
+      border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+    }
+
+    .pmw-vt-card-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      font-family: 'Pretendard', var(--font, sans-serif);
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 800;
+      color: #02457A;
+    }
+
+    .pmw-vt-card-title::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #0785F2;
+      flex: 0 0 auto;
+    }
+
+    .pmw-vt-card-subtitle {
+      margin: 4px 0 0;
+      font-size: 13px;
+      line-height: 18px;
+      color: #6B7280;
+    }
+
+    .pmw-vt-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(2, 69, 122, 0.08);
+      color: #02457A;
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .pmw-vt-card-body {
+      padding: 16px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pmw-vt-metric {
+      border: 1px solid rgba(17, 24, 39, 0.08);
+      border-radius: 16px;
+      background: #FFFFFF;
+      overflow: hidden;
+    }
+
+    .pmw-vt-metric-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: start;
+      padding: 14px 16px;
+    }
+
+    .pmw-vt-name {
+      margin: 0;
+      font-size: 15px;
+      line-height: 22px;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .pmw-vt-unit {
+      display: inline-flex;
+      margin-top: 4px;
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 600;
+      color: #6B7280;
+    }
+
+    .pmw-vt-status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 68px;
+      height: 30px;
+      padding: 0 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      line-height: 18px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .pmw-vt-status.is-good {
+      color: #15803D;
+      background: rgba(22, 163, 74, 0.10);
+    }
+
+    .pmw-vt-status.is-empty {
+      color: #9CA3AF;
+      background: rgba(17, 24, 39, 0.05);
+    }
+
+    .pmw-vt-compare {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-top: 1px solid rgba(17, 24, 39, 0.08);
+      background: #F9FAFB;
+    }
+
+    .pmw-vt-compare-cell {
+      padding: 11px 14px;
+      border-right: 1px solid rgba(17, 24, 39, 0.08);
+    }
+
+    .pmw-vt-compare-cell:last-child { border-right: 0; }
+
+    .pmw-vt-cell-label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 700;
+      color: #6B7280;
+    }
+
+    .pmw-vt-cell-value {
+      display: block;
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 800;
+      color: #111827;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pmw-vt-progress {
+      height: 8px;
+      margin: 0 16px 14px;
+      border-radius: 999px;
+      background: rgba(17, 24, 39, 0.06);
+      overflow: hidden;
+    }
+
+    .pmw-vt-progress-bar {
+      height: 100%;
+      border-radius: inherit;
+      background: #16A34A;
+    }
+
+    .pmw-vt-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .pmw-vt-group {
+      border: 1px solid rgba(17, 24, 39, 0.08);
+      border-radius: 16px;
+      background: #FFFFFF;
+      overflow: hidden;
+    }
+
+    .pmw-vt-group-head {
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 13px 14px;
+      background: #FBFCFE;
+      border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+    }
+
+    .pmw-vt-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      background: rgba(7, 133, 242, 0.10);
+      color: #02457A;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .pmw-vt-group-title {
+      margin: 0;
+      font-size: 15px;
+      line-height: 22px;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .pmw-vt-group-unit {
+      display: block;
+      margin-top: 2px;
+      font-size: 12px;
+      line-height: 16px;
+      color: #6B7280;
+    }
+
+    .pmw-vt-mini-table {
+      display: grid;
+      grid-template-columns: minmax(160px, 1.2fr) minmax(88px, .7fr) minmax(88px, .7fr) minmax(80px, .6fr);
+      align-items: center;
+    }
+
+    .pmw-vt-mini-head,
+    .pmw-vt-mini-row {
+      display: contents;
+    }
+
+    .pmw-vt-mini-head span {
+      padding: 9px 12px;
+      background: #EDF8FC;
+      color: #005292;
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 800;
+      text-align: right;
+      border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+    }
+
+    .pmw-vt-mini-head span:first-child { text-align: left; }
+
+    .pmw-vt-mini-row > span {
+      min-height: 40px;
+      padding: 10px 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+      font-size: 13px;
+      line-height: 18px;
+      color: #4B5563;
+    }
+
+    .pmw-vt-mini-row:last-child > span { border-bottom: 0; }
+    .pmw-vt-mini-row > span:first-child { justify-content: flex-start; color: #111827; font-weight: 600; }
+
+    .pmw-vt-empty {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      background: rgba(17, 24, 39, 0.05);
+      color: #9CA3AF;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1366px) {
+      body.pmw-page-bc-vat-tu .dt-scroll-area { padding: 16px; }
+      .pmw-vt-summary-number { font-size: 22px; line-height: 30px; }
+      .pmw-vt-card-head { padding: 14px 16px; }
+      .pmw-vt-card-body { padding: 14px 16px 16px; }
+    }
+
+    @media (max-width: 1180px) {
+      .pmw-vt-layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 900px) {
+      body.pmw-page-bc-vat-tu .sm-scroll { overflow: auto; }
+      .pmw-vt-summary { grid-template-columns: 1fr; }
+      body.pmw-page-bc-vat-tu .dt-scroll-area { overflow: visible; padding: 16px; }
+      .pmw-vt-mini-table { min-width: 640px; }
+      .pmw-vt-group { overflow-x: auto; }
+    }
+
+    @media (max-width: 520px) {
+      body.pmw-page-bc-vat-tu .dt-scroll-area { padding: 12px; }
+      .pmw-vt-summary-card { padding: 14px 16px; }
+      .pmw-vt-card-head { flex-direction: column; }
+      .pmw-vt-compare { grid-template-columns: 1fr; }
+      .pmw-vt-compare-cell { border-right: 0; border-bottom: 1px solid rgba(17, 24, 39, 0.08); }
+      .pmw-vt-compare-cell:last-child { border-bottom: 0; }
+    }
+  </style>
 </head>
 <body class="pmw-page-bc-vat-tu pmw-page-stt-table">
 <div class="bao-cao-wrapper">
@@ -181,40 +672,150 @@
 <div style="flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;">
 <div id="smViewVatTu" style="display:flex; flex:1; flex-direction:column; overflow:hidden;">
 <div class="dt-scroll-area">
-<div class="dt-section">
-<div class="dt-table-wrap">
-<div class="dt-table-title" id="bc-vat-tu-table-title">Vật tư – Nhiên liệu – Sản xuất tháng 4 năm 2026</div>
-<div style="overflow-x:auto;">
-<table class="dt-table" id="bc-vat-tu-table">
-<thead id="bc-vat-tu-table-head"><tr>
-<th id="bc-vat-tu-header-stt" style="width:60px;text-align:center;">STT</th>
-<th id="bc-vat-tu-header-chi-tieu" style="text-align:left;">Chỉ tiêu</th>
-<th id="bc-vat-tu-header-don-vi-tinh" style="text-align:center;">Đơn vị tính</th>
-<th id="bc-vat-tu-header-ke-hoach">Kế hoạch</th>
-<th id="bc-vat-tu-header-thuc-hien">Thực hiện</th>
-<th id="bc-vat-tu-header-ty-le-dat">% Đạt</th>
-</tr></thead>
-<tbody id="bc-vat-tu-table-body">
-<tr class="dt-section-header" id="bc-vat-tu-section-san-xuat-phan-phoi"><td colspan="6" id="bc-vat-tu-section-san-xuat-phan-phoi-label" style="text-align:left;font-weight:700;background:#f0f4f8;padding:10px 16px;color:#02457A;">Sản xuất, phân phối</td></tr>
-<tr id="bc-vat-tu-row-nuoc-san-xuat"><td id="bc-vat-tu-nuoc-san-xuat-stt" style="text-align:center;">1</td><td id="bc-vat-tu-nuoc-san-xuat-chi-tieu" style="text-align:left;font-weight:600;">Nước sản xuất</td><td id="bc-vat-tu-nuoc-san-xuat-don-vi-tinh" style="text-align:center;">m³/tháng</td><td id="bc-vat-tu-nuoc-san-xuat-ke-hoach">600.000</td><td id="bc-vat-tu-nuoc-san-xuat-thuc-hien">700.000</td><td id="bc-vat-tu-nuoc-san-xuat-ty-le-dat"><span id="bc-vat-tu-nuoc-san-xuat-ty-le-dat-value" style="color:#16A34A;font-weight:500;">116,7%</span></td></tr>
-<tr id="bc-vat-tu-row-theo-ngay"><td id="bc-vat-tu-theo-ngay-stt"></td><td id="bc-vat-tu-theo-ngay-chi-tieu" style="text-align:left;padding-left:24px;">Theo ngày</td><td id="bc-vat-tu-theo-ngay-don-vi-tinh" style="text-align:center;">m³/ngày</td><td id="bc-vat-tu-theo-ngay-ke-hoach">20.000</td><td id="bc-vat-tu-theo-ngay-thuc-hien">22.000</td><td id="bc-vat-tu-theo-ngay-ty-le-dat"><span id="bc-vat-tu-theo-ngay-ty-le-dat-value" style="color:#16A34A;font-weight:500;">110,0%</span></td></tr>
-<tr class="dt-section-header" id="bc-vat-tu-section-vat-tu-nang-luong"><td colspan="6" id="bc-vat-tu-section-vat-tu-nang-luong-label" style="text-align:left;font-weight:700;background:#f0f4f8;padding:10px 16px;color:#02457A;">Vật tư, năng lượng</td></tr>
-<tr id="bc-vat-tu-row-dien-tieu-thu"><td id="bc-vat-tu-dien-tieu-thu-stt" style="text-align:center;">2</td><td id="bc-vat-tu-dien-tieu-thu-chi-tieu" style="text-align:left;font-weight:600;">Điện tiêu thụ</td><td id="bc-vat-tu-dien-tieu-thu-don-vi-tinh" style="text-align:center;">kWh/tháng</td><td id="bc-vat-tu-dien-tieu-thu-ke-hoach">—</td><td id="bc-vat-tu-dien-tieu-thu-thuc-hien">—</td><td id="bc-vat-tu-dien-tieu-thu-ty-le-dat">—</td></tr>
-<tr id="bc-vat-tu-row-theo-m3"><td id="bc-vat-tu-theo-m3-stt"></td><td id="bc-vat-tu-theo-m3-chi-tieu" style="text-align:left;padding-left:24px;">Theo m³</td><td id="bc-vat-tu-theo-m3-don-vi-tinh" style="text-align:center;">kWh/m³</td><td id="bc-vat-tu-theo-m3-ke-hoach">—</td><td id="bc-vat-tu-theo-m3-thuc-hien">—</td><td id="bc-vat-tu-theo-m3-ty-le-dat">—</td></tr>
-<tr id="bc-vat-tu-row-dien-tram-bom-2"><td id="bc-vat-tu-dien-tram-bom-2-stt"></td><td id="bc-vat-tu-dien-tram-bom-2-chi-tieu" style="text-align:left;padding-left:24px;">Điện trạm bơm 2</td><td id="bc-vat-tu-dien-tram-bom-2-don-vi-tinh" style="text-align:center;">kWh/tháng</td><td id="bc-vat-tu-dien-tram-bom-2-ke-hoach">—</td><td id="bc-vat-tu-dien-tram-bom-2-thuc-hien">—</td><td id="bc-vat-tu-dien-tram-bom-2-ty-le-dat">—</td></tr>
-<tr id="bc-vat-tu-row-dien-gieng-khai-thac"><td id="bc-vat-tu-dien-gieng-khai-thac-stt"></td><td id="bc-vat-tu-dien-gieng-khai-thac-chi-tieu" style="text-align:left;padding-left:24px;">Điện giếng khai thác</td><td id="bc-vat-tu-dien-gieng-khai-thac-don-vi-tinh" style="text-align:center;">kWh/tháng</td><td id="bc-vat-tu-dien-gieng-khai-thac-ke-hoach">—</td><td id="bc-vat-tu-dien-gieng-khai-thac-thuc-hien">—</td><td id="bc-vat-tu-dien-gieng-khai-thac-ty-le-dat">—</td></tr>
-<tr id="bc-vat-tu-row-dien-may-phat"><td id="bc-vat-tu-dien-may-phat-stt"></td><td id="bc-vat-tu-dien-may-phat-chi-tieu" style="text-align:left;padding-left:24px;">Điện máy phát</td><td id="bc-vat-tu-dien-may-phat-don-vi-tinh" style="text-align:center;">kWh/tháng</td><td id="bc-vat-tu-dien-may-phat-ke-hoach">—</td><td id="bc-vat-tu-dien-may-phat-thuc-hien">—</td><td id="bc-vat-tu-dien-may-phat-ty-le-dat">—</td></tr>
-<tr id="bc-vat-tu-row-dau-may-phat"><td id="bc-vat-tu-dau-may-phat-stt"></td><td id="bc-vat-tu-dau-may-phat-chi-tieu" style="text-align:left;padding-left:24px;">Dầu máy phát</td><td id="bc-vat-tu-dau-may-phat-don-vi-tinh" style="text-align:center;">l/tháng</td><td id="bc-vat-tu-dau-may-phat-ke-hoach">—</td><td id="bc-vat-tu-dau-may-phat-thuc-hien">—</td><td id="bc-vat-tu-dau-may-phat-ty-le-dat">—</td></tr>
-<tr id="bc-vat-tu-row-so-gio-mat-dien"><td id="bc-vat-tu-so-gio-mat-dien-stt"></td><td id="bc-vat-tu-so-gio-mat-dien-chi-tieu" style="text-align:left;padding-left:24px;">Số giờ mất điện</td><td id="bc-vat-tu-so-gio-mat-dien-don-vi-tinh" style="text-align:center;">giờ</td><td id="bc-vat-tu-so-gio-mat-dien-ke-hoach">—</td><td id="bc-vat-tu-so-gio-mat-dien-thuc-hien">—</td><td id="bc-vat-tu-so-gio-mat-dien-ty-le-dat">—</td></tr>
-<tr id="bc-vat-tu-row-javen"><td id="bc-vat-tu-javen-stt" style="text-align:center;">3</td><td id="bc-vat-tu-javen-chi-tieu" style="text-align:left;font-weight:600;">Javen</td><td id="bc-vat-tu-javen-don-vi-tinh" style="text-align:center;">kg/tháng</td><td id="bc-vat-tu-javen-ke-hoach">—</td><td id="bc-vat-tu-javen-thuc-hien">—</td><td id="bc-vat-tu-javen-ty-le-dat">—</td></tr>
-<tr id="bc-vat-tu-row-theo-m3-2"><td id="bc-vat-tu-theo-m3-2-stt"></td><td id="bc-vat-tu-theo-m3-2-chi-tieu" style="text-align:left;padding-left:24px;">Theo m³</td><td id="bc-vat-tu-theo-m3-2-don-vi-tinh" style="text-align:center;">g/m³</td><td id="bc-vat-tu-theo-m3-2-ke-hoach">—</td><td id="bc-vat-tu-theo-m3-2-thuc-hien">—</td><td id="bc-vat-tu-theo-m3-2-ty-le-dat">—</td></tr>
-<tr id="bc-vat-tu-row-nhap-trong-thang"><td id="bc-vat-tu-nhap-trong-thang-stt"></td><td id="bc-vat-tu-nhap-trong-thang-chi-tieu" style="text-align:left;padding-left:24px;">Nhập trong tháng</td><td id="bc-vat-tu-nhap-trong-thang-don-vi-tinh" style="text-align:center;">kg</td><td id="bc-vat-tu-nhap-trong-thang-ke-hoach">—</td><td id="bc-vat-tu-nhap-trong-thang-thuc-hien">—</td><td id="bc-vat-tu-nhap-trong-thang-ty-le-dat">—</td></tr>
-<tr id="bc-vat-tu-row-ton-kho"><td id="bc-vat-tu-ton-kho-stt"></td><td id="bc-vat-tu-ton-kho-chi-tieu" style="text-align:left;padding-left:24px;">Tồn kho</td><td id="bc-vat-tu-ton-kho-don-vi-tinh" style="text-align:center;">kg</td><td id="bc-vat-tu-ton-kho-ke-hoach">—</td><td id="bc-vat-tu-ton-kho-thuc-hien">—</td><td id="bc-vat-tu-ton-kho-ty-le-dat">—</td></tr>
-</tbody>
-</table>
+
+<div class="pmw-vt-summary" id="bc-vat-tu-summary">
+  <div class="pmw-vt-summary-card kpi-card" id="bc-vat-tu-summary-nuoc-san-xuat" data-kpi-card="nuoc-san-xuat">
+    <div class="kcl-top">
+      <div class="kcl-title">NƯỚC SẢN XUẤT</div>
+      <div class="kcl-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.75C12 2.75 5.5 9.25 5.5 14.25C5.5 17.84 8.41 20.75 12 20.75C15.59 20.75 18.5 17.84 18.5 14.25C18.5 9.25 12 2.75 12 2.75Z"/><path d="M9.75 15.5C10.25 16.65 11.15 17.25 12.35 17.25"/></svg>
+      </div>
+    </div>
+    <div class="kcl-value"><span class="kcl-val-num">700.000</span><span class="kcl-val-unit">m³/tháng</span></div>
+    <div class="kcl-stats">
+      <div class="kcl-stat"><span class="kcl-stat-lbl">Kế hoạch</span><span class="kcl-stat-val">600.000</span></div>
+      <div class="kcl-stat"><span class="kcl-stat-lbl">Đạt</span><span class="kcl-stat-val up">116,7%</span></div>
+    </div>
+  </div>
+  <div class="pmw-vt-summary-card kpi-card" id="bc-vat-tu-summary-theo-ngay" data-kpi-card="binh-quan-theo-ngay">
+    <div class="kcl-top">
+      <div class="kcl-title">BÌNH QUÂN THEO NGÀY</div>
+      <div class="kcl-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.75V5.75M16 2.75V5.75M4.75 9.25H19.25M6.75 4.25H17.25C18.35 4.25 19.25 5.15 19.25 6.25V18.25C19.25 19.35 18.35 20.25 17.25 20.25H6.75C5.65 20.25 4.75 19.35 4.75 18.25V6.25C4.75 5.15 5.65 4.25 6.75 4.25Z"/><path d="M9 14.25H15"/></svg>
+      </div>
+    </div>
+    <div class="kcl-value"><span class="kcl-val-num">22.000</span><span class="kcl-val-unit">m³/ngày</span></div>
+    <div class="kcl-stats">
+      <div class="kcl-stat"><span class="kcl-stat-lbl">Kế hoạch</span><span class="kcl-stat-val">20.000</span></div>
+      <div class="kcl-stat"><span class="kcl-stat-lbl">Đạt</span><span class="kcl-stat-val up">110,0%</span></div>
+    </div>
+  </div>
+  <div class="pmw-vt-summary-card kpi-card" id="bc-vat-tu-summary-vat-tu-nang-luong" data-kpi-card="vat-tu-nang-luong">
+    <div class="kcl-top">
+      <div class="kcl-title">VẬT TƯ, NĂNG LƯỢNG</div>
+      <div class="kcl-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.75L5.75 13.25H11L10 21.25L18.25 10.75H13L13 2.75Z"/></svg>
+      </div>
+    </div>
+    <div class="kcl-value"><span class="kcl-val-num">95,4%</span><span class="kcl-val-unit">điện tiêu thụ</span></div>
+    <div class="kcl-stats">
+      <div class="kcl-stat"><span class="kcl-stat-lbl">Kế hoạch</span><span class="kcl-stat-val">185.000 kWh</span></div>
+      <div class="kcl-stat"><span class="kcl-stat-lbl">Thực hiện</span><span class="kcl-stat-val up">176.500 kWh</span></div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
+
+<div class="pmw-vt-layout" id="bc-vat-tu-layout">
+  <section class="pmw-vt-card pmw-vt-card-primary" id="bc-vat-tu-section-san-xuat-phan-phoi">
+    <div class="pmw-vt-card-head">
+      <div>
+        <h2 class="pmw-vt-card-title" id="bc-vat-tu-section-san-xuat-phan-phoi-label">Sản xuất, phân phối</h2>
+      </div>
+      <span class="pmw-vt-badge pmw-vt-report-period">Tháng 4/2026</span>
+    </div>
+    <div class="pmw-vt-card-body">
+      <article class="pmw-vt-metric" id="bc-vat-tu-row-nuoc-san-xuat">
+        <div class="pmw-vt-metric-main">
+          <div>
+            <h3 class="pmw-vt-name" id="bc-vat-tu-nuoc-san-xuat-chi-tieu">Nước sản xuất</h3>
+            <span class="pmw-vt-unit" id="bc-vat-tu-nuoc-san-xuat-don-vi-tinh">m³/tháng</span>
+          </div>
+          <span class="pmw-vt-status is-good" id="bc-vat-tu-nuoc-san-xuat-ty-le-dat"><span id="bc-vat-tu-nuoc-san-xuat-ty-le-dat-value">116,7%</span></span>
+        </div>
+        <div class="pmw-vt-compare">
+          <div class="pmw-vt-compare-cell">
+            <span class="pmw-vt-cell-label">Kế hoạch</span>
+            <span class="pmw-vt-cell-value" id="bc-vat-tu-nuoc-san-xuat-ke-hoach">600.000</span>
+          </div>
+          <div class="pmw-vt-compare-cell">
+            <span class="pmw-vt-cell-label">Thực hiện</span>
+            <span class="pmw-vt-cell-value" id="bc-vat-tu-nuoc-san-xuat-thuc-hien">700.000</span>
+          </div>
+        </div>
+        <div class="pmw-vt-progress" aria-label="Tỷ lệ đạt 116,7%"><div class="pmw-vt-progress-bar" style="width:100%"></div></div>
+      </article>
+
+      <article class="pmw-vt-metric" id="bc-vat-tu-row-theo-ngay">
+        <div class="pmw-vt-metric-main">
+          <div>
+            <h3 class="pmw-vt-name" id="bc-vat-tu-theo-ngay-chi-tieu">Theo ngày</h3>
+            <span class="pmw-vt-unit" id="bc-vat-tu-theo-ngay-don-vi-tinh">m³/ngày</span>
+          </div>
+          <span class="pmw-vt-status is-good" id="bc-vat-tu-theo-ngay-ty-le-dat"><span id="bc-vat-tu-theo-ngay-ty-le-dat-value">110,0%</span></span>
+        </div>
+        <div class="pmw-vt-compare">
+          <div class="pmw-vt-compare-cell">
+            <span class="pmw-vt-cell-label">Kế hoạch</span>
+            <span class="pmw-vt-cell-value" id="bc-vat-tu-theo-ngay-ke-hoach">20.000</span>
+          </div>
+          <div class="pmw-vt-compare-cell">
+            <span class="pmw-vt-cell-label">Thực hiện</span>
+            <span class="pmw-vt-cell-value" id="bc-vat-tu-theo-ngay-thuc-hien">22.000</span>
+          </div>
+        </div>
+        <div class="pmw-vt-progress" aria-label="Tỷ lệ đạt 110,0%"><div class="pmw-vt-progress-bar" style="width:100%"></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="pmw-vt-card" id="bc-vat-tu-section-vat-tu-nang-luong">
+    <div class="pmw-vt-card-head">
+      <div>
+        <h2 class="pmw-vt-card-title" id="bc-vat-tu-section-vat-tu-nang-luong-label">Vật tư, năng lượng</h2>
+      </div>
+      <span class="pmw-vt-badge pmw-vt-report-period">Tháng 4/2026</span>
+    </div>
+    <div class="pmw-vt-card-body pmw-vt-list">
+      <article class="pmw-vt-group" id="bc-vat-tu-row-dien-tieu-thu">
+        <div class="pmw-vt-group-head">
+          <span class="pmw-vt-index" id="bc-vat-tu-dien-tieu-thu-stt">2</span>
+          <div>
+            <h3 class="pmw-vt-group-title" id="bc-vat-tu-dien-tieu-thu-chi-tieu">Điện tiêu thụ</h3>
+            <span class="pmw-vt-group-unit" id="bc-vat-tu-dien-tieu-thu-don-vi-tinh">kWh/tháng</span>
+          </div>
+          <span class="pmw-vt-status is-good" id="bc-vat-tu-dien-tieu-thu-ty-le-dat">95,4%</span>
+        </div>
+        <div class="pmw-vt-mini-table">
+          <div class="pmw-vt-mini-head"><span>Chỉ tiêu</span><span>Kế hoạch</span><span>Thực hiện</span><span>% đạt</span></div>
+          <div class="pmw-vt-mini-row"><span>Điện tiêu thụ</span><span id="bc-vat-tu-dien-tieu-thu-ke-hoach">185.000</span><span id="bc-vat-tu-dien-tieu-thu-thuc-hien">176.500</span><span id="bc-vat-tu-dien-tieu-thu-ty-le-dat-value">95,4%</span></div>
+          <div class="pmw-vt-mini-row" id="bc-vat-tu-row-theo-m3"><span id="bc-vat-tu-theo-m3-chi-tieu">Theo m³ <small id="bc-vat-tu-theo-m3-don-vi-tinh">kWh/m³</small></span><span id="bc-vat-tu-theo-m3-ke-hoach">0,31</span><span id="bc-vat-tu-theo-m3-thuc-hien">0,25</span><span id="bc-vat-tu-theo-m3-ty-le-dat">80,6%</span></div>
+          <div class="pmw-vt-mini-row" id="bc-vat-tu-row-dien-tram-bom-2"><span id="bc-vat-tu-dien-tram-bom-2-chi-tieu">Điện trạm bơm 2 <small id="bc-vat-tu-dien-tram-bom-2-don-vi-tinh">kWh/tháng</small></span><span id="bc-vat-tu-dien-tram-bom-2-ke-hoach">120.000</span><span id="bc-vat-tu-dien-tram-bom-2-thuc-hien">114.800</span><span id="bc-vat-tu-dien-tram-bom-2-ty-le-dat">95,7%</span></div>
+          <div class="pmw-vt-mini-row" id="bc-vat-tu-row-dien-gieng-khai-thac"><span id="bc-vat-tu-dien-gieng-khai-thac-chi-tieu">Điện giếng khai thác <small id="bc-vat-tu-dien-gieng-khai-thac-don-vi-tinh">kWh/tháng</small></span><span id="bc-vat-tu-dien-gieng-khai-thac-ke-hoach">42.000</span><span id="bc-vat-tu-dien-gieng-khai-thac-thuc-hien">39.600</span><span id="bc-vat-tu-dien-gieng-khai-thac-ty-le-dat">94,3%</span></div>
+          <div class="pmw-vt-mini-row" id="bc-vat-tu-row-dien-may-phat"><span id="bc-vat-tu-dien-may-phat-chi-tieu">Điện máy phát <small id="bc-vat-tu-dien-may-phat-don-vi-tinh">kWh/tháng</small></span><span id="bc-vat-tu-dien-may-phat-ke-hoach">5.000</span><span id="bc-vat-tu-dien-may-phat-thuc-hien">4.200</span><span id="bc-vat-tu-dien-may-phat-ty-le-dat">84,0%</span></div>
+          <div class="pmw-vt-mini-row" id="bc-vat-tu-row-dau-may-phat"><span id="bc-vat-tu-dau-may-phat-chi-tieu">Dầu máy phát <small id="bc-vat-tu-dau-may-phat-don-vi-tinh">l/tháng</small></span><span id="bc-vat-tu-dau-may-phat-ke-hoach">850</span><span id="bc-vat-tu-dau-may-phat-thuc-hien">720</span><span id="bc-vat-tu-dau-may-phat-ty-le-dat">84,7%</span></div>
+          <div class="pmw-vt-mini-row" id="bc-vat-tu-row-so-gio-mat-dien"><span id="bc-vat-tu-so-gio-mat-dien-chi-tieu">Số giờ mất điện <small id="bc-vat-tu-so-gio-mat-dien-don-vi-tinh">giờ</small></span><span id="bc-vat-tu-so-gio-mat-dien-ke-hoach">18</span><span id="bc-vat-tu-so-gio-mat-dien-thuc-hien">14</span><span id="bc-vat-tu-so-gio-mat-dien-ty-le-dat">77,8%</span></div>
+        </div>
+      </article>
+
+      <article class="pmw-vt-group" id="bc-vat-tu-row-javen">
+        <div class="pmw-vt-group-head">
+          <span class="pmw-vt-index" id="bc-vat-tu-javen-stt">3</span>
+          <div>
+            <h3 class="pmw-vt-group-title" id="bc-vat-tu-javen-chi-tieu">Javen</h3>
+            <span class="pmw-vt-group-unit" id="bc-vat-tu-javen-don-vi-tinh">kg/tháng</span>
+          </div>
+          <span class="pmw-vt-status is-good" id="bc-vat-tu-javen-ty-le-dat">96,4%</span>
+        </div>
+        <div class="pmw-vt-mini-table">
+          <div class="pmw-vt-mini-head"><span>Chỉ tiêu</span><span>Kế hoạch</span><span>Thực hiện</span><span>% đạt</span></div>
+          <div class="pmw-vt-mini-row"><span>Javen</span><span id="bc-vat-tu-javen-ke-hoach">4.200</span><span id="bc-vat-tu-javen-thuc-hien">4.050</span><span id="bc-vat-tu-javen-ty-le-dat-value">96,4%</span></div>
+          <div class="pmw-vt-mini-row" id="bc-vat-tu-row-theo-m3-2"><span id="bc-vat-tu-theo-m3-2-chi-tieu">Theo m³ <small id="bc-vat-tu-theo-m3-2-don-vi-tinh">g/m³</small></span><span id="bc-vat-tu-theo-m3-2-ke-hoach">7,0</span><span id="bc-vat-tu-theo-m3-2-thuc-hien">5,8</span><span id="bc-vat-tu-theo-m3-2-ty-le-dat">82,9%</span></div>
+          <div class="pmw-vt-mini-row" id="bc-vat-tu-row-nhap-trong-thang"><span id="bc-vat-tu-nhap-trong-thang-chi-tieu">Nhập trong tháng <small id="bc-vat-tu-nhap-trong-thang-don-vi-tinh">kg</small></span><span id="bc-vat-tu-nhap-trong-thang-ke-hoach">5.000</span><span id="bc-vat-tu-nhap-trong-thang-thuc-hien">4.800</span><span id="bc-vat-tu-nhap-trong-thang-ty-le-dat">96,0%</span></div>
+          <div class="pmw-vt-mini-row" id="bc-vat-tu-row-ton-kho"><span id="bc-vat-tu-ton-kho-chi-tieu">Tồn kho <small id="bc-vat-tu-ton-kho-don-vi-tinh">kg</small></span><span id="bc-vat-tu-ton-kho-ke-hoach">1.200</span><span id="bc-vat-tu-ton-kho-thuc-hien">1.350</span><span id="bc-vat-tu-ton-kho-ty-le-dat">112,5%</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
 </div>
 </div><!-- /smViewVatTu -->
 </div>
@@ -230,5 +831,40 @@
       });
     });
   </script>
+
+<script>
+(function syncVatTuReportPeriod() {
+  function getTwoDigitMonth(value) {
+    const text = String(value || '4').trim();
+    return text.padStart(2, '0');
+  }
+
+  function updatePeriodBadge() {
+    const head = document.getElementById('pmw-business-report-page-head') || document.querySelector('.business-report-page-head');
+    const monthSelect = document.getElementById('filter-month') || document.getElementById('selectMonth') || document.querySelector('.business-report-page-head select[aria-label="Chọn tháng"], .business-report-page-head .sm-filter-select');
+    const yearSelect = document.getElementById('filter-year') || document.getElementById('selectYear') || document.querySelectorAll('.business-report-page-head .sm-filter-select')[1];
+    const month = getTwoDigitMonth(monthSelect ? monthSelect.value : (head ? head.dataset.month : '4'));
+    const year = String(yearSelect ? yearSelect.value : (head ? head.dataset.year : '2026'));
+    document.querySelectorAll('.pmw-vt-report-period').forEach((badge) => {
+      badge.textContent = 'Tháng ' + month + '/' + year;
+    });
+  }
+
+  document.addEventListener('pmw:components-loaded', updatePeriodBadge);
+  document.addEventListener('DOMContentLoaded', updatePeriodBadge);
+  document.addEventListener('change', (event) => {
+    if (event.target && event.target.matches('#filter-month, #filter-year, #selectMonth, #selectYear, .business-report-page-head .sm-filter-select')) {
+      updatePeriodBadge();
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (event.target && event.target.matches('#filter-submit, .br-filter-button, .sm-filter-btn')) {
+      updatePeriodBadge();
+    }
+  });
+  setTimeout(updatePeriodBadge, 300);
+})();
+</script>
+
 </body>
 </html>
