@@ -1,0 +1,244 @@
+<style>
+/* Scoped sidebar for Quản lý nhân sự HRIS */
+.sm-sidebar.sm-sidebar-qldh-hris {
+  box-sizing: border-box !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  flex: 0 0 280px !important;
+  align-self: stretch !important;
+  padding: 35px 0 24px 0 !important;
+  gap: 2px !important;
+  background: #02457A !important;
+  border-right: 1px solid rgba(17, 24, 39, 0.08) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris *,
+.sm-sidebar.sm-sidebar-qldh-hris *::before,
+.sm-sidebar.sm-sidebar-qldh-hris *::after { box-sizing: border-box !important; }
+.sm-sidebar.sm-sidebar-qldh-hris .sm-sidebar-label {
+  display: block !important;
+  width: 280px !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  margin: 0 0 19px 0 !important;
+  padding: 0 0 0 12px !important;
+  font-family: 'Pretendard', var(--font, sans-serif) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  line-height: 18px !important;
+  text-transform: uppercase !important;
+  color: rgba(255, 255, 255, 0.67) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-cat,
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-other {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  flex: 0 0 44px !important;
+  padding: 10px 16px !important;
+  gap: 12px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #E5E7EB !important;
+  text-decoration: none !important;
+  overflow: hidden !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-cat.active,
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-cat.expanded.active,
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-other.active {
+  background: #009AFF !important;
+  color: #F9FAFB !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-cat:hover,
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-other:hover {
+  background: rgba(255,255,255,0.07) !important;
+  color: #F9FAFB !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-cat.expanded:not(.active) { background: transparent !important; }
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-cat-icon,
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-other-icon {
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  flex: 0 0 20px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: currentColor !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-cat-icon svg,
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-other-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+  display: block !important;
+  stroke: currentColor !important;
+  fill: none !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris svg path,
+.sm-sidebar.sm-sidebar-qldh-hris svg rect,
+.sm-sidebar.sm-sidebar-qldh-hris svg circle,
+.sm-sidebar.sm-sidebar-qldh-hris svg line,
+.sm-sidebar.sm-sidebar-qldh-hris svg polyline { stroke: currentColor !important; fill: none !important; }
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-other-label {
+  display: block !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  height: 22px !important;
+  font-family: 'Pretendard', var(--font, sans-serif) !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  color: #E5E7EB !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-cat.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-cat.expanded.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-other.active .sm-nav-other-label,
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-cat:hover .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-other:hover .sm-nav-other-label { color: #F9FAFB !important; }
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-cat.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-cat.expanded.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-other.active .sm-nav-other-label { font-weight: 600 !important; }
+.sm-sidebar.sm-sidebar-qldh-hris .sm-nav-cat-arrow {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  flex: 0 0 16px !important;
+  color: currentColor !important;
+  transform: rotate(90deg) !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-subnav {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 2px !important;
+  overflow: visible !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-subnav-item {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  flex: 0 0 44px !important;
+  padding: 12px 8px 12px 24px !important;
+  gap: 20px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #B3E2FF !important;
+  text-decoration: none !important;
+  overflow: hidden !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-subnav-item {
+  background: transparent !important;
+  color: #B3E2FF !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-subnav-item:hover {
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-radius: 0 !important;
+  color: #F9FAFB !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-subnav-item.active {
+  background: transparent !important;
+  border-radius: 0 !important;
+  color: #F9FAFB !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-subnav-item::before {
+  content: '' !important;
+  display: block !important;
+  width: 6px !important;
+  height: 6px !important;
+  min-width: 6px !important;
+  flex: 0 0 6px !important;
+  border-radius: 50% !important;
+  background: #B3E2FF !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-subnav-item.active::before,
+.sm-sidebar.sm-sidebar-qldh-hris .sm-subnav-item:hover::before { background: #F9FAFB !important; }
+.sm-sidebar.sm-sidebar-qldh-hris .sm-subnav-item span {
+  display: block !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  height: 22px !important;
+  font-family: 'Pretendard', var(--font, sans-serif) !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  color: #B3E2FF !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-subnav-item span {
+  color: #B3E2FF !important;
+  font-weight: 400 !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-subnav-item:hover span {
+  color: #F9FAFB !important;
+  font-weight: 400 !important;
+}
+.sm-sidebar.sm-sidebar-qldh-hris .sm-subnav-item.active span {
+  color: #F9FAFB !important;
+  font-weight: 600 !important;
+}
+</style>
+<!-- Shared sidebar cho Quản lý điều hành / Quản lý nhân sự HRIS -->
+<aside class="sm-sidebar sm-sidebar-qldh-hris" id="sidebar-qldh-hris">
+  <div class="sm-sidebar-label" id="sidebar-qldh-hris-label">Quản lý điều hành</div>
+  <a class="sm-nav-cat expanded active" id="sidebar-qldh-hris-root" href="qldh-qlns-hris.html">
+    <div class="sm-nav-cat-icon" id="sidebar-qldh-hris-root-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.3332 3.3335C14.7139 3.3335 15.8332 4.45279 15.8332 5.8335C15.8332 6.85274 15.2233 7.72952 14.3484 8.11875M14.7618 10.8335C16.7342 10.8335 18.3332 12.4325 18.3332 14.4049C18.3332 15.1939 17.6936 15.8335 16.9046 15.8335M6.6665 3.3335C5.2858 3.3335 4.1665 4.45279 4.1665 5.8335C4.1665 6.85274 4.77645 7.72952 5.65124 8.11875M3.09508 15.8335C2.3061 15.8335 1.6665 15.1939 1.6665 14.4049C1.6665 12.4325 3.26549 10.8335 5.23793 10.8335M12.4998 6.66683C12.4998 8.04754 11.3806 9.16683 9.99984 9.16683C8.61909 9.16683 7.49984 8.04754 7.49984 6.66683C7.49984 5.28612 8.61909 4.16683 9.99984 4.16683C11.3806 4.16683 12.4998 5.28612 12.4998 6.66683ZM11.4284 11.6668H8.57125C6.5988 11.6668 4.99982 13.2658 4.99982 15.2382C4.99982 16.0272 5.63941 16.6668 6.42839 16.6668H13.5713C14.3603 16.6668 14.9998 16.0272 14.9998 15.2382C14.9998 13.2658 13.4008 11.6668 11.4284 11.6668Z" stroke="#F9FAFB" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+        <path d="M8.75 10.25C10.407 10.25 11.75 8.907 11.75 7.25C11.75 5.593 10.407 4.25 8.75 4.25C7.093 4.25 5.75 5.593 5.75 7.25C5.75 8.907 7.093 10.25 8.75 10.25Z"/><path d="M15.75 10.25C17.157 10.25 18.25 9.157 18.25 7.75C18.25 6.343 17.157 5.25 15.75 5.25"/><path d="M3.75 19.75C3.75 16.989 5.989 14.75 8.75 14.75C11.511 14.75 13.75 16.989 13.75 19.75"/><path d="M14.75 15.25C17.235 15.25 19.25 17.041 19.25 19.25"/>
+      </svg>
+    </div>
+    <span class="sm-nav-cat-label" id="sidebar-qldh-hris-root-label">Quản lý nhân sự HRIS</span>
+    <svg class="sm-nav-cat-arrow" id="sidebar-qldh-hris-root-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 3l4 4-4 4"/></svg>
+  </a>
+  <div class="sm-subnav" id="sidebar-qldh-hris-subnav" style="display:flex;flex-direction:column;">
+          <a class="sm-subnav-item" id="sidebar-qldh-hris-demo-1" href="qldh-qlns-hris.html#demo-1"><span id="sidebar-qldh-hris-demo-1-label">Danh mục demo 1</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-hris-demo-2" href="qldh-qlns-hris.html#demo-2"><span id="sidebar-qldh-hris-demo-2-label">Danh mục demo 2</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-hris-demo-3" href="qldh-qlns-hris.html#demo-3"><span id="sidebar-qldh-hris-demo-3-label">Danh mục demo 3</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-hris-demo-4" href="qldh-qlns-hris.html#demo-4"><span id="sidebar-qldh-hris-demo-4-label">Danh mục demo 4</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-hris-demo-5" href="qldh-qlns-hris.html#demo-5"><span id="sidebar-qldh-hris-demo-5-label">Danh mục demo 5</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-hris-demo-6" href="qldh-qlns-hris.html#demo-6"><span id="sidebar-qldh-hris-demo-6-label">Danh mục demo 6</span></a>
+  </div>
+</aside>

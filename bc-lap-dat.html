@@ -465,7 +465,29 @@ body.pmw-page-bc-lap-dat .dt-scroll-area {
   .pmw-ld-kpi-grid { grid-template-columns: 1fr; }
   .pmw-ld-sub-list { grid-template-columns: 1fr; }
   .pmw-ld-sub-row > span:last-child { justify-content: flex-start; padding-top: 0; }
-  .pmw-ld-card-head { flex-direction: column; align-items: flex-start; }
+
+  /* Mobile: keep section title and chip on one row */
+  .pmw-ld-card-head {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .pmw-ld-card-title {
+    min-width: 0;
+    font-size: 15px;
+    line-height: 22px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .pmw-ld-badge {
+    height: 26px;
+    padding: 0 10px;
+    font-size: 12px;
+    line-height: 16px;
+    flex: 0 0 auto;
+  }
 }
 
 
@@ -520,13 +542,20 @@ body.pmw-page-bc-lap-dat .dt-scroll-area {
 }
 
 
-/* Tổng row style for Nhóm chỉ tiêu chính — aligned with bc-that-thoat total row */
+
+/* vTotalRows — tổng dưới mỗi nhóm chỉ tiêu, style giống dòng Tổng */
+.pmw-ld-group-head {
+  grid-template-columns: 32px minmax(0, 1fr);
+}
+.pmw-ld-group-head .pmw-ld-group-value {
+  display: none !important;
+}
 .pmw-ld-sub-row.pmw-ld-total-row > span {
   background: linear-gradient(
     0deg,
     var(--P2_UI_Color-Table-Row-Emphasize, rgba(2, 69, 122, 0.05)) 0%,
     var(--P2_UI_Color-Table-Row-Emphasize, rgba(2, 69, 122, 0.05)) 100%
-  ), var(--p--Neutral-White, #FFF);
+  ), var(--p--Neutral-White, #FFF) !important;
   border-top: 1px solid rgba(17,24,39,0.08);
   font-weight: 700;
   color: #02457A;
@@ -535,10 +564,25 @@ body.pmw-page-bc-lap-dat .dt-scroll-area {
   color: #02457A;
   font-weight: 800;
 }
-
-/* Header group no longer shows total value on title */
-.pmw-ld-group-head {
-  grid-template-columns: 32px minmax(0, 1fr);
+@media (max-width: 560px) {
+  .pmw-ld-sub-list {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .pmw-ld-sub-row > span {
+    min-height: 36px;
+    padding: 8px 10px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .pmw-ld-sub-row > span:first-child {
+    min-width: 0;
+    white-space: normal;
+  }
+  .pmw-ld-sub-row > span:last-child {
+    justify-content: flex-end;
+    padding-top: 8px;
+    white-space: nowrap;
+  }
 }
 </style>
 </head>
@@ -605,7 +649,7 @@ body.pmw-page-bc-lap-dat .dt-scroll-area {
 <div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-ctdt-d-100-row"><span id="bc-lap-dat-card-row-ctdt-d-100-label">CTĐT D≥100</span><span id="bc-lap-dat-card-ctdt-d-100-value">6.119.971.000</span></div>
 <div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-lap-dat-co-phi-row"><span id="bc-lap-dat-card-row-lap-dat-co-phi-label">Lắp đặt ĐH có phí</span><span id="bc-lap-dat-card-lap-dat-co-phi-value">725.353.856</span></div>
 <div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-sua-chua-mien-phi-row"><span id="bc-lap-dat-card-row-sua-chua-mien-phi-label">Sửa chữa ĐH miễn phí</span><span id="bc-lap-dat-card-sua-chua-mien-phi-value">7.275.877.267</span></div>
-<div class="pmw-ld-sub-row pmw-ld-total-row" id="bc-lap-dat-card-row-gia-tri-xay-lap-tong-row"><span id="bc-lap-dat-card-row-gia-tri-xay-lap-tong-label">Tổng</span><span id="bc-lap-dat-card-gia-tri-xay-lap-tong-value">30.354.478.805</span></div></div>
+<div class="pmw-ld-sub-row pmw-ld-total-row" id="bc-lap-dat-card-gia-tri-xay-lap-total-row"><span id="bc-lap-dat-card-gia-tri-xay-lap-total-label">Tổng</span><span id="bc-lap-dat-card-gia-tri-xay-lap-value">30.354.478.805</span></div></div>
 </article>
 <article class="pmw-ld-group" id="bc-lap-dat-card-chieu-dai-ong">
 <div class="pmw-ld-group-head" id="bc-lap-dat-card-chieu-dai-ong-head"><span class="pmw-ld-index" id="bc-lap-dat-card-chieu-dai-ong-index">2</span><div><h3 class="pmw-ld-group-title" id="bc-lap-dat-card-chieu-dai-ong-title">Chiều dài tuyến ống</h3><span class="pmw-ld-group-unit" id="bc-lap-dat-card-chieu-dai-ong-unit">mét</span></div></div>
@@ -613,7 +657,7 @@ body.pmw-page-bc-lap-dat .dt-scroll-area {
 <div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-ong-truoc-dong-ho-row"><span id="bc-lap-dat-card-row-ong-truoc-dong-ho-label">Ống trước đồng hồ</span><span id="bc-lap-dat-card-ong-truoc-dong-ho-value">2.144</span></div>
 <div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-ong-ctdt-row"><span id="bc-lap-dat-card-row-ong-ctdt-label">Chiều dài ống CTDT</span><span id="bc-lap-dat-card-ong-ctdt-value">9.171</span></div>
 <div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-ong-cai-tao-row"><span id="bc-lap-dat-card-row-ong-cai-tao-label">Chiều dài ống cải tạo</span><span id="bc-lap-dat-card-ong-cai-tao-value">15.523</span></div>
-<div class="pmw-ld-sub-row pmw-ld-total-row" id="bc-lap-dat-card-row-chieu-dai-ong-tong-row"><span id="bc-lap-dat-card-row-chieu-dai-ong-tong-label">Tổng</span><span id="bc-lap-dat-card-chieu-dai-ong-tong-value">26.838</span></div></div>
+<div class="pmw-ld-sub-row pmw-ld-total-row" id="bc-lap-dat-card-chieu-dai-ong-total-row"><span id="bc-lap-dat-card-chieu-dai-ong-total-label">Tổng</span><span id="bc-lap-dat-card-chieu-dai-ong-value">26.838</span></div></div>
 </article>
 <article class="pmw-ld-group" id="bc-lap-dat-card-dong-ho">
 <div class="pmw-ld-group-head" id="bc-lap-dat-card-dong-ho-head"><span class="pmw-ld-index" id="bc-lap-dat-card-dong-ho-index">3</span><div><h3 class="pmw-ld-group-title" id="bc-lap-dat-card-dong-ho-title">Đồng hồ &amp; phụ kiện</h3><span class="pmw-ld-group-unit" id="bc-lap-dat-card-dong-ho-unit">cái</span></div></div>
@@ -623,7 +667,7 @@ body.pmw-page-bc-lap-dat .dt-scroll-area {
 <div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-thay-dot-xuat-row"><span id="bc-lap-dat-card-row-thay-dot-xuat-label">Thay đồng hồ đột xuất</span><span id="bc-lap-dat-card-thay-dot-xuat-value">232</span></div>
 <div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-mat-dong-ho-row"><span id="bc-lap-dat-card-row-mat-dong-ho-label">Mất đồng hồ</span><span id="bc-lap-dat-card-mat-dong-ho-value">23</span></div>
 <div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-hop-dong-ho-row"><span id="bc-lap-dat-card-row-hop-dong-ho-label">Hộp đồng hồ</span><span id="bc-lap-dat-card-hop-dong-ho-value">9.523</span></div>
-<div class="pmw-ld-sub-row pmw-ld-total-row" id="bc-lap-dat-card-row-dong-ho-tong-row"><span id="bc-lap-dat-card-row-dong-ho-tong-label">Tổng</span><span id="bc-lap-dat-card-dong-ho-tong-value">20.989</span></div></div>
+<div class="pmw-ld-sub-row pmw-ld-total-row" id="bc-lap-dat-card-dong-ho-total-row"><span id="bc-lap-dat-card-dong-ho-total-label">Tổng</span><span id="bc-lap-dat-card-dong-ho-value">20.989</span></div></div>
 </article>
 </div>
 </div>

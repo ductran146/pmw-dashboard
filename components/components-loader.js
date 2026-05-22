@@ -86,6 +86,37 @@
     return head.outerHTML;
   }
 
+
+  function applyEmptyStateAttributes(hostEl, html) {
+    var wrap = document.createElement('div');
+    wrap.innerHTML = html;
+
+    var titleNode = wrap.querySelector('#pmw-empty-state-title, .pmw-empty-state-title');
+    var descNode = wrap.querySelector('#pmw-empty-state-desc, .pmw-empty-state-desc');
+
+    var pageName = hostEl.getAttribute('data-page-name') || hostEl.getAttribute('data-title') || '';
+    var description = hostEl.getAttribute('data-description') || 'Thông tin đang được cập nhật. Vui lòng quay lại sau';
+
+    if (!pageName) {
+      var existingTitle = document.querySelector('.br-page-title, .sm-content-title, h1');
+      if (existingTitle) pageName = existingTitle.textContent.trim();
+    }
+
+    if (!pageName && document.title) {
+      pageName = document.title.replace(/^PMW\s*[—-]\s*/i, '').trim();
+    }
+
+    if (titleNode) {
+      titleNode.textContent = pageName ? (pageName + ' đang được xây dựng') : 'Không có thông tin';
+    }
+
+    if (descNode) {
+      descNode.textContent = description;
+    }
+
+    return wrap.innerHTML;
+  }
+
   function renderPageToolbar(el) {
     var parent = el.getAttribute('data-parent') || '';
     var parentUrl = el.getAttribute('data-parent-url') || '#';
@@ -154,6 +185,8 @@
       if (xhr.status === 200 || (xhr.status === 0 && xhr.responseText)) {
         if (name === 'business-report-page-head') {
           el.outerHTML = applyBusinessReportHeadAttributes(el, xhr.responseText);
+        } else if (name === 'empty-state') {
+          el.outerHTML = applyEmptyStateAttributes(el, xhr.responseText);
         } else {
           el.outerHTML = xhr.responseText;
         }

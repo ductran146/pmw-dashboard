@@ -1,0 +1,244 @@
+<style>
+/* Scoped sidebar for Quản lý hồ sơ */
+.sm-sidebar.sm-sidebar-qldh-ho-so {
+  box-sizing: border-box !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  flex: 0 0 280px !important;
+  align-self: stretch !important;
+  padding: 35px 0 24px 0 !important;
+  gap: 2px !important;
+  background: #02457A !important;
+  border-right: 1px solid rgba(17, 24, 39, 0.08) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so *,
+.sm-sidebar.sm-sidebar-qldh-ho-so *::before,
+.sm-sidebar.sm-sidebar-qldh-ho-so *::after { box-sizing: border-box !important; }
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-sidebar-label {
+  display: block !important;
+  width: 280px !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  margin: 0 0 19px 0 !important;
+  padding: 0 0 0 12px !important;
+  font-family: 'Pretendard', var(--font, sans-serif) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  line-height: 18px !important;
+  text-transform: uppercase !important;
+  color: rgba(255, 255, 255, 0.67) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-cat,
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-other {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  flex: 0 0 44px !important;
+  padding: 10px 16px !important;
+  gap: 12px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #E5E7EB !important;
+  text-decoration: none !important;
+  overflow: hidden !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-cat.active,
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-cat.expanded.active,
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-other.active {
+  background: #009AFF !important;
+  color: #F9FAFB !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-cat:hover,
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-other:hover {
+  background: rgba(255,255,255,0.07) !important;
+  color: #F9FAFB !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-cat.expanded:not(.active) { background: transparent !important; }
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-cat-icon,
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-other-icon {
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  flex: 0 0 20px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: currentColor !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-cat-icon svg,
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-other-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+  display: block !important;
+  stroke: currentColor !important;
+  fill: none !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so svg path,
+.sm-sidebar.sm-sidebar-qldh-ho-so svg rect,
+.sm-sidebar.sm-sidebar-qldh-ho-so svg circle,
+.sm-sidebar.sm-sidebar-qldh-ho-so svg line,
+.sm-sidebar.sm-sidebar-qldh-ho-so svg polyline { stroke: currentColor !important; fill: none !important; }
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-other-label {
+  display: block !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  height: 22px !important;
+  font-family: 'Pretendard', var(--font, sans-serif) !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  color: #E5E7EB !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-cat.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-cat.expanded.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-other.active .sm-nav-other-label,
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-cat:hover .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-other:hover .sm-nav-other-label { color: #F9FAFB !important; }
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-cat.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-cat.expanded.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-other.active .sm-nav-other-label { font-weight: 600 !important; }
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-nav-cat-arrow {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  flex: 0 0 16px !important;
+  color: currentColor !important;
+  transform: rotate(90deg) !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-subnav {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 2px !important;
+  overflow: visible !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-subnav-item {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  flex: 0 0 44px !important;
+  padding: 12px 8px 12px 24px !important;
+  gap: 20px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #B3E2FF !important;
+  text-decoration: none !important;
+  overflow: hidden !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-subnav-item {
+  background: transparent !important;
+  color: #B3E2FF !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-subnav-item:hover {
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-radius: 0 !important;
+  color: #F9FAFB !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-subnav-item.active {
+  background: transparent !important;
+  border-radius: 0 !important;
+  color: #F9FAFB !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-subnav-item::before {
+  content: '' !important;
+  display: block !important;
+  width: 6px !important;
+  height: 6px !important;
+  min-width: 6px !important;
+  flex: 0 0 6px !important;
+  border-radius: 50% !important;
+  background: #B3E2FF !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-subnav-item.active::before,
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-subnav-item:hover::before { background: #F9FAFB !important; }
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-subnav-item span {
+  display: block !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  height: 22px !important;
+  font-family: 'Pretendard', var(--font, sans-serif) !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  color: #B3E2FF !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-subnav-item span {
+  color: #B3E2FF !important;
+  font-weight: 400 !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-subnav-item:hover span {
+  color: #F9FAFB !important;
+  font-weight: 400 !important;
+}
+.sm-sidebar.sm-sidebar-qldh-ho-so .sm-subnav-item.active span {
+  color: #F9FAFB !important;
+  font-weight: 600 !important;
+}
+</style>
+<!-- Shared sidebar cho Quản lý điều hành / Quản lý hồ sơ -->
+<aside class="sm-sidebar sm-sidebar-qldh-ho-so" id="sidebar-qldh-ho-so">
+  <div class="sm-sidebar-label" id="sidebar-qldh-ho-so-label">Quản lý điều hành</div>
+  <a class="sm-nav-cat expanded active" id="sidebar-qldh-ho-so-root" href="qldh-ho-so.html">
+    <div class="sm-nav-cat-icon" id="sidebar-qldh-ho-so-root-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.6665 15.8333V6.29085C1.6665 5.08763 1.6665 4.48602 1.86927 4.01373C2.12209 3.42488 2.59138 2.95558 3.18023 2.70277C3.65252 2.5 4.24821 2.5 5.45735 2.5H5.8691C6.37333 2.5 6.85046 2.72828 7.16685 3.12091L8.68109 5M8.68109 5H13.3332C14.4999 5 15.0833 5 15.529 5.22707C15.921 5.42681 16.2397 5.74552 16.4394 6.13752C16.6665 6.58317 16.6665 7.16656 16.6665 8.33333V9.16667M8.68109 5H5.83317M2.63152 12.9287L2.8802 12.3097C3.49175 10.7874 3.79753 10.0263 4.43517 9.5965C5.07281 9.16667 5.89615 9.16667 7.54281 9.16667H14.2598C16.5002 9.16667 17.6203 9.16667 18.1183 9.89892C18.6163 10.6312 18.2003 11.6668 17.3682 13.738L17.1195 14.3569C16.5079 15.8792 16.2022 16.6403 15.5645 17.0702C14.9268 17.5 14.1035 17.5 12.4568 17.5H5.73994C3.49951 17.5 2.3793 17.5 1.88135 16.7677C1.38341 16.0354 1.79945 14.9998 2.63152 12.9287Z" stroke="#F9FAFB" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+        <path d="M4.75 6.25C4.75 5.15 5.65 4.25 6.75 4.25H10.25L12.25 6.25H17.25C18.35 6.25 19.25 7.15 19.25 8.25V17.25C19.25 18.35 18.35 19.25 17.25 19.25H6.75C5.65 19.25 4.75 18.35 4.75 17.25V6.25Z"/><path d="M4.75 9.25H19.25"/>
+      </svg>
+    </div>
+    <span class="sm-nav-cat-label" id="sidebar-qldh-ho-so-root-label">Quản lý hồ sơ</span>
+    <svg class="sm-nav-cat-arrow" id="sidebar-qldh-ho-so-root-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 3l4 4-4 4"/></svg>
+  </a>
+  <div class="sm-subnav" id="sidebar-qldh-ho-so-subnav" style="display:flex;flex-direction:column;">
+          <a class="sm-subnav-item" id="sidebar-qldh-ho-so-demo-1" href="qldh-ho-so.html#demo-1"><span id="sidebar-qldh-ho-so-demo-1-label">Danh mục demo 1</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-ho-so-demo-2" href="qldh-ho-so.html#demo-2"><span id="sidebar-qldh-ho-so-demo-2-label">Danh mục demo 2</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-ho-so-demo-3" href="qldh-ho-so.html#demo-3"><span id="sidebar-qldh-ho-so-demo-3-label">Danh mục demo 3</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-ho-so-demo-4" href="qldh-ho-so.html#demo-4"><span id="sidebar-qldh-ho-so-demo-4-label">Danh mục demo 4</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-ho-so-demo-5" href="qldh-ho-so.html#demo-5"><span id="sidebar-qldh-ho-so-demo-5-label">Danh mục demo 5</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-ho-so-demo-6" href="qldh-ho-so.html#demo-6"><span id="sidebar-qldh-ho-so-demo-6-label">Danh mục demo 6</span></a>
+  </div>
+</aside>

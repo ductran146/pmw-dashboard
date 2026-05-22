@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PMW — Quản lý kho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="responsive.css?v=38"/>
+  <script src="components/components-loader.js" defer></script>
+  <style>
+    html,
+    body {
+      min-height: 100%;
+      overflow: hidden;
+      background: #F9FAFB;
+    }
+
+    .bao-cao-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dv-header {
+      flex-shrink: 0;
+    }
+
+    .submod-page.active {
+      flex: 1;
+      display: flex !important;
+      min-height: 0;
+    }
+
+    .sm-main {
+      flex: 1;
+      min-width: 0;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      background: #F9FAFB;
+      overflow: hidden;
+    }
+
+    .qldh-empty-scroll {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      background: #F9FAFB;
+    }
+
+    .qldh-empty-content {
+      flex: 1;
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+      background: #F9FAFB;
+    }
+
+    .pmw-page-qldh-kho .business-report-page-head {
+      flex: none;
+    }
+
+    .pmw-page-qldh-kho .sm-content-title,
+    .pmw-page-qldh-kho .br-page-title {
+      font-weight: 700 !important;
+      font-size: var(--fs-title2) !important;
+      line-height: var(--lh-title2) !important;
+      color: #111827 !important;
+    }
+
+    .pmw-page-qldh-kho .sm-content-subtitle,
+    .pmw-page-qldh-kho .br-page-subtitle {
+      font-weight: 400 !important;
+      font-size: 14px !important;
+      line-height: 20px !important;
+      color: #4B5563 !important;
+    }
+    .qldh-empty-content .pmw-empty-state {
+      min-height: 0;
+    }
+
+    @media (max-width: 1366px) {
+      .qldh-empty-content {
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      html,
+      body {
+        overflow: hidden;
+      }
+
+      .submod-page.active {
+        flex-direction: column;
+      }
+
+      .qldh-empty-scroll {
+        overflow-y: auto;
+      }
+
+      .qldh-empty-content {
+        min-height: 320px;
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .qldh-empty-content {
+        min-height: 300px;
+      }
+    }
+  </style>
+</head>
+<body class="pmw-page-qldh-kho">
+  <div class="bao-cao-wrapper">
+    <div data-component="header" id="pmw-header"></div>
+
+    <div class="submod-page active">
+      <div data-component="sidebar-qldh-kho" id="pmw-sidebar-qldh-kho"></div>
+
+      <main class="sm-main">
+        <div class="qldh-empty-scroll">
+          <div id="qldh-kho-page">
+            <div data-component="business-report-page-head"
+                 id="pmw-business-report-page-head"
+                 data-show-root="true"
+                 data-root="Quản lý điều hành"
+                 data-root-url="quanly-dieuhanh.html"
+                 data-parent="Quản lý kho"
+                 data-parent-url="qldh-kho.html"
+                 data-current="Quản lý kho"
+                 data-title="Quản lý kho"
+                 data-subtitle="Theo dõi tồn kho vật tư, hóa chất xử lý nước, nhập xuất và kiểm kê định kỳ"
+                 data-hide-filter="true"></div>
+
+            <div class="qldh-empty-content" id="qldh-kho-empty-content">
+              <div data-component="empty-state"
+                   id="qldh-kho-empty-state"
+                   data-page-name="Quản lý kho"></div>
+            </div>
+          </div>
+        </div>
+
+        <div data-component="footer" id="pmw-footer"></div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var logo = document.querySelector('.dv-header-logo');
+      if (!logo) return;
+      logo.addEventListener('click', function (event) {
+        event.preventDefault();
+        window.location.href = 'index.html';
+      });
+    });
+  </script>
+</body>
+</html>

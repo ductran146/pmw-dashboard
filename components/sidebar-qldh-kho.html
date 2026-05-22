@@ -1,0 +1,244 @@
+<style>
+/* Scoped sidebar for Quản lý kho */
+.sm-sidebar.sm-sidebar-qldh-kho {
+  box-sizing: border-box !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  flex: 0 0 280px !important;
+  align-self: stretch !important;
+  padding: 35px 0 24px 0 !important;
+  gap: 2px !important;
+  background: #02457A !important;
+  border-right: 1px solid rgba(17, 24, 39, 0.08) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho *,
+.sm-sidebar.sm-sidebar-qldh-kho *::before,
+.sm-sidebar.sm-sidebar-qldh-kho *::after { box-sizing: border-box !important; }
+.sm-sidebar.sm-sidebar-qldh-kho .sm-sidebar-label {
+  display: block !important;
+  width: 280px !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  margin: 0 0 19px 0 !important;
+  padding: 0 0 0 12px !important;
+  font-family: 'Pretendard', var(--font, sans-serif) !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  line-height: 18px !important;
+  text-transform: uppercase !important;
+  color: rgba(255, 255, 255, 0.67) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-cat,
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-other {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  flex: 0 0 44px !important;
+  padding: 10px 16px !important;
+  gap: 12px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #E5E7EB !important;
+  text-decoration: none !important;
+  overflow: hidden !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-cat.active,
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-cat.expanded.active,
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-other.active {
+  background: #009AFF !important;
+  color: #F9FAFB !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-cat:hover,
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-other:hover {
+  background: rgba(255,255,255,0.07) !important;
+  color: #F9FAFB !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-cat.expanded:not(.active) { background: transparent !important; }
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-cat-icon,
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-other-icon {
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  flex: 0 0 20px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: currentColor !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-cat-icon svg,
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-other-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+  display: block !important;
+  stroke: currentColor !important;
+  fill: none !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho svg path,
+.sm-sidebar.sm-sidebar-qldh-kho svg rect,
+.sm-sidebar.sm-sidebar-qldh-kho svg circle,
+.sm-sidebar.sm-sidebar-qldh-kho svg line,
+.sm-sidebar.sm-sidebar-qldh-kho svg polyline { stroke: currentColor !important; fill: none !important; }
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-other-label {
+  display: block !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  height: 22px !important;
+  font-family: 'Pretendard', var(--font, sans-serif) !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  color: #E5E7EB !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-cat.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-cat.expanded.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-other.active .sm-nav-other-label,
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-cat:hover .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-other:hover .sm-nav-other-label { color: #F9FAFB !important; }
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-cat.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-cat.expanded.active .sm-nav-cat-label,
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-other.active .sm-nav-other-label { font-weight: 600 !important; }
+.sm-sidebar.sm-sidebar-qldh-kho .sm-nav-cat-arrow {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  flex: 0 0 16px !important;
+  color: currentColor !important;
+  transform: rotate(90deg) !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-subnav {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 2px !important;
+  overflow: visible !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-subnav-item {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  flex: 0 0 44px !important;
+  padding: 12px 8px 12px 24px !important;
+  gap: 20px !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #B3E2FF !important;
+  text-decoration: none !important;
+  overflow: hidden !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-subnav-item {
+  background: transparent !important;
+  color: #B3E2FF !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-subnav-item:hover {
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-radius: 0 !important;
+  color: #F9FAFB !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-subnav-item.active {
+  background: transparent !important;
+  border-radius: 0 !important;
+  color: #F9FAFB !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-subnav-item::before {
+  content: '' !important;
+  display: block !important;
+  width: 6px !important;
+  height: 6px !important;
+  min-width: 6px !important;
+  flex: 0 0 6px !important;
+  border-radius: 50% !important;
+  background: #B3E2FF !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-subnav-item.active::before,
+.sm-sidebar.sm-sidebar-qldh-kho .sm-subnav-item:hover::before { background: #F9FAFB !important; }
+.sm-sidebar.sm-sidebar-qldh-kho .sm-subnav-item span {
+  display: block !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  height: 22px !important;
+  font-family: 'Pretendard', var(--font, sans-serif) !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  color: #B3E2FF !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-subnav-item span {
+  color: #B3E2FF !important;
+  font-weight: 400 !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-subnav-item:hover span {
+  color: #F9FAFB !important;
+  font-weight: 400 !important;
+}
+.sm-sidebar.sm-sidebar-qldh-kho .sm-subnav-item.active span {
+  color: #F9FAFB !important;
+  font-weight: 600 !important;
+}
+</style>
+<!-- Shared sidebar cho Quản lý điều hành / Quản lý kho -->
+<aside class="sm-sidebar sm-sidebar-qldh-kho" id="sidebar-qldh-kho">
+  <div class="sm-sidebar-label" id="sidebar-qldh-kho-label">Quản lý điều hành</div>
+  <a class="sm-nav-cat expanded active" id="sidebar-qldh-kho-root" href="qldh-kho.html">
+    <div class="sm-nav-cat-icon" id="sidebar-qldh-kho-root-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 18.3332C9.31817 18.3332 8.66683 18.058 7.36411 17.5078C4.12137 16.1379 2.5 15.453 2.5 14.3009C2.5 13.9783 2.5 8.38692 2.5 5.83317M10 18.3332C10.6818 18.3332 11.3332 18.058 12.6359 17.5078C15.8787 16.1379 17.5 15.453 17.5 14.3009V5.83317M10 18.3332V9.46217M5 9.99984L6.66667 10.8332M14.1667 3.33317L5.83333 7.49984M6.93827 8.07599L4.50393 6.89805C3.16797 6.25159 2.5 5.92836 2.5 5.4165C2.5 4.90465 3.16797 4.58142 4.50393 3.93496L6.93827 2.75702C8.44067 2.03001 9.19192 1.6665 10 1.6665C10.8081 1.6665 11.5593 2.03 13.0617 2.75702L15.4961 3.93496C16.832 4.58142 17.5 4.90465 17.5 5.4165C17.5 5.92836 16.832 6.25159 15.4961 6.89805L13.0617 8.07599C11.5593 8.803 10.8081 9.1665 10 9.1665C9.19192 9.1665 8.44067 8.803 6.93827 8.07599Z" stroke="#F9FAFB" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+        <path d="M12 3.25L4.75 6.75L12 10.25L19.25 6.75L12 3.25Z"/><path d="M4.75 6.75V15.25L12 19.75L19.25 15.25V6.75"/><path d="M12 10.25V19.75"/><path d="M8.25 8.5L15.5 5"/>
+      </svg>
+    </div>
+    <span class="sm-nav-cat-label" id="sidebar-qldh-kho-root-label">Quản lý kho</span>
+    <svg class="sm-nav-cat-arrow" id="sidebar-qldh-kho-root-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 3l4 4-4 4"/></svg>
+  </a>
+  <div class="sm-subnav" id="sidebar-qldh-kho-subnav" style="display:flex;flex-direction:column;">
+          <a class="sm-subnav-item" id="sidebar-qldh-kho-demo-1" href="qldh-kho.html#demo-1"><span id="sidebar-qldh-kho-demo-1-label">Danh mục demo 1</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-kho-demo-2" href="qldh-kho.html#demo-2"><span id="sidebar-qldh-kho-demo-2-label">Danh mục demo 2</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-kho-demo-3" href="qldh-kho.html#demo-3"><span id="sidebar-qldh-kho-demo-3-label">Danh mục demo 3</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-kho-demo-4" href="qldh-kho.html#demo-4"><span id="sidebar-qldh-kho-demo-4-label">Danh mục demo 4</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-kho-demo-5" href="qldh-kho.html#demo-5"><span id="sidebar-qldh-kho-demo-5-label">Danh mục demo 5</span></a>
+          <a class="sm-subnav-item" id="sidebar-qldh-kho-demo-6" href="qldh-kho.html#demo-6"><span id="sidebar-qldh-kho-demo-6-label">Danh mục demo 6</span></a>
+  </div>
+</aside>
