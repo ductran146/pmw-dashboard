@@ -157,6 +157,369 @@
       background: linear-gradient(0deg, rgba(2,69,122,0.06), rgba(2,69,122,0.06)), #FFFFFF !important;
     }
   </style>
+<style>
+/* vUX — bc-lap-dat improved dashboard layout */
+body.pmw-page-bc-lap-dat .sm-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+body.pmw-page-bc-lap-dat .dt-scroll-area {
+  background: #F9FAFB;
+  padding: 20px;
+  gap: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.pmw-ld-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: calc((100% - 16px) * 0.95 / 2.2);
+  min-width: 380px;
+  max-width: 100%;
+  align-self: flex-start;
+}
+.pmw-ld-kpi {
+  background: #FFFFFF;
+  border: 1px solid rgba(17,24,39,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(17,24,39,0.04);
+}
+.pmw-ld-kpi-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 14px;
+  background: linear-gradient(90deg, rgba(1,138,190,0.16) 31.49%, rgba(255,255,255,0) 100%);
+}
+.pmw-ld-kpi-index {
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(7,133,242,0.10);
+  color: #02457A;
+  font-size: 13px;
+  font-weight: 800;
+  flex: 0 0 auto;
+}
+.pmw-ld-kpi-title {
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 700;
+  color: #012A50;
+}
+.pmw-ld-kpi-body {
+  padding: 14px 16px 16px;
+}
+.pmw-ld-kpi-value {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.pmw-ld-kpi-number {
+  font-size: 26px;
+  line-height: 34px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.pmw-ld-kpi-unit {
+  font-size: 13px;
+  line-height: 18px;
+  color: #6B7280;
+  font-weight: 600;
+}
+.pmw-ld-kpi-note {
+  font-size: 12px;
+  line-height: 16px;
+  color: #6B7280;
+}
+.pmw-ld-layout {
+  display: grid;
+  grid-template-columns: minmax(380px, .95fr) minmax(460px, 1.25fr);
+  gap: 16px;
+  align-items: start;
+}
+.pmw-ld-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(17,24,39,0.08);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(17,24,39,0.04), 0 12px 24px rgba(17,24,39,0.04);
+}
+.pmw-ld-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 14px 16px;
+  background: linear-gradient(90deg, rgba(1,138,190,0.14), rgba(255,255,255,0));
+  border-bottom: 1px solid rgba(17,24,39,0.08);
+}
+.pmw-ld-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 700;
+  color: #012A50;
+}
+
+.pmw-ld-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(2,69,122,0.08);
+  color: #02457A;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.pmw-ld-card-body {
+  padding: 16px;
+}
+.pmw-ld-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.pmw-ld-bar-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) 96px;
+  gap: 12px;
+  align-items: center;
+}
+.pmw-ld-bar-label {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+.pmw-ld-bar-track {
+  grid-column: 1 / -1;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(2, 69, 122, 0.08);
+  overflow: hidden;
+}
+.pmw-ld-bar-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #02457A;
+}
+.pmw-ld-bar-value {
+  text-align: right;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 800;
+  color: #02457A;
+  font-variant-numeric: tabular-nums;
+}
+.pmw-ld-group-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.pmw-ld-group {
+  border: 1px solid rgba(17,24,39,0.08);
+  border-radius: 16px;
+  background: #FFFFFF;
+  overflow: hidden;
+}
+.pmw-ld-group-head {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #FBFCFE;
+  border-bottom: 1px solid rgba(17,24,39,0.08);
+}
+.pmw-ld-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  background: rgba(7,133,242,0.10);
+  color: #02457A;
+  font-size: 13px;
+  font-weight: 800;
+}
+.pmw-ld-group-title {
+  display: inline;
+  margin: 0;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 800;
+  color: #111827;
+}
+.pmw-ld-group-unit {
+  display: inline;
+  margin-left: 6px;
+  font-size: 13px;
+  line-height: 18px;
+  color: #6B7280;
+  font-weight: 600;
+}
+.pmw-ld-group-unit::before {
+  content: '- ';
+  color: #6B7280;
+}
+.pmw-ld-group-value {
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 800;
+  color: #02457A;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.pmw-ld-sub-list {
+  display: grid;
+  grid-template-columns: minmax(190px, 1fr) 120px;
+}
+.pmw-ld-sub-row {
+  display: contents;
+}
+.pmw-ld-sub-row > span {
+  min-height: 40px;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(17,24,39,0.08);
+  display: inline-flex;
+  align-items: center;
+  font-size: 15px;
+  line-height: 22px;
+  color: #4B5563;
+}
+.pmw-ld-sub-row:last-child > span { border-bottom: 0; }
+.pmw-ld-sub-row > span:first-child {
+  justify-content: flex-start;
+}
+.pmw-ld-sub-row > span:last-child {
+  justify-content: flex-end;
+  font-variant-numeric: tabular-nums;
+  color: #111827;
+}
+.pmw-ld-detail {
+  background: #FFFFFF;
+  border: 1px solid rgba(17,24,39,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.pmw-ld-detail summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 14px 16px;
+  background: linear-gradient(90deg, rgba(1,138,190,0.12), rgba(255,255,255,0));
+  color: #02457A;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 22px;
+  border-bottom: 1px solid rgba(17,24,39,0.08);
+}
+.pmw-ld-detail summary::-webkit-details-marker { display: none; }
+.pmw-ld-detail[open] summary { border-bottom-color: rgba(17,24,39,0.08); }
+.pmw-ld-detail .dt-section {
+  border: 0 !important;
+  border-radius: 0;
+  box-shadow: none;
+}
+@media (max-width: 1366px) {
+  body.pmw-page-bc-lap-dat .dt-scroll-area { padding: 16px; gap: 14px; }
+  .pmw-ld-kpi-number { font-size: 22px; line-height: 30px; }
+  .pmw-ld-card-head { min-height: 50px; padding: 12px 14px; }
+  .pmw-ld-card-body { padding: 14px; }
+}
+@media (max-width: 1180px) {
+  .pmw-ld-kpi-grid {
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pmw-ld-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 900px) {
+  body.pmw-page-bc-lap-dat .sm-scroll { overflow: auto; }
+  body.pmw-page-bc-lap-dat .dt-scroll-area { overflow: visible; }
+}
+@media (max-width: 560px) {
+  .pmw-ld-kpi-grid { grid-template-columns: 1fr; }
+  .pmw-ld-sub-list { grid-template-columns: 1fr; }
+  .pmw-ld-sub-row > span:last-child { justify-content: flex-start; padding-top: 0; }
+  .pmw-ld-card-head { flex-direction: column; align-items: flex-start; }
+}
+
+
+/* Layout update: place “Nhóm chỉ tiêu chính” beside the KPI block, but keep KPI cards compact */
+.pmw-ld-top-layout {
+  display: grid;
+  grid-template-columns: minmax(380px, 0.95fr) minmax(460px, 1.25fr);
+  gap: 16px;
+  align-items: start;
+}
+.pmw-ld-top-layout .pmw-ld-kpi-grid {
+  width: 100%;
+  min-width: 0;
+  align-self: start;
+}
+.pmw-ld-top-layout .pmw-ld-kpi {
+  height: auto;
+  min-height: 0;
+  align-self: start;
+}
+.pmw-ld-top-layout > .pmw-ld-card {
+  height: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.pmw-ld-top-layout > .pmw-ld-card > .pmw-ld-card-body {
+  flex: initial;
+  min-height: 0;
+  overflow: visible;
+}
+.pmw-ld-layout {
+  grid-template-columns: 1fr;
+}
+@media (max-width: 1180px) {
+  .pmw-ld-top-layout { grid-template-columns: 1fr; }
+  .pmw-ld-top-layout > .pmw-ld-card > .pmw-ld-card-body { overflow: visible; }
+}
+/* Layout update: chart width follows KPI column and sits directly below KPI cards */
+.pmw-ld-kpi-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+}
+.pmw-ld-kpi-column .pmw-ld-kpi-grid {
+  width: 100%;
+}
+.pmw-ld-kpi-column .pmw-ld-card {
+  width: 100%;
+}
+
+</style>
 </head>
 <body class="pmw-page-bc-lap-dat pmw-page-stt-table">
 <div class="bao-cao-wrapper">
@@ -168,52 +531,84 @@
 <div data-component="business-report-page-head" data-current="Lắp đặt sửa chữa" data-month="4" data-parent="Báo cáo số liệu nội bộ" data-parent-url="bc-so-lieu-kd.html" data-root="Quản lý điều hành" data-root-url="quanly-dieuhanh.html" data-show-root="true" data-subtitle="Theo dõi tình hình lắp đặt, sửa chữa đồng hồ, giá trị xây lắp, chiều dài tuyến ống cải tạo và công trình đầu tư theo kỳ báo cáo" data-title="Báo cáo lắp đặt sửa chữa" data-year="2026" data-years="2026,2025,2024" id="pmw-business-report-page-head"></div>
 <div style="flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;">
 <div id="smViewLapDat" style="display:flex; flex:1; flex-direction:column; overflow:hidden;">
-<div class="dt-scroll-area">
-<div class="dt-section">
-<div class="dt-table-wrap">
-<div class="dt-table-title" id="bc-lap-dat-table-title">Lắp đặt sửa chữa — 12 tháng năm 2026</div>
-<div style="overflow-x:auto;">
-<table class="dt-table" id="bc-lap-dat-table">
-<thead><tr>
-<th style="width:60px;text-align:center;">STT</th>
-<th style="text-align:left;">Công việc</th>
-<th style="text-align:center;">ĐVT</th>
-<th>Công ty</th>
-<th>12 tháng</th>
-</tr></thead>
-<tbody>
-<tr id="bc-lap-dat-row-tong-gia-tri-xay-lap"><td id="bc-lap-dat-tong-gia-tri-xay-lap-stt" style="text-align:center;">1</td><td id="bc-lap-dat-tong-gia-tri-xay-lap-cong-viec" style="text-align:left;font-weight:600;">Tổng giá trị xây lắp</td><td id="bc-lap-dat-tong-gia-tri-xay-lap-dvt" style="text-align:center;">đồng</td><td id="bc-lap-dat-tong-gia-tri-xay-lap-cong-ty">30.354.478.805</td><td id="bc-lap-dat-tong-gia-tri-xay-lap-thang-12">30.354.478.805</td></tr>
-<tr id="bc-lap-dat-row-cai-tao-ong-d-63"><td id="bc-lap-dat-cai-tao-ong-d-63-stt"></td><td id="bc-lap-dat-cai-tao-ong-d-63-cong-viec" style="text-align:left;padding-left:24px;">— Cải tạo ống D=63</td><td id="bc-lap-dat-cai-tao-ong-d-63-dvt" style="text-align:center;">đồng</td><td id="bc-lap-dat-cai-tao-ong-d-63-cong-ty">6.095.847.386</td><td id="bc-lap-dat-cai-tao-ong-d-63-thang-12">6.095.847.386</td></tr>
-<tr id="bc-lap-dat-row-cai-tao-ong-d-lon-hon-bang100"><td id="bc-lap-dat-cai-tao-ong-d-lon-hon-bang100-stt"></td><td id="bc-lap-dat-cai-tao-ong-d-lon-hon-bang100-cong-viec" style="text-align:left;padding-left:24px;">— Cải tạo ống D ≥100</td><td id="bc-lap-dat-cai-tao-ong-d-lon-hon-bang100-dvt" style="text-align:center;">đồng</td><td id="bc-lap-dat-cai-tao-ong-d-lon-hon-bang100-cong-ty">6.206.697.000</td><td id="bc-lap-dat-cai-tao-ong-d-lon-hon-bang100-thang-12">6.206.697.000</td></tr>
-<tr id="bc-lap-dat-row-ctdt-d-63"><td id="bc-lap-dat-ctdt-d-63-stt"></td><td id="bc-lap-dat-ctdt-d-63-cong-viec" style="text-align:left;padding-left:24px;">— CTĐT D=63</td><td id="bc-lap-dat-ctdt-d-63-dvt" style="text-align:center;">đồng</td><td id="bc-lap-dat-ctdt-d-63-cong-ty">1.850.683.071</td><td id="bc-lap-dat-ctdt-d-63-thang-12">1.850.683.071</td></tr>
-<tr id="bc-lap-dat-row-ctdt-dlon-hon-bang100"><td id="bc-lap-dat-ctdt-dlon-hon-bang100-stt"></td><td id="bc-lap-dat-ctdt-dlon-hon-bang100-cong-viec" style="text-align:left;padding-left:24px;">— CTĐT D≥100</td><td id="bc-lap-dat-ctdt-dlon-hon-bang100-dvt" style="text-align:center;">đồng</td><td id="bc-lap-dat-ctdt-dlon-hon-bang100-cong-ty">6.119.971.000</td><td id="bc-lap-dat-ctdt-dlon-hon-bang100-thang-12">6.119.971.000</td></tr>
-<tr id="bc-lap-dat-row-lap-dat-dong-ho-khach-hang-mien-phi"><td id="bc-lap-dat-lap-dat-dong-ho-khach-hang-mien-phi-stt"></td><td id="bc-lap-dat-lap-dat-dong-ho-khach-hang-mien-phi-cong-viec" style="text-align:left;padding-left:24px;">— Lắp đặt ĐH khách hàng miễn phí</td><td id="bc-lap-dat-lap-dat-dong-ho-khach-hang-mien-phi-dvt" style="text-align:center;">đồng</td><td id="bc-lap-dat-lap-dat-dong-ho-khach-hang-mien-phi-cong-ty">0</td><td id="bc-lap-dat-lap-dat-dong-ho-khach-hang-mien-phi-thang-12">0</td></tr>
-<tr id="bc-lap-dat-row-lap-dat-dong-ho-khach-hang-co-phi"><td id="bc-lap-dat-lap-dat-dong-ho-khach-hang-co-phi-stt"></td><td id="bc-lap-dat-lap-dat-dong-ho-khach-hang-co-phi-cong-viec" style="text-align:left;padding-left:24px;">— Lắp đặt ĐH khách hàng có phí</td><td id="bc-lap-dat-lap-dat-dong-ho-khach-hang-co-phi-dvt" style="text-align:center;">đồng</td><td id="bc-lap-dat-lap-dat-dong-ho-khach-hang-co-phi-cong-ty">725.353.856</td><td id="bc-lap-dat-lap-dat-dong-ho-khach-hang-co-phi-thang-12">725.353.856</td></tr>
-<tr id="bc-lap-dat-row-sua-chua-thay-doi-dong-ho-mien-phi"><td id="bc-lap-dat-sua-chua-thay-doi-dong-ho-mien-phi-stt"></td><td id="bc-lap-dat-sua-chua-thay-doi-dong-ho-mien-phi-cong-viec" style="text-align:left;padding-left:24px;">— Sửa chữa, thay, dời ĐH miễn phí</td><td id="bc-lap-dat-sua-chua-thay-doi-dong-ho-mien-phi-dvt" style="text-align:center;">đồng</td><td id="bc-lap-dat-sua-chua-thay-doi-dong-ho-mien-phi-cong-ty">7.275.877.267</td><td id="bc-lap-dat-sua-chua-thay-doi-dong-ho-mien-phi-thang-12">7.275.877.267</td></tr>
-<tr id="bc-lap-dat-row-sua-chua-thay-doi-dong-ho-co-phi"><td id="bc-lap-dat-sua-chua-thay-doi-dong-ho-co-phi-stt"></td><td id="bc-lap-dat-sua-chua-thay-doi-dong-ho-co-phi-cong-viec" style="text-align:left;padding-left:24px;">— Sửa chữa, thay, dời ĐH có phí</td><td id="bc-lap-dat-sua-chua-thay-doi-dong-ho-co-phi-dvt" style="text-align:center;">đồng</td><td id="bc-lap-dat-sua-chua-thay-doi-dong-ho-co-phi-cong-ty">217.027.225</td><td id="bc-lap-dat-sua-chua-thay-doi-dong-ho-co-phi-thang-12">217.027.225</td></tr>
-<tr id="bc-lap-dat-row-cong-trinh-khac"><td id="bc-lap-dat-cong-trinh-khac-stt"></td><td id="bc-lap-dat-cong-trinh-khac-cong-viec" style="text-align:left;padding-left:24px;">— Công trình khác</td><td id="bc-lap-dat-cong-trinh-khac-dvt" style="text-align:center;">đồng</td><td id="bc-lap-dat-cong-trinh-khac-cong-ty">1.863.022.000</td><td id="bc-lap-dat-cong-trinh-khac-thang-12">1.863.022.000</td></tr>
-<tr id="bc-lap-dat-row-so-dong-ho-lap-moi"><td id="bc-lap-dat-so-dong-ho-lap-moi-stt" style="text-align:center;">2</td><td id="bc-lap-dat-so-dong-ho-lap-moi-cong-viec" style="text-align:left;font-weight:600;">Số đồng hồ lắp mới</td><td id="bc-lap-dat-so-dong-ho-lap-moi-dvt" style="text-align:center;">cái</td><td id="bc-lap-dat-so-dong-ho-lap-moi-cong-ty">1.219</td><td id="bc-lap-dat-so-dong-ho-lap-moi-thang-12">1.219</td></tr>
-<tr id="bc-lap-dat-row-ong-truoc-dong-ho"><td id="bc-lap-dat-ong-truoc-dong-ho-stt" style="text-align:center;">3</td><td id="bc-lap-dat-ong-truoc-dong-ho-cong-viec" style="text-align:left;font-weight:600;">Ống trước đồng hồ</td><td id="bc-lap-dat-ong-truoc-dong-ho-dvt" style="text-align:center;">mét</td><td id="bc-lap-dat-ong-truoc-dong-ho-cong-ty">2.144</td><td id="bc-lap-dat-ong-truoc-dong-ho-thang-12">2.144</td></tr>
-<tr id="bc-lap-dat-row-d-25"><td id="bc-lap-dat-d-25-stt"></td><td id="bc-lap-dat-d-25-cong-viec" style="text-align:left;padding-left:24px;">— D = 25</td><td id="bc-lap-dat-d-25-dvt" style="text-align:center;">mét</td><td id="bc-lap-dat-d-25-cong-ty">2.144</td><td id="bc-lap-dat-d-25-thang-12">2.144</td></tr>
-<tr id="bc-lap-dat-row-d-63"><td id="bc-lap-dat-d-63-stt"></td><td id="bc-lap-dat-d-63-cong-viec" style="text-align:left;padding-left:24px;">— D = 63</td><td id="bc-lap-dat-d-63-dvt" style="text-align:center;">mét</td><td id="bc-lap-dat-d-63-cong-ty">0</td><td id="bc-lap-dat-d-63-thang-12">0</td></tr>
-<tr id="bc-lap-dat-row-chieu-dai-ong-ctdt"><td id="bc-lap-dat-chieu-dai-ong-ctdt-stt" style="text-align:center;">4</td><td id="bc-lap-dat-chieu-dai-ong-ctdt-cong-viec" style="text-align:left;font-weight:600;">Chiều dài ống CTDT</td><td id="bc-lap-dat-chieu-dai-ong-ctdt-dvt" style="text-align:center;">mét</td><td id="bc-lap-dat-chieu-dai-ong-ctdt-cong-ty">9.171</td><td id="bc-lap-dat-chieu-dai-ong-ctdt-thang-12">9.171</td></tr>
-<tr id="bc-lap-dat-row-d-lon-hon-bang-100"><td id="bc-lap-dat-d-lon-hon-bang-100-stt"></td><td id="bc-lap-dat-d-lon-hon-bang-100-cong-viec" style="text-align:left;padding-left:24px;">— D ≥ 100</td><td id="bc-lap-dat-d-lon-hon-bang-100-dvt" style="text-align:center;">mét</td><td id="bc-lap-dat-d-lon-hon-bang-100-cong-ty">5.114</td><td id="bc-lap-dat-d-lon-hon-bang-100-thang-12">5.114</td></tr>
-<tr id="bc-lap-dat-row-d-63-2"><td id="bc-lap-dat-d-63-2-stt"></td><td id="bc-lap-dat-d-63-2-cong-viec" style="text-align:left;padding-left:24px;">— D = 63</td><td id="bc-lap-dat-d-63-2-dvt" style="text-align:center;">mét</td><td id="bc-lap-dat-d-63-2-cong-ty">4.057</td><td id="bc-lap-dat-d-63-2-thang-12">4.057</td></tr>
-<tr id="bc-lap-dat-row-d-nho-hon-63"><td id="bc-lap-dat-d-nho-hon-63-stt"></td><td id="bc-lap-dat-d-nho-hon-63-cong-viec" style="text-align:left;padding-left:24px;">— D &lt; 63</td><td id="bc-lap-dat-d-nho-hon-63-dvt" style="text-align:center;">mét</td><td id="bc-lap-dat-d-nho-hon-63-cong-ty">0</td><td id="bc-lap-dat-d-nho-hon-63-thang-12">0</td></tr>
-<tr id="bc-lap-dat-row-chieu-dai-ong-cai-tao"><td id="bc-lap-dat-chieu-dai-ong-cai-tao-stt" style="text-align:center;">5</td><td id="bc-lap-dat-chieu-dai-ong-cai-tao-cong-viec" style="text-align:left;font-weight:600;">Chiều dài ống cải tạo</td><td id="bc-lap-dat-chieu-dai-ong-cai-tao-dvt" style="text-align:center;">mét</td><td id="bc-lap-dat-chieu-dai-ong-cai-tao-cong-ty">15.523</td><td id="bc-lap-dat-chieu-dai-ong-cai-tao-thang-12">15.523</td></tr>
-<tr id="bc-lap-dat-row-d-lon-hon-bang-100-2"><td id="bc-lap-dat-d-lon-hon-bang-100-2-stt"></td><td id="bc-lap-dat-d-lon-hon-bang-100-2-cong-viec" style="text-align:left;padding-left:24px;">— D ≥ 100</td><td id="bc-lap-dat-d-lon-hon-bang-100-2-dvt" style="text-align:center;">mét</td><td id="bc-lap-dat-d-lon-hon-bang-100-2-cong-ty">3.311</td><td id="bc-lap-dat-d-lon-hon-bang-100-2-thang-12">3.311</td></tr>
-<tr id="bc-lap-dat-row-d-63-3"><td id="bc-lap-dat-d-63-3-stt"></td><td id="bc-lap-dat-d-63-3-cong-viec" style="text-align:left;padding-left:24px;">— D = 63</td><td id="bc-lap-dat-d-63-3-dvt" style="text-align:center;">mét</td><td id="bc-lap-dat-d-63-3-cong-ty">12.212</td><td id="bc-lap-dat-d-63-3-thang-12">12.212</td></tr>
-<tr id="bc-lap-dat-row-d-nho-hon-63-2"><td id="bc-lap-dat-d-nho-hon-63-2-stt"></td><td id="bc-lap-dat-d-nho-hon-63-2-cong-viec" style="text-align:left;padding-left:24px;">— D &lt; 63</td><td id="bc-lap-dat-d-nho-hon-63-2-dvt" style="text-align:center;">mét</td><td id="bc-lap-dat-d-nho-hon-63-2-cong-ty">0</td><td id="bc-lap-dat-d-nho-hon-63-2-thang-12">0</td></tr>
-<tr id="bc-lap-dat-row-thay-bao-hanh-dong-ho-dinh-ky"><td id="bc-lap-dat-thay-bao-hanh-dong-ho-dinh-ky-stt" style="text-align:center;">6</td><td id="bc-lap-dat-thay-bao-hanh-dong-ho-dinh-ky-cong-viec" style="text-align:left;font-weight:600;">Thay bảo hành đồng hồ định kỳ</td><td id="bc-lap-dat-thay-bao-hanh-dong-ho-dinh-ky-dvt" style="text-align:center;">cái</td><td id="bc-lap-dat-thay-bao-hanh-dong-ho-dinh-ky-cong-ty">9.992</td><td id="bc-lap-dat-thay-bao-hanh-dong-ho-dinh-ky-thang-12">9.992</td></tr>
-<tr id="bc-lap-dat-row-thay-dong-ho-dot-xuat"><td id="bc-lap-dat-thay-dong-ho-dot-xuat-stt" style="text-align:center;">7</td><td id="bc-lap-dat-thay-dong-ho-dot-xuat-cong-viec" style="text-align:left;font-weight:600;">Thay đồng hồ đột xuất</td><td id="bc-lap-dat-thay-dong-ho-dot-xuat-dvt" style="text-align:center;">cái</td><td id="bc-lap-dat-thay-dong-ho-dot-xuat-cong-ty">232</td><td id="bc-lap-dat-thay-dong-ho-dot-xuat-thang-12">232</td></tr>
-<tr id="bc-lap-dat-row-mat-dong-ho"><td id="bc-lap-dat-mat-dong-ho-stt" style="text-align:center;">8</td><td id="bc-lap-dat-mat-dong-ho-cong-viec" style="text-align:left;font-weight:600;">Mất đồng hồ</td><td id="bc-lap-dat-mat-dong-ho-dvt" style="text-align:center;">cái</td><td id="bc-lap-dat-mat-dong-ho-cong-ty">23</td><td id="bc-lap-dat-mat-dong-ho-thang-12">23</td></tr>
-<tr id="bc-lap-dat-row-thay-stk"><td id="bc-lap-dat-thay-stk-stt" style="text-align:center;">9</td><td id="bc-lap-dat-thay-stk-cong-viec" style="text-align:left;font-weight:600;">Thay STK</td><td id="bc-lap-dat-thay-stk-dvt" style="text-align:center;">cái</td><td id="bc-lap-dat-thay-stk-cong-ty">0</td><td id="bc-lap-dat-thay-stk-thang-12">0</td></tr>
-<tr id="bc-lap-dat-row-hop-dong-ho"><td id="bc-lap-dat-hop-dong-ho-stt" style="text-align:center;">10</td><td id="bc-lap-dat-hop-dong-ho-cong-viec" style="text-align:left;font-weight:600;">Hộp đồng hồ</td><td id="bc-lap-dat-hop-dong-ho-dvt" style="text-align:center;">cái</td><td id="bc-lap-dat-hop-dong-ho-cong-ty">9.523</td><td id="bc-lap-dat-hop-dong-ho-thang-12">9.523</td></tr>
-</tbody>
-</table>
+<div class="dt-scroll-area" id="bc-lap-dat-content-scroll">
+<div class="pmw-ld-top-layout" id="bc-lap-dat-top-layout">
+<div class="pmw-ld-kpi-column" id="bc-lap-dat-kpi-column">
+<div class="pmw-ld-kpi-grid" id="bc-lap-dat-kpi-grid">
+<article class="pmw-ld-kpi" id="bc-lap-dat-kpi-gia-tri-xay-lap">
+<div class="pmw-ld-kpi-head" id="bc-lap-dat-kpi-gia-tri-xay-lap-head"><span class="pmw-ld-kpi-index" id="bc-lap-dat-kpi-gia-tri-xay-lap-index">1</span><h3 class="pmw-ld-kpi-title" id="bc-lap-dat-kpi-gia-tri-xay-lap-title">TỔNG GIÁ TRỊ XÂY LẮP</h3></div>
+<div class="pmw-ld-kpi-body" id="bc-lap-dat-kpi-gia-tri-xay-lap-body"><div class="pmw-ld-kpi-value" id="bc-lap-dat-kpi-gia-tri-xay-lap-value-wrap"><span class="pmw-ld-kpi-number" id="bc-lap-dat-kpi-gia-tri-xay-lap-value">30,35</span><span class="pmw-ld-kpi-unit" id="bc-lap-dat-kpi-gia-tri-xay-lap-unit">tỷ đồng</span></div><div class="pmw-ld-kpi-note" id="bc-lap-dat-kpi-gia-tri-xay-lap-note">Bao gồm cải tạo, CTĐT, lắp đặt và sửa chữa đồng hồ</div></div>
+</article>
+<article class="pmw-ld-kpi" id="bc-lap-dat-kpi-dong-ho-lap-moi">
+<div class="pmw-ld-kpi-head" id="bc-lap-dat-kpi-dong-ho-lap-moi-head"><span class="pmw-ld-kpi-index" id="bc-lap-dat-kpi-dong-ho-lap-moi-index">2</span><h3 class="pmw-ld-kpi-title" id="bc-lap-dat-kpi-dong-ho-lap-moi-title">ĐỒNG HỒ LẮP MỚI</h3></div>
+<div class="pmw-ld-kpi-body" id="bc-lap-dat-kpi-dong-ho-lap-moi-body"><div class="pmw-ld-kpi-value" id="bc-lap-dat-kpi-dong-ho-lap-moi-value-wrap"><span class="pmw-ld-kpi-number" id="bc-lap-dat-kpi-dong-ho-lap-moi-value">1.219</span><span class="pmw-ld-kpi-unit" id="bc-lap-dat-kpi-dong-ho-lap-moi-unit">cái</span></div><div class="pmw-ld-kpi-note" id="bc-lap-dat-kpi-dong-ho-lap-moi-note">Tổng số đồng hồ lắp mới trong kỳ</div></div>
+</article>
+<article class="pmw-ld-kpi" id="bc-lap-dat-kpi-ong-cai-tao">
+<div class="pmw-ld-kpi-head" id="bc-lap-dat-kpi-ong-cai-tao-head"><span class="pmw-ld-kpi-index" id="bc-lap-dat-kpi-ong-cai-tao-index">3</span><h3 class="pmw-ld-kpi-title" id="bc-lap-dat-kpi-ong-cai-tao-title">CHIỀU DÀI ỐNG CẢI TẠO</h3></div>
+<div class="pmw-ld-kpi-body" id="bc-lap-dat-kpi-ong-cai-tao-body"><div class="pmw-ld-kpi-value" id="bc-lap-dat-kpi-ong-cai-tao-value-wrap"><span class="pmw-ld-kpi-number" id="bc-lap-dat-kpi-ong-cai-tao-value">15.523</span><span class="pmw-ld-kpi-unit" id="bc-lap-dat-kpi-ong-cai-tao-unit">mét</span></div><div class="pmw-ld-kpi-note" id="bc-lap-dat-kpi-ong-cai-tao-note">D ≥ 100: 3.311m · D = 63: 12.212m</div></div>
+</article>
+<article class="pmw-ld-kpi" id="bc-lap-dat-kpi-thay-bao-hanh">
+<div class="pmw-ld-kpi-head" id="bc-lap-dat-kpi-thay-bao-hanh-head"><span class="pmw-ld-kpi-index" id="bc-lap-dat-kpi-thay-bao-hanh-index">4</span><h3 class="pmw-ld-kpi-title" id="bc-lap-dat-kpi-thay-bao-hanh-title">THAY BẢO HÀNH ĐỊNH KỲ</h3></div>
+<div class="pmw-ld-kpi-body" id="bc-lap-dat-kpi-thay-bao-hanh-body"><div class="pmw-ld-kpi-value" id="bc-lap-dat-kpi-thay-bao-hanh-value-wrap"><span class="pmw-ld-kpi-number" id="bc-lap-dat-kpi-thay-bao-hanh-value">9.992</span><span class="pmw-ld-kpi-unit" id="bc-lap-dat-kpi-thay-bao-hanh-unit">cái</span></div><div class="pmw-ld-kpi-note" id="bc-lap-dat-kpi-thay-bao-hanh-note">Theo dõi số lượng thay đồng hồ bảo hành</div></div>
+</article>
+</div>
+<section class="pmw-ld-card" id="bc-lap-dat-chart-gia-tri">
+<div class="pmw-ld-card-head" id="bc-lap-dat-chart-gia-tri-head">
+<h2 class="pmw-ld-card-title" id="bc-lap-dat-chart-gia-tri-title">Cơ cấu giá trị xây lắp</h2>
+<span class="pmw-ld-badge" id="bc-lap-dat-chart-gia-tri-period">12 tháng 2026</span>
+</div>
+<div class="pmw-ld-card-body" id="bc-lap-dat-chart-gia-tri-body">
+<div class="pmw-ld-bars" id="bc-lap-dat-chart-gia-tri-bars">
+<div class="pmw-ld-bar-row" id="bc-lap-dat-chart-sua-chua-mien-phi-row"><span class="pmw-ld-bar-label" id="bc-lap-dat-chart-sua-chua-mien-phi-label">Sửa chữa, thay, dời ĐH miễn phí</span><span class="pmw-ld-bar-value" id="bc-lap-dat-chart-sua-chua-mien-phi-value">7,28 tỷ</span><div class="pmw-ld-bar-track" id="bc-lap-dat-chart-sua-chua-mien-phi-track"><div class="pmw-ld-bar-fill" id="bc-lap-dat-chart-sua-chua-mien-phi-bar" style="width:100%"></div></div></div>
+<div class="pmw-ld-bar-row" id="bc-lap-dat-chart-cai-tao-d100-row"><span class="pmw-ld-bar-label" id="bc-lap-dat-chart-cai-tao-d100-label">Cải tạo ống D ≥ 100</span><span class="pmw-ld-bar-value" id="bc-lap-dat-chart-cai-tao-d100-value">6,21 tỷ</span><div class="pmw-ld-bar-track" id="bc-lap-dat-chart-cai-tao-d100-track"><div class="pmw-ld-bar-fill" id="bc-lap-dat-chart-cai-tao-d100-bar" style="width:85.3%"></div></div></div>
+<div class="pmw-ld-bar-row" id="bc-lap-dat-chart-ctdt-d100-row"><span class="pmw-ld-bar-label" id="bc-lap-dat-chart-ctdt-d100-label">CTĐT D ≥ 100</span><span class="pmw-ld-bar-value" id="bc-lap-dat-chart-ctdt-d100-value">6,12 tỷ</span><div class="pmw-ld-bar-track" id="bc-lap-dat-chart-ctdt-d100-track"><div class="pmw-ld-bar-fill" id="bc-lap-dat-chart-ctdt-d100-bar" style="width:84.1%"></div></div></div>
+<div class="pmw-ld-bar-row" id="bc-lap-dat-chart-cai-tao-d63-row"><span class="pmw-ld-bar-label" id="bc-lap-dat-chart-cai-tao-d63-label">Cải tạo ống D = 63</span><span class="pmw-ld-bar-value" id="bc-lap-dat-chart-cai-tao-d63-value">6,10 tỷ</span><div class="pmw-ld-bar-track" id="bc-lap-dat-chart-cai-tao-d63-track"><div class="pmw-ld-bar-fill" id="bc-lap-dat-chart-cai-tao-d63-bar" style="width:83.8%"></div></div></div>
+<div class="pmw-ld-bar-row" id="bc-lap-dat-chart-cong-trinh-khac-row"><span class="pmw-ld-bar-label" id="bc-lap-dat-chart-cong-trinh-khac-label">Công trình khác</span><span class="pmw-ld-bar-value" id="bc-lap-dat-chart-cong-trinh-khac-value">1,86 tỷ</span><div class="pmw-ld-bar-track" id="bc-lap-dat-chart-cong-trinh-khac-track"><div class="pmw-ld-bar-fill" id="bc-lap-dat-chart-cong-trinh-khac-bar" style="width:25.6%"></div></div></div>
 </div>
 </div>
+</section>
 </div>
+<section class="pmw-ld-card" id="bc-lap-dat-section-chi-tieu-chinh">
+<div class="pmw-ld-card-head" id="bc-lap-dat-section-chi-tieu-chinh-head">
+<h2 class="pmw-ld-card-title" id="bc-lap-dat-section-chi-tieu-chinh-title">Nhóm chỉ tiêu chính</h2>
+<span class="pmw-ld-badge" id="bc-lap-dat-section-chi-tieu-chinh-badge">Tổng quan</span>
+</div>
+<div class="pmw-ld-card-body" id="bc-lap-dat-section-chi-tieu-chinh-body">
+<div class="pmw-ld-group-list" id="bc-lap-dat-section-chi-tieu-chinh-list">
+<article class="pmw-ld-group" id="bc-lap-dat-card-gia-tri-xay-lap">
+<div class="pmw-ld-group-head" id="bc-lap-dat-card-gia-tri-xay-lap-head"><span class="pmw-ld-index" id="bc-lap-dat-card-gia-tri-xay-lap-index">1</span><div><h3 class="pmw-ld-group-title" id="bc-lap-dat-card-gia-tri-xay-lap-title">Tổng giá trị xây lắp</h3><span class="pmw-ld-group-unit" id="bc-lap-dat-card-gia-tri-xay-lap-unit">đồng</span></div><span class="pmw-ld-group-value" id="bc-lap-dat-card-gia-tri-xay-lap-value">30.354.478.805</span></div>
+<div class="pmw-ld-sub-list" id="bc-lap-dat-card-gia-tri-xay-lap-list">
+<div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-cai-tao-d-63-row"><span id="bc-lap-dat-card-row-cai-tao-d-63-label">Cải tạo ống D=63</span><span id="bc-lap-dat-card-cai-tao-d-63-value">6.095.847.386</span></div>
+<div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-cai-tao-d-100-row"><span id="bc-lap-dat-card-row-cai-tao-d-100-label">Cải tạo ống D ≥100</span><span id="bc-lap-dat-card-cai-tao-d-100-value">6.206.697.000</span></div>
+<div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-ctdt-d-63-row"><span id="bc-lap-dat-card-row-ctdt-d-63-label">CTĐT D=63</span><span id="bc-lap-dat-card-ctdt-d-63-value">1.850.683.071</span></div>
+<div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-ctdt-d-100-row"><span id="bc-lap-dat-card-row-ctdt-d-100-label">CTĐT D≥100</span><span id="bc-lap-dat-card-ctdt-d-100-value">6.119.971.000</span></div>
+<div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-lap-dat-co-phi-row"><span id="bc-lap-dat-card-row-lap-dat-co-phi-label">Lắp đặt ĐH có phí</span><span id="bc-lap-dat-card-lap-dat-co-phi-value">725.353.856</span></div>
+<div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-sua-chua-mien-phi-row"><span id="bc-lap-dat-card-row-sua-chua-mien-phi-label">Sửa chữa ĐH miễn phí</span><span id="bc-lap-dat-card-sua-chua-mien-phi-value">7.275.877.267</span></div>
+</div>
+</article>
+<article class="pmw-ld-group" id="bc-lap-dat-card-chieu-dai-ong">
+<div class="pmw-ld-group-head" id="bc-lap-dat-card-chieu-dai-ong-head"><span class="pmw-ld-index" id="bc-lap-dat-card-chieu-dai-ong-index">2</span><div><h3 class="pmw-ld-group-title" id="bc-lap-dat-card-chieu-dai-ong-title">Chiều dài tuyến ống</h3><span class="pmw-ld-group-unit" id="bc-lap-dat-card-chieu-dai-ong-unit">mét</span></div><span class="pmw-ld-group-value" id="bc-lap-dat-card-chieu-dai-ong-value">26.838</span></div>
+<div class="pmw-ld-sub-list" id="bc-lap-dat-card-chieu-dai-ong-list">
+<div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-ong-truoc-dong-ho-row"><span id="bc-lap-dat-card-row-ong-truoc-dong-ho-label">Ống trước đồng hồ</span><span id="bc-lap-dat-card-ong-truoc-dong-ho-value">2.144</span></div>
+<div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-ong-ctdt-row"><span id="bc-lap-dat-card-row-ong-ctdt-label">Chiều dài ống CTDT</span><span id="bc-lap-dat-card-ong-ctdt-value">9.171</span></div>
+<div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-ong-cai-tao-row"><span id="bc-lap-dat-card-row-ong-cai-tao-label">Chiều dài ống cải tạo</span><span id="bc-lap-dat-card-ong-cai-tao-value">15.523</span></div>
+</div>
+</article>
+<article class="pmw-ld-group" id="bc-lap-dat-card-dong-ho">
+<div class="pmw-ld-group-head" id="bc-lap-dat-card-dong-ho-head"><span class="pmw-ld-index" id="bc-lap-dat-card-dong-ho-index">3</span><div><h3 class="pmw-ld-group-title" id="bc-lap-dat-card-dong-ho-title">Đồng hồ &amp; phụ kiện</h3><span class="pmw-ld-group-unit" id="bc-lap-dat-card-dong-ho-unit">cái</span></div><span class="pmw-ld-group-value" id="bc-lap-dat-card-dong-ho-value">20.989</span></div>
+<div class="pmw-ld-sub-list" id="bc-lap-dat-card-dong-ho-list">
+<div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-dong-ho-lap-moi-row"><span id="bc-lap-dat-card-row-dong-ho-lap-moi-label">Số đồng hồ lắp mới</span><span id="bc-lap-dat-card-dong-ho-lap-moi-value">1.219</span></div>
+<div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-thay-bao-hanh-row"><span id="bc-lap-dat-card-row-thay-bao-hanh-label">Thay bảo hành định kỳ</span><span id="bc-lap-dat-card-thay-bao-hanh-value">9.992</span></div>
+<div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-thay-dot-xuat-row"><span id="bc-lap-dat-card-row-thay-dot-xuat-label">Thay đồng hồ đột xuất</span><span id="bc-lap-dat-card-thay-dot-xuat-value">232</span></div>
+<div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-mat-dong-ho-row"><span id="bc-lap-dat-card-row-mat-dong-ho-label">Mất đồng hồ</span><span id="bc-lap-dat-card-mat-dong-ho-value">23</span></div>
+<div class="pmw-ld-sub-row" id="bc-lap-dat-card-row-hop-dong-ho-row"><span id="bc-lap-dat-card-row-hop-dong-ho-label">Hộp đồng hồ</span><span id="bc-lap-dat-card-hop-dong-ho-value">9.523</span></div>
+</div>
+</article>
+</div>
+</div>
+</section>
+</div>
+
 </div>
 </div><!-- /smViewLapDat -->
 </div>
