@@ -639,14 +639,14 @@
         <div class="popup-accent-line" id="accentLine"></div>
 
         <div class="popup-field">
-          <label for="inputUser">Tên đăng nhập</label>
+          <label id="label-input-user" for="inputUser">Tên đăng nhập</label>
           <div class="popup-input-wrap">
             <input type="text" id="inputUser" placeholder="Nhập tên đăng nhập" autocomplete="username" />
           </div>
         </div>
 
         <div class="popup-field">
-          <label for="inputPass">Mật khẩu</label>
+          <label id="label-input-pass" for="inputPass">Mật khẩu</label>
           <div class="popup-input-wrap">
             <input type="password" id="inputPass" placeholder="Nhập mật khẩu" autocomplete="current-password" />
             <button class="popup-eye" id="btnEye" type="button" aria-label="Hiện/ẩn mật khẩu">
@@ -662,12 +662,12 @@
           </div>
         </div>
 
-        <label class="popup-row-check">
+        <label class="popup-row-check" id="label-chk-remember">
           <input type="checkbox" id="chkRemember" />
           <span>Lưu tài khoản trên máy này</span>
         </label>
 
-        <button class="popup-btn-login" type="button">Đăng nhập</button>
+        <button class="popup-btn-login" id="btnLogin" type="button">Đăng nhập</button>
         <button class="popup-btn-back" id="btnBack" type="button">Quay về trang chủ</button>
       </div>
     </div>

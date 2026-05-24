@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="vi">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PMW — Tổng hợp số liệu kinh doanh chi tiết</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PMW — Tổng hợp số liệu kinh doanh chi tiết</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
 
     /* Business report rebuild: chỉ dùng layout chuẩn, không ghi đè header/sidebar */
     html, body { overflow: hidden; }
@@ -76,69 +77,60 @@
 
 
   </style>
-  <link rel="stylesheet" href="responsive.css?v=38"/>
-  <script src="components/components-loader.js" defer></script>
+<link href="responsive.css?v=38" rel="stylesheet"/>
+<script defer="" src="components/components-loader.js"></script>
 </head>
 <body class="kd-view-detail">
-<div class="bao-cao-wrapper">
-  <div id="pmw-header" data-component="header"></div>
-  <div class="submod-page active">
-    <div id="pmw-sidebar-qlsx" data-component="sidebar-qlsx"></div>
-    <main class="sm-main">
-      <div id="pmw-business-report-page-head" data-component="business-report-page-head"
-           data-parent="Quản lý sản xuất"
-           data-current="Tổng hợp số liệu kinh doanh"
-           data-title="Tổng hợp số liệu kinh doanh"
-           data-subtitle="Xem chi tiết tổng hợp phải thu, đã thu, chưa thu và doanh thu theo từng đơn vị thu hộ trong kỳ báo cáo"
-           data-month="05"
-           data-months="01,02,03,04,05,06,07,08,09,10,11,12"
-           data-year="2026"></div>
-      <div class="sm-scroll">
-        <div id="pmw-report-tabs" data-component="report-tabs"></div>
-        <section class="kd-section">
-
-          <article class="kd-card">
-            <div class="kd-table-scroll">
-              <table class="kd-table" style="min-width:530px">
-                <colgroup><col style="width:130px"><col style="width:100px"><col style="width:80px"><col style="min-width:140px"><col style="width:80px"></colgroup>
-                <thead><tr><th>Chỉ tiêu</th><th>Hóa đơn</th><th>Tỷ lệ</th><th>Tiền</th><th>Tỷ lệ</th></tr></thead>
-                <tbody><tr><td>Phải thu</td><td id="kd-detail-summary-phai-thu-hoa-don" class='num'>382.165</td><td id="kd-detail-summary-phai-thu-ti-le-hoa-don" class='num'>100%</td><td id="kd-detail-summary-phai-thu-tien" class='num'>207.619.844.798</td><td id="kd-detail-summary-phai-thu-ti-le-tien" class='num'>100%</td></tr>
-<tr><td>Đã thu</td><td id="kd-detail-summary-da-thu-hoa-don" class='num'>366.689</td><td id="kd-detail-summary-da-thu-ti-le-hoa-don" class='num'>95,95%</td><td id="kd-detail-summary-da-thu-tien" class='num'>187.172.537.953</td><td id="kd-detail-summary-da-thu-ti-le-tien" class='num'>90,15%</td></tr>
-<tr><td>Chưa thu</td><td id="kd-detail-summary-chua-thu-hoa-don" class='num'>15.476</td><td id="kd-detail-summary-chua-thu-ti-le-hoa-don" class='num'>4,05%</td><td id="kd-detail-summary-chua-thu-tien" class='num'>20.447.306.845</td><td id="kd-detail-summary-chua-thu-ti-le-tien" class='num'>9,85%</td></tr>
+<div class="bao-cao-wrapper" id="kd-detail-wrapper">
+<div data-component="header" id="pmw-header"></div>
+<div class="submod-page active" id="kd-detail-submod-page">
+<div data-component="sidebar-qlsx" id="pmw-sidebar-qlsx"></div>
+<main class="sm-main" id="kd-detail-main">
+<div data-component="business-report-page-head" data-current="Tổng hợp số liệu kinh doanh" data-month="05" data-months="01,02,03,04,05,06,07,08,09,10,11,12" data-parent="Quản lý sản xuất" data-subtitle="Xem chi tiết tổng hợp phải thu, đã thu, chưa thu và doanh thu theo từng đơn vị thu hộ trong kỳ báo cáo" data-title="Tổng hợp số liệu kinh doanh" data-year="2026" id="pmw-business-report-page-head"></div>
+<div class="sm-scroll" id="kd-detail-scroll">
+<div data-component="report-tabs" id="pmw-report-tabs"></div>
+<section class="kd-section" id="kd-detail-section">
+<article class="kd-card" id="kd-detail-summary-card">
+<div class="kd-table-scroll" id="kd-detail-summary-table-scroll">
+<table class="kd-table" id="kd-detail-summary-table" style="min-width:530px">
+<colgroup id="kd-detail-summary-colgroup"><col id="kd-detail-summary-col-1" style="width:130px"/><col id="kd-detail-summary-col-2" style="width:100px"/><col id="kd-detail-summary-col-3" style="width:80px"/><col id="kd-detail-summary-col-4" style="min-width:140px"/><col id="kd-detail-summary-col-5" style="width:80px"/></colgroup>
+<thead id="kd-detail-summary-thead"><tr id="kd-detail-summary-head-row"><th id="kd-detail-summary-head-chi-tieu">Chỉ tiêu</th><th id="kd-detail-summary-head-hoa-don">Hóa đơn</th><th id="kd-detail-summary-head-ti-le-hoa-don">Tỷ lệ</th><th id="kd-detail-summary-head-tien">Tiền</th><th id="kd-detail-summary-head-ti-le-tien">Tỷ lệ</th></tr></thead>
+<tbody id="kd-detail-summary-tbody"><tr id="kd-detail-summary-phai-thu-row"><td id="kd-detail-summary-phai-thu-label">Phải thu</td><td class="num" id="kd-detail-summary-phai-thu-hoa-don">382.165</td><td class="num" id="kd-detail-summary-phai-thu-ti-le-hoa-don">100%</td><td class="num" id="kd-detail-summary-phai-thu-tien">207.619.844.798</td><td class="num" id="kd-detail-summary-phai-thu-ti-le-tien">100%</td></tr>
+<tr id="kd-detail-summary-da-thu-row"><td id="kd-detail-summary-da-thu-label">Đã thu</td><td class="num" id="kd-detail-summary-da-thu-hoa-don">366.689</td><td class="num" id="kd-detail-summary-da-thu-ti-le-hoa-don">95,95%</td><td class="num" id="kd-detail-summary-da-thu-tien">187.172.537.953</td><td class="num" id="kd-detail-summary-da-thu-ti-le-tien">90,15%</td></tr>
+<tr id="kd-detail-summary-chua-thu-row"><td id="kd-detail-summary-chua-thu-label">Chưa thu</td><td class="num" id="kd-detail-summary-chua-thu-hoa-don">15.476</td><td class="num" id="kd-detail-summary-chua-thu-ti-le-hoa-don">4,05%</td><td class="num" id="kd-detail-summary-chua-thu-tien">20.447.306.845</td><td class="num" id="kd-detail-summary-chua-thu-ti-le-tien">9,85%</td></tr>
 </tbody>
-              </table>
-            </div>
-          </article>
-          <article class="kd-card">
-            <div class="kd-table-scroll">
-              <table class="kd-table" style="min-width:460px">
-                <colgroup><col style="width:140px"><col style="width:160px"><col style="min-width:160px"></colgroup>
-                <thead><tr><th>Đơn vị thu hộ</th><th>Số lượng hóa đơn (cái)</th><th>Tổng tiền thanh toán (VNĐ)</th></tr></thead>
-                <tbody><tr><td>Tiền mặt</td><td id="kd-detail-payment-tien-mat-hoa-don" class='num'>706</td><td id="kd-detail-payment-tien-mat-tong-tien" class='num'>306.465.801</td></tr>
-<tr><td>Agribank</td><td id="kd-detail-payment-agribank-hoa-don" class='num'>33.187</td><td id="kd-detail-payment-agribank-tong-tien" class='num'>13.964.381.880</td></tr>
-<tr><td>Anbinh</td><td id="kd-detail-payment-anbinh-hoa-don" class='num'>2.137</td><td id="kd-detail-payment-anbinh-tong-tien" class='num'>1.405.114.903</td></tr>
-<tr><td>Payoo</td><td id="kd-detail-payment-payoo-hoa-don" class='num'>61.308</td><td id="kd-detail-payment-payoo-tong-tien" class='num'>28.876.894.651</td></tr>
-<tr><td>Payoopayoo</td><td id="kd-detail-payment-payoopayoo-hoa-don" class='num'>80.550</td><td id="kd-detail-payment-payoopayoo-tong-tien" class='num'>32.678.380.665</td></tr>
-<tr><td>Sacombank</td><td id="kd-detail-payment-sacombank-hoa-don" class='num'>7.240</td><td id="kd-detail-payment-sacombank-tong-tien" class='num'>4.035.760.817</td></tr>
-<tr><td>Bidv</td><td id="kd-detail-payment-bidv-hoa-don" class='num'>42.305</td><td id="kd-detail-payment-bidv-tong-tien" class='num'>21.032.351.689</td></tr>
-<tr><td>Vietinbank</td><td id="kd-detail-payment-vietinbank-hoa-don" class='num'>19.695</td><td id="kd-detail-payment-vietinbank-tong-tien" class='num'>8.862.448.856</td></tr>
-<tr><td>Vnpay</td><td id="kd-detail-payment-vnpay-hoa-don" class='num'>22.005</td><td id="kd-detail-payment-vnpay-tong-tien" class='num'>8.312.844.807</td></tr>
-<tr><td>Vnptpay</td><td id="kd-detail-payment-vnptpay-hoa-don" class='num'>5.405</td><td id="kd-detail-payment-vnptpay-tong-tien" class='num'>1.636.544.574</td></tr>
-<tr><td>Vtelbank</td><td id="kd-detail-payment-vtelbank-hoa-don" class='num'>5.841</td><td id="kd-detail-payment-vtelbank-tong-tien" class='num'>1.700.306.253</td></tr>
-<tr><td>Zalopay</td><td id="kd-detail-payment-zalopay-hoa-don" class='num'>18.286</td><td id="kd-detail-payment-zalopay-tong-tien" class='num'>5.684.996.067</td></tr>
-<tr><td>Ck + Nt gạch tay</td><td id="kd-detail-payment-ck-nt-gach-tay-hoa-don" class='num'>18.992</td><td id="kd-detail-payment-ck-nt-gach-tay-tong-tien" class='num'>42.032.084.412</td></tr>
-<tr class='kd-row-total'><td>Tổng cộng</td><td id="kd-detail-payment-tong-cong-hoa-don" class='num'>366.689</td><td id="kd-detail-payment-tong-cong-tong-tien" class='num'>187.172.537.953</td></tr>
-</tbody>
-              </table>
-            </div>
-          </article>
-        </section>
-      </div>
-      <div id="pmw-footer" data-component="footer"></div>
-    </main>
-  </div>
+</table>
 </div>
-
+</article>
+<article class="kd-card" id="kd-detail-payment-card">
+<div class="kd-table-scroll" id="kd-detail-payment-table-scroll">
+<table class="kd-table" id="kd-detail-payment-table" style="min-width:460px">
+<colgroup id="kd-detail-payment-colgroup"><col id="kd-detail-payment-col-1" style="width:140px"/><col id="kd-detail-payment-col-2" style="width:160px"/><col id="kd-detail-payment-col-3" style="min-width:160px"/></colgroup>
+<thead id="kd-detail-payment-thead"><tr id="kd-detail-payment-head-row"><th id="kd-detail-payment-head-don-vi-thu-ho">Đơn vị thu hộ</th><th id="kd-detail-payment-head-so-luong-hoa-don">Số lượng hóa đơn (cái)</th><th id="kd-detail-payment-head-tong-tien-thanh-toan">Tổng tiền thanh toán (VNĐ)</th></tr></thead>
+<tbody id="kd-detail-payment-tbody"><tr id="kd-detail-payment-tien-mat-row"><td id="kd-detail-payment-tien-mat-label">Tiền mặt</td><td class="num" id="kd-detail-payment-tien-mat-hoa-don">706</td><td class="num" id="kd-detail-payment-tien-mat-tong-tien">306.465.801</td></tr>
+<tr id="kd-detail-payment-agribank-row"><td id="kd-detail-payment-agribank-label">Agribank</td><td class="num" id="kd-detail-payment-agribank-hoa-don">33.187</td><td class="num" id="kd-detail-payment-agribank-tong-tien">13.964.381.880</td></tr>
+<tr id="kd-detail-payment-anbinh-row"><td id="kd-detail-payment-anbinh-label">Anbinh</td><td class="num" id="kd-detail-payment-anbinh-hoa-don">2.137</td><td class="num" id="kd-detail-payment-anbinh-tong-tien">1.405.114.903</td></tr>
+<tr id="kd-detail-payment-payoo-row"><td id="kd-detail-payment-payoo-label">Payoo</td><td class="num" id="kd-detail-payment-payoo-hoa-don">61.308</td><td class="num" id="kd-detail-payment-payoo-tong-tien">28.876.894.651</td></tr>
+<tr id="kd-detail-payment-payoopayoo-row"><td id="kd-detail-payment-payoopayoo-label">Payoopayoo</td><td class="num" id="kd-detail-payment-payoopayoo-hoa-don">80.550</td><td class="num" id="kd-detail-payment-payoopayoo-tong-tien">32.678.380.665</td></tr>
+<tr id="kd-detail-payment-sacombank-row"><td id="kd-detail-payment-sacombank-label">Sacombank</td><td class="num" id="kd-detail-payment-sacombank-hoa-don">7.240</td><td class="num" id="kd-detail-payment-sacombank-tong-tien">4.035.760.817</td></tr>
+<tr id="kd-detail-payment-bidv-row"><td id="kd-detail-payment-bidv-label">Bidv</td><td class="num" id="kd-detail-payment-bidv-hoa-don">42.305</td><td class="num" id="kd-detail-payment-bidv-tong-tien">21.032.351.689</td></tr>
+<tr id="kd-detail-payment-vietinbank-row"><td id="kd-detail-payment-vietinbank-label">Vietinbank</td><td class="num" id="kd-detail-payment-vietinbank-hoa-don">19.695</td><td class="num" id="kd-detail-payment-vietinbank-tong-tien">8.862.448.856</td></tr>
+<tr id="kd-detail-payment-vnpay-row"><td id="kd-detail-payment-vnpay-label">Vnpay</td><td class="num" id="kd-detail-payment-vnpay-hoa-don">22.005</td><td class="num" id="kd-detail-payment-vnpay-tong-tien">8.312.844.807</td></tr>
+<tr id="kd-detail-payment-vnptpay-row"><td id="kd-detail-payment-vnptpay-label">Vnptpay</td><td class="num" id="kd-detail-payment-vnptpay-hoa-don">5.405</td><td class="num" id="kd-detail-payment-vnptpay-tong-tien">1.636.544.574</td></tr>
+<tr id="kd-detail-payment-vtelbank-row"><td id="kd-detail-payment-vtelbank-label">Vtelbank</td><td class="num" id="kd-detail-payment-vtelbank-hoa-don">5.841</td><td class="num" id="kd-detail-payment-vtelbank-tong-tien">1.700.306.253</td></tr>
+<tr id="kd-detail-payment-zalopay-row"><td id="kd-detail-payment-zalopay-label">Zalopay</td><td class="num" id="kd-detail-payment-zalopay-hoa-don">18.286</td><td class="num" id="kd-detail-payment-zalopay-tong-tien">5.684.996.067</td></tr>
+<tr id="kd-detail-payment-ck-nt-gach-tay-row"><td id="kd-detail-payment-ck-nt-gach-tay-label">Ck + Nt gạch tay</td><td class="num" id="kd-detail-payment-ck-nt-gach-tay-hoa-don">18.992</td><td class="num" id="kd-detail-payment-ck-nt-gach-tay-tong-tien">42.032.084.412</td></tr>
+<tr class="kd-row-total" id="kd-detail-payment-tong-cong-row"><td id="kd-detail-payment-tong-cong-label">Tổng cộng</td><td class="num" id="kd-detail-payment-tong-cong-hoa-don">366.689</td><td class="num" id="kd-detail-payment-tong-cong-tong-tien">187.172.537.953</td></tr>
+</tbody>
+</table>
+</div>
+</article>
+</section>
+</div>
+<div data-component="footer" id="pmw-footer"></div>
+</main>
+</div>
+</div>
 <script>
 (function ensureBusinessReportMonthOptions() {
   function rebuildMonthSelect() {
@@ -170,6 +162,5 @@
   window.addEventListener('load', rebuildMonthSelect);
 })();
 </script>
-
 </body>
 </html>
