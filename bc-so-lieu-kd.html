@@ -265,7 +265,6 @@
     overflow: visible !important;
     text-overflow: clip !important;
     background: #FFFFFF !important;
-    box-shadow: 1px 0 0 rgba(17,24,39,0.08), 10px 0 16px rgba(255,255,255,0.96) !important;
   }
 
   body.pmw-page-bc-so-lieu-kd .dt-table thead th:first-child {
@@ -303,6 +302,42 @@
 
   body.pmw-page-bc-so-lieu-kd .dt-cell-icon {
     white-space: nowrap !important;
+  }
+}
+</style>
+
+
+<style>
+/* Mobile: add clearer separators between data rows */
+@media (max-width: 640px) {
+  body.pmw-page-bc-so-lieu-kd .dt-table tbody tr {
+    border-bottom: 1px solid rgba(17, 24, 39, 0.12) !important;
+  }
+
+  body.pmw-page-bc-so-lieu-kd .dt-table tbody tr:last-child {
+    border-bottom: 0 !important;
+  }
+
+  body.pmw-page-bc-so-lieu-kd .dt-table tbody td {
+    border-bottom: 1px solid rgba(17, 24, 39, 0.12) !important;
+  }
+
+  body.pmw-page-bc-so-lieu-kd .dt-table tbody tr:last-child td {
+    border-bottom: 0 !important;
+  }
+
+  body.pmw-page-bc-so-lieu-kd .dt-table tbody tr.dt-total td,
+  body.pmw-page-bc-so-lieu-kd .dt-table tbody tr.dt-prev td,
+  body.pmw-page-bc-so-lieu-kd .dt-table tbody tr.dt-delta td {
+    border-top: 1px solid rgba(17, 24, 39, 0.12) !important;
+  }
+
+  body.pmw-page-bc-so-lieu-kd .dt-table tbody tr.dt-total td:first-child,
+  body.pmw-page-bc-so-lieu-kd .dt-table tbody tr.dt-prev td:first-child,
+  body.pmw-page-bc-so-lieu-kd .dt-table tbody tr.dt-delta td:first-child {
+    box-shadow:
+      1px 0 0 rgba(17, 24, 39, 0.08),
+      14px 0 20px rgba(244, 248, 250, 0.96) !important;
   }
 }
 </style>

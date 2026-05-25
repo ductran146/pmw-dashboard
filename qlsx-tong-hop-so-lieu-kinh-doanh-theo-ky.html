@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-
 <html lang="vi">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>PMW — Tổng hợp số liệu kinh doanh theo kỳ</title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
-<link href="styles.css" rel="stylesheet"/>
-<style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PMW — Tổng hợp số liệu kinh doanh theo kỳ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
 
     /* Business report rebuild: chỉ dùng layout chuẩn, không ghi đè header/sidebar */
     html, body { overflow: hidden; }
@@ -61,10 +60,10 @@
     /* Chỉ tiêu bold */
     .kd-col-chitieu { font-weight:700; color:#111827; }
     .w-date{width:110px}.w-sm{width:92px}.w-md{width:130px}.w-lg{width:160px}.w-xl{width:190px}
-    @media (max-width:1366px){ .sm-sidebar{width:220px!important}.sm-scroll{padding:0 16px 18px}.kd-table th,.kd-table td{font-size:12px;padding:8px}.kd-tab{height:36px;min-width:108px;padding:0 18px}.kd-table{min-width:900px} }
+    @media (max-width:1366px){ .sm-sidebar{width:220px!important}.sm-scroll{padding:0 16px 18px}.kd-table th,.kd-table td{font-size:13px;padding:8px}.kd-tab{height:36px;min-width:108px;padding:0 18px}.kd-table{min-width:900px} }
     @media (max-width:1280px){ .sm-sidebar{width:52px!important;padding:12px 6px!important;overflow:hidden}.sm-sidebar-label,.sm-nav-cat-label,.sm-nav-cat-arrow,.sm-nav-other-label{display:none!important}.sm-nav-cat,.sm-nav-other{justify-content:center!important;padding:10px!important;width:auto!important;height:auto!important}.sm-subnav{display:none!important} }
     @media (max-width:900px){ html,body{overflow:hidden}.bao-cao-wrapper{height:100dvh}.submod-page.active{display:block!important}.sm-sidebar{display:none!important}.sm-main{width:100%;height:calc(100dvh - var(--pmw-mobile-header-height,70px));overflow:hidden}.sm-scroll{padding:0 24px 24px}.kd-tabs{gap:8px;margin-bottom:12px;display:grid;grid-template-columns:repeat(3,1fr)}.kd-tab{min-width:0;width:100%;height:42px;padding:0 10px;font-size:14px}.kd-table{min-width:760px}.kd-table th,.kd-table td{font-size:13px;padding:9px 10px}.kd-card{border-radius:14px}.kd-card-title{font-size:14px;padding:10px 12px} }
-    @media (max-width:480px){.sm-scroll{padding:16px 16px 20px}.kd-tab{font-size:13px;height:40px}.kd-table{min-width:680px}.kd-table th,.kd-table td{font-size:12px;padding:8px}.w-date{width:96px}.w-sm{width:78px}.w-md{width:110px}.w-lg{width:136px}.w-xl{width:150px} }
+    @media (max-width:480px){.sm-scroll{padding:16px 16px 20px}.kd-tab{font-size:13px;height:40px}.kd-table{min-width:680px}.kd-table th,.kd-table td{font-size:13px;padding:8px}.w-date{width:96px}.w-sm{width:78px}.w-md{width:110px}.w-lg{width:136px}.w-xl{width:150px} }
 
     /* Component: breadcrumb + title page + filter */
     .business-report-page-head {
@@ -118,135 +117,282 @@
       table-layout: fixed;
     }
 
-  </style>
-<link href="responsive.css?v=38" rel="stylesheet"/>
-<script defer="" src="components/components-loader.js"></script>
+  
+
+    /* Final mobile columns fix: keep font 13px and widen quantity/date columns so data and headers are readable */
+    @media (max-width: 900px) {
+      #kd-period-aging-table,
+      #kd-period-payment-table {
+        table-layout: fixed !important;
+        width: max-content !important;
+        min-width: max-content !important;
+      }
+
+      #kd-period-aging-table th,
+      #kd-period-aging-table td,
+      #kd-period-payment-table th,
+      #kd-period-payment-table td {
+        font-size: 13px !important;
+        line-height: 20px !important;
+        padding: 8px 10px !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        box-sizing: border-box !important;
+      }
+
+      #kd-period-aging-table thead th,
+      #kd-period-payment-table thead th {
+        font-size: 13px !important;
+        line-height: 18px !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        word-break: normal !important;
+      }
+
+      /* Bảng 1: nhóm TG thanh toán — cột Số lượng cần đủ rộng cho số tiền dài */
+      #kd-period-aging-col-1 {
+        width: 112px !important;
+        min-width: 112px !important;
+        max-width: 112px !important;
+      }
+
+      #kd-period-aging-col-2 {
+        width: 86px !important;
+        min-width: 86px !important;
+        max-width: 86px !important;
+      }
+
+      #kd-period-aging-col-3,
+      #kd-period-aging-col-5,
+      #kd-period-aging-col-7,
+      #kd-period-aging-col-9,
+      #kd-period-aging-col-11 {
+        width: 184px !important;
+        min-width: 184px !important;
+        max-width: 184px !important;
+      }
+
+      #kd-period-aging-col-4,
+      #kd-period-aging-col-6,
+      #kd-period-aging-col-8,
+      #kd-period-aging-col-10,
+      #kd-period-aging-col-12 {
+        width: 76px !important;
+        min-width: 76px !important;
+        max-width: 76px !important;
+      }
+
+      #kd-period-aging-table tbody td:nth-child(3),
+      #kd-period-aging-table tbody td:nth-child(5),
+      #kd-period-aging-table tbody td:nth-child(7),
+      #kd-period-aging-table tbody td:nth-child(9),
+      #kd-period-aging-table tbody td:nth-child(11) {
+        width: 184px !important;
+        min-width: 184px !important;
+        max-width: 184px !important;
+      }
+
+      #kd-period-aging-table tbody td:nth-child(4),
+      #kd-period-aging-table tbody td:nth-child(6),
+      #kd-period-aging-table tbody td:nth-child(8),
+      #kd-period-aging-table tbody td:nth-child(10),
+      #kd-period-aging-table tbody td:nth-child(12) {
+        width: 76px !important;
+        min-width: 76px !important;
+        max-width: 76px !important;
+      }
+
+      /* Bảng 2: cột tháng cần đủ rộng cho dòng Số tiền */
+      #kd-period-payment-col-1 {
+        width: 118px !important;
+        min-width: 118px !important;
+        max-width: 118px !important;
+      }
+
+      #kd-period-payment-col-2 {
+        width: 86px !important;
+        min-width: 86px !important;
+        max-width: 86px !important;
+      }
+
+      #kd-period-payment-col-3,
+      #kd-period-payment-col-4,
+      #kd-period-payment-col-5,
+      #kd-period-payment-col-6,
+      #kd-period-payment-col-7,
+      #kd-period-payment-col-8,
+      #kd-period-payment-col-9,
+      #kd-period-payment-col-10,
+      #kd-period-payment-col-11,
+      #kd-period-payment-col-12,
+      #kd-period-payment-col-13,
+      #kd-period-payment-col-14,
+      #kd-period-payment-table thead tr:nth-child(2) th,
+      #kd-period-payment-table tbody td:not(:first-child):not(:nth-child(2)) {
+        width: 164px !important;
+        min-width: 164px !important;
+        max-width: 164px !important;
+      }
+
+      #kd-period-aging-table .num,
+      #kd-period-payment-table .num {
+        text-align: right !important;
+        font-variant-numeric: tabular-nums !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #kd-period-aging-table th,
+      #kd-period-aging-table td,
+      #kd-period-payment-table th,
+      #kd-period-payment-table td {
+        font-size: 13px !important;
+        line-height: 20px !important;
+      }
+    }
+</style>
+  <link rel="stylesheet" href="responsive.css?v=38"/>
+  <script src="components/components-loader.js" defer></script>
+
 </head>
 <body class="kd-view-period">
-<div class="bao-cao-wrapper" id="kd-period-wrapper">
-<div data-component="header" id="pmw-header"></div>
-<div class="submod-page active" id="kd-period-submod-page">
-<div data-component="sidebar-qlsx" id="pmw-sidebar-qlsx"></div>
-<main class="sm-main" id="kd-period-main">
-<div data-component="business-report-page-head" data-current="Tổng hợp số liệu kinh doanh" data-month="04" data-months="01,02,03,04,05,06,07,08,09,10,11,12" data-parent="Quản lý sản xuất" data-parent-url="quanly-sanxuat.html" data-subtitle="Theo dõi thời gian thanh toán, tình trạng chưa thanh toán và tổng tiền thanh toán theo từng kỳ báo cáo" data-title="Tổng hợp số liệu kinh doanh" data-year="2026" data-years="2026,2025" id="pmw-business-report-page-head"></div>
-<div class="sm-scroll" id="kd-period-scroll">
-<div data-component="report-tabs" id="pmw-report-tabs"></div>
-<section class="kd-section" id="kd-period-section">
-<article class="kd-card" id="kd-period-aging-card">
-<div class="kd-table-scroll" id="kd-period-aging-table-scroll">
-<table class="kd-table" id="kd-period-aging-table" style="min-width:1010px">
-<colgroup id="kd-period-aging-colgroup">
-<col id="kd-period-aging-col-1" style="width:110px"/>
-<col id="kd-period-aging-col-2" style="width:90px"/>
-<col id="kd-period-aging-col-3" style="width:110px"/><col id="kd-period-aging-col-4" style="width:52px"/>
-<col id="kd-period-aging-col-5" style="width:110px"/><col id="kd-period-aging-col-6" style="width:52px"/>
-<col id="kd-period-aging-col-7" style="width:110px"/><col id="kd-period-aging-col-8" style="width:52px"/>
-<col id="kd-period-aging-col-9" style="width:110px"/><col id="kd-period-aging-col-10" style="width:52px"/>
-<col id="kd-period-aging-col-11" style="width:110px"/><col id="kd-period-aging-col-12" style="width:52px"/>
-</colgroup>
-<thead id="kd-period-aging-thead"><tr id="kd-period-aging-thead-row-1"><th id="kd-period-aging-head-r1-c1-thang" rowspan="2">Tháng</th><th id="kd-period-aging-head-r1-c2-chi-tieu" rowspan="2">Chỉ tiêu</th><th colspan="2" id="kd-period-aging-head-r1-c3-tg-thanh-toan-5-ngay">TG thanh toán &lt; 5 ngày</th><th colspan="2" id="kd-period-aging-head-r1-c4-tg-thanh-toan-tu-5-10-ngay">TG thanh toán từ 5 - 10 ngày</th><th colspan="2" id="kd-period-aging-head-r1-c5-tg-thanh-toan-tu-10-16-ngay">TG thanh toán từ 10 - 16 ngày</th><th colspan="2" id="kd-period-aging-head-r1-c6-tg-thanh-toan-16-ngay">TG thanh toán &gt; 16 ngày</th><th colspan="2" id="kd-period-aging-head-r1-c7-chua-thanh-toan">Chưa thanh toán</th></tr><tr id="kd-period-aging-thead-row-2"><th id="kd-period-aging-head-r2-c1-so-luong">Số lượng</th><th id="kd-period-aging-head-r2-c2-ti-le">Tỉ lệ</th><th id="kd-period-aging-head-r2-c3-so-luong">Số lượng</th><th id="kd-period-aging-head-r2-c4-ti-le">Tỉ lệ</th><th id="kd-period-aging-head-r2-c5-so-luong">Số lượng</th><th id="kd-period-aging-head-r2-c6-ti-le">Tỉ lệ</th><th id="kd-period-aging-head-r2-c7-so-luong">Số lượng</th><th id="kd-period-aging-head-r2-c8-ti-le">Tỉ lệ</th><th id="kd-period-aging-head-r2-c9-so-luong">Số lượng</th><th id="kd-period-aging-head-r2-c10-ti-le">Tỉ lệ</th></tr></thead>
-<tbody id="kd-period-aging-tbody">
-<tr class="kd-group-start" id="kd-period-month-052026-row">
-<td class="kd-month" id="kd-period-month-052026" rowspan="2">Tháng 5/2026</td>
-<td class="kd-col-chitieu" id="kd-period-052026-hoa-don-label">Hóa đơn</td><td class="num" id="kd-period-052026-hoa-don-tg-duoi-5-ngay-so-luong">191.438</td><td class="num" id="kd-period-052026-hoa-don-tg-duoi-5-ngay-ti-le">60%</td><td class="num" id="kd-period-052026-hoa-don-tg-5-10-ngay-so-luong">191.438</td><td class="num" id="kd-period-052026-hoa-don-tg-5-10-ngay-ti-le">60%</td><td class="num" id="kd-period-052026-hoa-don-tg-10-16-ngay-so-luong">191.438</td><td class="num" id="kd-period-052026-hoa-don-tg-10-16-ngay-ti-le">60%</td><td class="num" id="kd-period-052026-hoa-don-tg-tren-16-ngay-so-luong">191.438</td><td class="num" id="kd-period-052026-hoa-don-tg-tren-16-ngay-ti-le">60%</td><td class="num" id="kd-period-052026-hoa-don-chua-thanh-toan-so-luong">191.438</td><td class="num" id="kd-period-052026-hoa-don-chua-thanh-toan-ti-le">60%</td>
-</tr>
-<tr id="kd-period-052026-row">
-<td class="kd-col-chitieu" id="kd-period-052026-so-tien-label">Số tiền</td><td class="num" id="kd-period-052026-so-tien-tg-duoi-5-ngay-so-luong">78.945.803.181</td><td class="num" id="kd-period-052026-so-tien-tg-duoi-5-ngay-ti-le">50%</td><td class="num" id="kd-period-052026-so-tien-tg-5-10-ngay-so-luong">78.945.803.181</td><td class="num" id="kd-period-052026-so-tien-tg-5-10-ngay-ti-le">50%</td><td class="num" id="kd-period-052026-so-tien-tg-10-16-ngay-so-luong">78.945.803.181</td><td class="num" id="kd-period-052026-so-tien-tg-10-16-ngay-ti-le">50%</td><td class="num" id="kd-period-052026-so-tien-tg-tren-16-ngay-so-luong">78.945.803.181</td><td class="num" id="kd-period-052026-so-tien-tg-tren-16-ngay-ti-le">50%</td><td class="num" id="kd-period-052026-so-tien-chua-thanh-toan-so-luong">78.945.803.181</td><td class="num" id="kd-period-052026-so-tien-chua-thanh-toan-ti-le">50%</td>
-</tr>
-<tr class="kd-group-start" id="kd-period-month-042026-row">
-<td class="kd-month" id="kd-period-month-042026" rowspan="2">Tháng 4/2026</td>
-<td class="kd-col-chitieu" id="kd-period-042026-hoa-don-label">Hóa đơn</td><td class="num" id="kd-period-042026-hoa-don-tg-duoi-5-ngay-so-luong">192.860</td><td class="num" id="kd-period-042026-hoa-don-tg-duoi-5-ngay-ti-le">70%</td><td class="num" id="kd-period-042026-hoa-don-tg-5-10-ngay-so-luong">192.860</td><td class="num" id="kd-period-042026-hoa-don-tg-5-10-ngay-ti-le">70%</td><td class="num" id="kd-period-042026-hoa-don-tg-10-16-ngay-so-luong">192.860</td><td class="num" id="kd-period-042026-hoa-don-tg-10-16-ngay-ti-le">70%</td><td class="num" id="kd-period-042026-hoa-don-tg-tren-16-ngay-so-luong">192.860</td><td class="num" id="kd-period-042026-hoa-don-tg-tren-16-ngay-ti-le">70%</td><td class="num" id="kd-period-042026-hoa-don-chua-thanh-toan-so-luong">192.860</td><td class="num" id="kd-period-042026-hoa-don-chua-thanh-toan-ti-le">70%</td>
-</tr>
-<tr id="kd-period-042026-row">
-<td class="kd-col-chitieu" id="kd-period-042026-so-tien-label">Số tiền</td><td class="num" id="kd-period-042026-so-tien-tg-duoi-5-ngay-so-luong">69.383.913.658</td><td class="num" id="kd-period-042026-so-tien-tg-duoi-5-ngay-ti-le">69%</td><td class="num" id="kd-period-042026-so-tien-tg-5-10-ngay-so-luong">69.383.913.658</td><td class="num" id="kd-period-042026-so-tien-tg-5-10-ngay-ti-le">69%</td><td class="num" id="kd-period-042026-so-tien-tg-10-16-ngay-so-luong">69.383.913.658</td><td class="num" id="kd-period-042026-so-tien-tg-10-16-ngay-ti-le">69%</td><td class="num" id="kd-period-042026-so-tien-tg-tren-16-ngay-so-luong">69.383.913.658</td><td class="num" id="kd-period-042026-so-tien-tg-tren-16-ngay-ti-le">69%</td><td class="num" id="kd-period-042026-so-tien-chua-thanh-toan-so-luong">69.383.913.658</td><td class="num" id="kd-period-042026-so-tien-chua-thanh-toan-ti-le">69%</td>
-</tr>
-<tr class="kd-group-start" id="kd-period-month-032026-row">
-<td class="kd-month" id="kd-period-month-032026" rowspan="2">Tháng 3/2026</td>
-<td class="kd-col-chitieu" id="kd-period-032026-hoa-don-label">Hóa đơn</td><td class="num" id="kd-period-032026-hoa-don-tg-duoi-5-ngay-so-luong">94.232</td><td class="num" id="kd-period-032026-hoa-don-tg-duoi-5-ngay-ti-le">69%</td><td class="num" id="kd-period-032026-hoa-don-tg-5-10-ngay-so-luong">94.232</td><td class="num" id="kd-period-032026-hoa-don-tg-5-10-ngay-ti-le">69%</td><td class="num" id="kd-period-032026-hoa-don-tg-10-16-ngay-so-luong">94.232</td><td class="num" id="kd-period-032026-hoa-don-tg-10-16-ngay-ti-le">69%</td><td class="num" id="kd-period-032026-hoa-don-tg-tren-16-ngay-so-luong">94.232</td><td class="num" id="kd-period-032026-hoa-don-tg-tren-16-ngay-ti-le">69%</td><td class="num" id="kd-period-032026-hoa-don-chua-thanh-toan-so-luong">94.232</td><td class="num" id="kd-period-032026-hoa-don-chua-thanh-toan-ti-le">69%</td>
-</tr>
-<tr id="kd-period-032026-row">
-<td class="kd-col-chitieu" id="kd-period-032026-so-tien-label">Số tiền</td><td class="num" id="kd-period-032026-so-tien-tg-duoi-5-ngay-so-luong">88.713.149.781</td><td class="num" id="kd-period-032026-so-tien-tg-duoi-5-ngay-ti-le">65%</td><td class="num" id="kd-period-032026-so-tien-tg-5-10-ngay-so-luong">88.713.149.781</td><td class="num" id="kd-period-032026-so-tien-tg-5-10-ngay-ti-le">65%</td><td class="num" id="kd-period-032026-so-tien-tg-10-16-ngay-so-luong">88.713.149.781</td><td class="num" id="kd-period-032026-so-tien-tg-10-16-ngay-ti-le">65%</td><td class="num" id="kd-period-032026-so-tien-tg-tren-16-ngay-so-luong">88.713.149.781</td><td class="num" id="kd-period-032026-so-tien-tg-tren-16-ngay-ti-le">65%</td><td class="num" id="kd-period-032026-so-tien-chua-thanh-toan-so-luong">88.713.149.781</td><td class="num" id="kd-period-032026-so-tien-chua-thanh-toan-ti-le">65%</td>
-</tr>
-</tbody>
-</table>
+<div class="bao-cao-wrapper">
+  <div data-component="header"></div>
+  <div class="submod-page active">
+    <div data-component="sidebar-production"></div>
+    <main class="sm-main">
+      <div data-component="business-report-page-head"
+           data-parent="Quản lý sản xuất"
+           data-parent-url="quanly-sanxuat.html"
+           data-current="Tổng hợp số liệu kinh doanh"
+           data-title="Tổng hợp số liệu kinh doanh"
+           data-subtitle="Theo dõi thời gian thanh toán, tình trạng chưa thanh toán và tổng tiền thanh toán theo từng kỳ báo cáo"
+           data-month="04"
+           data-months="01,02,03,04,05,06,07,08,09,10,11,12"
+           data-year="2026"
+           data-years="2026,2025"></div>
+      <div class="sm-scroll">
+        <div data-component="report-tabs"></div>
+        <section class="kd-section">
+
+          <article class="kd-card">
+            <div class="kd-table-scroll">
+              <table class="kd-table" style="min-width:1210px">
+                <colgroup>
+                  <col style="width:110px">
+                  <col style="width:90px">
+                  <col style="width:140px"><col style="width:62px">
+                  <col style="width:140px"><col style="width:62px">
+                  <col style="width:140px"><col style="width:62px">
+                  <col style="width:140px"><col style="width:62px">
+                  <col style="width:140px"><col style="width:62px">
+                </colgroup>
+                <thead><tr><th rowspan="2">Tháng</th><th rowspan="2">Chỉ tiêu</th><th colspan="2">TG thanh toán &lt; 5 ngày</th><th colspan="2">TG thanh toán từ 5 - 10 ngày</th><th colspan="2">TG thanh toán từ 10 - 16 ngày</th><th colspan="2">TG thanh toán &gt; 16 ngày</th><th colspan="2">Chưa thanh toán</th></tr><tr><th>Số lượng</th><th>Tỉ lệ</th><th>Số lượng</th><th>Tỉ lệ</th><th>Số lượng</th><th>Tỉ lệ</th><th>Số lượng</th><th>Tỉ lệ</th><th>Số lượng</th><th>Tỉ lệ</th></tr></thead>
+                <tbody>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Tháng 5/2026</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>191.438</td><td class='num'>60%</td><td class='num'>191.438</td><td class='num'>60%</td><td class='num'>191.438</td><td class='num'>60%</td><td class='num'>191.438</td><td class='num'>60%</td><td class='num'>191.438</td><td class='num'>60%</td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>78.945.803.181</td><td class='num'>50%</td><td class='num'>78.945.803.181</td><td class='num'>50%</td><td class='num'>78.945.803.181</td><td class='num'>50%</td><td class='num'>78.945.803.181</td><td class='num'>50%</td><td class='num'>78.945.803.181</td><td class='num'>50%</td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Tháng 4/2026</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>192.860</td><td class='num'>70%</td><td class='num'>192.860</td><td class='num'>70%</td><td class='num'>192.860</td><td class='num'>70%</td><td class='num'>192.860</td><td class='num'>70%</td><td class='num'>192.860</td><td class='num'>70%</td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>69.383.913.658</td><td class='num'>69%</td><td class='num'>69.383.913.658</td><td class='num'>69%</td><td class='num'>69.383.913.658</td><td class='num'>69%</td><td class='num'>69.383.913.658</td><td class='num'>69%</td><td class='num'>69.383.913.658</td><td class='num'>69%</td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Tháng 3/2026</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>94.232</td><td class='num'>69%</td><td class='num'>94.232</td><td class='num'>69%</td><td class='num'>94.232</td><td class='num'>69%</td><td class='num'>94.232</td><td class='num'>69%</td><td class='num'>94.232</td><td class='num'>69%</td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>88.713.149.781</td><td class='num'>65%</td><td class='num'>88.713.149.781</td><td class='num'>65%</td><td class='num'>88.713.149.781</td><td class='num'>65%</td><td class='num'>88.713.149.781</td><td class='num'>65%</td><td class='num'>88.713.149.781</td><td class='num'>65%</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+          <article class="kd-card">
+            <div class="kd-table-scroll">
+              <table class="kd-table" style="min-width:1900px">
+                <colgroup><col style="width:130px"><col style="width:90px"><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:140px"></colgroup>
+                <thead><tr><th rowspan="2">Hình thức thu</th><th rowspan="2">Chỉ tiêu</th><th colspan="12">Số lượng hóa đơn (cái) / Tổng tiền thanh toán theo tháng</th></tr><tr><th>01/2026</th><th>02/2026</th><th>03/2026</th><th>04/2026</th><th>05/2026</th><th>06/2026</th><th>07/2026</th><th>08/2026</th><th>09/2026</th><th>10/2026</th><th>11/2026</th><th>12/2026</th></tr></thead>
+                <tbody>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Tiền mặt</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>204</td><td class='num'>204</td><td class='num'>204</td><td class='num'>204</td><td class='num'>204</td><td class='num'>204</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'>72.964.817</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Agribank</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Agribank</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Agribank</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Agribank</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Agribank</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Agribank</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-group-start'>
+                  <td class='kd-month' rowspan='2'>Agribank</td>
+                  <td class='kd-col-chitieu'>Hóa đơn</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'>23.725</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr>
+                  <td class='kd-col-chitieu'>Số tiền</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'>7.340.855.374</td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td><td class='num'></td>
+                </tr>
+                <tr class='kd-row-total'>
+                  <td colspan='2'>Tổng cộng</td>
+                  <td class='num'>191.408</td><td class='num'>190.865</td><td class='num'>192.775</td><td class='num'>192.543</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td><td class='num'>68.956</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </div>
+      <div data-component="footer"></div>
+    </main>
+  </div>
 </div>
-</article>
-<article class="kd-card" id="kd-period-payment-card">
-<div class="kd-table-scroll" id="kd-period-payment-table-scroll">
-<table class="kd-table" id="kd-period-payment-table">
-<colgroup id="kd-period-payment-colgroup"><col class="w-md" id="kd-period-payment-col-1"/><col class="w-sm" id="kd-period-payment-col-2"/><col class="w-md" id="kd-period-payment-col-3"/><col class="w-md" id="kd-period-payment-col-4"/><col class="w-md" id="kd-period-payment-col-5"/><col class="w-md" id="kd-period-payment-col-6"/><col class="w-md" id="kd-period-payment-col-7"/><col class="w-md" id="kd-period-payment-col-8"/><col class="w-md" id="kd-period-payment-col-9"/><col class="w-md" id="kd-period-payment-col-10"/><col class="w-md" id="kd-period-payment-col-11"/><col class="w-md" id="kd-period-payment-col-12"/><col class="w-md" id="kd-period-payment-col-13"/><col class="w-md" id="kd-period-payment-col-14"/></colgroup>
-<thead id="kd-period-payment-thead"><tr id="kd-period-payment-thead-row-1"><th id="kd-period-payment-head-r1-c1-hinh-thuc-thu" rowspan="2">Hình thức thu</th><th id="kd-period-payment-head-r1-c2-chi-tieu" rowspan="2">Chỉ tiêu</th><th colspan="12" id="kd-period-payment-head-r1-c3-so-luong-hoa-don-cai-tong-tien-thanh-toan-theo-thang">Số lượng hóa đơn (cái) / Tổng tiền thanh toán theo tháng</th></tr><tr id="kd-period-payment-thead-row-2"><th id="kd-period-payment-head-r2-c1-01-2026">01/2026</th><th id="kd-period-payment-head-r2-c2-02-2026">02/2026</th><th id="kd-period-payment-head-r2-c3-03-2026">03/2026</th><th id="kd-period-payment-head-r2-c4-04-2026">04/2026</th><th id="kd-period-payment-head-r2-c5-05-2026">05/2026</th><th id="kd-period-payment-head-r2-c6-06-2026">06/2026</th><th id="kd-period-payment-head-r2-c7-07-2026">07/2026</th><th id="kd-period-payment-head-r2-c8-08-2026">08/2026</th><th id="kd-period-payment-head-r2-c9-09-2026">09/2026</th><th id="kd-period-payment-head-r2-c10-10-2026">10/2026</th><th id="kd-period-payment-head-r2-c11-11-2026">11/2026</th><th id="kd-period-payment-head-r2-c12-12-2026">12/2026</th></tr></thead>
-<tbody id="kd-period-payment-tbody">
-<tr class="kd-group-start" id="kd-period-payment-tien-mat-row">
-<td class="kd-month" id="kd-period-payment-tien-mat-method" rowspan="2">Tiền mặt</td>
-<td class="kd-col-chitieu" id="kd-period-payment-tien-mat-hoa-don-label">Hóa đơn</td><td class="num" id="kd-period-payment-tien-mat-hoa-don-012026">204</td><td class="num" id="kd-period-payment-tien-mat-hoa-don-022026">204</td><td class="num" id="kd-period-payment-tien-mat-hoa-don-032026">204</td><td class="num" id="kd-period-payment-tien-mat-hoa-don-042026">204</td><td class="num" id="kd-period-payment-tien-mat-hoa-don-052026">204</td><td class="num" id="kd-period-payment-tien-mat-hoa-don-062026">204</td><td class="num" id="kd-period-payment-tien-mat-hoa-don-072026"></td><td class="num" id="kd-period-payment-tien-mat-hoa-don-082026"></td><td class="num" id="kd-period-payment-tien-mat-hoa-don-092026"></td><td class="num" id="kd-period-payment-tien-mat-hoa-don-102026"></td><td class="num" id="kd-period-payment-tien-mat-hoa-don-112026"></td><td class="num" id="kd-period-payment-tien-mat-hoa-don-122026"></td>
-</tr>
-<tr id="kd-period-payment-tien-mat-row-2">
-<td class="kd-col-chitieu" id="kd-period-payment-tien-mat-so-tien-label">Số tiền</td><td class="num" id="kd-period-payment-tien-mat-so-tien-012026">72.964.817</td><td class="num" id="kd-period-payment-tien-mat-so-tien-022026">72.964.817</td><td class="num" id="kd-period-payment-tien-mat-so-tien-032026">72.964.817</td><td class="num" id="kd-period-payment-tien-mat-so-tien-042026">72.964.817</td><td class="num" id="kd-period-payment-tien-mat-so-tien-052026">72.964.817</td><td class="num" id="kd-period-payment-tien-mat-so-tien-062026">72.964.817</td><td class="num" id="kd-period-payment-tien-mat-so-tien-072026"></td><td class="num" id="kd-period-payment-tien-mat-so-tien-082026"></td><td class="num" id="kd-period-payment-tien-mat-so-tien-092026"></td><td class="num" id="kd-period-payment-tien-mat-so-tien-102026"></td><td class="num" id="kd-period-payment-tien-mat-so-tien-112026"></td><td class="num" id="kd-period-payment-tien-mat-so-tien-122026"></td>
-</tr>
-<tr class="kd-group-start" id="kd-period-payment-agribank-row">
-<td class="kd-month" id="kd-period-payment-agribank-method" rowspan="2">Agribank</td>
-<td class="kd-col-chitieu" id="kd-period-payment-agribank-hoa-don-label">Hóa đơn</td><td class="num" id="kd-period-payment-agribank-hoa-don-012026">23.725</td><td class="num" id="kd-period-payment-agribank-hoa-don-022026">23.725</td><td class="num" id="kd-period-payment-agribank-hoa-don-032026">23.725</td><td class="num" id="kd-period-payment-agribank-hoa-don-042026">23.725</td><td class="num" id="kd-period-payment-agribank-hoa-don-052026">23.725</td><td class="num" id="kd-period-payment-agribank-hoa-don-062026">23.725</td><td class="num" id="kd-period-payment-agribank-hoa-don-072026"></td><td class="num" id="kd-period-payment-agribank-hoa-don-082026"></td><td class="num" id="kd-period-payment-agribank-hoa-don-092026"></td><td class="num" id="kd-period-payment-agribank-hoa-don-102026"></td><td class="num" id="kd-period-payment-agribank-hoa-don-112026"></td><td class="num" id="kd-period-payment-agribank-hoa-don-122026"></td>
-</tr>
-<tr id="kd-period-payment-agribank-row-2">
-<td class="kd-col-chitieu" id="kd-period-payment-agribank-so-tien-label">Số tiền</td><td class="num" id="kd-period-payment-agribank-so-tien-012026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-so-tien-022026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-so-tien-032026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-so-tien-042026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-so-tien-052026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-so-tien-062026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-so-tien-072026"></td><td class="num" id="kd-period-payment-agribank-so-tien-082026"></td><td class="num" id="kd-period-payment-agribank-so-tien-092026"></td><td class="num" id="kd-period-payment-agribank-so-tien-102026"></td><td class="num" id="kd-period-payment-agribank-so-tien-112026"></td><td class="num" id="kd-period-payment-agribank-so-tien-122026"></td>
-</tr>
-<tr class="kd-group-start" id="kd-period-payment-agribank-02-row">
-<td class="kd-month" id="kd-period-payment-agribank-02-method" rowspan="2">Agribank</td>
-<td class="kd-col-chitieu" id="kd-period-payment-agribank-02-hoa-don-label">Hóa đơn</td><td class="num" id="kd-period-payment-agribank-02-hoa-don-012026">23.725</td><td class="num" id="kd-period-payment-agribank-02-hoa-don-022026">23.725</td><td class="num" id="kd-period-payment-agribank-02-hoa-don-032026">23.725</td><td class="num" id="kd-period-payment-agribank-02-hoa-don-042026">23.725</td><td class="num" id="kd-period-payment-agribank-02-hoa-don-052026">23.725</td><td class="num" id="kd-period-payment-agribank-02-hoa-don-062026">23.725</td><td class="num" id="kd-period-payment-agribank-02-hoa-don-072026"></td><td class="num" id="kd-period-payment-agribank-02-hoa-don-082026"></td><td class="num" id="kd-period-payment-agribank-02-hoa-don-092026"></td><td class="num" id="kd-period-payment-agribank-02-hoa-don-102026"></td><td class="num" id="kd-period-payment-agribank-02-hoa-don-112026"></td><td class="num" id="kd-period-payment-agribank-02-hoa-don-122026"></td>
-</tr>
-<tr id="kd-period-payment-agribank-02-row-2">
-<td class="kd-col-chitieu" id="kd-period-payment-agribank-02-so-tien-label">Số tiền</td><td class="num" id="kd-period-payment-agribank-02-so-tien-012026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-02-so-tien-022026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-02-so-tien-032026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-02-so-tien-042026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-02-so-tien-052026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-02-so-tien-062026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-02-so-tien-072026"></td><td class="num" id="kd-period-payment-agribank-02-so-tien-082026"></td><td class="num" id="kd-period-payment-agribank-02-so-tien-092026"></td><td class="num" id="kd-period-payment-agribank-02-so-tien-102026"></td><td class="num" id="kd-period-payment-agribank-02-so-tien-112026"></td><td class="num" id="kd-period-payment-agribank-02-so-tien-122026"></td>
-</tr>
-<tr class="kd-group-start" id="kd-period-payment-agribank-03-row">
-<td class="kd-month" id="kd-period-payment-agribank-03-method" rowspan="2">Agribank</td>
-<td class="kd-col-chitieu" id="kd-period-payment-agribank-03-hoa-don-label">Hóa đơn</td><td class="num" id="kd-period-payment-agribank-03-hoa-don-012026">23.725</td><td class="num" id="kd-period-payment-agribank-03-hoa-don-022026">23.725</td><td class="num" id="kd-period-payment-agribank-03-hoa-don-032026">23.725</td><td class="num" id="kd-period-payment-agribank-03-hoa-don-042026">23.725</td><td class="num" id="kd-period-payment-agribank-03-hoa-don-052026">23.725</td><td class="num" id="kd-period-payment-agribank-03-hoa-don-062026">23.725</td><td class="num" id="kd-period-payment-agribank-03-hoa-don-072026"></td><td class="num" id="kd-period-payment-agribank-03-hoa-don-082026"></td><td class="num" id="kd-period-payment-agribank-03-hoa-don-092026"></td><td class="num" id="kd-period-payment-agribank-03-hoa-don-102026"></td><td class="num" id="kd-period-payment-agribank-03-hoa-don-112026"></td><td class="num" id="kd-period-payment-agribank-03-hoa-don-122026"></td>
-</tr>
-<tr id="kd-period-payment-agribank-03-row-2">
-<td class="kd-col-chitieu" id="kd-period-payment-agribank-03-so-tien-label">Số tiền</td><td class="num" id="kd-period-payment-agribank-03-so-tien-012026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-03-so-tien-022026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-03-so-tien-032026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-03-so-tien-042026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-03-so-tien-052026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-03-so-tien-062026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-03-so-tien-072026"></td><td class="num" id="kd-period-payment-agribank-03-so-tien-082026"></td><td class="num" id="kd-period-payment-agribank-03-so-tien-092026"></td><td class="num" id="kd-period-payment-agribank-03-so-tien-102026"></td><td class="num" id="kd-period-payment-agribank-03-so-tien-112026"></td><td class="num" id="kd-period-payment-agribank-03-so-tien-122026"></td>
-</tr>
-<tr class="kd-group-start" id="kd-period-payment-agribank-04-row">
-<td class="kd-month" id="kd-period-payment-agribank-04-method" rowspan="2">Agribank</td>
-<td class="kd-col-chitieu" id="kd-period-payment-agribank-04-hoa-don-label">Hóa đơn</td><td class="num" id="kd-period-payment-agribank-04-hoa-don-012026">23.725</td><td class="num" id="kd-period-payment-agribank-04-hoa-don-022026">23.725</td><td class="num" id="kd-period-payment-agribank-04-hoa-don-032026">23.725</td><td class="num" id="kd-period-payment-agribank-04-hoa-don-042026">23.725</td><td class="num" id="kd-period-payment-agribank-04-hoa-don-052026">23.725</td><td class="num" id="kd-period-payment-agribank-04-hoa-don-062026">23.725</td><td class="num" id="kd-period-payment-agribank-04-hoa-don-072026"></td><td class="num" id="kd-period-payment-agribank-04-hoa-don-082026"></td><td class="num" id="kd-period-payment-agribank-04-hoa-don-092026"></td><td class="num" id="kd-period-payment-agribank-04-hoa-don-102026"></td><td class="num" id="kd-period-payment-agribank-04-hoa-don-112026"></td><td class="num" id="kd-period-payment-agribank-04-hoa-don-122026"></td>
-</tr>
-<tr id="kd-period-payment-agribank-04-row-2">
-<td class="kd-col-chitieu" id="kd-period-payment-agribank-04-so-tien-label">Số tiền</td><td class="num" id="kd-period-payment-agribank-04-so-tien-012026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-04-so-tien-022026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-04-so-tien-032026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-04-so-tien-042026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-04-so-tien-052026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-04-so-tien-062026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-04-so-tien-072026"></td><td class="num" id="kd-period-payment-agribank-04-so-tien-082026"></td><td class="num" id="kd-period-payment-agribank-04-so-tien-092026"></td><td class="num" id="kd-period-payment-agribank-04-so-tien-102026"></td><td class="num" id="kd-period-payment-agribank-04-so-tien-112026"></td><td class="num" id="kd-period-payment-agribank-04-so-tien-122026"></td>
-</tr>
-<tr class="kd-group-start" id="kd-period-payment-agribank-05-row">
-<td class="kd-month" id="kd-period-payment-agribank-05-method" rowspan="2">Agribank</td>
-<td class="kd-col-chitieu" id="kd-period-payment-agribank-05-hoa-don-label">Hóa đơn</td><td class="num" id="kd-period-payment-agribank-05-hoa-don-012026">23.725</td><td class="num" id="kd-period-payment-agribank-05-hoa-don-022026">23.725</td><td class="num" id="kd-period-payment-agribank-05-hoa-don-032026">23.725</td><td class="num" id="kd-period-payment-agribank-05-hoa-don-042026">23.725</td><td class="num" id="kd-period-payment-agribank-05-hoa-don-052026">23.725</td><td class="num" id="kd-period-payment-agribank-05-hoa-don-062026">23.725</td><td class="num" id="kd-period-payment-agribank-05-hoa-don-072026"></td><td class="num" id="kd-period-payment-agribank-05-hoa-don-082026"></td><td class="num" id="kd-period-payment-agribank-05-hoa-don-092026"></td><td class="num" id="kd-period-payment-agribank-05-hoa-don-102026"></td><td class="num" id="kd-period-payment-agribank-05-hoa-don-112026"></td><td class="num" id="kd-period-payment-agribank-05-hoa-don-122026"></td>
-</tr>
-<tr id="kd-period-payment-agribank-05-row-2">
-<td class="kd-col-chitieu" id="kd-period-payment-agribank-05-so-tien-label">Số tiền</td><td class="num" id="kd-period-payment-agribank-05-so-tien-012026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-05-so-tien-022026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-05-so-tien-032026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-05-so-tien-042026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-05-so-tien-052026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-05-so-tien-062026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-05-so-tien-072026"></td><td class="num" id="kd-period-payment-agribank-05-so-tien-082026"></td><td class="num" id="kd-period-payment-agribank-05-so-tien-092026"></td><td class="num" id="kd-period-payment-agribank-05-so-tien-102026"></td><td class="num" id="kd-period-payment-agribank-05-so-tien-112026"></td><td class="num" id="kd-period-payment-agribank-05-so-tien-122026"></td>
-</tr>
-<tr class="kd-group-start" id="kd-period-payment-agribank-06-row">
-<td class="kd-month" id="kd-period-payment-agribank-06-method" rowspan="2">Agribank</td>
-<td class="kd-col-chitieu" id="kd-period-payment-agribank-06-hoa-don-label">Hóa đơn</td><td class="num" id="kd-period-payment-agribank-06-hoa-don-012026">23.725</td><td class="num" id="kd-period-payment-agribank-06-hoa-don-022026">23.725</td><td class="num" id="kd-period-payment-agribank-06-hoa-don-032026">23.725</td><td class="num" id="kd-period-payment-agribank-06-hoa-don-042026">23.725</td><td class="num" id="kd-period-payment-agribank-06-hoa-don-052026">23.725</td><td class="num" id="kd-period-payment-agribank-06-hoa-don-062026">23.725</td><td class="num" id="kd-period-payment-agribank-06-hoa-don-072026"></td><td class="num" id="kd-period-payment-agribank-06-hoa-don-082026"></td><td class="num" id="kd-period-payment-agribank-06-hoa-don-092026"></td><td class="num" id="kd-period-payment-agribank-06-hoa-don-102026"></td><td class="num" id="kd-period-payment-agribank-06-hoa-don-112026"></td><td class="num" id="kd-period-payment-agribank-06-hoa-don-122026"></td>
-</tr>
-<tr id="kd-period-payment-agribank-06-row-2">
-<td class="kd-col-chitieu" id="kd-period-payment-agribank-06-so-tien-label">Số tiền</td><td class="num" id="kd-period-payment-agribank-06-so-tien-012026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-06-so-tien-022026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-06-so-tien-032026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-06-so-tien-042026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-06-so-tien-052026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-06-so-tien-062026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-06-so-tien-072026"></td><td class="num" id="kd-period-payment-agribank-06-so-tien-082026"></td><td class="num" id="kd-period-payment-agribank-06-so-tien-092026"></td><td class="num" id="kd-period-payment-agribank-06-so-tien-102026"></td><td class="num" id="kd-period-payment-agribank-06-so-tien-112026"></td><td class="num" id="kd-period-payment-agribank-06-so-tien-122026"></td>
-</tr>
-<tr class="kd-group-start" id="kd-period-payment-agribank-07-row">
-<td class="kd-month" id="kd-period-payment-agribank-07-method" rowspan="2">Agribank</td>
-<td class="kd-col-chitieu" id="kd-period-payment-agribank-07-hoa-don-label">Hóa đơn</td><td class="num" id="kd-period-payment-agribank-07-hoa-don-012026">23.725</td><td class="num" id="kd-period-payment-agribank-07-hoa-don-022026">23.725</td><td class="num" id="kd-period-payment-agribank-07-hoa-don-032026">23.725</td><td class="num" id="kd-period-payment-agribank-07-hoa-don-042026">23.725</td><td class="num" id="kd-period-payment-agribank-07-hoa-don-052026">23.725</td><td class="num" id="kd-period-payment-agribank-07-hoa-don-062026">23.725</td><td class="num" id="kd-period-payment-agribank-07-hoa-don-072026"></td><td class="num" id="kd-period-payment-agribank-07-hoa-don-082026"></td><td class="num" id="kd-period-payment-agribank-07-hoa-don-092026"></td><td class="num" id="kd-period-payment-agribank-07-hoa-don-102026"></td><td class="num" id="kd-period-payment-agribank-07-hoa-don-112026"></td><td class="num" id="kd-period-payment-agribank-07-hoa-don-122026"></td>
-</tr>
-<tr id="kd-period-payment-agribank-07-row-2">
-<td class="kd-col-chitieu" id="kd-period-payment-agribank-07-so-tien-label">Số tiền</td><td class="num" id="kd-period-payment-agribank-07-so-tien-012026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-07-so-tien-022026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-07-so-tien-032026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-07-so-tien-042026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-07-so-tien-052026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-07-so-tien-062026">7.340.855.374</td><td class="num" id="kd-period-payment-agribank-07-so-tien-072026"></td><td class="num" id="kd-period-payment-agribank-07-so-tien-082026"></td><td class="num" id="kd-period-payment-agribank-07-so-tien-092026"></td><td class="num" id="kd-period-payment-agribank-07-so-tien-102026"></td><td class="num" id="kd-period-payment-agribank-07-so-tien-112026"></td><td class="num" id="kd-period-payment-agribank-07-so-tien-122026"></td>
-</tr>
-<tr class="kd-row-total" id="kd-period-payment-total-row">
-<td colspan="2" id="kd-period-payment-total-label">Tổng cộng</td>
-<td class="num" id="kd-period-payment-total-012026">191.408</td><td class="num" id="kd-period-payment-total-022026">190.865</td><td class="num" id="kd-period-payment-total-032026">192.775</td><td class="num" id="kd-period-payment-total-042026">192.543</td><td class="num" id="kd-period-payment-total-052026">68.956</td><td class="num" id="kd-period-payment-total-062026">68.956</td><td class="num" id="kd-period-payment-total-072026">68.956</td><td class="num" id="kd-period-payment-total-082026">68.956</td><td class="num" id="kd-period-payment-total-092026">68.956</td><td class="num" id="kd-period-payment-total-102026">68.956</td><td class="num" id="kd-period-payment-total-112026">68.956</td><td class="num" id="kd-period-payment-total-122026">68.956</td>
-</tr>
-</tbody>
-</table>
-</div>
-</article>
-</section>
-</div>
-<div data-component="footer" id="pmw-footer"></div>
-</main>
-</div>
-</div>
+
 <script>
 (function ensureBusinessReportMonthOptions(){
   const MONTHS = ['01','02','03','04','05','06','07','08','09','10','11','12'];
