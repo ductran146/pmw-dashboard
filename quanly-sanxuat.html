@@ -587,8 +587,94 @@
     .sm-bc-sep svg { width:8px !important; height:8px !important; stroke:rgba(17,24,39,0.5) !important; }
   </style>
 <link href="responsive.css?v=37" rel="stylesheet"/>
+
+<style>
+  /* Final fix: Water distribution table should expand fully, no inner-frame scroll */
+  body.pmw-page-quanly-sanxuat,
+  body {
+    min-height: 100vh;
+  }
+
+  /* Let the content area be the only page scroll, not the table/card itself */
+  #qlsx-scroll {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  #sxMainContent {
+    flex: 0 0 auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  .sx-chart-section {
+    align-items: start !important;
+  }
+
+  .sx-chart-card {
+    min-height: 0 !important;
+  }
+
+  /* Keep the chart card height, but let the table card grow by its content */
+  #qlsx-chart-card-bieu-do-nuoc-phan-phoi-thang-4 {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  #qlsx-chart-card-bieu-do-nuoc-phan-phoi-thang-4 .cc-head,
+  #qlsx-chart-card-bieu-do-nuoc-phan-phoi-thang-4 .cc-table-desc {
+    flex: 0 0 auto !important;
+  }
+
+  #qlsx-div-nguon-cap-ke-hoach-dat-ty-trong-was-nha-may-nuoc-was-142-580 {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  #qlsx-water-distribution-table {
+    width: 100% !important;
+  }
+
+  #qlsx-water-distribution-table tbody tr,
+  #qlsx-water-distribution-table thead tr {
+    height: auto !important;
+  }
+
+  #qlsx-water-distribution-table th,
+  #qlsx-water-distribution-table td {
+    white-space: normal;
+  }
+
+  @media (max-width: 1200px) {
+    #qlsx-chart-card-bieu-do-nuoc-phan-phoi-thang-4 {
+      height: auto !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    #qlsx-scroll {
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+    }
+
+    #qlsx-chart-card-bieu-do-nuoc-phan-phoi-thang-4 {
+      height: auto !important;
+      overflow: visible !important;
+    }
+
+    #qlsx-div-nguon-cap-ke-hoach-dat-ty-trong-was-nha-may-nuoc-was-142-580 {
+      overflow-x: auto !important;
+      overflow-y: visible !important;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+</style>
+
 </head>
-<body>
+<body class="pmw-page-quanly-sanxuat">
 <div class="bao-cao-wrapper" id="qlsx-wrapper">
 <!-- HEADER -->
 <div data-component="header" id="pmw-header"></div>
