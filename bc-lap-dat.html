@@ -491,7 +491,7 @@ body.pmw-page-bc-lap-dat .dt-scroll-area {
 }
 
 
-/* Layout update: place “Nhóm chỉ tiêu chính” beside the KPI block, but keep KPI cards compact */
+/* Layout update: place “Báo cáo lắp đặt, sửa chữa - cộng dồn” beside the KPI block, but keep KPI cards compact */
 .pmw-ld-top-layout {
   display: grid;
   grid-template-columns: minmax(380px, 0.95fr) minmax(460px, 1.25fr);
@@ -584,6 +584,87 @@ body.pmw-page-bc-lap-dat .dt-scroll-area {
     white-space: nowrap;
   }
 }
+
+/* KPI section title: match .pmw-ld-card-head / .pmw-ld-card-title style */
+.pmw-ld-kpi-section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 14px 16px;
+  background: linear-gradient(90deg, rgba(1,138,190,0.14), rgba(255,255,255,0));
+  border: 1px solid rgba(17,24,39,0.08);
+  border-radius: 18px;
+  box-sizing: border-box;
+}
+.pmw-ld-kpi-section-title-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 700;
+  color: #012A50;
+  font-family: 'Pretendard', var(--font), sans-serif;
+}
+@media (max-width: 1366px) {
+  .pmw-ld-kpi-section-title {
+    min-height: 50px;
+    padding: 12px 14px;
+  }
+}
+@media (max-width: 560px) {
+  .pmw-ld-kpi-section-title {
+    min-height: 48px;
+    padding: 12px 14px;
+  }
+  .pmw-ld-kpi-section-title-text {
+    min-width: 0;
+    font-size: 15px;
+    line-height: 22px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+
+
+/* KPI section: title and KPI cards in one shared box */
+.pmw-ld-kpi-section {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid rgba(17,24,39,0.08);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(17,24,39,0.04), 0 12px 24px rgba(17,24,39,0.04);
+  box-sizing: border-box;
+}
+.pmw-ld-kpi-section .pmw-ld-kpi-section-title {
+  border: 0 !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid rgba(17,24,39,0.08) !important;
+  box-shadow: none !important;
+  width: 100% !important;
+}
+.pmw-ld-kpi-section .pmw-ld-kpi-grid {
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
+}
+@media (max-width: 1366px) {
+  .pmw-ld-kpi-section .pmw-ld-kpi-grid {
+    padding: 14px !important;
+  }
+}
+@media (max-width: 560px) {
+  .pmw-ld-kpi-section .pmw-ld-kpi-grid {
+    padding: 12px !important;
+  }
+}
 </style>
 </head>
 <body class="pmw-page-bc-lap-dat pmw-page-stt-table">
@@ -599,6 +680,8 @@ body.pmw-page-bc-lap-dat .dt-scroll-area {
 <div class="dt-scroll-area" id="bc-lap-dat-content-scroll">
 <div class="pmw-ld-top-layout" id="bc-lap-dat-top-layout">
 <div class="pmw-ld-kpi-column" id="bc-lap-dat-kpi-column">
+<div class="pmw-ld-kpi-section" id="bc-lap-dat-kpi-section">
+<div class="pmw-ld-kpi-section-title" id="bc-lap-dat-kpi-section-title"><h2 class="pmw-ld-kpi-section-title-text" id="bc-lap-dat-kpi-section-title-text">Báo cáo lắp đặt, sửa chữa - theo tháng</h2></div>
 <div class="pmw-ld-kpi-grid" id="bc-lap-dat-kpi-grid">
 <article class="pmw-ld-kpi" id="bc-lap-dat-kpi-gia-tri-xay-lap">
 <div class="pmw-ld-kpi-head" id="bc-lap-dat-kpi-gia-tri-xay-lap-head"><span class="pmw-ld-kpi-index" id="bc-lap-dat-kpi-gia-tri-xay-lap-index">1</span><h3 class="pmw-ld-kpi-title" id="bc-lap-dat-kpi-gia-tri-xay-lap-title">TỔNG GIÁ TRỊ XÂY LẮP</h3></div>
@@ -616,6 +699,7 @@ body.pmw-page-bc-lap-dat .dt-scroll-area {
 <div class="pmw-ld-kpi-head" id="bc-lap-dat-kpi-thay-bao-hanh-head"><span class="pmw-ld-kpi-index" id="bc-lap-dat-kpi-thay-bao-hanh-index">4</span><h3 class="pmw-ld-kpi-title" id="bc-lap-dat-kpi-thay-bao-hanh-title">THAY BẢO HÀNH ĐỊNH KỲ</h3></div>
 <div class="pmw-ld-kpi-body" id="bc-lap-dat-kpi-thay-bao-hanh-body"><div class="pmw-ld-kpi-value" id="bc-lap-dat-kpi-thay-bao-hanh-value-wrap"><span class="pmw-ld-kpi-number" id="bc-lap-dat-kpi-thay-bao-hanh-value">9.992</span><span class="pmw-ld-kpi-unit" id="bc-lap-dat-kpi-thay-bao-hanh-unit">cái</span></div><div class="pmw-ld-kpi-note" id="bc-lap-dat-kpi-thay-bao-hanh-note">Theo dõi số lượng thay đồng hồ bảo hành</div></div>
 </article>
+</div>
 </div>
 <section class="pmw-ld-card" id="bc-lap-dat-chart-gia-tri">
 <div class="pmw-ld-card-head" id="bc-lap-dat-chart-gia-tri-head">
@@ -635,8 +719,7 @@ body.pmw-page-bc-lap-dat .dt-scroll-area {
 </div>
 <section class="pmw-ld-card" id="bc-lap-dat-section-chi-tieu-chinh">
 <div class="pmw-ld-card-head" id="bc-lap-dat-section-chi-tieu-chinh-head">
-<h2 class="pmw-ld-card-title" id="bc-lap-dat-section-chi-tieu-chinh-title">Nhóm chỉ tiêu chính</h2>
-<span class="pmw-ld-badge" id="bc-lap-dat-section-chi-tieu-chinh-badge">Tổng quan</span>
+<h2 class="pmw-ld-card-title" id="bc-lap-dat-section-chi-tieu-chinh-title">Báo cáo lắp đặt, sửa chữa - cộng dồn</h2>
 </div>
 <div class="pmw-ld-card-body" id="bc-lap-dat-section-chi-tieu-chinh-body">
 <div class="pmw-ld-group-list" id="bc-lap-dat-section-chi-tieu-chinh-list">
