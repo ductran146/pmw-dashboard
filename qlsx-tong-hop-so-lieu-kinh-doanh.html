@@ -76,10 +76,239 @@
       .sm-scroll { padding:16px 16px 20px; }
       .kd-tab { font-size:13px; height:40px; }
       .kd-table { min-width:unset; }
-      .kd-table th, .kd-table td { font-size:12px; padding:8px 10px; }
+      .kd-table th, .kd-table td { font-size:13px; padding:8px 10px; }
     }
 
-  </style>
+    /* Mobile table readability: widen ratio/date columns so values and dates are not truncated */
+    @media (max-width:900px){
+      #kd-daily-table,
+      #kd-payment-table {
+        table-layout: fixed !important;
+        width: max-content !important;
+        min-width: max-content !important;
+      }
+
+      #kd-daily-table th,
+      #kd-daily-table td,
+      #kd-payment-table th,
+      #kd-payment-table td {
+        overflow: visible !important;
+        text-overflow: clip !important;
+        white-space: nowrap !important;
+      }
+
+      /* Daily table: date + ratio columns need enough room for full values */
+      #kd-daily-col-1 { width: 112px !important; min-width: 112px !important; }
+      #kd-daily-col-5,
+      #kd-daily-col-7,
+      #kd-daily-col-9,
+      #kd-daily-col-11 { width: 82px !important; min-width: 82px !important; }
+
+      #kd-daily-table th:nth-child(1),
+      #kd-daily-table td:nth-child(1) { width: 112px !important; min-width: 112px !important; }
+
+      #kd-daily-table th:nth-child(5),
+      #kd-daily-table td:nth-child(5),
+      #kd-daily-table th:nth-child(7),
+      #kd-daily-table td:nth-child(7),
+      #kd-daily-table th:nth-child(9),
+      #kd-daily-table td:nth-child(9),
+      #kd-daily-table th:nth-child(11),
+      #kd-daily-table td:nth-child(11) {
+        width: 82px !important;
+        min-width: 82px !important;
+      }
+
+      /* Payment table: date columns must show dd/mm/yyyy fully */
+      #kd-payment-col-2,
+      #kd-payment-col-3,
+      #kd-payment-col-4,
+      #kd-payment-col-5,
+      #kd-payment-col-6,
+      #kd-payment-col-7 {
+        width: 112px !important;
+        min-width: 112px !important;
+      }
+
+      #kd-payment-table thead tr:nth-child(2) th,
+      #kd-payment-table tbody td:not(:first-child) {
+        width: 112px !important;
+        min-width: 112px !important;
+      }
+    }
+
+    @media (max-width:480px){
+      #kd-daily-col-1 { width: 116px !important; min-width: 116px !important; }
+      #kd-daily-col-5,
+      #kd-daily-col-7,
+      #kd-daily-col-9,
+      #kd-daily-col-11 { width: 88px !important; min-width: 88px !important; }
+
+      #kd-payment-col-2,
+      #kd-payment-col-3,
+      #kd-payment-col-4,
+      #kd-payment-col-5,
+      #kd-payment-col-6,
+      #kd-payment-col-7 {
+        width: 118px !important;
+        min-width: 118px !important;
+      }
+
+      #kd-payment-table thead tr:nth-child(2) th,
+      #kd-payment-table tbody td:not(:first-child) {
+        width: 118px !important;
+        min-width: 118px !important;
+      }
+    }
+
+  
+
+    /* Mobile final fix: khóa cứng ô tiêu đề "Ngày" đúng theo cột Ngày bên dưới */
+    @media (max-width: 900px) {
+      #kd-table-scroll-1 {
+        position: relative !important;
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch !important;
+        isolation: isolate !important;
+      }
+
+      #kd-daily-table {
+        --kd-date-col-width: 116px;
+        width: max-content !important;
+        min-width: max-content !important;
+        table-layout: fixed !important;
+        border-collapse: separate !important;
+        border-spacing: 0 !important;
+      }
+
+      #kd-daily-col-1 {
+        width: var(--kd-date-col-width) !important;
+        min-width: var(--kd-date-col-width) !important;
+        max-width: var(--kd-date-col-width) !important;
+      }
+
+      /* Reset sticky của toàn bộ header/cell trước để không dính nhầm các cột Hóa đơn/Tiền/Tỷ lệ */
+      #kd-daily-table thead th,
+      #kd-daily-table tbody td {
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+        z-index: auto !important;
+      }
+
+      /* Chỉ cố định đúng ô tiêu đề Ngày và các ô ngày bên dưới */
+      #kd-daily-table thead #kd-daily-head-r1-c1-ngay,
+      #kd-daily-table tbody tr > td:first-child {
+        position: sticky !important;
+        left: 0 !important;
+        width: var(--kd-date-col-width) !important;
+        min-width: var(--kd-date-col-width) !important;
+        max-width: var(--kd-date-col-width) !important;
+        box-sizing: border-box !important;
+        text-align: left !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: clip !important;
+        border-right: 1px solid rgba(17,24,39,0.08) !important;
+      }
+
+      #kd-daily-table thead #kd-daily-head-r1-c1-ngay {
+        z-index: 60 !important;
+        background: #EDF8FC !important;
+        background-clip: padding-box !important;
+        box-shadow: 1px 0 0 rgba(17,24,39,0.08), 14px 0 20px rgba(237,248,252,0.98) !important;
+        transform: translateZ(0) !important;
+      }
+
+      #kd-daily-table tbody tr > td:first-child {
+        z-index: 50 !important;
+        background: #FFFFFF !important;
+        background-clip: padding-box !important;
+        box-shadow: 1px 0 0 rgba(17,24,39,0.08), 14px 0 20px rgba(255,255,255,0.96) !important;
+        transform: translateZ(0) !important;
+      }
+
+      #kd-daily-table tbody tr:hover > td:first-child {
+        background: linear-gradient(0deg, rgba(1,138,190,0.02), rgba(1,138,190,0.02)), #FFFFFF !important;
+      }
+    }
+    /* Mobile fix: sticky đúng cột "Hình thức" và header "Hình thức" của bảng dưới, không đổi layout khác */
+    @media (max-width: 900px) {
+      #kd-table-scroll-2 {
+        position: relative !important;
+        overflow-x: auto !important;
+        overflow-y: visible !important;
+        -webkit-overflow-scrolling: touch !important;
+        isolation: isolate !important;
+      }
+
+      #kd-payment-table {
+        --kd-payment-first-col-width: 120px;
+        width: max-content !important;
+        min-width: max-content !important;
+        table-layout: fixed !important;
+        border-collapse: separate !important;
+        border-spacing: 0 !important;
+      }
+
+      #kd-payment-col-1 {
+        width: var(--kd-payment-first-col-width) !important;
+        min-width: var(--kd-payment-first-col-width) !important;
+        max-width: var(--kd-payment-first-col-width) !important;
+      }
+
+      /* Reset sticky của riêng bảng dưới trước để không dính nhầm các cột ngày */
+      #kd-payment-table thead th,
+      #kd-payment-table tbody td {
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+        z-index: auto !important;
+      }
+
+      /* Chỉ cố định đúng ô tiêu đề Hình thức và các ô dữ liệu cột đầu */
+      #kd-payment-table thead #kd-payment-head-r1-c1-hinh-thuc,
+      #kd-payment-table tbody tr > td:first-child {
+        position: sticky !important;
+        left: 0 !important;
+        width: var(--kd-payment-first-col-width) !important;
+        min-width: var(--kd-payment-first-col-width) !important;
+        max-width: var(--kd-payment-first-col-width) !important;
+        box-sizing: border-box !important;
+        text-align: left !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: clip !important;
+        border-right: 1px solid rgba(17,24,39,0.08) !important;
+      }
+
+      #kd-payment-table thead #kd-payment-head-r1-c1-hinh-thuc {
+        z-index: 60 !important;
+        background: #EDF8FC !important;
+        background-clip: padding-box !important;
+        box-shadow: 1px 0 0 rgba(17,24,39,0.08), 14px 0 20px rgba(237,248,252,0.98) !important;
+        transform: translateZ(0) !important;
+      }
+
+      #kd-payment-table tbody tr > td:first-child {
+        z-index: 50 !important;
+        background: #FFFFFF !important;
+        background-clip: padding-box !important;
+        box-shadow: 1px 0 0 rgba(17,24,39,0.08), 14px 0 20px rgba(255,255,255,0.96) !important;
+        transform: translateZ(0) !important;
+      }
+
+      #kd-payment-table tbody tr:hover > td:first-child {
+        background: linear-gradient(0deg, rgba(1,138,190,0.02), rgba(1,138,190,0.02)), #FFFFFF !important;
+      }
+
+      #kd-payment-table tbody tr.kd-row-total > td:first-child {
+        background: linear-gradient(0deg, rgba(2,69,122,0.05), rgba(2,69,122,0.05)), #FFFFFF !important;
+      }
+    }
+
+</style>
 <link href="responsive.css?v=38" rel="stylesheet"/>
 <script defer="" src="components/components-loader.js"></script>
 </head>
@@ -97,7 +326,7 @@
 <div class="kd-table-scroll" id="kd-table-scroll-1">
 <table class="kd-table" id="kd-daily-table">
 <colgroup id="kd-daily-colgroup">
-<col id="kd-daily-col-1" style="width:90px"/>
+<col id="kd-daily-col-1" style="width:116px"/>
 <col id="kd-daily-col-2" style="width:72px"/>
 <col id="kd-daily-col-3" style="width:130px"/>
 <col id="kd-daily-col-4" style="width:72px"/>

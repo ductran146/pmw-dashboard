@@ -72,9 +72,133 @@
       .sm-scroll { padding:16px 16px 20px; }
       .kd-tab { font-size:13px; height:40px; }
       .kd-table { min-width:unset; }
-      .kd-table th, .kd-table td { font-size:12px; padding:8px 10px; }
+      .kd-table th, .kd-table td { font-size:13px; padding:8px 10px; }
     }
 
+
+    /* Desktop fix: hiển thị đầy đủ tiêu đề "Số lượng hóa đơn (cái)" */
+    @media (min-width: 901px) {
+      #kd-detail-payment-table {
+        min-width: 620px !important;
+      }
+
+      #kd-detail-payment-col-2 {
+        width: 220px !important;
+        min-width: 220px !important;
+      }
+
+      #kd-detail-payment-head-so-luong-hoa-don {
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+      }
+    }
+
+    /* Mobile payment table header abbreviations */
+    @media (max-width: 900px) {
+      #kd-detail-payment-table {
+        min-width: 620px !important;
+      }
+
+      #kd-detail-payment-col-1 {
+        width: 130px !important;
+      }
+
+      #kd-detail-payment-col-2 {
+        width: 180px !important;
+      }
+
+      #kd-detail-payment-col-3 {
+        width: 230px !important;
+        min-width: 230px !important;
+      }
+
+      #kd-detail-payment-head-don-vi-thu-ho,
+      #kd-detail-payment-head-so-luong-hoa-don,
+      #kd-detail-payment-head-tong-tien-thanh-toan {
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        line-height: 18px !important;
+      }
+    }
+
+
+    /* Mobile payment table: sticky first column + calculated numeric columns */
+    @media (max-width: 900px) {
+      #kd-detail-payment-table {
+        width: max-content !important;
+        min-width: max-content !important;
+        table-layout: fixed !important;
+        border-collapse: separate !important;
+        border-spacing: 0 !important;
+      }
+
+      #kd-detail-payment-table th,
+      #kd-detail-payment-table td {
+        font-size: 14px !important;
+        line-height: 20px !important;
+        padding: 10px !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        box-sizing: border-box !important;
+      }
+
+      #kd-detail-payment-col-1,
+      #kd-detail-payment-table th:nth-child(1),
+      #kd-detail-payment-table td:nth-child(1) {
+        width: 120px !important;
+        min-width: 120px !important;
+        max-width: 120px !important;
+      }
+
+      #kd-detail-payment-col-2,
+      #kd-detail-payment-table th:nth-child(2),
+      #kd-detail-payment-table td:nth-child(2) {
+        width: var(--kd-payment-col-2-width, 132px) !important;
+        min-width: var(--kd-payment-col-2-width, 132px) !important;
+        max-width: var(--kd-payment-col-2-width, 132px) !important;
+      }
+
+      #kd-detail-payment-col-3,
+      #kd-detail-payment-table th:nth-child(3),
+      #kd-detail-payment-table td:nth-child(3) {
+        width: var(--kd-payment-col-3-width, 150px) !important;
+        min-width: var(--kd-payment-col-3-width, 150px) !important;
+        max-width: var(--kd-payment-col-3-width, 150px) !important;
+      }
+
+      #kd-detail-payment-table th:nth-child(1),
+      #kd-detail-payment-table td:nth-child(1) {
+        position: sticky !important;
+        left: 0 !important;
+        z-index: 4 !important;
+        background: #FFFFFF !important;
+        box-shadow: 1px 0 0 rgba(17,24,39,0.08), 10px 0 16px rgba(255,255,255,0.96) !important;
+      }
+
+      #kd-detail-payment-table thead th:nth-child(1) {
+        z-index: 7 !important;
+        background: #EDF8FC !important;
+      }
+
+      #kd-detail-payment-table tbody tr:hover td:nth-child(1) {
+        background: linear-gradient(0deg, rgba(1,138,190,0.02), rgba(1,138,190,0.02)), #FFFFFF !important;
+      }
+
+      #kd-detail-payment-table tbody tr.kd-row-total td:nth-child(1) {
+        background: linear-gradient(0deg, rgba(2,69,122,0.05), rgba(2,69,122,0.05)), #FFFFFF !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #kd-detail-payment-table th,
+      #kd-detail-payment-table td {
+        font-size: 13px !important;
+        line-height: 20px !important;
+      }
+    }
 
   </style>
 <link href="responsive.css?v=38" rel="stylesheet"/>
@@ -162,5 +286,98 @@
   window.addEventListener('load', rebuildMonthSelect);
 })();
 </script>
+
+<script>
+(function setupMobilePaymentHeaderLabels() {
+  const labels = {
+    'kd-detail-payment-head-don-vi-thu-ho': {
+      desktop: 'Đơn vị thu hộ',
+      mobile: 'ĐV Thu hộ'
+    },
+    'kd-detail-payment-head-so-luong-hoa-don': {
+      desktop: 'Số lượng hóa đơn (cái)',
+      mobile: 'SL hóa đơn (cái)'
+    },
+    'kd-detail-payment-head-tong-tien-thanh-toan': {
+      desktop: 'Tổng tiền thanh toán (VNĐ)',
+      mobile: 'Tổng tiền TT (VNĐ)'
+    }
+  };
+
+  function syncLabels() {
+    const isMobile = window.matchMedia('(max-width: 900px)').matches;
+
+    Object.entries(labels).forEach(([id, text]) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.textContent = isMobile ? text.mobile : text.desktop;
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', syncLabels);
+  document.addEventListener('pmw:components-loaded', syncLabels);
+  window.addEventListener('load', syncLabels);
+  window.addEventListener('resize', syncLabels);
+})();
+</script>
+
+
+<script>
+(function setupMobilePaymentColumnWidths() {
+  function measureTextWidth(text, font) {
+    const canvas = measureTextWidth.canvas || (measureTextWidth.canvas = document.createElement('canvas'));
+    const context = canvas.getContext('2d');
+    context.font = font;
+    return Math.ceil(context.measureText(String(text || '').trim()).width);
+  }
+
+  function getFontForCell(cell) {
+    const style = window.getComputedStyle(cell);
+    return `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+  }
+
+  function getColumnContentWidth(table, columnIndex) {
+    const cells = Array.from(table.querySelectorAll(`thead th:nth-child(${columnIndex}), tbody td:nth-child(${columnIndex})`));
+    const maxTextWidth = cells.reduce((max, cell) => {
+      return Math.max(max, measureTextWidth(cell.textContent, getFontForCell(cell)));
+    }, 0);
+    return Math.ceil(maxTextWidth + 20); // padding left/right = 10px + 10px
+  }
+
+  function syncColumnWidths() {
+    const table = document.getElementById('kd-detail-payment-table');
+    if (!table) return;
+
+    const isMobile = window.matchMedia('(max-width: 900px)').matches;
+    const col2 = document.getElementById('kd-detail-payment-col-2');
+    const col3 = document.getElementById('kd-detail-payment-col-3');
+
+    if (!isMobile) {
+      table.style.removeProperty('--kd-payment-col-2-width');
+      table.style.removeProperty('--kd-payment-col-3-width');
+      if (col2) col2.style.width = '160px';
+      if (col3) col3.style.minWidth = '160px';
+      return;
+    }
+
+    // Delay one frame so mobile header abbreviations are already applied.
+    window.requestAnimationFrame(() => {
+      const col2Width = getColumnContentWidth(table, 2);
+      const col3Width = getColumnContentWidth(table, 3);
+      table.style.setProperty('--kd-payment-col-2-width', `${col2Width}px`);
+      table.style.setProperty('--kd-payment-col-3-width', `${col3Width}px`);
+      if (col2) col2.style.width = `${col2Width}px`;
+      if (col3) col3.style.width = `${col3Width}px`;
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', syncColumnWidths);
+  document.addEventListener('pmw:components-loaded', syncColumnWidths);
+  window.addEventListener('load', syncColumnWidths);
+  window.addEventListener('resize', syncColumnWidths);
+  setTimeout(syncColumnWidths, 80);
+})();
+</script>
+
 </body>
 </html>

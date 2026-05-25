@@ -593,7 +593,7 @@
 
     .pmw-vt-group {
       border: 1px solid rgba(17, 24, 39, 0.08);
-      border-radius: 16px;
+      border-radius: 0px;
       background: #FFFFFF;
       overflow: hidden;
     }
@@ -711,7 +711,7 @@
       body.pmw-page-bc-vat-tu .dt-scroll-area { padding: 16px; }
       .pmw-vt-summary-number { font-size: 22px; line-height: 30px; }
       .pmw-vt-card-head { padding: 14px 16px; }
-      .pmw-vt-card-body { padding: 14px 16px 16px; }
+      .pmw-vt-card-body { padding: 0; }
     }
 
     @media (max-width: 1180px) {
@@ -854,7 +854,6 @@
     gap: 6px !important;
   }
 </style>
-
 <style>
   /* Fix: tiêu đề section và chip tháng/năm cùng 1 dòng */
   .pmw-vt-card-head {
@@ -895,8 +894,6 @@
     }
   }
 </style>
-
-
 <style>
   /* Mobile: keep Kế hoạch and Thực hiện on the same row in Bảng 1 - Nước sản xuất */
   @media (max-width: 520px) {
@@ -924,9 +921,6 @@
     }
   }
 </style>
-
-
-
 <style>
   /* Mobile: keep the 2 summary stats on the same row for all 3 top KPI cards */
   @media (max-width: 520px) {
@@ -974,8 +968,6 @@
     }
   }
 </style>
-
-
 <style>
   /* Mobile fix: keep Vật tư/Năng lượng group title and first "Chỉ tiêu" column fixed during horizontal scroll */
   @media (max-width: 900px) {
@@ -1042,8 +1034,6 @@
     }
   }
 </style>
-
-
 <style>
   /* Final mobile fix: make sticky first column background consistent with table/header */
   @media (max-width: 900px) {
@@ -1102,6 +1092,45 @@
   }
 </style>
 
+<style>
+  /* Removed Sản xuất, phân phối table: let remaining Vật tư, năng lượng section use full width */
+  #bc-vat-tu-layout {
+    grid-template-columns: 1fr !important;
+  }
+</style>
+
+<style>
+  /* Layout: Điện tiêu thụ và Javen hiển thị theo hàng ngang */
+  #bc-vat-tu-section-vat-tu-nang-luong-body {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    align-items: start !important;
+  }
+
+  #bc-vat-tu-row-dien-tieu-thu,
+  #bc-vat-tu-row-javen {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  @media (max-width: 900px) {
+    #bc-vat-tu-section-vat-tu-nang-luong-body {
+      grid-template-columns: 1fr !important;
+      overflow-x: visible !important;
+      gap: 12px !important;
+      background-color: #F4F6F8;
+    }
+  }
+</style>
+
+<style>
+  /* Final fix: bỏ number badge ở đầu tiêu đề Điện tiêu thụ và Javen */
+  #bc-vat-tu-row-dien-tieu-thu-head,
+  #bc-vat-tu-row-javen-head {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+  }
+</style>
 </head>
 <body class="pmw-page-bc-vat-tu pmw-page-stt-table">
 <div class="bao-cao-wrapper" id="bc-vat-tu-wrapper">
@@ -1156,58 +1185,7 @@
 </div>
 </div>
 <div class="pmw-vt-layout" id="bc-vat-tu-layout">
-<section class="pmw-vt-card pmw-vt-card-primary" id="bc-vat-tu-section-san-xuat-phan-phoi">
-<div class="pmw-vt-card-head" id="bc-vat-tu-section-san-xuat-phan-phoi-head">
-<div>
-<h2 class="pmw-vt-card-title" id="bc-vat-tu-section-san-xuat-phan-phoi-label">Sản xuất, phân phối</h2>
-</div>
-<span class="pmw-vt-badge pmw-vt-report-period" id="bc-vat-tu-section-san-xuat-phan-phoi-period-badge">Tháng 4/2026</span>
-</div>
-<div class="pmw-vt-card-body" id="bc-vat-tu-section-san-xuat-phan-phoi-body">
-<article class="pmw-vt-metric" id="bc-vat-tu-row-nuoc-san-xuat">
-<div class="pmw-vt-metric-main" id="bc-vat-tu-row-nuoc-san-xuat-head">
-<span class="pmw-vt-index" id="bc-nuoc-san-xuat-stt">1</span>
-<div>
-<h3 class="pmw-vt-name" id="bc-vat-tu-nuoc-san-xuat-chi-tieu"><span class="pmw-vt-title-row" id="bc-vat-tu-row-nuoc-san-xuat-title-row"><span class="pmw-vt-title-text" id="bc-vat-tu-row-nuoc-san-xuat-title-text">Nước sản xuất</span><span class="pmw-vt-title-unit" id="bc-vat-tu-row-nuoc-san-xuat-title-unit">m³/tháng</span></span></h3>
-<span class="pmw-vt-unit" id="bc-vat-tu-nuoc-san-xuat-don-vi-tinh">m³/tháng</span>
-</div>
-<span class="pmw-vt-status is-good" id="bc-vat-tu-nuoc-san-xuat-ty-le-dat"><span id="bc-vat-tu-nuoc-san-xuat-ty-le-dat-value">116,7%</span></span>
-</div>
-<div class="pmw-vt-compare" id="bc-vat-tu-row-nuoc-san-xuat-compare">
-<div class="pmw-vt-compare-cell" id="bc-vat-tu-row-nuoc-san-xuat-compare-cell-1">
-<span class="pmw-vt-cell-label" id="bc-vat-tu-row-nuoc-san-xuat-compare-cell-1-label">Kế hoạch</span>
-<span class="pmw-vt-cell-value" id="bc-vat-tu-nuoc-san-xuat-ke-hoach">600.000</span>
-</div>
-<div class="pmw-vt-compare-cell" id="bc-vat-tu-row-nuoc-san-xuat-compare-cell-2">
-<span class="pmw-vt-cell-label" id="bc-vat-tu-row-nuoc-san-xuat-compare-cell-2-label">Thực hiện</span>
-<span class="pmw-vt-cell-value" id="bc-vat-tu-nuoc-san-xuat-thuc-hien">700.000</span>
-</div>
-</div>
-<div aria-label="Tỷ lệ đạt 116,7%" class="pmw-vt-progress" id="bc-vat-tu-row-nuoc-san-xuat-progress"><div class="pmw-vt-progress-bar" id="bc-vat-tu-row-nuoc-san-xuat-progress-bar" style="width:100%"></div></div>
-</article>
-<article class="pmw-vt-metric" id="bc-vat-tu-row-theo-ngay">
-<div class="pmw-vt-metric-main" id="bc-vat-tu-row-theo-ngay-head">
-<span class="pmw-vt-index" id="bc-vat-tu-theo-ngay-stt">1.1</span>
-<div>
-<h3 class="pmw-vt-name" id="bc-vat-tu-theo-ngay-chi-tieu"><span class="pmw-vt-title-row" id="bc-vat-tu-row-theo-ngay-title-row"><span class="pmw-vt-title-text" id="bc-vat-tu-row-theo-ngay-title-text">1.1 - Theo ngày</span><span class="pmw-vt-title-unit" id="bc-vat-tu-row-theo-ngay-title-unit">m³/ngày</span></span></h3>
-<span class="pmw-vt-unit" id="bc-vat-tu-theo-ngay-don-vi-tinh" style="display:none;">m³/ngày</span>
-</div>
-<span class="pmw-vt-status is-good" id="bc-vat-tu-theo-ngay-ty-le-dat"><span id="bc-vat-tu-theo-ngay-ty-le-dat-value">110,0%</span></span>
-</div>
-<div class="pmw-vt-compare" id="bc-vat-tu-row-theo-ngay-compare">
-<div class="pmw-vt-compare-cell" id="bc-vat-tu-row-theo-ngay-compare-cell-1">
-<span class="pmw-vt-cell-label" id="bc-vat-tu-row-theo-ngay-compare-cell-1-label">Kế hoạch</span>
-<span class="pmw-vt-cell-value" id="bc-vat-tu-theo-ngay-ke-hoach">20.000</span>
-</div>
-<div class="pmw-vt-compare-cell" id="bc-vat-tu-row-theo-ngay-compare-cell-2">
-<span class="pmw-vt-cell-label" id="bc-vat-tu-row-theo-ngay-compare-cell-2-label">Thực hiện</span>
-<span class="pmw-vt-cell-value" id="bc-vat-tu-theo-ngay-thuc-hien">22.000</span>
-</div>
-</div>
-<div aria-label="Tỷ lệ đạt 110,0%" class="pmw-vt-progress" id="bc-vat-tu-row-theo-ngay-progress"><div class="pmw-vt-progress-bar" id="bc-vat-tu-row-theo-ngay-progress-bar" style="width:100%"></div></div>
-</article>
-</div>
-</section>
+
 <section class="pmw-vt-card" id="bc-vat-tu-section-vat-tu-nang-luong">
 <div class="pmw-vt-card-head" id="bc-vat-tu-section-vat-tu-nang-luong-head">
 <div>
@@ -1218,7 +1196,6 @@
 <div class="pmw-vt-card-body pmw-vt-list" id="bc-vat-tu-section-vat-tu-nang-luong-body">
 <article class="pmw-vt-group" id="bc-vat-tu-row-dien-tieu-thu">
 <div class="pmw-vt-group-head" id="bc-vat-tu-row-dien-tieu-thu-head">
-<span class="pmw-vt-index" id="bc-vat-tu-dien-tieu-thu-stt">2</span>
 <div>
 <h3 class="pmw-vt-group-title" id="bc-vat-tu-dien-tieu-thu-chi-tieu"><span class="pmw-vt-title-row" id="bc-vat-tu-row-dien-tieu-thu-title-row"><span class="pmw-vt-title-text" id="bc-vat-tu-row-dien-tieu-thu-title-text">Điện tiêu thụ</span><span class="pmw-vt-title-unit" id="bc-vat-tu-row-dien-tieu-thu-title-unit">kWh/tháng</span></span></h3>
 <span class="pmw-vt-group-unit" id="bc-vat-tu-dien-tieu-thu-don-vi-tinh">kWh/tháng</span>
@@ -1238,7 +1215,6 @@
 </article>
 <article class="pmw-vt-group" id="bc-vat-tu-row-javen">
 <div class="pmw-vt-group-head" id="bc-vat-tu-row-javen-head">
-<span class="pmw-vt-index" id="bc-vat-tu-javen-stt">3</span>
 <div>
 <h3 class="pmw-vt-group-title" id="bc-vat-tu-javen-chi-tieu"><span class="pmw-vt-title-row" id="bc-vat-tu-row-javen-title-row"><span class="pmw-vt-title-text" id="bc-vat-tu-row-javen-title-text">Javen</span><span class="pmw-vt-title-unit" id="bc-vat-tu-row-javen-title-unit">kg/tháng</span></span></h3>
 <span class="pmw-vt-group-unit" id="bc-vat-tu-javen-don-vi-tinh">kg/tháng</span>
