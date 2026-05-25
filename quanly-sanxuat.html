@@ -673,6 +673,128 @@
   }
 </style>
 
+
+<style>
+/* Final override: make water distribution table/card corners match chart cards */
+#qlsx-chart-card-bieu-do-nuoc-phan-phoi-thang-4 {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  background: #FFFFFF !important;
+}
+
+#qlsx-div-nguon-cap-ke-hoach-dat-ty-trong-was-nha-may-nuoc-was-142-580 {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  flex: none !important;
+  border-radius: 0 0 16px 16px !important;
+  background: #FFFFFF !important;
+}
+
+#qlsx-water-distribution-table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  overflow: hidden !important;
+  background: #FFFFFF !important;
+}
+
+#qlsx-water-distribution-table thead th:first-child {
+  border-top-left-radius: 0 !important;
+}
+
+#qlsx-water-distribution-table thead th:last-child {
+  border-top-right-radius: 0 !important;
+}
+
+#qlsx-water-distribution-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 16px !important;
+}
+
+#qlsx-water-distribution-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 16px !important;
+}
+
+#qlsx-water-distribution-table tbody tr:last-child td {
+  border-bottom: 0 !important;
+}
+
+@media (max-width: 640px) {
+  #qlsx-chart-card-bieu-do-nuoc-phan-phoi-thang-4 {
+    border-radius: 16px !important;
+  }
+
+  #qlsx-div-nguon-cap-ke-hoach-dat-ty-trong-was-nha-may-nuoc-was-142-580 {
+    border-radius: 0 0 16px 16px !important;
+  }
+}
+</style>
+
+
+<style>
+/* Mobile KPI stats: KH + Đạt on one row */
+@media (max-width: 640px) {
+  body .kpi-row {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  body .sx-kpi-section {
+    padding: 12px 12px 0 !important;
+    gap: 12px !important;
+  }
+
+  body .kcd-stats,
+  body .kcl-stats {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    padding: 12px 16px 16px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  body .kcd-stat,
+  body .kcl-stat {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 8px 10px !important;
+    gap: 6px !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    overflow: hidden !important;
+  }
+
+  body .kcd-stat-lbl,
+  body .kcl-stat-lbl {
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+    font-size: 13px !important;
+    line-height: 18px !important;
+    white-space: nowrap !important;
+  }
+
+  body .kcd-stat-val,
+  body .kcl-stat-val {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    font-size: 14px !important;
+    line-height: 18px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  body .kcd-stat-val .arr,
+  body .kcl-stat-val .arr {
+    flex: 0 0 auto !important;
+  }
+}
+</style>
+
 </head>
 <body class="pmw-page-quanly-sanxuat">
 <div class="bao-cao-wrapper" id="qlsx-wrapper">
@@ -1193,5 +1315,27 @@ document.getElementById('dbLogoBack')?.addEventListener('click', e => {
   e.preventDefault(); window.location.href = 'index.html';
 });
 </script>
+
+<script>
+(function syncMobileKpiPlanLabel() {
+  function updateKpiPlanLabels() {
+    const isMobile = window.matchMedia('(max-width: 640px)').matches;
+    document.querySelectorAll('.kcd-stat-lbl, .kcl-stat-lbl').forEach((label) => {
+      if (!label.dataset.desktopText) {
+        label.dataset.desktopText = label.textContent.trim();
+      }
+      if (label.dataset.desktopText === 'Kế hoạch') {
+        label.textContent = isMobile ? 'KH' : 'Kế hoạch';
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', updateKpiPlanLabels);
+  document.addEventListener('pmw:components-loaded', updateKpiPlanLabels);
+  window.addEventListener('load', updateKpiPlanLabels);
+  window.addEventListener('resize', updateKpiPlanLabels);
+})();
+</script>
+
 </body>
 </html>

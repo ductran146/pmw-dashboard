@@ -598,7 +598,7 @@
       .qlsx-content {
         overflow-y: auto !important;
         overflow-x: hidden !important;
-        padding: 20px 0 24px !important;
+        padding: 0px 0 20px !important;
         gap: 20px !important;
         scrollbar-gutter: auto !important;
       }
@@ -637,6 +637,44 @@
     }
   </style>
   <link rel="stylesheet" href="responsive.css?v=38"/>
+
+<style>
+  /* Mobile KPI stats: KH + Cùng kỳ on one row */
+  @media (max-width: 560px) {
+    .qlsx-kpi-stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 8px !important;
+      padding: 0 14px 14px !important;
+    }
+
+    .qlsx-kpi-stat {
+      min-width: 0 !important;
+      padding: 6px 8px !important;
+      gap: 4px !important;
+      border-radius: 10px !important;
+    }
+
+    .qlsx-kpi-stat-label {
+      font-size: 13px !important;
+      line-height: 18px !important;
+      font-weight: 600 !important;
+    }
+
+    .qlsx-kpi-stat-value {
+      font-size: 13px !important;
+      line-height: 18px !important;
+      font-weight: 700 !important;
+      gap: 2px !important;
+    }
+
+    .qlsx-kpi-stat-value svg {
+      width: 13px !important;
+      height: 13px !important;
+      flex: 0 0 13px !important;
+    }
+  }
+</style>
+
 </head>
 <body>
 <div class="bao-cao-wrapper">
@@ -972,5 +1010,27 @@ document.getElementById('dbLogoBack')?.addEventListener('click', e => {
   e.preventDefault(); window.location.href = 'index.html';
 });
 </script>
+
+<script>
+(function syncQlsxMobileKpiLabels(){
+  function updateMobileKpiLabels(){
+    const isMobile = window.matchMedia('(max-width: 560px)').matches;
+    document.querySelectorAll('.qlsx-kpi-stat-label').forEach((label) => {
+      if (!label.dataset.desktopText) {
+        label.dataset.desktopText = label.textContent.trim();
+      }
+      if (label.dataset.desktopText === 'Kế hoạch') {
+        label.textContent = isMobile ? 'KH' : 'Kế hoạch';
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', updateMobileKpiLabels);
+  document.addEventListener('pmw:components-loaded', updateMobileKpiLabels);
+  window.addEventListener('load', updateMobileKpiLabels);
+  window.addEventListener('resize', updateMobileKpiLabels);
+})();
+</script>
+
 </body>
 </html>
