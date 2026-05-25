@@ -854,6 +854,254 @@
     gap: 6px !important;
   }
 </style>
+
+<style>
+  /* Fix: tiêu đề section và chip tháng/năm cùng 1 dòng */
+  .pmw-vt-card-head {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    height: auto !important;
+    min-height: 56px !important;
+  }
+
+  .pmw-vt-card-head > div {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .pmw-vt-card-title {
+    min-width: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .pmw-vt-card-head .pmw-vt-report-period,
+  .pmw-vt-card-head .pmw-vt-badge {
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+    white-space: nowrap !important;
+    transform: none !important;
+  }
+
+  @media (max-width: 520px) {
+    .pmw-vt-card-head {
+      flex-direction: row !important;
+      align-items: center !important;
+      padding: 14px 16px !important;
+    }
+  }
+</style>
+
+
+<style>
+  /* Mobile: keep Kế hoạch and Thực hiện on the same row in Bảng 1 - Nước sản xuất */
+  @media (max-width: 520px) {
+    #bc-vat-tu-section-san-xuat-phan-phoi .pmw-vt-compare {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    #bc-vat-tu-section-san-xuat-phan-phoi .pmw-vt-compare-cell {
+      border-right: 1px solid rgba(17, 24, 39, 0.08) !important;
+      border-bottom: 0 !important;
+    }
+
+    #bc-vat-tu-section-san-xuat-phan-phoi .pmw-vt-compare-cell:last-child {
+      border-right: 0 !important;
+    }
+
+    #bc-vat-tu-section-san-xuat-phan-phoi .pmw-vt-cell-label {
+      font-size: 13px !important;
+      line-height: 18px !important;
+    }
+
+    #bc-vat-tu-section-san-xuat-phan-phoi .pmw-vt-cell-value {
+      font-size: 20px !important;
+      line-height: 28px !important;
+    }
+  }
+</style>
+
+
+
+<style>
+  /* Mobile: keep the 2 summary stats on the same row for all 3 top KPI cards */
+  @media (max-width: 520px) {
+    .pmw-vt-summary-card.kpi-card {
+      padding: 0 !important;
+    }
+
+    .pmw-vt-summary-card .kcl-stats {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 8px !important;
+      padding: 12px 16px 16px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    .pmw-vt-summary-card .kcl-stat {
+      min-width: 0 !important;
+      width: 100% !important;
+      display: inline-flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: 8px !important;
+      padding: 8px 10px !important;
+      box-sizing: border-box !important;
+      overflow: hidden !important;
+    }
+
+    .pmw-vt-summary-card .kcl-stat-lbl {
+      flex: 0 0 auto !important;
+      font-size: 13px !important;
+      line-height: 18px !important;
+      white-space: nowrap !important;
+    }
+
+    .pmw-vt-summary-card .kcl-stat-val {
+      flex: 1 1 auto !important;
+      min-width: 0 !important;
+      font-size: 13px !important;
+      line-height: 18px !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+  }
+</style>
+
+
+<style>
+  /* Mobile fix: keep Vật tư/Năng lượng group title and first "Chỉ tiêu" column fixed during horizontal scroll */
+  @media (max-width: 900px) {
+    body.pmw-page-bc-vat-tu .pmw-vt-group {
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+    }
+
+    body.pmw-page-bc-vat-tu .pmw-vt-group-head {
+      position: sticky !important;
+      left: 0 !important;
+      z-index: 8 !important;
+      width: 100% !important;
+      min-width: 100% !important;
+      background: #FBFCFE !important;
+      box-shadow: 8px 0 14px rgba(17, 24, 39, 0.05);
+    }
+
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-table {
+      display: grid !important;
+      grid-template-columns: max-content minmax(118px, 1fr) minmax(118px, 1fr) minmax(92px, .8fr) !important;
+      min-width: max-content !important;
+      width: max-content !important;
+      align-items: stretch !important;
+    }
+
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-head > span:first-child,
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-row > span:first-child,
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-row > span.pmw-vt-mini-label {
+      position: sticky !important;
+      left: 0 !important;
+      z-index: 6 !important;
+      width: max-content !important;
+      min-width: max-content !important;
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+      white-space: nowrap !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      box-sizing: border-box !important;
+      background: #FFFFFF !important;
+      box-shadow: 8px 0 14px rgba(17, 24, 39, 0.05);
+    }
+
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-head > span:first-child {
+      z-index: 7 !important;
+      background: #EDF8FC !important;
+      color: #005292 !important;
+    }
+
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-row:hover > span:first-child,
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-row:hover > span.pmw-vt-mini-label {
+      background: #FFFFFF !important;
+    }
+
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-row > span:not(:first-child),
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-head > span:not(:first-child) {
+      min-width: 118px !important;
+      white-space: nowrap !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+    }
+  }
+</style>
+
+
+<style>
+  /* Final mobile fix: make sticky first column background consistent with table/header */
+  @media (max-width: 900px) {
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-table {
+      grid-template-columns: max-content minmax(118px, 1fr) minmax(118px, 1fr) minmax(92px, .8fr) !important;
+      background: #FFFFFF !important;
+    }
+
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-head > span:first-child,
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-row > span:first-child,
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-row > span.pmw-vt-mini-label {
+      position: sticky !important;
+      left: 0 !important;
+      z-index: 6 !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      max-width: none !important;
+      align-self: stretch !important;
+      justify-self: stretch !important;
+      box-sizing: border-box !important;
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+      white-space: nowrap !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      background: #FFFFFF !important;
+      box-shadow: 8px 0 14px rgba(17, 24, 39, 0.04) !important;
+    }
+
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-head > span:first-child {
+      z-index: 7 !important;
+      background: #EDF8FC !important;
+      color: #005292 !important;
+      border-bottom: 1px solid rgba(17, 24, 39, 0.08) !important;
+    }
+
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-row:hover > span:first-child,
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-row:hover > span.pmw-vt-mini-label {
+      background: #FFFFFF !important;
+    }
+
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-row > span:first-child .pmw-vt-title-row,
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-row > span.pmw-vt-mini-label .pmw-vt-title-row {
+      width: max-content !important;
+      max-width: none !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+    }
+
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-row > span:first-child .pmw-vt-title-text,
+    body.pmw-page-bc-vat-tu .pmw-vt-mini-row > span.pmw-vt-mini-label .pmw-vt-title-text {
+      overflow: visible !important;
+      text-overflow: clip !important;
+      white-space: nowrap !important;
+    }
+  }
+</style>
+
 </head>
 <body class="pmw-page-bc-vat-tu pmw-page-stt-table">
 <div class="bao-cao-wrapper" id="bc-vat-tu-wrapper">
